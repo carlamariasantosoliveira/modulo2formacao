@@ -25,11 +25,11 @@ export const SimuladoresQuizzesPage: React.FC<SimuladoresQuizzesPageProps> = ({
     {
       id: 'simulador-modelos' as PageId,
       number: 1,
-      title: 'Simulador do Funcionamento dos Modelos Generativos',
-      badge: 'Simulação Didática',
+      title: 'Funcionamento dos Modelos Generativos',
+      badge: 'Ciclo Interativo',
       badgeColor: 'bg-blue-50 text-blue-700 border-blue-200/60',
       description:
-        'Exploração visual das 6 etapas do ciclo de funcionamento dos modelos generativos, cálculo probabilístico e fatiador interativo de tokens.',
+        'Exploração das 6 etapas do ciclo de funcionamento dos modelos generativos, cálculo probabilístico e fatiador interativo de tokens.',
       highlights: [
         'Ciclo completo de 6 fases com analogia pedagógica de culinária',
         'Fatiamento interativo de texto em unidades semânticas (tokens)',
@@ -37,7 +37,7 @@ export const SimuladoresQuizzesPage: React.FC<SimuladoresQuizzesPageProps> = ({
       ],
       icon: Cpu,
       themeColor: '#1E70EB',
-      buttonText: 'Abrir Simulador de Modelos',
+      buttonText: 'Explorar Funcionamento dos Modelos',
     },
     {
       id: 'simulador-difusao' as PageId,

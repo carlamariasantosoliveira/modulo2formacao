@@ -22,7 +22,12 @@ interface StageData {
   subtitle: string;
   description: string;
   analogousExample?: string;
+  bullets?: Array<{ label: string; text: string }>;
+  keyTakeaway?: string;
+  isVeryImportant?: boolean;
   icon: React.ElementType;
+  circleBg: string;
+  titleBg: string;
   color: string;
 }
 
@@ -34,30 +39,36 @@ const STAGES: StageData[] = [
     description:
       'A IA é treinada com grandes volumes de textos e imagens (livros, artigos, páginas web, conteúdos educativos). Nesta fase inicial, o modelo apenas "vê" os dados sem ainda aprender.',
     analogousExample:
-      'Comprar uma biblioteca inteira de 10.000 livros de receitas. Ter os livros na estante não significa que a pessoa já saiba cozinhar.',
+      'Aprender a cozinhar: comprar uma biblioteca de 10.000 livros de receitas gastronómicas. Ter as receitas na prateleira não significa que a pessoa já saiba cozinhar.',
     icon: Database,
+    circleBg: 'bg-[#3B82F6]',
+    titleBg: 'bg-[#EFF6FF] text-[#1D4ED8]',
     color: 'blue',
   },
   {
     number: 2,
-    title: '2. Aprendizagem de Padrões',
-    subtitle: 'Fase de Treino e Ajuste de Probabilidades',
+    title: '2. Aprendizagem de Padrões (Fase de Treino)',
+    subtitle: 'Processo de aprendizagem e ajuste de probabilidades',
     description:
       'Processo de aprendizagem a partir dos dados. O modelo identifica regularidades, aprende como os elementos se organizam, estabelece associações e ajusta probabilidades internas.',
     analogousExample:
-      'Aprender a cozinhar: perceber que o açúcar adoça ou que o sal realça sabores sem memorizar todas as receitas palavra por palavra.',
+      'Exemplo analógico do PDF: Aprender a cozinhar (dados = receitas; aprendizagem = perceber que o açúcar adoça ou o sal realça sabores sem memorizar todas as receitas).',
     icon: Brain,
+    circleBg: 'bg-[#10B981]',
+    titleBg: 'bg-[#ECFDF5] text-[#047857]',
     color: 'emerald',
   },
   {
     number: 3,
-    title: '3. Prompt do Utilizador',
-    subtitle: 'Ponto de Partida e Orientação do Cálculo',
+    title: '3. Prompt do Utilizador (Ponto de Partida)',
+    subtitle: 'Instrução que orienta o cálculo estatístico',
     description:
       'O utilizador escreve uma pergunta, instrução ou descrição (ex.: "Cria um texto explicativo", "Gera uma imagem sobre..."). O prompt orienta o cálculo estatístico, mas não garante a verdade.',
     analogousExample:
-      'Fazer um pedido específico ao cozinheiro: "Prepara uma sobremesa fresca com frutas da época sem açúcar refinado".',
+      'Fazer um pedido específico ao cozinheiro: "Prepara uma sobremesa fresca com frutas da época sem açúcar refinado". O pedido orienta os ingredientes a utilizar.',
     icon: MessageSquare,
+    circleBg: 'bg-[#F59E0B]',
+    titleBg: 'bg-[#FFFBEB] text-[#B45309]',
     color: 'amber',
   },
   {
@@ -65,56 +76,84 @@ const STAGES: StageData[] = [
     title: '4. Processamento Interno',
     subtitle: 'Divisão em Tokens e Mecanismos de Atenção',
     description:
-      '• Texto: Divisão em tokens, cálculo da próxima palavra mais provável e uso de mecanismos de "atenção ao contexto" (Arquitetura Transformer).\n• Imagens: Interpretação da descrição textual, associação a padrões visuais aprendidos e construção progressiva da imagem (modelos de difusão).',
+      'Divisão em tokens, cálculo da próxima palavra mais provável e uso de mecanismos de atenção ao contexto (Transformers) e modelos de difusão de imagem.',
+    bullets: [
+      {
+        label: 'Texto',
+        text: 'Divisão em tokens, cálculo da próxima palavra mais provável e uso de mecanismos de "atenção ao contexto".',
+      },
+      {
+        label: 'Imagens',
+        text: 'Interpretação da descrição textual, associação a padrões visuais aprendidos e construção progressiva da imagem (modelos de difusão).',
+      },
+    ],
     analogousExample:
-      'O cozinheiro analisa cada ingrediente na bancada, mede as proporções e decide qual o próximo passo na confeção.',
+      'O cérebro do cozinheiro a calcular em tempo real a sequência de passos, doses e tempo de cozedura.',
     icon: Cpu,
+    circleBg: 'bg-[#8B5CF6]',
+    titleBg: 'bg-[#F5F3FF] text-[#6D28D9]',
     color: 'purple',
   },
   {
     number: 5,
-    title: '5. Produção da Resposta',
-    subtitle: 'Saída / Output Gerado',
+    title: '5. Produção da Resposta (Saída / Output)',
+    subtitle: 'Linguagem Natural e Plausibilidade Visual',
     description:
-      '• Texto: Resposta coerente em linguagem natural (pode conter erros factuais).\n• Imagem: Visual coerente com o pedido (não representa a "realidade", mas sim a plausibilidade visual).',
+      'Resposta coerente em linguagem natural (texto) ou composição gráfica gerada (imagem).',
+    bullets: [
+      {
+        label: 'Texto',
+        text: 'Resposta coerente em linguagem natural (pode conter erros factuais).',
+      },
+      {
+        label: 'Imagem',
+        text: 'Visual coerente com o pedido (não representa a "realidade", mas sim a plausibilidade).',
+      },
+    ],
     analogousExample:
-      'O prato final é servido: tem ótimo aspeto visual e cheiro delicioso, mas cabe ao cliente provar para verificar se está mesmo bom.',
+      'O prato final servido à mesa: tem ótimo aspeto visual e apresentação cuidada, mas cabe ao cliente provar para verificar a sua qualidade real.',
     icon: FileOutput,
+    circleBg: 'bg-[#EF4444]',
+    titleBg: 'bg-[#FEF2F2] text-[#B91C1C]',
     color: 'rose',
   },
   {
     number: 6,
     title: '6. Limitação Fundamental',
     subtitle: 'MUITO IMPORTANTE',
+    isVeryImportant: true,
     description:
-      'Não compreende como um ser humano, não valida factos e não possui consciência.\n■■ Resposta convincente ≠ Resposta correcta.',
+      'Não compreende como um ser humano, não valida factos e não possui consciência.',
+    keyTakeaway: '■■ Resposta convincente ≠ Resposta correcta.',
     analogousExample:
       'O modelo não sabe o que é a "dor", a "verdade" ou um "aluno". Gera sequências estatisticamente prováveis de carateres que soam convincentes ao leitor.',
     icon: AlertTriangle,
+    circleBg: 'bg-[#DC2626]',
+    titleBg: 'bg-[#FEFCE8] text-[#A16207]',
     color: 'red',
   },
 ];
 
 export const ModelMechanicsSimulator: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [viewMode, setViewMode] = useState<'step' | 'overview'>('step');
 
   // Interactive Tokenizer state
-  const [sampleSentence, setSampleSentence] = useState('A fotossíntese é essencial para as plantas.');
+  const [sampleSentence, setSampleSentence] = useState(
+    'A fotossíntese é essencial para as plantas.'
+  );
   const [selectedTokenIdx, setSelectedTokenIdx] = useState<number | null>(null);
 
   // Simple pedagogical tokenization splitting
   const tokens = React.useMemo(() => {
-    // Splits by spaces and punctuation into sub-words for pedagogical demo
     const rawTokens: Array<{ text: string; id: number; attention: number[] }> = [];
     let idCounter = 1042;
     const words = sampleSentence.split(/(\s+|[,.?!;:])/).filter(Boolean);
 
     words.forEach((w) => {
       if (w.trim() === '') {
-        // preserve space as visible token
         rawTokens.push({ text: '␣', id: idCounter++, attention: [] });
       } else if (w.length > 7) {
-        // split long words into pedagogical subwords
         const mid = Math.ceil(w.length / 2);
         rawTokens.push({ text: w.slice(0, mid), id: idCounter++, attention: [] });
         rawTokens.push({ text: '##' + w.slice(mid), id: idCounter++, attention: [] });
@@ -140,58 +179,87 @@ export const ModelMechanicsSimulator: React.FC = () => {
   const stage = STAGES[currentStep - 1];
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-      {/* Header */}
+    <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden font-sans">
+      {/* Header with Title and Mode Switcher */}
       <div className="px-6 py-5 border-b border-slate-100 bg-linear-to-r from-slate-50 via-blue-50/40 to-white">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-700 mb-1">
               <Brain className="w-4 h-4 text-blue-600" />
-              <span>Simulador Interativo do Ciclo Generativo</span>
+              <span>Ciclo de 6 Fases e Dinâmica Probabilística</span>
             </div>
-            <h2 className="text-xl font-bold text-slate-900">
-              Como Funcionam os Modelos Generativos?
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+              Funcionamento dos Modelos Generativos
             </h2>
             <p className="text-xs text-slate-600 mt-0.5">
-              Explora as seis fases do ciclo de funcionamento, a divisão em tokens e a limitação fundamental.
+              Explora as seis etapas do ciclo de funcionamento, a divisão de texto em tokens e a limitação fundamental.
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-medium text-slate-500">
-              Etapa {currentStep} de 6
-            </span>
-            <div className="flex items-center gap-1">
+          <div className="flex flex-wrap items-center gap-2">
+            {/* View Mode Switcher */}
+            <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
               <button
-                onClick={() => setCurrentStep((prev) => Math.max(1, prev - 1))}
-                disabled={currentStep === 1}
-                className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-30 disabled:pointer-events-none text-slate-700"
-                title="Etapa anterior"
+                onClick={() => setViewMode('step')}
+                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+                  viewMode === 'step'
+                    ? 'bg-white text-blue-700 shadow-2xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
               >
-                <ChevronLeft className="w-4 h-4" />
+                Passo a Passo
               </button>
               <button
-                onClick={() => setCurrentStep((prev) => Math.min(6, prev + 1))}
-                disabled={currentStep === 6}
-                className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-30 disabled:pointer-events-none text-slate-700"
-                title="Etapa seguinte"
+                onClick={() => setViewMode('overview')}
+                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+                  viewMode === 'overview'
+                    ? 'bg-white text-blue-700 shadow-2xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
               >
-                <ChevronRight className="w-4 h-4" />
+                Visão de Conjunto (6 Fases)
               </button>
             </div>
+
+            {viewMode === 'step' && (
+              <div className="flex items-center gap-1">
+                <span className="text-xs font-medium text-slate-500 mr-1 hidden sm:inline">
+                  Etapa {currentStep} de 6
+                </span>
+                <button
+                  onClick={() => setCurrentStep((prev) => Math.max(1, prev - 1))}
+                  disabled={currentStep === 1}
+                  className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-30 disabled:pointer-events-none text-slate-700 cursor-pointer"
+                  title="Etapa anterior"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setCurrentStep((prev) => Math.min(6, prev + 1))}
+                  disabled={currentStep === 6}
+                  className="p-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-30 disabled:pointer-events-none text-slate-700 cursor-pointer"
+                  title="Etapa seguinte"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
         {/* 6-step progress timeline buttons */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 mt-4 pt-3 border-t border-slate-200/70">
           {STAGES.map((s) => {
-            const isActive = currentStep === s.number;
-            const isCompleted = currentStep > s.number;
+            const isActive = viewMode === 'step' && currentStep === s.number;
+            const isCompleted = viewMode === 'step' && currentStep > s.number;
             return (
               <button
                 key={s.number}
-                onClick={() => setCurrentStep(s.number)}
-                className={`text-left p-2.5 rounded-xl border transition-all text-xs flex flex-col justify-between ${
+                onClick={() => {
+                  setCurrentStep(s.number);
+                  setViewMode('step');
+                }}
+                className={`text-left p-2.5 rounded-xl border transition-all text-xs flex flex-col justify-between cursor-pointer ${
                   isActive
                     ? 'border-blue-600 bg-blue-50/80 shadow-2xs ring-1 ring-blue-500'
                     : isCompleted
@@ -211,6 +279,9 @@ export const ModelMechanicsSimulator: React.FC = () => {
                   >
                     {s.number}
                   </span>
+                  {s.isVeryImportant && (
+                    <span className="w-2 h-2 rounded-full bg-red-500" title="Muito Importante"></span>
+                  )}
                 </div>
                 <span className="font-semibold text-slate-900 line-clamp-1">
                   {s.title.replace(/^\d+\.\s*/, '')}
@@ -221,12 +292,107 @@ export const ModelMechanicsSimulator: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Stage Content */}
-      <div className="p-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Left Column: Theory & Analogous explanation (6 cols) */}
-          <div className="lg:col-span-6 space-y-4">
-            <div className="flex items-center gap-3">
+      {/* Main Content Area */}
+      {viewMode === 'overview' ? (
+        <div className="p-6 sm:p-8 space-y-6">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div>
+              <h3 className="text-base font-bold text-slate-900">
+                Visão Global do Ciclo de Funcionamento (As Seis Fases)
+              </h3>
+              <p className="text-xs text-slate-500">
+                Consulte as 6 etapas ou clique em qualquer fase para abrir a respetiva simulação interativa.
+              </p>
+            </div>
+            <button
+              onClick={() => setViewMode('step')}
+              className="text-xs font-semibold text-[#1E70EB] hover:text-blue-800 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-200 cursor-pointer"
+            >
+              Modo Passo a Passo
+            </button>
+          </div>
+
+          <div className="space-y-6 relative">
+            <div className="absolute left-[18px] top-4 bottom-8 w-0.5 bg-slate-200 pointer-events-none"></div>
+
+            {STAGES.map((s) => (
+              <div
+                key={s.number}
+                className="relative flex flex-col md:flex-row md:items-start gap-4 z-10 bg-slate-50/60 hover:bg-slate-50 p-4 rounded-2xl border border-slate-100 transition-all group"
+              >
+                {/* Circle badge */}
+                <div
+                  className={`w-9 h-9 rounded-full ${s.circleBg} text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-xs mt-1`}
+                >
+                  {s.number}
+                </div>
+
+                {/* Title badge */}
+                <div className="md:w-72 shrink-0">
+                  <div
+                    className={`${s.titleBg} rounded-2xl px-4 py-3 font-bold text-xs sm:text-sm border border-black/5 flex items-center justify-between`}
+                  >
+                    <span>{s.title}</span>
+                    {s.isVeryImportant && (
+                      <span className="text-[10px] uppercase font-extrabold bg-rose-600 text-white px-2 py-0.5 rounded-full ml-2">
+                        MUITO IMPORTANTE
+                      </span>
+                    )}
+                  </div>
+                  <button
+                    onClick={() => {
+                      setCurrentStep(s.number);
+                      setViewMode('step');
+                    }}
+                    className="mt-2 text-[11px] font-semibold text-blue-600 group-hover:text-blue-800 flex items-center gap-1 cursor-pointer pl-1"
+                  >
+                    <span>Explorar interativamente</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                {/* Description */}
+                <div className="flex-1 text-xs sm:text-sm text-slate-700 leading-relaxed pl-2 md:pl-0 space-y-2">
+                  <p>{s.description}</p>
+
+                  {s.analogousExample && (
+                    <div className="bg-[#ECFDF5] border border-emerald-200/80 rounded-xl p-3 text-xs text-emerald-950 font-medium">
+                      {s.analogousExample}
+                    </div>
+                  )}
+
+                  {s.bullets && (
+                    <div className="space-y-1.5 pl-1">
+                      {s.bullets.map((b, bIdx) => (
+                        <div key={bIdx} className="flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-800 mt-2 shrink-0"></span>
+                          <p>
+                            <strong className="text-slate-900 font-bold">{b.label}:</strong>{' '}
+                            {b.text}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {s.keyTakeaway && (
+                    <div className="bg-amber-50 border border-amber-300 rounded-xl p-3 text-xs sm:text-sm font-extrabold text-amber-950 flex items-center gap-2">
+                      <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
+                      <span>{s.keyTakeaway}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        /* Step-by-Step Interactive View */
+        <div className="p-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Left Column: Theory & Analogous explanation (6 cols) */}
+            <div className="lg:col-span-6 space-y-4">
+              <div className="flex items-center gap-3">
               <div
                 className={`w-12 h-12 rounded-xl flex items-center justify-center text-white ${
                   stage.number === 6
@@ -466,6 +632,7 @@ export const ModelMechanicsSimulator: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    )}
+  </div>
+);
 };

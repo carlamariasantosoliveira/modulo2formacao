@@ -59,7 +59,7 @@ const SIMULATOR_SECTIONS: Array<{
   icon: React.ElementType;
 }> = [
   { id: 'simuladores-quizzes', label: 'Índice de Simuladores', icon: Sliders },
-  { id: 'simulador-modelos', label: '1. Simulador de Modelos', icon: Cpu },
+  { id: 'simulador-modelos', label: '1. Funcionamento dos Modelos', icon: Cpu },
   { id: 'simulador-difusao', label: '2. Difusão de Imagem', icon: Layers },
   { id: 'laboratorio-prompts', label: '3. Laboratório de Prompts', icon: Terminal },
   { id: 'quiz-interativo', label: '4. Questionário Formativo', icon: HelpCircle },

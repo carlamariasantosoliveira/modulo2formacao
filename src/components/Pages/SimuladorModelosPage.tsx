@@ -46,16 +46,16 @@ export const SimuladorModelosPage: React.FC<SimuladorModelosPageProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-200/60">
-                Simulação Didática Pedagógica
+                Ciclo de 6 Fases e Dinâmica Probabilística
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight mt-1">
-              Simulador do Funcionamento dos Modelos Generativos
+              Funcionamento dos Modelos Generativos
             </h1>
           </div>
         </div>
         <p className="text-xs sm:text-sm text-slate-600 pl-4.5 max-w-3xl">
-          Exploração visual e interativa das 6 etapas do ciclo de funcionamento, divisão de texto em tokens e cálculo probabilístico da próxima palavra.
+          Exploração das 6 etapas do ciclo de funcionamento, divisão de texto em tokens e cálculo probabilístico da próxima palavra.
         </p>
       </div>
 
