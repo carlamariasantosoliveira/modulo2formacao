@@ -7,7 +7,6 @@ import {
   Layers,
   Sparkles,
   CheckCircle2,
-  ArrowRight,
   BookOpen,
 } from 'lucide-react';
 import { PageId } from '../../types';
@@ -230,15 +229,7 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
 
               <div className="pt-3 border-t border-slate-200/60 flex items-center justify-between text-xs text-slate-500">
                 <span>5 Categorias de Modelos</span>
-                {onNavigate && (
-                  <button
-                    onClick={() => onNavigate('exemplos-disciplina')}
-                    className="font-bold text-[#1E70EB] hover:text-blue-800 inline-flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>Ver Prompts Reais</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                )}
+                <span className="font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-lg">Módulo 2</span>
               </div>
             </div>
           </div>
