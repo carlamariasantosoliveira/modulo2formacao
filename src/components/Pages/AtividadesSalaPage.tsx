@@ -56,7 +56,7 @@ export const AtividadesSalaPage: React.FC = () => {
             7. Atividades Práticas em Sala de Aula com Ferramentas LLM
           </h1>
           <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Guiões Didáticos, Objetivos Pedagógicos e Critérios de Avaliação (Páginas 6 e 7)
+            Guiões didáticos, objetivos pedagógicos e critérios de avaliação
           </p>
         </div>
       </div>

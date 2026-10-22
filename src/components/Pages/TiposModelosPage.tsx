@@ -129,7 +129,7 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
             3. Tipos de Modelos (Áudio, Vídeo, Multimodal) e Aplicações Educativas
           </h1>
           <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Texto (LLMs), Imagem, Áudio/Voz, Vídeo e Modelos Multimodais (Páginas 2 e 3)
+            Texto (LLMs), imagem, áudio/voz, vídeo e modalidades combinadas
           </p>
         </div>
       </div>

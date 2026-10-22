@@ -1,56 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   UserCheck,
   CheckCircle,
   AlertCircle,
   Layout,
-  Copy,
-  Check,
-  Sparkles,
   Info,
+  ArrowRight,
+  BookOpen,
 } from 'lucide-react';
+import { PageId } from '../../types';
 import promptsPedagogyImg from '../../assets/images/prompts_pedagogy_1792545537603.jpg';
 
-export const PromptsPage: React.FC = () => {
-  const [context, setContext] = useState('');
-  const [task, setTask] = useState('');
-  const [targetAudience, setTargetAudience] = useState('');
-  const [restrictions, setRestrictions] = useState('');
-  const [format, setFormat] = useState('');
+interface PromptsPageProps {
+  onNavigate?: (pageId: PageId) => void;
+}
 
-  const [generatedPrompt, setGeneratedPrompt] = useState('');
-  const [copied, setCopied] = useState(false);
-
-  const handleGenerate = () => {
-    let p = '';
-    if (context.trim()) p += `${context.trim()} `;
-    if (task.trim()) p += `${task.trim()} `;
-    if (targetAudience.trim()) p += `Público-alvo: ${targetAudience.trim()}. `;
-    if (restrictions.trim()) p += `Restrições: ${restrictions.trim()}. `;
-    if (format.trim()) p += `Formato de saída: ${format.trim()}.`;
-
-    if (!p.trim()) {
-      p = 'Age como professor do 9.º ano. Explica o que é um texto argumentativo para alunos de 13 anos em tópicos curtos. Não uses termos excessivamente técnicos. Apresenta o resultado com exemplos do quotidiano em tabela.';
-    }
-    setGeneratedPrompt(p.trim());
-  };
-
-  const handleCopy = () => {
-    if (!generatedPrompt) return;
-    navigator.clipboard.writeText(generatedPrompt);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
+export const PromptsPage: React.FC<PromptsPageProps> = ({ onNavigate }) => {
   return (
     <div className="space-y-8 pb-12 font-sans">
-      {/* 1. O que é um Prompt? matching imagem_ca72888b.png */}
+      {/* 1. Header with signature blue bar */}
       <div className="space-y-3">
         <div className="flex items-center gap-3">
           <span className="w-1.5 h-8 bg-[#1E70EB] rounded-full inline-block"></span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
-            4. Prompts e Engenharia de Prompts
-          </h1>
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
+              4. Prompts e Engenharia de Prompts
+            </h1>
+            <p className="text-xs text-slate-500 font-medium mt-0.5">
+              Definição, anatomia e elementos essenciais para uma instrução eficaz
+            </p>
+          </div>
         </div>
 
         <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal pl-4.5">
@@ -62,56 +41,73 @@ export const PromptsPage: React.FC = () => {
       <div className="bg-[#EFF6FF] rounded-3xl p-6 sm:p-8 border border-blue-100 shadow-2xs space-y-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           {/* Left: 4 Core Elements */}
-          <div className="lg:col-span-7 space-y-4">
-            <h2 className="text-base sm:text-lg font-bold text-[#1D4ED8]">
-              Elementos Principais de um Prompt
-            </h2>
+          <div className="lg:col-span-7 space-y-5">
+            <div>
+              <span className="text-[11px] font-bold text-[#1E70EB] uppercase tracking-wider block mb-1">
+                Estrutura de Base
+              </span>
+              <h2 className="text-base sm:text-lg font-bold text-[#1D4ED8]">
+                Elementos Principais de um Prompt
+              </h2>
+            </div>
 
-            <div className="space-y-3.5 text-xs sm:text-sm">
+            <div className="space-y-3 text-xs sm:text-sm">
               {/* Contexto */}
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-md bg-[#2563EB] text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs">
-                  <UserCheck className="w-3.5 h-3.5" />
+              <div className="flex items-start gap-3 bg-white/70 p-3 rounded-2xl border border-blue-100/60">
+                <div className="w-7 h-7 rounded-lg bg-[#2563EB] text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs mt-0.5">
+                  <UserCheck className="w-4 h-4" />
                 </div>
-                <p className="text-slate-800">
-                  <strong className="text-slate-900 font-bold">Contexto:</strong> Quem é a IA? (ex.: &ldquo;Age como um historiador&rdquo;).
-                </p>
+                <div>
+                  <strong className="text-slate-900 font-bold block text-xs uppercase tracking-wide text-blue-700">Contexto</strong>
+                  <p className="text-slate-800">
+                    Quem é a IA? <span className="text-slate-600">(ex.: &ldquo;Age como um historiador&rdquo; ou &ldquo;És um professor de Biologia do 10.º ano&rdquo;)</span>.
+                  </p>
+                </div>
               </div>
 
               {/* Tarefa */}
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-md bg-[#10B981] text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs">
-                  <CheckCircle className="w-3.5 h-3.5" />
+              <div className="flex items-start gap-3 bg-white/70 p-3 rounded-2xl border border-blue-100/60">
+                <div className="w-7 h-7 rounded-lg bg-[#10B981] text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs mt-0.5">
+                  <CheckCircle className="w-4 h-4" />
                 </div>
-                <p className="text-slate-800">
-                  <strong className="text-slate-900 font-bold">Tarefa:</strong> O que deve fazer? (ex.: &ldquo;Resume este texto&rdquo;).
-                </p>
+                <div>
+                  <strong className="text-slate-900 font-bold block text-xs uppercase tracking-wide text-emerald-700">Tarefa</strong>
+                  <p className="text-slate-800">
+                    O que deve fazer? <span className="text-slate-600">(ex.: &ldquo;Resume este texto&rdquo; ou &ldquo;Cria um guião de debate para 45 minutos&rdquo;)</span>.
+                  </p>
+                </div>
               </div>
 
               {/* Restrições */}
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-md bg-[#F59E0B] text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs">
-                  <AlertCircle className="w-3.5 h-3.5" />
+              <div className="flex items-start gap-3 bg-white/70 p-3 rounded-2xl border border-blue-100/60">
+                <div className="w-7 h-7 rounded-lg bg-[#F59E0B] text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs mt-0.5">
+                  <AlertCircle className="w-4 h-4" />
                 </div>
-                <p className="text-slate-800">
-                  <strong className="text-slate-900 font-bold">Restrições:</strong> O que evitar? (ex.: &ldquo;Não uses termos técnicos&rdquo;).
-                </p>
+                <div>
+                  <strong className="text-slate-900 font-bold block text-xs uppercase tracking-wide text-amber-700">Restrições</strong>
+                  <p className="text-slate-800">
+                    O que evitar? <span className="text-slate-600">(ex.: &ldquo;Não uses termos técnicos&rdquo; ou &ldquo;Não excedas 300 palavras&rdquo;)</span>.
+                  </p>
+                </div>
               </div>
 
               {/* Formato */}
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-md bg-[#EF4444] text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs">
-                  <Layout className="w-3.5 h-3.5" />
+              <div className="flex items-start gap-3 bg-white/70 p-3 rounded-2xl border border-blue-100/60">
+                <div className="w-7 h-7 rounded-lg bg-[#EF4444] text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs mt-0.5">
+                  <Layout className="w-4 h-4" />
                 </div>
-                <p className="text-slate-800">
-                  <strong className="text-slate-900 font-bold">Formato:</strong> Como apresentar a resposta? (ex.: &ldquo;Em tabela&rdquo;, &ldquo;Em tópicos&rdquo;).
-                </p>
+                <div>
+                  <strong className="text-slate-900 font-bold block text-xs uppercase tracking-wide text-rose-700">Formato</strong>
+                  <p className="text-slate-800">
+                    Como apresentar a resposta? <span className="text-slate-600">(ex.: &ldquo;Em tabela de 3 colunas&rdquo;, &ldquo;Em tópicos com numeração&rdquo;)</span>.
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Verbatim Note from Page 3 */}
-            <div className="pt-3 border-t border-blue-200/60 flex items-center gap-2 text-xs text-[#1D4ED8] font-semibold">
-              <Info className="w-4 h-4 shrink-0 text-[#1E70EB]" />
+            {/* Verbatim Note */}
+            <div className="pt-3 border-t border-blue-200/60 flex items-start sm:items-center gap-2.5 text-xs text-[#1D4ED8] font-semibold bg-blue-50/70 p-3 rounded-xl">
+              <Info className="w-4 h-4 shrink-0 text-[#1E70EB] mt-0.5 sm:mt-0" />
               <span>Nota: A qualidade do prompt influencia significativamente a qualidade do resultado obtido.</span>
             </div>
           </div>
@@ -122,147 +118,41 @@ export const PromptsPage: React.FC = () => {
               <img
                 src={promptsPedagogyImg}
                 alt="Professora a construir planos de aula e prompts com apoio de IA"
-                className="w-full h-48 sm:h-52 object-cover object-center"
+                className="w-full h-52 sm:h-60 object-cover object-center"
               />
-              <div className="p-3 bg-white text-[11px] text-slate-600 border-t border-slate-100 flex items-center justify-between">
-                <span className="font-medium text-slate-800">Construção colaborativa de prompts pedagógicos</span>
-                <span className="text-[#1E70EB] font-semibold">Módulo 2</span>
+              <div className="p-3.5 bg-white text-[11px] text-slate-600 border-t border-slate-100 flex items-center justify-between">
+                <span className="font-semibold text-slate-800">Construção colaborativa de prompts pedagógicos</span>
+                <span className="text-[#1E70EB] font-bold">Módulo 2</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 3. Construtor de Prompts (Simulador) matching imagem_ca72888b.png */}
-      <div className="space-y-4 pt-2">
+      {/* 3. Link to Section 5: Técnicas de Formulação de Prompts */}
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-2xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div className="space-y-1">
-          <div className="flex items-center gap-3">
-            <span className="w-1.5 h-8 bg-[#1E70EB] rounded-full inline-block"></span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
-              Construtor de Prompts (Simulador)
-            </h2>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1E70EB]">
+            <BookOpen className="w-4 h-4" />
+            <span>Passo Seguinte</span>
           </div>
-          <p className="text-xs sm:text-sm text-slate-600 pl-4.5">
-            Preencha os campos para criar um prompt eficaz.
+          <h3 className="text-base sm:text-lg font-bold text-slate-900">
+            5. Técnicas de Formulação de Prompts
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-600">
+            Conheça as 8 estratégias pedagógicas e veja na prática a comparação entre prompts vagos e otimizados.
           </p>
         </div>
 
-        {/* Inputs Layout matching imagem_ca72888b.png */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-2xs space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {/* Left Column */}
-            <div className="space-y-4">
-              <div>
-                <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                  Contexto (quem é a IA?)
-                </label>
-                <input
-                  type="text"
-                  value={context}
-                  onChange={(e) => setContext(e.target.value)}
-                  placeholder="Ex.: És um professor especialista em..."
-                  className="w-full text-xs p-3 rounded-xl border border-slate-200 bg-white placeholder:text-slate-400 focus:outline-hidden focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                  Tarefa (o que deve fazer?)
-                </label>
-                <input
-                  type="text"
-                  value={task}
-                  onChange={(e) => setTask(e.target.value)}
-                  placeholder="Ex.: Cria um plano de aula sobre..."
-                  className="w-full text-xs p-3 rounded-xl border border-slate-200 bg-white placeholder:text-slate-400 focus:outline-hidden focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                  Público-alvo
-                </label>
-                <input
-                  type="text"
-                  value={targetAudience}
-                  onChange={(e) => setTargetAudience(e.target.value)}
-                  placeholder="Ex.: Alunos do 5º ano"
-                  className="w-full text-xs p-3 rounded-xl border border-slate-200 bg-white placeholder:text-slate-400 focus:outline-hidden focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                />
-              </div>
-            </div>
-
-            {/* Right Column */}
-            <div className="space-y-4 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                    Restrições (o que deve evitar?)
-                  </label>
-                  <input
-                    type="text"
-                    value={restrictions}
-                    onChange={(e) => setRestrictions(e.target.value)}
-                    placeholder="Ex.: Não uses termos muito técnicos..."
-                    className="w-full text-xs p-3 rounded-xl border border-slate-200 bg-white placeholder:text-slate-400 focus:outline-hidden focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                    Formato da resposta
-                  </label>
-                  <input
-                    type="text"
-                    value={format}
-                    onChange={(e) => setFormat(e.target.value)}
-                    placeholder="Ex.: Em tabela, com tópicos..."
-                    className="w-full text-xs p-3 rounded-xl border border-slate-200 bg-white placeholder:text-slate-400 focus:outline-hidden focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <button
-                  onClick={handleGenerate}
-                  className="w-full py-3 px-6 rounded-xl bg-[#1E70EB] hover:bg-blue-600 text-white font-bold text-xs sm:text-sm shadow-xs transition-colors cursor-pointer"
-                >
-                  Gerar Prompt
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Output Card: O seu prompt matching imagem_ca72888b.png */}
-          <div className="pt-4 border-t border-slate-100 space-y-2">
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-bold text-slate-900">
-                O seu prompt:
-              </h3>
-              {generatedPrompt && (
-                <button
-                  onClick={handleCopy}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1E70EB] hover:text-blue-800 cursor-pointer"
-                >
-                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span>{copied ? 'Copiado!' : 'Copiar'}</span>
-                </button>
-              )}
-            </div>
-
-            <div className="bg-[#F8FAFC] border border-slate-200/80 rounded-2xl p-4 sm:p-5 min-h-[90px] flex items-center">
-              {generatedPrompt ? (
-                <p className="text-xs sm:text-sm font-mono text-slate-800 leading-relaxed select-all">
-                  &ldquo;{generatedPrompt}&rdquo;
-                </p>
-              ) : (
-                <p className="text-xs sm:text-sm text-slate-400 italic">
-                  O prompt será gerado aqui...
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
+        {onNavigate && (
+          <button
+            onClick={() => onNavigate('tecnicas')}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1E70EB] hover:bg-blue-600 text-white font-bold text-xs sm:text-sm shadow-xs transition-colors shrink-0 cursor-pointer"
+          >
+            <span>Explorar Técnicas</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        )}
       </div>
     </div>
   );

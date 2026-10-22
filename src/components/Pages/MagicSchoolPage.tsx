@@ -38,7 +38,7 @@ export const MagicSchoolPage: React.FC = () => {
             8. Exploração da Ferramenta MagicSchool.ai
           </h1>
           <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Raina (Assistente do Professor), Student Chatbots e os 8 Geradores Especializados (Páginas 7 e 8)
+            Assistente Raina, chatbots para alunos e geradores pedagógicos especializados
           </p>
         </div>
       </div>

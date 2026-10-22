@@ -49,7 +49,7 @@ export const ReferenciasPage: React.FC = () => {
             Ferramentas Citadas e Referências Bibliográficas
           </h1>
           <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Corpus Científico Integral (19 Referências do PDF), Ferramentas e Ficha Técnica (Páginas 8 e 9)
+            Corpus científico de 19 referências, ferramentas de IA e ficha técnica
           </p>
         </div>
       </div>
@@ -81,7 +81,7 @@ export const ReferenciasPage: React.FC = () => {
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-2xs space-y-5">
         <div className="border-b border-slate-100 pb-3">
           <span className="text-xs font-semibold text-[#1E70EB] uppercase tracking-wider block mb-0.5">
-            Módulo 2 (Página 8)
+            Tecnologia e Recursos
           </span>
           <h2 className="text-lg font-bold text-slate-900">
             Ferramentas de IA Generativa Referenciadas
@@ -121,7 +121,7 @@ export const ReferenciasPage: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
             <span className="text-xs font-semibold text-[#1E70EB] uppercase tracking-wider block mb-0.5">
-              Literatura Científica (Página 9)
+              Literatura Científica
             </span>
             <h2 className="text-lg font-bold text-slate-900">
               Referências Bibliográficas do Módulo 2

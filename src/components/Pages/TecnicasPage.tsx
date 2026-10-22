@@ -34,7 +34,7 @@ export const TecnicasPage: React.FC<TecnicasPageProps> = ({ onNavigate }) => {
             5. Técnicas de Formulação de Prompts
           </h1>
           <p className="text-xs text-slate-500 font-medium mt-0.5">
-            As Oito Estratégias Pedagógicas e Comparação Integral Vago vs. Otimizado (Páginas 4 e 5)
+            Estratégias pedagógicas e comparação entre formulações vagas e otimizadas
           </p>
         </div>
       </div>

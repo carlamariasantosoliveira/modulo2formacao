@@ -208,25 +208,25 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {renderNavButton('home', 'Página Inicial', Home)}
           </div>
 
-          {/* Group 1: Conteúdo Oficial do Módulo 2 (Secções 1 a 8) */}
+          {/* Group 1: Módulos do Curso (Secções 1 a 8) */}
           <div className="space-y-1">
             <div className="px-3 py-1 flex items-center justify-between">
               <span className={`text-[10px] font-bold uppercase tracking-wider ${
                 isHome ? 'text-blue-300' : 'text-slate-400'
               }`}>
-                Conteúdo Oficial (Secções 1 a 8)
+                Módulos do Curso
               </span>
             </div>
             {OFFICIAL_SECTIONS.map((sec) => renderNavButton(sec.id, sec.label, sec.icon))}
           </div>
 
-          {/* Group 2: Desafio e Referências do PDF */}
+          {/* Group 2: Avaliação & Recursos */}
           <div className="space-y-1 pt-1 border-t border-slate-200/50">
             <div className="px-3 py-1">
               <span className={`text-[10px] font-bold uppercase tracking-wider ${
                 isHome ? 'text-blue-300' : 'text-slate-400'
               }`}>
-                Avaliação & Consulta (PDF)
+                Avaliação & Recursos
               </span>
             </div>
             {SYNTHESIS_SECTIONS.map((sec) => renderNavButton(sec.id, sec.label, sec.icon))}

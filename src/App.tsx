@@ -105,7 +105,7 @@ export default function App() {
       case 'tipos-modelos':
         return <TiposModelosPage onNavigate={handleSelectPage} />;
       case 'prompts':
-        return <PromptsPage />;
+        return <PromptsPage onNavigate={handleSelectPage} />;
       case 'tecnicas':
         return <TecnicasPage onNavigate={handleSelectPage} />;
       case 'exemplos-disciplina':

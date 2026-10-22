@@ -32,7 +32,7 @@ export const ExemplosDisciplinaPage: React.FC<ExemplosDisciplinaPageProps> = ({
             6. Exemplos Práticos de Bons Prompts por Disciplina e Área
           </h1>
           <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Modelos de Formulação Rigorosa Transcritos na Íntegra do Módulo Oficial (Páginas 5 e 6)
+            Modelos de formulação pedagógica para diferentes áreas curriculares
           </p>
         </div>
       </div>

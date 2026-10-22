@@ -179,12 +179,12 @@ ${data.finalProduct}
             Desafio Prático Final do Módulo 2
           </h1>
           <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Criação de Recurso Pedagógico Real, Apresentação do Produto Final e Histórico de Prompts (Página 8)
+            Criação de recurso pedagógico, produto final e histórico de prompts
           </p>
         </div>
       </div>
 
-      {/* Official Guidelines from PDF */}
+      {/* Official Guidelines */}
       <div className="bg-[#FFFBEB] border border-amber-200/80 rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xs">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-amber-900">
@@ -192,7 +192,7 @@ ${data.finalProduct}
             <span>Enunciado Oficial do Desafio Prático</span>
           </div>
           <span className="text-[11px] font-semibold text-amber-800 bg-amber-100/80 px-2.5 py-1 rounded-full border border-amber-200">
-            Página 8 do PDF Oficial
+            Avaliação Prática
           </span>
         </div>
 
