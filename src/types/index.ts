@@ -8,13 +8,9 @@ export type PageId =
   | 'exemplos-disciplina'
   | 'atividades-sala'
   | 'magicschool'
-  | 'simuladores-quizzes'
-  | 'simulador-modelos'
-  | 'simulador-difusao'
-  | 'quiz-interativo'
-  | 'criador-recursos'
   | 'desafio-final'
   | 'ferramentas-referencias';
+
 
 export interface PageMeta {
   id: PageId;

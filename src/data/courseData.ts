@@ -132,52 +132,8 @@ export const PAGES_NAV: PageMeta[] = [
     description: 'Catálogo de ferramentas e as 19 referências científicas completas.',
     category: 'recursos',
   },
-  {
-    id: 'simuladores-quizzes',
-    number: 11,
-    title: 'Laboratório de Simuladores (Índice Geral)',
-    shortTitle: 'Índice de Simuladores',
-    iconName: 'Sliders',
-    description: 'Catálogo dos 5 simuladores didáticos e questionário formativo.',
-    category: 'pratica',
-  },
-  {
-    id: 'simulador-modelos',
-    number: 12,
-    title: 'Simulador do Funcionamento dos Modelos',
-    shortTitle: 'Simulador de Modelos',
-    iconName: 'Cpu',
-    description: 'Exploração passo a passo do ciclo das 6 fases e do cálculo de tokens.',
-    category: 'pratica',
-  },
-  {
-    id: 'simulador-difusao',
-    number: 13,
-    title: 'Simulador de Difusão e Geração de Imagens',
-    shortTitle: 'Simulador de Difusão',
-    iconName: 'Layers',
-    description: 'Denoising progressivo a partir de ruído gaussiano orientado por prompts.',
-    category: 'pratica',
-  },
-  {
-    id: 'quiz-interativo',
-    number: 15,
-    title: 'Questionário Interativo Formativo',
-    shortTitle: 'Questionário Formativo',
-    iconName: 'HelpCircle',
-    description: 'Teste formativo com feedback imediato e justificação pedagógica.',
-    category: 'pratica',
-  },
-  {
-    id: 'criador-recursos',
-    number: 16,
-    title: 'Criador de Recursos Pedagógicos com IA',
-    shortTitle: 'Criador de Recursos',
-    iconName: 'FileCheck',
-    description: 'Assistente para criação de planos, quizzes, fichas e rubricas.',
-    category: 'pratica',
-  },
 ];
+
 
 export const PROMPT_ELEMENTS = [
   {

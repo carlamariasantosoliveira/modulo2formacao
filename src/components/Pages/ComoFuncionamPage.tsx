@@ -9,15 +9,15 @@ export const ComoFuncionamPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <span className="w-1.5 h-8 bg-[#1E70EB] rounded-full inline-block"></span>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
-            2. Funcionamento dos Modelos Generativos
+            Visão Global do Ciclo de Funcionamento dos Modelos
           </h1>
         </div>
-        <p className="text-sm font-bold text-slate-800 pl-4.5">
-          Ciclo de Funcionamento (As Seis Fases do Modelo)
+        <p className="text-sm font-semibold text-slate-600 pl-4.5">
+          Visão Global do Ciclo de Funcionamento com Passo a Passo das 6 Fases (Com Ferramentas de Exploração Integradas)
         </p>
       </div>
 
-      {/* Integrated Educational Component without Duplication */}
+      {/* Unified Master Component */}
       <ModelMechanicsSimulator />
     </div>
   );

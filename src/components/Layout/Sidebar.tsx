@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Home,
   Cpu,
@@ -9,15 +9,10 @@ import {
   BookOpen,
   FileCheck,
   Settings,
-  Gamepad2,
   Award,
   FileText,
   Brain,
   X,
-  ChevronDown,
-  ChevronRight,
-  Sliders,
-  HelpCircle,
 } from 'lucide-react';
 import { PageId } from '../../types';
 
@@ -28,7 +23,7 @@ interface SidebarProps {
   onCloseMobile: () => void;
 }
 
-// 8 Official sections directly from the PDF
+// 8 Official sections directly from the course syllabus
 const OFFICIAL_SECTIONS: Array<{
   id: PageId;
   label: string;
@@ -53,18 +48,6 @@ const SYNTHESIS_SECTIONS: Array<{
   { id: 'ferramentas-referencias', label: 'Referências & Créditos', icon: FileText },
 ];
 
-const SIMULATOR_SECTIONS: Array<{
-  id: PageId;
-  label: string;
-  icon: React.ElementType;
-}> = [
-  { id: 'simuladores-quizzes', label: 'Índice de Simuladores', icon: Sliders },
-  { id: 'simulador-modelos', label: '1. Funcionamento dos Modelos', icon: Cpu },
-  { id: 'simulador-difusao', label: '2. Difusão de Imagem', icon: Layers },
-  { id: 'quiz-interativo', label: '3. Questionário Formativo', icon: HelpCircle },
-  { id: 'criador-recursos', label: '4. Criador de Recursos', icon: FileCheck },
-];
-
 export const Sidebar: React.FC<SidebarProps> = ({
   currentPage,
   onSelectPage,
@@ -72,21 +55,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onCloseMobile,
 }) => {
   const isHome = currentPage === 'home';
-  const isSimulatorActive = [
-    'simuladores-quizzes',
-    'simulador-modelos',
-    'simulador-difusao',
-    'quiz-interativo',
-    'criador-recursos',
-  ].includes(currentPage);
-
-  const [simulatorsExpanded, setSimulatorsExpanded] = useState(true);
 
   const renderNavButton = (
     id: PageId,
     label: string,
-    Icon: React.ElementType,
-    isSubItem = false
+    Icon: React.ElementType
   ) => {
     const isActive = currentPage === id;
     let buttonClass = '';
@@ -117,11 +90,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
           onSelectPage(id);
           onCloseMobile();
         }}
-        className={`w-full text-left flex items-center gap-2.5 rounded-xl transition-all cursor-pointer ${
-          isSubItem ? 'pl-7 py-2 text-[11px]' : 'px-3 py-2 text-xs'
-        } ${buttonClass}`}
+        className={`w-full text-left flex items-center gap-2.5 rounded-xl transition-all cursor-pointer px-3 py-2 text-xs ${buttonClass}`}
       >
-        <Icon className={`shrink-0 ${isSubItem ? 'w-3.5 h-3.5' : 'w-4 h-4'} ${iconClass}`} />
+        <Icon className={`shrink-0 w-4 h-4 ${iconClass}`} />
         <span className="truncate">{label}</span>
       </button>
     );
@@ -228,33 +199,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </span>
             </div>
             {SYNTHESIS_SECTIONS.map((sec) => renderNavButton(sec.id, sec.label, sec.icon))}
-          </div>
-
-          {/* Group 3: Laboratório de Simuladores (Áreas Complementares) */}
-          <div className="space-y-1 pt-1 border-t border-slate-200/50">
-            <div className="px-3 py-1 flex items-center justify-between">
-              <button
-                onClick={() => setSimulatorsExpanded(!simulatorsExpanded)}
-                className={`flex items-center justify-between w-full text-left text-[10px] font-bold uppercase tracking-wider cursor-pointer ${
-                  isSimulatorActive ? 'text-[#1E70EB]' : isHome ? 'text-blue-300' : 'text-slate-400'
-                }`}
-              >
-                <span>Simuladores (Prática)</span>
-                {simulatorsExpanded ? (
-                  <ChevronDown className="w-3.5 h-3.5" />
-                ) : (
-                  <ChevronRight className="w-3.5 h-3.5" />
-                )}
-              </button>
-            </div>
-
-            {simulatorsExpanded && (
-              <div className="space-y-0.5">
-                {SIMULATOR_SECTIONS.map((sim, idx) =>
-                  renderNavButton(sim.id, sim.label, sim.icon, idx > 0)
-                )}
-              </div>
-            )}
           </div>
         </div>
 

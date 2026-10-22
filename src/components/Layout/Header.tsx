@@ -28,11 +28,6 @@ const PAGE_STEPS: Record<PageId, { num: number; title: string; category?: string
   magicschool: { num: 8, title: '8. Exploração da Ferramenta MagicSchool.ai' },
   'desafio-final': { num: 8, title: 'Desafio Prático Final do Módulo 2', category: 'Desafio' },
   'ferramentas-referencias': { num: 9, title: 'Referências Bibliográficas e Créditos', category: 'Referências' },
-  'simuladores-quizzes': { num: 0, title: 'Laboratório de Simuladores (Índice)', category: 'Simulador' },
-  'simulador-modelos': { num: 0, title: 'Simulador do Funcionamento dos Modelos', category: 'Simulador' },
-  'simulador-difusao': { num: 0, title: 'Simulador de Difusão e Imagem', category: 'Simulador' },
-  'quiz-interativo': { num: 0, title: 'Questionário Interativo Formativo', category: 'Simulador' },
-  'criador-recursos': { num: 0, title: 'Criador de Recursos Pedagógicos', category: 'Simulador' },
 };
 
 // Main linear sequence for course browsing
@@ -59,19 +54,8 @@ export const Header: React.FC<HeaderProps> = ({
   const currentIdx = ORDERED_STEPS.indexOf(currentPage);
   const info = PAGE_STEPS[currentPage] || { num: 1, title: 'Módulo 2' };
   const isHome = currentPage === 'home';
-  const isSimulatorSubpage = [
-    'simuladores-quizzes',
-    'simulador-modelos',
-    'simulador-difusao',
-    'quiz-interativo',
-    'criador-recursos',
-  ].includes(currentPage);
 
   const handlePrev = () => {
-    if (isSimulatorSubpage) {
-      onSelectPage('simuladores-quizzes');
-      return;
-    }
     if (currentIdx > 1) {
       onSelectPage(ORDERED_STEPS[currentIdx - 1]);
     } else if (currentIdx === 1) {
@@ -80,10 +64,6 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   const handleNext = () => {
-    if (isSimulatorSubpage) {
-      onSelectPage('desafio-final');
-      return;
-    }
     if (currentIdx >= 0 && currentIdx < ORDERED_STEPS.length - 1) {
       onSelectPage(ORDERED_STEPS[currentIdx + 1]);
     }
@@ -142,15 +122,6 @@ export const Header: React.FC<HeaderProps> = ({
             <span>Iniciar Módulo</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
-        ) : isSimulatorSubpage ? (
-          <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full text-slate-200">
-            <button
-              onClick={() => onSelectPage('simuladores-quizzes')}
-              className="text-xs font-semibold text-blue-300 hover:text-white transition-colors cursor-pointer"
-            >
-              Laboratório
-            </button>
-          </div>
         ) : (
           <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full text-slate-200">
             <button
