@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Copy, Check, Sparkles } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 
 interface PromptCardProps {
   title: string;
@@ -8,7 +8,6 @@ interface PromptCardProps {
   prompt: string;
   category?: string;
   keyAspects?: string[];
-  onUseInSimulator?: (prompt: string) => void;
 }
 
 export const PromptCard: React.FC<PromptCardProps> = ({
@@ -17,7 +16,6 @@ export const PromptCard: React.FC<PromptCardProps> = ({
   grade,
   prompt,
   keyAspects,
-  onUseInSimulator,
 }) => {
   const [copied, setCopied] = useState(false);
 
@@ -42,13 +40,13 @@ export const PromptCard: React.FC<PromptCardProps> = ({
           </div>
           <button
             onClick={handleCopy}
-            className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-[#1E70EB] px-3 py-1 rounded-xl bg-slate-50 hover:bg-blue-50 transition-colors border border-slate-200/60 cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-[#1E70EB] transition-colors p-1.5 rounded-lg hover:bg-slate-50 cursor-pointer"
             title="Copiar prompt"
           >
             {copied ? (
               <>
                 <Check className="w-3.5 h-3.5 text-emerald-600" />
-                <span className="text-emerald-700">Copiado!</span>
+                <span className="text-emerald-600 font-bold">Copiado</span>
               </>
             ) : (
               <>
@@ -59,14 +57,16 @@ export const PromptCard: React.FC<PromptCardProps> = ({
           </button>
         </div>
 
-        <h3 className="text-base font-bold text-slate-900 mb-3">{title}</h3>
+        <h3 className="text-sm sm:text-base font-bold text-slate-900 mb-3">
+          {title}
+        </h3>
 
-        <div className="bg-[#F8FAFC] rounded-2xl p-4 border border-slate-200/70 font-mono text-xs leading-relaxed text-slate-800 mb-3 select-all">
+        <div className="bg-[#F8FAFC] border border-slate-100 rounded-2xl p-4 text-xs sm:text-sm text-slate-800 leading-relaxed font-mono select-all mb-3.5">
           {prompt}
         </div>
 
         {keyAspects && keyAspects.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mt-2">
+          <div className="flex flex-wrap gap-1.5 pt-1">
             {keyAspects.map((aspect, idx) => (
               <span
                 key={idx}
@@ -78,18 +78,6 @@ export const PromptCard: React.FC<PromptCardProps> = ({
           </div>
         )}
       </div>
-
-      {onUseInSimulator && (
-        <div className="mt-4 pt-3 border-t border-slate-100 flex justify-end">
-          <button
-            onClick={() => onUseInSimulator(prompt)}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1E70EB] hover:text-blue-800 transition-colors cursor-pointer"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Abrir no Simulador de Prompts</span>
-          </button>
-        </div>
-      )}
     </div>
   );
 };

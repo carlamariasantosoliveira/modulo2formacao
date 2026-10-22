@@ -31,7 +31,6 @@ const PAGE_STEPS: Record<PageId, { num: number; title: string; category?: string
   'simuladores-quizzes': { num: 0, title: 'Laboratório de Simuladores (Índice)', category: 'Simulador' },
   'simulador-modelos': { num: 0, title: 'Simulador do Funcionamento dos Modelos', category: 'Simulador' },
   'simulador-difusao': { num: 0, title: 'Simulador de Difusão e Imagem', category: 'Simulador' },
-  'laboratorio-prompts': { num: 0, title: 'Laboratório de Engenharia de Prompts', category: 'Simulador' },
   'quiz-interativo': { num: 0, title: 'Questionário Interativo Formativo', category: 'Simulador' },
   'criador-recursos': { num: 0, title: 'Criador de Recursos Pedagógicos', category: 'Simulador' },
 };
@@ -64,7 +63,6 @@ export const Header: React.FC<HeaderProps> = ({
     'simuladores-quizzes',
     'simulador-modelos',
     'simulador-difusao',
-    'laboratorio-prompts',
     'quiz-interativo',
     'criador-recursos',
   ].includes(currentPage);

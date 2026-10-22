@@ -97,11 +97,6 @@ export const ExemplosDisciplinaPage: React.FC<ExemplosDisciplinaPageProps> = ({
             grade={item.grade}
             prompt={item.prompt}
             keyAspects={item.keyAspects}
-            onUseInSimulator={() => {
-              if (onNavigate) {
-                onNavigate('prompts');
-              }
-            }}
           />
         ))}
       </div>

@@ -18,7 +18,6 @@ import { MagicSchoolPage } from './components/Pages/MagicSchoolPage';
 import { SimuladoresQuizzesPage } from './components/Pages/SimuladoresQuizzesPage';
 import { SimuladorModelosPage } from './components/Pages/SimuladorModelosPage';
 import { SimuladorDifusaoPage } from './components/Pages/SimuladorDifusaoPage';
-import { LaboratorioPromptsPage } from './components/Pages/LaboratorioPromptsPage';
 import { QuizInterativoPage } from './components/Pages/QuizInterativoPage';
 import { CriadorRecursosPage } from './components/Pages/CriadorRecursosPage';
 import { DesafioFinalPage } from './components/Pages/DesafioFinalPage';
@@ -37,7 +36,6 @@ const VALID_PAGES: PageId[] = [
   'simuladores-quizzes',
   'simulador-modelos',
   'simulador-difusao',
-  'laboratorio-prompts',
   'quiz-interativo',
   'criador-recursos',
   'desafio-final',
@@ -120,8 +118,6 @@ export default function App() {
         return <SimuladorModelosPage onNavigate={handleSelectPage} />;
       case 'simulador-difusao':
         return <SimuladorDifusaoPage onNavigate={handleSelectPage} />;
-      case 'laboratorio-prompts':
-        return <LaboratorioPromptsPage onNavigate={handleSelectPage} />;
       case 'quiz-interativo':
         return <QuizInterativoPage onNavigate={handleSelectPage} />;
       case 'criador-recursos':

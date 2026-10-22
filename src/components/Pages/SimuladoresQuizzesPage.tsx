@@ -3,7 +3,6 @@ import {
   Sliders,
   Cpu,
   Layers,
-  Terminal,
   HelpCircle,
   FileCheck,
   ArrowRight,
@@ -57,25 +56,8 @@ export const SimuladoresQuizzesPage: React.FC<SimuladoresQuizzesPageProps> = ({
       buttonText: 'Abrir Simulador de Difusão',
     },
     {
-      id: 'laboratorio-prompts' as PageId,
-      number: 3,
-      title: 'Laboratório de Engenharia e Comparação de Prompts',
-      badge: 'Bancada Interativa',
-      badgeColor: 'bg-amber-50 text-amber-800 border-amber-200/60',
-      description:
-        'Comparação direta entre formulações vagas e prompts refinados, e bancada para estruturar Contexto, Tarefa, Restrições e Formato.',
-      highlights: [
-        'Comparação lado a lado (Prompt Vago vs. Prompt Estruturado em Tabela)',
-        'Presets curriculares de Português, Matemática, História e Ciências',
-        'Testes com respostas simuladas ou ligação à API Gemini',
-      ],
-      icon: Terminal,
-      themeColor: '#D97706',
-      buttonText: 'Abrir Laboratório de Prompts',
-    },
-    {
       id: 'quiz-interativo' as PageId,
-      number: 4,
+      number: 3,
       title: 'Questionário Interativo de Avaliação Formativa',
       badge: 'Avaliação com Feedback Imediato',
       badgeColor: 'bg-emerald-50 text-emerald-800 border-emerald-200/60',
@@ -92,7 +74,7 @@ export const SimuladoresQuizzesPage: React.FC<SimuladoresQuizzesPageProps> = ({
     },
     {
       id: 'criador-recursos' as PageId,
-      number: 5,
+      number: 4,
       title: 'Criador de Recursos Pedagógicos com IA',
       badge: 'Ferramenta de Criação',
       badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200/60',

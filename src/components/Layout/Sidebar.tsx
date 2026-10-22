@@ -4,7 +4,7 @@ import {
   Cpu,
   GitBranch,
   Layers,
-  Terminal,
+  MessageSquare,
   PenTool,
   BookOpen,
   FileCheck,
@@ -37,7 +37,7 @@ const OFFICIAL_SECTIONS: Array<{
   { id: 'ia-generativa', label: '1. IA Generativa', icon: Cpu },
   { id: 'como-funcionam', label: '2. Como funcionam', icon: GitBranch },
   { id: 'tipos-modelos', label: '3. Tipos de modelos', icon: Layers },
-  { id: 'prompts', label: '4. Prompts', icon: Terminal },
+  { id: 'prompts', label: '4. Prompts', icon: MessageSquare },
   { id: 'tecnicas', label: '5. Técnicas de prompts', icon: PenTool },
   { id: 'exemplos-disciplina', label: '6. Exemplos disciplinares', icon: BookOpen },
   { id: 'atividades-sala', label: '7. Atividades em aula', icon: FileCheck },
@@ -61,9 +61,8 @@ const SIMULATOR_SECTIONS: Array<{
   { id: 'simuladores-quizzes', label: 'Índice de Simuladores', icon: Sliders },
   { id: 'simulador-modelos', label: '1. Funcionamento dos Modelos', icon: Cpu },
   { id: 'simulador-difusao', label: '2. Difusão de Imagem', icon: Layers },
-  { id: 'laboratorio-prompts', label: '3. Laboratório de Prompts', icon: Terminal },
-  { id: 'quiz-interativo', label: '4. Questionário Formativo', icon: HelpCircle },
-  { id: 'criador-recursos', label: '5. Criador de Recursos', icon: FileCheck },
+  { id: 'quiz-interativo', label: '3. Questionário Formativo', icon: HelpCircle },
+  { id: 'criador-recursos', label: '4. Criador de Recursos', icon: FileCheck },
 ];
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -77,7 +76,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
     'simuladores-quizzes',
     'simulador-modelos',
     'simulador-difusao',
-    'laboratorio-prompts',
     'quiz-interativo',
     'criador-recursos',
   ].includes(currentPage);

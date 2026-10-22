@@ -11,7 +11,6 @@ export type PageId =
   | 'simuladores-quizzes'
   | 'simulador-modelos'
   | 'simulador-difusao'
-  | 'laboratorio-prompts'
   | 'quiz-interativo'
   | 'criador-recursos'
   | 'desafio-final'

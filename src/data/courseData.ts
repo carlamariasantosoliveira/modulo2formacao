@@ -160,15 +160,6 @@ export const PAGES_NAV: PageMeta[] = [
     category: 'pratica',
   },
   {
-    id: 'laboratorio-prompts',
-    number: 14,
-    title: 'Laboratório de Engenharia de Prompts',
-    shortTitle: 'Laboratório de Prompts',
-    iconName: 'Terminal',
-    description: 'Bancada interativa para composição, teste e comparação vago vs. otimizado.',
-    category: 'pratica',
-  },
-  {
     id: 'quiz-interativo',
     number: 15,
     title: 'Questionário Interativo Formativo',
