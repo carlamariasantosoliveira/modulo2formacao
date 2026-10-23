@@ -386,6 +386,81 @@ export const MagicSchoolPage: React.FC = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Video Demonstration if resumidor-youtube */}
+              {currentGen.id === 'resumidor-youtube' && (
+                <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-5 sm:p-6 space-y-4 shadow-2xs">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-xl bg-red-100 text-red-600 flex items-center justify-center">
+                        <Video className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-xs sm:text-sm font-bold text-slate-900">
+                          Vídeo Demonstrativo da Ferramenta: resumidorYoutube
+                        </h4>
+                        <span className="text-[11px] text-slate-500">
+                          Apresentação prática da formadora Carla Oliveira
+                        </span>
+                      </div>
+                    </div>
+                    <a
+                      href="https://www.canva.com/design/DAHYipR89_4/J_9PUE6VbitWXWEs6rL5cA/watch?utm_content=DAHYipR89_4&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-2xs cursor-pointer self-start sm:self-auto"
+                    >
+                      <span>Abrir no Canva</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+
+                  {/* Video Player Embed */}
+                  <div
+                    style={{
+                      position: 'relative',
+                      width: '100%',
+                      height: 0,
+                      paddingTop: '56.25%',
+                      paddingBottom: 0,
+                      boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+                      overflow: 'hidden',
+                      borderRadius: '12px',
+                      willChange: 'transform',
+                    }}
+                  >
+                    <iframe
+                      loading="lazy"
+                      style={{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                        top: 0,
+                        left: 0,
+                        border: 'none',
+                        padding: 0,
+                        margin: 0,
+                      }}
+                      src="https://www.canva.com/design/DAHYipR89_4/J_9PUE6VbitWXWEs6rL5cA/watch?embed"
+                      allowFullScreen
+                      allow="fullscreen"
+                      title="resumidorYoutube de Carla Oliveira"
+                    />
+                  </div>
+
+                  <div className="flex items-center justify-between text-xs text-slate-600 pt-1">
+                    <a
+                      href="https://www.canva.com/design/DAHYipR89_4/J_9PUE6VbitWXWEs6rL5cA/watch?utm_content=DAHYipR89_4&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#1E70EB] hover:underline font-medium"
+                    >
+                      resumidorYoutube
+                    </a>
+                    <span className="text-slate-500 font-medium">de Carla Oliveira</span>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
