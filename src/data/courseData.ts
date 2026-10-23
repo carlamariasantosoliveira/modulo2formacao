@@ -9,17 +9,18 @@ import {
 } from '../types';
 
 export const COURSE_INFO = {
-  courseTitle: 'Inteligência Artificial na Educação',
+  courseTitle: 'Inteligência Artificial na Educação: Estratégias, Ferramentas e Práticas Pedagógicas',
   moduleTitle: 'Módulo 2: IA Generativa e Prompts',
+  type: 'Oficina de Formação',
   subtitle: 'Transcrição na Íntegra e Estruturação Pedagógica do Conteúdo',
   author: 'Carla Oliveira',
   date: '26 de janeiro de 2026',
   originalTitle: 'Modulo2 | Genially',
-  scope: 'Formação em Inteligência Artificial na Educação',
+  scope: '',
   motto: 'Explorar • Experimentar • Aplicar na Educação',
   quote: {
     text: 'A IA generativa é uma aliada poderosa para potenciar a criatividade, a inclusão e a qualidade da aprendizagem.',
-    author: 'Princípio Pedagógico do Curso',
+    author: 'Princípio Pedagógico da Oficina de Formação',
   },
   secondaryQuote: {
     text: 'A tecnologia não substitui o professor, mas o professor que usa tecnologia pode substituir aquele que não usa.',
@@ -57,7 +58,7 @@ export const PAGES_NAV: PageMeta[] = [
     title: '2. Funcionamento dos Modelos Generativos',
     shortTitle: '2. Como Funcionam',
     iconName: 'GitBranch',
-    description: 'As seis etapas do ciclo de funcionamento e a limitação fundamental.',
+    description: 'O ciclo de processamento em 5 etapas e a chamada de atenção para a limitação fundamental.',
     category: 'conceitos',
   },
   {
@@ -115,12 +116,12 @@ export const PAGES_NAV: PageMeta[] = [
     category: 'recursos',
   },
   {
-    id: 'desafio-final',
+    id: 'atividade-sessao',
     number: 9,
-    title: 'Desafio Prático Final do Módulo 2',
-    shortTitle: 'Desafio Final & Portfólio',
-    iconName: 'Award',
-    description: 'Planeamento, registo de prompts e entrega do recurso pedagógico.',
+    title: '9. Atividade da Sessão: Do prompt ao recurso pedagógico',
+    shortTitle: '9. Atividade da Sessão',
+    iconName: 'Users',
+    description: 'Laboratório de escrita, teste e melhoria de prompts em grupo (40 min).',
     category: 'pratica',
   },
   {

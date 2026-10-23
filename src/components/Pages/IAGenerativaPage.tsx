@@ -22,7 +22,7 @@ export const IAGenerativaPage: React.FC = () => {
       <div className="bg-[#F8FAFC] rounded-2xl p-4 sm:p-5 border border-slate-200/80 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-600">
         <div className="flex items-center gap-2">
           <GraduationCap className="w-4 h-4 text-[#1E70EB]" />
-          <span><strong>Curso:</strong> {COURSE_INFO.courseTitle}</span>
+          <span><strong>Oficina de Formação:</strong> {COURSE_INFO.courseTitle}</span>
         </div>
         <div className="flex items-center gap-2">
           <User className="w-4 h-4 text-slate-500" />
@@ -31,9 +31,6 @@ export const IAGenerativaPage: React.FC = () => {
         <div className="flex items-center gap-2">
           <Calendar className="w-4 h-4 text-slate-500" />
           <span><strong>Data de Criação:</strong> {COURSE_INFO.date}</span>
-        </div>
-        <div className="flex items-center gap-2 text-[11px] bg-blue-50 text-[#1D4ED8] px-2.5 py-1 rounded-md font-semibold border border-blue-200/60">
-          <span>{COURSE_INFO.scope}</span>
         </div>
       </div>
 

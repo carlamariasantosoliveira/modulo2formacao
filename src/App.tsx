@@ -15,7 +15,7 @@ import { TecnicasPage } from './components/Pages/TecnicasPage';
 import { ExemplosDisciplinaPage } from './components/Pages/ExemplosDisciplinaPage';
 import { AtividadesSalaPage } from './components/Pages/AtividadesSalaPage';
 import { MagicSchoolPage } from './components/Pages/MagicSchoolPage';
-import { DesafioFinalPage } from './components/Pages/DesafioFinalPage';
+import { AtividadeSessaoPage } from './components/Pages/AtividadeSessaoPage';
 import { ReferenciasPage } from './components/Pages/ReferenciasPage';
 
 const VALID_PAGES: PageId[] = [
@@ -28,7 +28,7 @@ const VALID_PAGES: PageId[] = [
   'exemplos-disciplina',
   'atividades-sala',
   'magicschool',
-  'desafio-final',
+  'atividade-sessao',
   'ferramentas-referencias',
 ];
 
@@ -102,8 +102,8 @@ export default function App() {
         return <AtividadesSalaPage />;
       case 'magicschool':
         return <MagicSchoolPage />;
-      case 'desafio-final':
-        return <DesafioFinalPage />;
+      case 'atividade-sessao':
+        return <AtividadeSessaoPage />;
       case 'ferramentas-referencias':
         return <ReferenciasPage />;
       default:

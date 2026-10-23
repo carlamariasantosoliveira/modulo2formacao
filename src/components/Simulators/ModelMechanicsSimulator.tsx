@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   Database,
   Brain,
@@ -6,30 +6,31 @@ import {
   Cpu,
   FileOutput,
   AlertTriangle,
-  Sparkles,
   ArrowRight,
+  ArrowLeft,
   CheckCircle2,
   XCircle,
-  HelpCircle,
   Layers,
-  ChevronDown,
+  RotateCcw,
 } from 'lucide-react';
 import { NoticeBanner } from '../Common/NoticeBanner';
 
 interface StageData {
   number: number;
   title: string;
-  subtitle?: string;
+  subtitle: string;
   badge: string;
   badgeColor: string;
-  description: string;
-  analogousExample?: string;
-  bullets?: Array<{ label: string; text: string }>;
+  originalCourseText: string;
+  pedagogicalDeepDive: string;
+  analogousExample: string;
   keyTakeaway?: string;
-  isVeryImportant?: boolean;
+  bullets?: Array<{ label: string; text: string }>;
+  isAttentionCall?: boolean;
   icon: React.ElementType;
   circleBg: string;
-  accentBorder: string;
+  activeBorder: string;
+  accentBg: string;
 }
 
 const STAGES: StageData[] = [
@@ -37,242 +38,288 @@ const STAGES: StageData[] = [
     number: 1,
     title: 'Dados de Treino',
     subtitle: 'Fase de Recolha e Digestão Massiva de Informação',
-    badge: 'Fase 1: Entrada de Dados',
+    badge: 'Etapa 1 do Ciclo de Processamento',
     badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
-    description:
-      'A IA é previamente alimentada e treinada com bibliotecas gigantescas de textos e imagens (livros, artigos científicos, páginas web selecionadas, conteúdos educativos e enciclopédias). Nesta fase inicial, o modelo apenas "vê" e compila as regularidades dos dados brutos sem ainda produzir conteúdos.',
+    originalCourseText:
+      'A IA é treinada com grandes volumes de textos e imagens (livros, artigos, páginas web, conteúdos educativos). Nesta fase inicial, o modelo apenas "vê" os dados sem ainda aprender.',
+    pedagogicalDeepDive:
+      'Nesta etapa fundacional, reúnem-se bibliotecas digitais gigantescas contendo biliões de palavras e imagens selecionadas (enciclopédias, artigos científicos, manuais e literatura diversa). O modelo efetua uma recolha maciça e estruturação dos dados brutos. É a matéria-prima sobre a qual o futuro modelo irá operar, sem ainda gerar qualquer conteúdo autónomo.',
     analogousExample:
       'Adquirir uma biblioteca com 10.000 livros de receitas gastronómicas. Ter as receitas na prateleira ainda não significa que se saiba cozinhar.',
+    keyTakeaway:
+      'Os dados de treino delimitam o universo conhecido pelo modelo. Se um dado ou fonte não integrou este conjunto, o modelo não tem conhecimento direto dele.',
     icon: Database,
     circleBg: 'bg-[#3B82F6]',
-    accentBorder: 'border-blue-200 hover:border-blue-300',
+    activeBorder: 'border-blue-600 ring-2 ring-blue-500/20',
+    accentBg: 'bg-blue-50/50',
   },
   {
     number: 2,
     title: 'Aprendizagem de Padrões (Fase de Treino)',
     subtitle: 'Processo de Aprendizagem, Redes Neuronais e Pesos Estatísticos',
-    badge: 'Fase 2: Redes Neuronais',
+    badge: 'Etapa 2 do Ciclo de Processamento',
     badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    description:
-      'Processo intensivo de aprendizagem através de redes neuronais profundas. O modelo não memoriza frases isoladas; identifica regularidades linguísticas, aprende como as palavras e conceitos se relacionam, estabelece associações semânticas e calibra biliões de parâmetros e pesos estatísticos internos.',
+    originalCourseText:
+      'Processo de aprendizagem a partir dos dados. O modelo identifica regularidades, aprende como os elementos se organizam, estabelece associações e ajusta probabilidades internas.',
+    pedagogicalDeepDive:
+      'Processo computacional intensivo através de redes neuronais profundas (Deep Learning). O modelo não memoriza frases isoladas nem cópias mecânicas de páginas web: identifica regularidades linguísticas, aprende como as palavras e conceitos se relacionam, estabelece associações semânticas e calibra centenas de biliões de parâmetros e pesos estatísticos internos.',
     analogousExample:
       'Aprender a cozinhar: perceber empiricamente como o sal, o açúcar e os tempos de cozedura influenciam o sabor sem precisar de memorizar cegamente cada linha de um livro.',
+    keyTakeaway:
+      'O modelo adquire uma "intuição estatística" sobre a estrutura da linguagem e do mundo, e não uma compreensão consciente.',
     icon: Brain,
     circleBg: 'bg-[#10B981]',
-    accentBorder: 'border-emerald-200 hover:border-emerald-300',
+    activeBorder: 'border-emerald-600 ring-2 ring-emerald-500/20',
+    accentBg: 'bg-emerald-50/50',
   },
   {
     number: 3,
-    title: 'Prompt do Utilizador',
+    title: 'Prompt do Utilizador (Ponto de Partida)',
     subtitle: 'Instrução, Pergunta e Contexto Pedagógico Fornecido',
-    badge: 'Fase 3: Ponto de Partida',
+    badge: 'Etapa 3 do Ciclo de Processamento',
     badgeColor: 'bg-amber-50 text-amber-700 border-amber-200',
-    description:
-      'O professor ou formando escreve uma pergunta, instrução orientadora ou enquadramento (ex.: "Cria uma ficha formativa diferenciada para alunos do 7.º ano", "Gera uma imagem explicativa sobre o ciclo da água"). O prompt é o gatilho que orienta a trajetória do cálculo estatístico.',
+    originalCourseText:
+      'O utilizador escreve uma pergunta, instrução ou descrição. O prompt orienta o cálculo estatístico, mas não garante a verdade.',
+    pedagogicalDeepDive:
+      'O professor ou formando formula a sua instrução, definindo o contexto, a tarefa, as restrições e o formato desejado (ex.: "Cria uma ficha formativa diferenciada para alunos do 7.º ano"). O prompt atua como o gatilho inicial que orienta a trajetória do cálculo probabilístico da rede, delimitando o campo temático da resposta.',
     analogousExample:
-      'Fazer a encomenda específica ao cozinheiro: "Prepara um almoço vegetariano com legumes da época para 4 pessoas". A precisão do pedido define o rumo exato da preparação.',
+      'Fazer a encomenda específica ao cozinheiro: "Prepara um almoço vegetariano com legumes da época para 4 pessoas". A precisão e o detalhe do pedido definem o rumo exato da preparação.',
+    keyTakeaway:
+      'Quanto mais claro, rico e estruturado for o prompt, menor é o espaço para divagações genéricas ou respostas desajustadas.',
     icon: MessageSquare,
     circleBg: 'bg-[#F59E0B]',
-    accentBorder: 'border-amber-200 hover:border-amber-300',
+    activeBorder: 'border-amber-600 ring-2 ring-amber-500/20',
+    accentBg: 'bg-amber-50/50',
   },
   {
     number: 4,
     title: 'Processamento Interno',
     subtitle: 'Divisão em Tokens, Vetores e Mecanismos de Atenção (Transformer)',
-    badge: 'Fase 4: Cálculo Matemático',
+    badge: 'Etapa 4 do Ciclo de Processamento',
     badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',
-    description:
-      'A arquitetura Transformer decompõe o texto em unidades elementares (tokens), ativa vetores de contexto (embeddings) e calcula matematicamente as probabilidades para cada próxima palavra com recurso a mecanismos avançados de autoatenção.',
+    originalCourseText:
+      'Divisão em tokens, cálculo da próxima palavra mais provável e uso de mecanismos de atenção ao contexto.',
+    pedagogicalDeepDive:
+      'A arquitetura Transformer decompõe a instrução em pedaços elementares (tokens) e converte-os em vetores numéricos num espaço semântico multidimensional. Através de sucessivas camadas de atenção (Self-Attention), o modelo analisa a relação entre cada palavra da frase e todas as outras, calculando em frações de segundo qual é o próximo token matematicamente mais provável.',
     bullets: [
       {
         label: 'Em Modelos de Linguagem (LLMs)',
-        text: 'Divisão em tokens, cálculo da próxima palavra estatisticamente mais provável e ponderação contínua do contexto global da conversa.',
+        text: 'Divisão em tokens, cálculo sequencial da próxima palavra mais provável e ponderação contínua de todo o contexto anterior da conversa.',
       },
       {
         label: 'Em Modelos de Imagem (Difusão)',
-        text: 'Interpretação da descrição textual, ativação de padrões visuais aprendidos e síntese progressiva por difusão a partir de ruído estruturado.',
+        text: 'Interpretação da descrição textual em vetores latentes visuais e síntese progressiva de píxeis através da remoção orientada de ruído.',
       },
     ],
     analogousExample:
       'O cérebro do cozinheiro a calcular em tempo real a sequência de ações, a combinação de ingredientes e a intensidade do lume.',
+    keyTakeaway:
+      'Não há reflexão semântica consciente: o processamento interno é uma sucessão ultra-rápida de multiplicações matriciais e probabilidades.',
     icon: Cpu,
     circleBg: 'bg-[#8B5CF6]',
-    accentBorder: 'border-purple-200 hover:border-purple-300',
+    activeBorder: 'border-purple-600 ring-2 ring-purple-500/20',
+    accentBg: 'bg-purple-50/50',
   },
   {
     number: 5,
     title: 'Produção da Resposta (Saída / Output)',
     subtitle: 'Geração de Linguagem Natural e Plausibilidade Visual',
-    badge: 'Fase 5: Entrega do Resultado',
+    badge: 'Etapa 5 do Ciclo de Processamento: Saída / Output',
     badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200',
-    description:
-      'O modelo apresenta a resposta final sob a forma de texto coerente em linguagem natural ou composição gráfica gerada.',
+    originalCourseText:
+      'Resposta coerente em linguagem natural (pode conter erros factuais).',
+    pedagogicalDeepDive:
+      'O modelo reconverte os vetores de tokens calculados em texto legível e fluente, ou gera o ficheiro de imagem final sintetizado. A resposta tem aparência altamente profissional, sintaxe esmerada e organização convincente, parecendo ter sido escrita por um especialista humano.',
     bullets: [
       {
-        label: 'Texto Gerado',
-        text: 'Resposta articulada, fluente e com sintaxe natural (que pode, contudo, conter imprecisões conceptuais ou erros factuais subtis).',
+        label: 'Texto Gerado (Linguagem Natural)',
+        text: 'Texto articulado com gramática e coerência estilística apurada, que pode, no entanto, veicular imprecisões ou erros factuais graves.',
       },
       {
-        label: 'Imagem Gerada',
-        text: 'Representação visual plausível com elevado detalhe (não retrata a realidade empírica, mas sim a verosimilhança estatística).',
+        label: 'Imagem Gerada (Composição Visual)',
+        text: 'Composição visual de elevado detalhe e plausibilidade estatística, sem qualquer compromisso de retratar uma verdade empírica pré-existente.',
       },
     ],
     analogousExample:
       'O prato empratado e servido à mesa. Tem aspeto profissional e aroma apetitoso, mas o provador tem de verificar o tempero antes de aprovar.',
+    keyTakeaway:
+      'A fluência da resposta é uma propriedade estatística da linguagem, não uma garantia de verdade factual ou rigor pedagógico.',
     icon: FileOutput,
     circleBg: 'bg-[#6366F1]',
-    accentBorder: 'border-indigo-200 hover:border-indigo-300',
+    activeBorder: 'border-indigo-600 ring-2 ring-indigo-500/20',
+    accentBg: 'bg-indigo-50/50',
   },
   {
     number: 6,
     title: 'Limitação Fundamental',
-    subtitle: 'MUITO IMPORTANTE — Ausência de Consciência e Risco de Alucinação',
-    badge: 'Fase 6: Alerta Crítico',
+    subtitle: 'Ausência de Consciência e Risco de Alucinação',
+    badge: 'Chamada de Atenção Pedagógica',
     badgeColor: 'bg-red-50 text-red-700 border-red-200',
-    isVeryImportant: true,
-    description:
-      'A IA generativa não compreende o significado dos conceitos como um ser humano: não possui consciência, intencionalidade, discernimento ético nem capacidade autónoma de validar a verdade factual.',
+    isAttentionCall: true,
+    originalCourseText:
+      'Não compreende como um ser humano, não valida factos e não possui consciência. Resposta convincente ≠ Resposta correcta.',
+    pedagogicalDeepDive:
+      'A IA generativa não compreende o significado dos conceitos como um ser humano: não possui consciência, intencionalidade, discernimento ético nem capacidade autónoma de validar a verdade factual. O modelo gera apenas o que é estatisticamente plausível a partir dos dados assimilados.',
     keyTakeaway: '■■ Resposta convincente ≠ Resposta correcta.',
     bullets: [
       {
         label: 'Natureza Estritamente Probabilística',
-        text: 'Gera o que é estatisticamente verosímil com base nos dados de treino, e não o que é cientificamente comprovado.',
+        text: 'Gera o que é estatisticamente verosímil com base nos dados de treino, e não o que é cientificamente verificado. Quando não encontra correspondência exata, pode inventar factos convincentes (alucinação).',
       },
       {
         label: 'O Papel Insubstituível do Professor',
-        text: 'A curadoria docente, a validação científica e o discernimento pedagógico são absolutamente indispensáveis antes de qualquer aplicação em sala de aula.',
+        text: 'A curadoria docente, a validação científica das respostas e o discernimento pedagógico são absolutamente indispensáveis antes de qualquer aplicação com alunos.',
       },
     ],
     analogousExample:
       'O modelo não sabe o que é a dor, a ética ou o sucesso de um estudante. Produz apenas previsões probabilísticas convincentes.',
     icon: AlertTriangle,
     circleBg: 'bg-[#DC2626]',
-    accentBorder: 'border-red-300 hover:border-red-400',
+    activeBorder: 'border-red-600 ring-2 ring-red-500/20',
+    accentBg: 'bg-red-50/50',
   },
 ];
 
 export const ModelMechanicsSimulator: React.FC = () => {
-  // Tokenizer interactive state
-  const [sampleSentence, setSampleSentence] = useState(
-    'A fotossíntese é essencial para as plantas.'
-  );
-  const [selectedTokenIdx, setSelectedTokenIdx] = useState<number | null>(null);
-
-  // Plausibility demonstration state
-  const [revealedFact, setRevealedFact] = useState<boolean>(false);
-
-  // Active highlighted stage state
+  // Current active phase selected by the trainee (1 to 5 = Ciclo de processamento; 6 = Chamada de Atenção)
   const [activeStageNumber, setActiveStageNumber] = useState<number>(1);
 
-  const stageRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  // Plausibility demonstration state (Chamada de Atenção)
+  const [revealedFact, setRevealedFact] = useState<boolean>(false);
 
-  const scrollToStage = (stageNum: number) => {
-    setActiveStageNumber(stageNum);
-    const element = stageRefs.current[stageNum];
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Active stage object
+  const currentStage = STAGES.find((s) => s.number === activeStageNumber) || STAGES[0];
+  const CurrentIcon = currentStage.icon;
+
+  // The 5 processing cycle steps
+  const cycleStages = STAGES.filter((s) => !s.isAttentionCall);
+  // The attention call
+  const attentionCallStage = STAGES.find((s) => s.isAttentionCall) || STAGES[5];
+
+  const handleNextStage = () => {
+    if (activeStageNumber < 6) {
+      setActiveStageNumber(activeStageNumber + 1);
     }
   };
 
-  // Pedagogical tokenizer logic
-  const tokens = React.useMemo(() => {
-    const rawTokens: Array<{ text: string; id: number; bytes: number }> = [];
-    let idCounter = 1042;
-    const words = sampleSentence.split(/(\s+|[,.?!;:])/).filter(Boolean);
-
-    words.forEach((w) => {
-      if (w.trim() === '') {
-        rawTokens.push({ text: '␣', id: idCounter++, bytes: 1 });
-      } else if (w.length > 7) {
-        const mid = Math.ceil(w.length / 2);
-        rawTokens.push({ text: w.slice(0, mid), id: idCounter++, bytes: mid });
-        rawTokens.push({ text: '##' + w.slice(mid), id: idCounter++, bytes: w.length - mid });
-      } else {
-        rawTokens.push({ text: w, id: idCounter++, bytes: w.length });
-      }
-    });
-
-    return rawTokens;
-  }, [sampleSentence]);
-
-  const nextTokenOptions = [
-    { token: 'oxigénio', prob: 78, type: 'Cientificamente provável e exato' },
-    { token: 'vida', prob: 14, type: 'Plausível no contexto amplo' },
-    { token: 'chuva', prob: 5, type: 'Pouco provável no domínio biológico' },
-    { token: 'sintaxe', prob: 3, type: 'Incompatível com o tema' },
-  ];
+  const handlePrevStage = () => {
+    if (activeStageNumber > 1) {
+      setActiveStageNumber(activeStageNumber - 1);
+    }
+  };
 
   return (
-    <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xs overflow-hidden font-sans">
-      {/* HEADER UNIFICADO: Visão Global do Ciclo com Passo a Passo das 6 Fases */}
-      <div className="p-6 sm:p-8 bg-gradient-to-b from-slate-50/90 via-white to-white border-b border-slate-200/80 space-y-6">
+    <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden font-sans">
+      {/* CABEÇALHO DO QUADRO UNIFICADO */}
+      <div className="p-6 sm:p-8 bg-gradient-to-b from-slate-50 via-white to-white border-b border-slate-200 space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#1D4ED8] bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
-                Ciclo Contínuo & Ferramentas Integradas
+              <span className="text-[11px] font-black uppercase tracking-wider text-[#1D4ED8] bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
+                Quadro de Aprendizagem
+              </span>
+              <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                {activeStageNumber <= 5
+                  ? `Etapa ${activeStageNumber} de 5 do Ciclo de Processamento`
+                  : 'Chamada de Atenção Pedagógica'}
               </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black text-[#0C1E38] tracking-tight">
               Visão Global do Ciclo de Funcionamento dos Modelos
             </h2>
-            <p className="text-xs sm:text-sm font-medium text-slate-600 max-w-3xl">
-              Visão Global do Ciclo de Funcionamento com Passo a Passo das 6 Fases (Com Ferramentas de Exploração Integradas)
+            <p className="text-xs sm:text-sm font-semibold text-slate-600 max-w-3xl">
+              Ciclo de Processamento em 5 Etapas e Chamada de Atenção para a Limitação Fundamental
             </p>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 bg-white px-3.5 py-2 rounded-2xl border border-slate-200/90 shadow-2xs self-start md:self-auto shrink-0">
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-white px-3.5 py-2 rounded-2xl border border-slate-200 shadow-2xs self-start md:self-auto shrink-0">
             <Layers className="w-4 h-4 text-[#1E70EB]" />
-            <span>6 Fases Encadeadas</span>
+            <span>Selecione uma etapa abaixo</span>
           </div>
         </div>
 
-        {/* Linha de Progresso Visual Integrada (Pipeline Global) */}
-        <div className="bg-slate-50/90 p-3 sm:p-4 rounded-2xl border border-slate-200/80">
-          <div className="flex items-center justify-between text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2.5 px-1">
-            <span>Sequência Global do Processamento (Clique para ir para a fase)</span>
-            <span className="text-blue-600 lowercase font-medium">1 a 6 em fluxo contínuo</span>
+        {/* NAVEGADOR DE ABAS: 5 ETAPAS DO CICLO + CHAMADA DE ATENÇÃO */}
+        <div className="bg-slate-50 p-3 sm:p-4 rounded-2xl border border-slate-200 space-y-2.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] font-bold text-slate-600 uppercase tracking-wider px-1">
+            <span>Ciclo de Processamento (5 Etapas) + Chamada de Atenção — Selecione uma aba:</span>
+            <span className={activeStageNumber === 6 ? 'text-red-600 font-black' : 'text-blue-600 font-bold'}>
+              {activeStageNumber <= 5 ? `Etapa ${activeStageNumber} de 5 do Ciclo` : 'Chamada de Atenção Pedagógica'}
+            </span>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
             {STAGES.map((st) => {
-              const Icon = st.icon;
-              const isAlert = st.isVeryImportant;
-              const isActive = activeStageNumber === st.number;
+              const isSelected = activeStageNumber === st.number;
+              const isAttention = st.isAttentionCall;
 
               return (
                 <button
                   key={st.number}
-                  onClick={() => scrollToStage(st.number)}
-                  className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer flex items-center gap-2.5 ${
-                    isActive
-                      ? 'bg-blue-600 text-white border-blue-700 shadow-xs'
-                      : isAlert
-                      ? 'bg-red-50/70 border-red-200 text-red-950 hover:bg-red-100/60'
-                      : 'bg-white border-slate-200/80 text-slate-800 hover:border-blue-300 hover:bg-blue-50/40'
+                  onClick={() => setActiveStageNumber(st.number)}
+                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-2 relative ${
+                    isSelected
+                      ? isAttention
+                        ? 'bg-red-600 text-white border-red-700 shadow-md ring-2 ring-red-500/30'
+                        : 'bg-blue-600 text-white border-blue-700 shadow-md ring-2 ring-blue-500/30'
+                      : isAttention
+                      ? 'bg-red-50/80 border-red-200 text-red-950 hover:bg-red-100 hover:border-red-300'
+                      : 'bg-white border-slate-200 text-slate-800 hover:border-blue-300 hover:bg-blue-50/50'
                   }`}
                 >
-                  <div
-                    className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${
-                      isActive ? 'bg-white/20 text-white' : st.circleBg + ' text-white'
-                    }`}
-                  >
-                    {st.number}
+                  <div className="flex items-center justify-between w-full">
+                    {isAttention ? (
+                      <span
+                        className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-black shrink-0 ${
+                          isSelected ? 'bg-white text-red-600' : 'bg-red-600 text-white shadow-2xs'
+                        }`}
+                      >
+                        <AlertTriangle className="w-3.5 h-3.5" />
+                      </span>
+                    ) : (
+                      <span
+                        className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-black shrink-0 ${
+                          isSelected ? 'bg-white text-blue-700' : st.circleBg + ' text-white'
+                        }`}
+                      >
+                        {st.number}
+                      </span>
+                    )}
+
+                    <span
+                      className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
+                        isSelected
+                          ? isAttention
+                            ? 'bg-red-700 text-red-100'
+                            : 'bg-blue-700 text-blue-100'
+                          : isAttention
+                          ? 'bg-red-200 text-red-900 font-extrabold'
+                          : 'bg-slate-100 text-slate-600'
+                      }`}
+                    >
+                      {isAttention ? 'Atenção' : `Etapa ${st.number}`}
+                    </span>
                   </div>
-                  <div className="truncate min-w-0">
+
+                  <div className="truncate w-full">
                     <span
                       className={`text-xs font-bold block truncate ${
-                        isActive ? 'text-white' : 'text-slate-800'
+                        isSelected ? 'text-white' : isAttention ? 'text-red-950' : 'text-slate-900'
                       }`}
                     >
                       {st.title.replace(/^\d+\.\s*/, '')}
                     </span>
                     <span
                       className={`text-[10px] block truncate ${
-                        isActive ? 'text-blue-100' : 'text-slate-500'
+                        isSelected
+                          ? isAttention
+                            ? 'text-red-100'
+                            : 'text-blue-100'
+                          : isAttention
+                          ? 'text-red-700 font-medium'
+                          : 'text-slate-500'
                       }`}
                     >
-                      Fase {st.number}
+                      {isAttention ? '(Não é uma fase)' : st.subtitle}
                     </span>
                   </div>
                 </button>
@@ -282,306 +329,247 @@ export const ModelMechanicsSimulator: React.FC = () => {
         </div>
       </div>
 
-      {/* CORPO UNIFICADO: As 6 Fases com Ferramentas Integradas */}
-      <div className="p-6 sm:p-8 space-y-8">
-        {STAGES.map((st, index) => {
-          const isAlert = st.isVeryImportant;
-          const Icon = st.icon;
-          const isLast = index === STAGES.length - 1;
+      {/* ÁREA DE VISUALIZAÇÃO EXCLUSIVA DO ITEM SELECIONADO */}
+      <div className="p-6 sm:p-10 space-y-8 animate-in fade-in duration-200">
+        <div className="space-y-6">
+          {/* CABEÇALHO DO ITEM SELECIONADO */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div className="flex items-center gap-3">
+              <div
+                className={`w-12 h-12 rounded-2xl flex items-center justify-center text-white shrink-0 ${currentStage.circleBg}`}
+              >
+                <CurrentIcon className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
+                  {currentStage.isAttentionCall
+                    ? 'Aviso Crítico Pedagógico'
+                    : `Etapa ${currentStage.number} do Ciclo de Processamento`}
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900">
+                  {currentStage.title}
+                </h3>
+                <p className="text-xs sm:text-sm font-semibold text-slate-600 mt-0.5">
+                  {currentStage.subtitle}
+                </p>
+              </div>
+            </div>
 
-          return (
+            <span
+              className={`text-xs font-bold px-3 py-1.5 rounded-xl border self-start sm:self-auto ${currentStage.badgeColor}`}
+            >
+              {currentStage.badge}
+            </span>
+          </div>
+
+          {/* SÍNTESE DIRETA DO CONTEÚDO (Sem etiqueta redundante) */}
+          <div
+            className={`border rounded-2xl p-4 sm:p-5 ${
+              currentStage.isAttentionCall
+                ? 'bg-red-50/60 border-red-200'
+                : 'bg-blue-50/50 border-blue-200/70'
+            }`}
+          >
+            <p className="text-xs sm:text-sm text-slate-800 leading-relaxed font-semibold">
+              &ldquo;{currentStage.originalCourseText}&rdquo;
+            </p>
+          </div>
+
+          {/* APROFUNDAMENTO PEDAGÓGICO */}
+          <div className="space-y-2">
+            <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-500">
+              Aprofundamento Didático & Funcionamento Detalhado:
+            </h4>
+            <p className="text-xs sm:text-sm leading-relaxed text-slate-700 font-normal">
+              {currentStage.pedagogicalDeepDive}
+            </p>
+          </div>
+
+          {/* Sub-tópicos comparativos se existirem nesta fase */}
+          {currentStage.bullets && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+              {currentStage.bullets.map((b, idx) => (
+                <div
+                  key={idx}
+                  className={`p-4 rounded-2xl border text-xs leading-relaxed space-y-1.5 ${
+                    currentStage.isAttentionCall
+                      ? 'bg-white border-amber-200 text-amber-950 shadow-2xs'
+                      : 'bg-slate-50 border-slate-200 text-slate-800'
+                  }`}
+                >
+                  <strong className="block text-slate-900 font-bold">{b.label}</strong>
+                  <p className="text-slate-700">{b.text}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* ANALOGIA CULINÁRIA DIDÁTICA DO GUIÃO */}
+          <div className="bg-[#FFFBEB] p-4 sm:p-5 rounded-2xl border border-amber-200/80 shadow-2xs space-y-1.5">
+            <span className="text-[11px] font-black uppercase tracking-wider text-amber-800 block">
+              Analogia Culinária Didática (A Cozinha da IA):
+            </span>
+            <p className="text-xs sm:text-sm text-amber-950 leading-relaxed italic font-medium">
+              &ldquo;{currentStage.analogousExample}&rdquo;
+            </p>
+          </div>
+
+          {/* PRINCÍPIO-CHAVE DA ETAPA / CHAMADA */}
+          {currentStage.keyTakeaway && (
             <div
-              key={st.number}
-              ref={(el) => {
-                stageRefs.current[st.number] = el;
-              }}
-              onMouseEnter={() => setActiveStageNumber(st.number)}
-              className={`rounded-2xl border transition-all p-6 sm:p-8 space-y-6 scroll-mt-24 ${
-                isAlert
-                  ? 'bg-amber-50/30 border-red-200 shadow-2xs ring-1 ring-red-200/60'
-                  : 'bg-white border-slate-200/90 shadow-2xs'
+              className={`p-4 rounded-2xl border flex items-start gap-3 ${
+                currentStage.isAttentionCall
+                  ? 'bg-red-50 border-red-200 text-red-950'
+                  : 'bg-blue-50/60 border-blue-200 text-blue-950'
               }`}
             >
-              {/* Cabeçalho da Fase */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
-                <div className="flex items-center gap-3.5">
-                  <div
-                    className={`w-11 h-11 rounded-2xl ${st.circleBg} text-white flex items-center justify-center shrink-0 shadow-sm`}
-                  >
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                        Fase {st.number} de 6
-                      </span>
-                      {st.isVeryImportant && (
-                        <span className="bg-red-100 text-red-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase border border-red-200">
-                          Muito Importante
-                        </span>
-                      )}
-                    </div>
-                    <h3
-                      className={`text-lg sm:text-xl font-extrabold ${
-                        isAlert ? 'text-red-950' : 'text-[#0C1E38]'
-                      }`}
-                    >
-                      {st.number}. {st.title}
-                    </h3>
-                    {st.subtitle && (
-                      <p className="text-xs text-slate-500 font-medium mt-0.5">
-                        {st.subtitle}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <span
-                  className={`text-xs font-bold px-3 py-1.5 rounded-xl border self-start sm:self-auto ${st.badgeColor}`}
-                >
-                  {st.badge}
-                </span>
-              </div>
-
-              {/* Descrição Didática Principal */}
-              <p
-                className={`text-xs sm:text-sm leading-relaxed font-normal ${
-                  isAlert ? 'text-slate-800' : 'text-slate-700'
+              <div
+                className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${
+                  currentStage.isAttentionCall
+                    ? 'bg-red-600 text-white'
+                    : 'bg-blue-600 text-white'
                 }`}
               >
-                {st.description}
-              </p>
-
-              {/* Sub-tópicos comparativos se existirem */}
-              {st.bullets && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
-                  {st.bullets.map((b, idx) => (
-                    <div
-                      key={idx}
-                      className={`p-4 rounded-2xl border text-xs leading-relaxed space-y-1 ${
-                        isAlert
-                          ? 'bg-white/90 border-amber-200 text-amber-950'
-                          : 'bg-slate-50 border-slate-200/80 text-slate-800'
-                      }`}
-                    >
-                      <strong
-                        className={`block font-bold ${
-                          isAlert ? 'text-red-700' : 'text-[#1D4ED8]'
-                        }`}
-                      >
-                        {b.label}
-                      </strong>
-                      <p>{b.text}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Analogia Culinária do Guião Oficial */}
-              {st.analogousExample && (
-                <div className="bg-amber-50/70 border border-amber-200/80 p-4 sm:p-5 rounded-2xl space-y-1.5">
-                  <div className="flex items-center gap-2 text-xs font-bold text-amber-900 uppercase tracking-wide">
-                    <Sparkles className="w-4 h-4 text-amber-600" />
-                    <span>Analogia Culinária do Guião Oficial</span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-amber-950 leading-relaxed italic">
-                    &ldquo;{st.analogousExample}&rdquo;
-                  </p>
-                </div>
-              )}
-
-              {/* FERRAMENTA DE EXPLORAÇÃO INTEGRADA NA FASE 4 (Tokens & Probabilidades) */}
-              {st.number === 4 && (
-                <div className="bg-[#FAF5FF] p-5 sm:p-6 rounded-2xl border border-purple-200 shadow-2xs space-y-5">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-purple-100 pb-3">
-                    <div className="flex items-center gap-2 text-xs font-bold text-purple-800 uppercase tracking-wider">
-                      <Cpu className="w-4 h-4 text-purple-600" />
-                      <span>Ferramenta Integrada: Inspetor de Tokenização e Predição</span>
-                    </div>
-                    <span className="text-[11px] text-purple-700 font-medium">
-                      Experimente alterar a frase abaixo
-                    </span>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-xs font-semibold text-slate-700 block">
-                      Frase de exemplo pedagógico:
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {[
-                        'A fotossíntese é essencial para as plantas.',
-                        'A inteligência artificial apoia a diferenciação em aula.',
-                        'Os modelos generativos prevêem tokens prováveis.',
-                      ].map((example, i) => (
-                        <button
-                          key={i}
-                          onClick={() => setSampleSentence(example)}
-                          className={`text-xs px-2.5 py-1 rounded-lg border transition-all cursor-pointer ${
-                            sampleSentence === example
-                              ? 'bg-purple-200 text-purple-900 border-purple-400 font-bold'
-                              : 'bg-white text-slate-600 hover:bg-purple-50 border-purple-200'
-                          }`}
-                        >
-                          Exemplo {i + 1}
-                        </button>
-                      ))}
-                    </div>
-
-                    <input
-                      type="text"
-                      value={sampleSentence}
-                      onChange={(e) => setSampleSentence(e.target.value)}
-                      className="w-full text-xs sm:text-sm p-3 rounded-xl border border-purple-200 bg-white focus:ring-2 focus:ring-purple-400 focus:outline-hidden"
-                      placeholder="Escreva qualquer frase para analisar os tokens..."
-                    />
-                  </div>
-
-                  {/* Token breakdown */}
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between text-xs text-slate-600">
-                      <span>
-                        Tokens Decompostos (Total:{' '}
-                        <strong className="text-purple-700 font-bold">{tokens.length}</strong> tokens)
-                      </span>
-                      <span className="text-[11px] text-slate-500">
-                        Clique num token para inspecionar
-                      </span>
-                    </div>
-
-                    <div className="flex flex-wrap gap-1.5 p-3.5 bg-white rounded-xl border border-purple-200 min-h-[50px] items-center">
-                      {tokens.map((t, idx) => {
-                        const isSelected = selectedTokenIdx === idx;
-                        return (
-                          <button
-                            key={idx}
-                            onClick={() => setSelectedTokenIdx(isSelected ? null : idx)}
-                            className={`px-2.5 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer border ${
-                              isSelected
-                                ? 'bg-purple-600 text-white border-purple-700 shadow-xs scale-105 font-bold'
-                                : 'bg-purple-50 text-purple-900 hover:bg-purple-100 border-purple-200 shadow-2xs'
-                            }`}
-                          >
-                            <span>{t.text}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    {selectedTokenIdx !== null && tokens[selectedTokenIdx] && (
-                      <div className="p-3 bg-white rounded-xl border border-purple-300 text-xs text-purple-900 flex items-center justify-between animate-in fade-in">
-                        <div>
-                          <strong>Token selecionado:</strong>{' '}
-                          <code className="bg-purple-50 px-2 py-0.5 rounded font-mono border border-purple-200 text-purple-800 font-bold">
-                            &quot;{tokens[selectedTokenIdx].text}&quot;
-                          </code>
-                          <span className="ml-3 text-slate-600">
-                            ID Numérico Estimado no Vocabulário:{' '}
-                            <span className="font-mono font-bold text-purple-700">
-                              #{tokens[selectedTokenIdx].id}
-                            </span>
-                          </span>
-                        </div>
-                        <button
-                          onClick={() => setSelectedTokenIdx(null)}
-                          className="text-purple-600 hover:text-purple-900 font-bold text-xs cursor-pointer"
-                        >
-                          Fechar
-                        </button>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Next token probability distribution */}
-                  <div className="pt-3 border-t border-purple-200/80 space-y-2">
-                    <span className="text-xs font-bold text-purple-950 block">
-                      Como a IA calcula a próxima palavra (Exemplo: &ldquo;A fotossíntese produz...&rdquo;)
-                    </span>
-                    <div className="space-y-1.5">
-                      {nextTokenOptions.map((opt, i) => (
-                        <div
-                          key={i}
-                          className="flex items-center gap-3 text-xs bg-white p-2 rounded-xl border border-purple-100"
-                        >
-                          <span className="w-20 font-mono font-bold text-purple-900 truncate">
-                            &quot;{opt.token}&quot;
-                          </span>
-                          <div className="flex-1 bg-slate-100 h-2 rounded-full overflow-hidden">
-                            <div
-                              className="bg-purple-600 h-full rounded-full"
-                              style={{ width: `${opt.prob}%` }}
-                            />
-                          </div>
-                          <span className="w-12 text-right font-bold text-purple-700 font-mono">
-                            {opt.prob}%
-                          </span>
-                          <span className="hidden md:inline text-[11px] text-slate-500">
-                            {opt.type}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* FERRAMENTA DE EXPLORAÇÃO INTEGRADA NA FASE 6 (Limitação Fundamental & Alucinação) */}
-              {st.number === 6 && (
-                <div className="bg-white p-5 sm:p-6 rounded-2xl border border-red-200 shadow-2xs space-y-4">
-                  <NoticeBanner
-                    type="critical"
-                    title="Princípio Didático Inegociável"
-                    message="Resposta convincente ≠ Resposta correcta."
-                    detail="Os modelos de linguagem produzem textos de sintaxe impecável e tom persuasivo. No entanto, não possuem noção intrínseca de verdade factual. A validação científica do professor é insubstituível."
-                  />
-
-                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-slate-800">
-                        Caso Prático de Aula: Deteção de Alucinação Histórica
-                      </span>
-                      <button
-                        onClick={() => setRevealedFact(!revealedFact)}
-                        className="text-xs font-bold text-blue-600 hover:text-blue-800 cursor-pointer underline"
-                      >
-                        {revealedFact ? 'Ocultar Análise Crítica' : 'Revelar Análise Pedagógica'}
-                      </button>
-                    </div>
-
-                    <div className="p-3 bg-white rounded-lg border border-slate-200 font-mono text-xs text-slate-800 leading-relaxed">
-                      &ldquo;De acordo com o Tratado de Zamora de 1245, o Rei D. Afonso Henriques
-                      assinou uma adenda concedendo autonomia aduaneira a Lisboa...&rdquo;
-                    </div>
-
-                    {revealedFact && (
-                      <div className="p-3.5 bg-red-50 rounded-lg border border-red-200 text-xs text-red-900 space-y-1.5 animate-in fade-in">
-                        <div className="flex items-center gap-2 font-bold text-red-700">
-                          <XCircle className="w-4 h-4 text-red-600 shrink-0" />
-                          <span>Incorreção Histórica Grave Detetada!</span>
-                        </div>
-                        <p className="leading-relaxed">
-                          O Tratado de Zamora é de <strong>1143</strong> (e não 1245) e D. Afonso Henriques faleceu em <strong>1185</strong>. A formulação parece erudita e perfeitamente fundamentada, mas é historicamente falsa.
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-
-              {/* Conector visual entre fases dentro do mesmo quadro */}
-              {!isLast && (
-                <div className="flex items-center justify-center pt-2">
-                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-[11px] font-semibold border border-slate-200/60">
-                    <span>Passagem para a Fase seguinte</span>
-                    <ChevronDown className="w-3.5 h-3.5 text-blue-600" />
-                  </div>
-                </div>
-              )}
+                {currentStage.isAttentionCall ? (
+                  <AlertTriangle className="w-3.5 h-3.5" />
+                ) : (
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                )}
+              </div>
+              <div className="text-xs sm:text-sm leading-relaxed">
+                <span className="font-extrabold uppercase text-[10px] tracking-wider block opacity-75 mb-0.5">
+                  {currentStage.isAttentionCall ? 'Princípio Fundamental' : 'Conclusão Pedagógica'}
+                </span>
+                <span className="font-bold">{currentStage.keyTakeaway}</span>
+              </div>
             </div>
-          );
-        })}
+          )}
+
+          {/* DETALHE DIDÁTICO NA CHAMADA DE ATENÇÃO (Limitação Fundamental & Alucinação) */}
+          {currentStage.number === 6 && (
+            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-red-200 shadow-2xs space-y-4 mt-4">
+              <NoticeBanner
+                type="critical"
+                title="Princípio Didático Inegociável"
+                message="Resposta convincente ≠ Resposta correcta."
+                detail="Os modelos de linguagem produzem textos de sintaxe impecável e tom persuasivo. No entanto, não possuem noção intrínseca de verdade factual. A validação científica do professor é insubstituível."
+              />
+
+              <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-800">
+                    Caso Prático de Aula: Deteção de Alucinação Histórica
+                  </span>
+                  <button
+                    onClick={() => setRevealedFact(!revealedFact)}
+                    className="text-xs font-bold text-blue-600 hover:text-blue-800 cursor-pointer underline"
+                  >
+                    {revealedFact ? 'Ocultar Análise Crítica' : 'Revelar Análise Pedagógica'}
+                  </button>
+                </div>
+
+                <div className="p-3 bg-white rounded-lg border border-slate-200 font-mono text-xs text-slate-800 leading-relaxed">
+                  &ldquo;De acordo com o Tratado de Zamora de 1245, o Rei D. Afonso Henriques
+                  assinou uma adenda concedendo autonomia aduaneira a Lisboa...&rdquo;
+                </div>
+
+                {revealedFact && (
+                  <div className="p-3.5 bg-red-50 rounded-lg border border-red-200 text-xs text-red-900 space-y-1.5 animate-in fade-in">
+                    <div className="flex items-center gap-2 font-bold text-red-700">
+                      <XCircle className="w-4 h-4 text-red-600 shrink-0" />
+                      <span>Incorreção Histórica Grave Detetada!</span>
+                    </div>
+                    <p className="leading-relaxed">
+                      O Tratado de Zamora é de <strong>1143</strong> (e não 1245) e D. Afonso Henriques faleceu em <strong>1185</strong>. A formulação parece erudita e perfeitamente fundamentada, mas é historicamente falsa.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* BOTÕES DE NAVEGAÇÃO SEQUENCIAL */}
+          <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <button
+              onClick={handlePrevStage}
+              disabled={activeStageNumber === 1}
+              className={`w-full sm:w-auto px-4 py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
+                activeStageNumber === 1
+                  ? 'opacity-40 bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed'
+                  : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-2xs cursor-pointer'
+              }`}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>
+                {activeStageNumber === 6
+                  ? 'Voltar à Etapa 5 (Produção da Resposta)'
+                  : `Etapa Anterior (${activeStageNumber - 1})`}
+              </span>
+            </button>
+
+            {/* Indicador Central de Passos do Ciclo + Alerta */}
+            <div className="flex items-center gap-2 py-1">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-1">
+                Ciclo:
+              </span>
+              {cycleStages.map((s) => (
+                <button
+                  key={s.number}
+                  onClick={() => setActiveStageNumber(s.number)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
+                    s.number === activeStageNumber
+                      ? 'bg-blue-600 scale-125'
+                      : s.number < activeStageNumber
+                      ? 'bg-blue-300'
+                      : 'bg-slate-200'
+                  }`}
+                  title={`Ir para Etapa ${s.number}`}
+                />
+              ))}
+              <span className="text-slate-300 mx-1">|</span>
+              <button
+                onClick={() => setActiveStageNumber(6)}
+                className={`p-1 rounded-md transition-all cursor-pointer ${
+                  activeStageNumber === 6
+                    ? 'bg-red-600 text-white scale-110 shadow-xs'
+                    : 'text-red-500 hover:bg-red-50'
+                }`}
+                title="Chamada de Atenção: Limitação Fundamental"
+              >
+                <AlertTriangle className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            {activeStageNumber < 5 ? (
+              <button
+                onClick={handleNextStage}
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
+              >
+                <span>Próxima Etapa: {STAGES[activeStageNumber].title}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            ) : activeStageNumber === 5 ? (
+              <button
+                onClick={() => setActiveStageNumber(6)}
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
+              >
+                <span>Ver Chamada de Atenção (Limitação Fundamental)</span>
+                <AlertTriangle className="w-4 h-4" />
+              </button>
+            ) : (
+              <button
+                onClick={() => setActiveStageNumber(1)}
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
+              >
+                <RotateCcw className="w-4 h-4" />
+                <span>Voltar ao Início do Ciclo (Etapa 1)</span>
+              </button>
+            )}
+          </div>
+        </div>
       </div>
 
-      {/* CONCLUSÃO DO QUADRO ÚNICO */}
+      {/* SÍNTESE DIDÁTICA DO CICLO COMPLETO NO RODAPÉ DO QUADRO */}
       <div className="p-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-blue-100 text-[#1E70EB] flex items-center justify-center font-bold shrink-0">
@@ -589,20 +577,21 @@ export const ModelMechanicsSimulator: React.FC = () => {
           </div>
           <div>
             <h4 className="text-xs sm:text-sm font-bold text-[#0C1E38]">
-              Síntese Didática do Ciclo Completo
+              Síntese Didática do Ciclo de Funcionamento
             </h4>
             <p className="text-xs text-slate-600">
-              A IA não pensa nem sabe: calcula probabilidades estatísticas com base nos dados que assimilou. A validação do professor é soberana.
+              A IA não pensa nem sabe: calcula probabilidades estatísticas em 5 etapas a partir dos dados assimilados. A validação do professor é soberana.
             </p>
           </div>
         </div>
 
-        <button
-          onClick={() => scrollToStage(1)}
-          className="text-xs font-bold text-[#1D4ED8] hover:text-blue-800 bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-2xs cursor-pointer shrink-0"
-        >
-          Voltar ao Início do Ciclo ↑
-        </button>
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="text-xs font-semibold text-slate-500">
+            {activeStageNumber <= 5
+              ? `Etapa ${activeStageNumber} de 5 do Ciclo`
+              : 'Chamada de Atenção Pedagógica'}
+          </span>
+        </div>
       </div>
     </div>
   );

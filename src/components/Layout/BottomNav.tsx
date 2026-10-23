@@ -18,7 +18,7 @@ const ORDERED_PAGES: PageId[] = [
   'exemplos-disciplina',
   'atividades-sala',
   'magicschool',
-  'desafio-final',
+  'atividade-sessao',
   'ferramentas-referencias',
 ];
 

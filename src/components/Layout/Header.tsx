@@ -26,8 +26,8 @@ const PAGE_STEPS: Record<PageId, { num: number; title: string; category?: string
   'exemplos-disciplina': { num: 6, title: '6. Exemplos Práticos por Disciplina' },
   'atividades-sala': { num: 7, title: '7. Atividades Práticas em Sala de Aula' },
   magicschool: { num: 8, title: '8. Exploração da Ferramenta MagicSchool.ai' },
-  'desafio-final': { num: 8, title: 'Desafio Prático Final do Módulo 2', category: 'Desafio' },
-  'ferramentas-referencias': { num: 9, title: 'Referências Bibliográficas e Créditos', category: 'Referências' },
+  'atividade-sessao': { num: 9, title: '9. Atividade da Sessão', category: 'Atividade' },
+  'ferramentas-referencias': { num: 10, title: 'Referências Bibliográficas e Créditos', category: 'Referências' },
 };
 
 // Main linear sequence for course browsing
@@ -41,7 +41,7 @@ const ORDERED_STEPS: PageId[] = [
   'exemplos-disciplina',
   'atividades-sala',
   'magicschool',
-  'desafio-final',
+  'atividade-sessao',
   'ferramentas-referencias',
 ];
 

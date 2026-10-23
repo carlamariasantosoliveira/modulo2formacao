@@ -67,13 +67,13 @@ export const ReferenciasPage: React.FC = () => {
             Conteúdo Pedagógico Integralmente Integrado
           </h2>
           <p className="text-xs text-blue-100/90 leading-relaxed max-w-2xl">
-            Toda a matéria necessária para o seu estudo — definições, ciclo de funcionamento, 8 técnicas de prompts, exemplos por disciplina, 4 atividades práticas e geradores MagicSchool — está disponível diretamente nas páginas interativas deste curso, dispensando ficheiros externos.
+            Toda a matéria necessária para o seu estudo — definições, ciclo de funcionamento, 8 técnicas de prompts, exemplos por disciplina, 4 atividades práticas e geradores MagicSchool — está disponível diretamente nas páginas interativas desta oficina de formação, dispensando ficheiros externos.
           </p>
         </div>
 
         <div className="hidden sm:flex items-center gap-2 bg-white/10 px-4 py-2.5 rounded-2xl border border-white/10 shrink-0 text-xs font-semibold text-blue-100">
           <GraduationCap className="w-5 h-5 text-blue-300" />
-          <span>Formação a Distância</span>
+          <span>Oficina de Formação</span>
         </div>
       </div>
 
@@ -87,7 +87,7 @@ export const ReferenciasPage: React.FC = () => {
             Ferramentas de IA Generativa Referenciadas
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
-            Modelos de linguagem, chatbots e plataformas educativas analisadas ao longo do curso.
+            Modelos de linguagem, chatbots e plataformas educativas analisadas ao longo da oficina.
           </p>
         </div>
 

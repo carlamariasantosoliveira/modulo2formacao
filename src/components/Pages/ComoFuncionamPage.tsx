@@ -13,7 +13,7 @@ export const ComoFuncionamPage: React.FC = () => {
           </h1>
         </div>
         <p className="text-sm font-semibold text-slate-600 pl-4.5">
-          Visão Global do Ciclo de Funcionamento com Passo a Passo das 6 Fases (Com Ferramentas de Exploração Integradas)
+          Visão Global do Ciclo de Processamento em 5 Etapas e Chamada de Atenção para a Limitação Fundamental
         </p>
       </div>
 

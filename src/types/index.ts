@@ -8,7 +8,7 @@ export type PageId =
   | 'exemplos-disciplina'
   | 'atividades-sala'
   | 'magicschool'
-  | 'desafio-final'
+  | 'atividade-sessao'
   | 'ferramentas-referencias';
 
 

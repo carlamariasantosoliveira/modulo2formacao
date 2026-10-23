@@ -9,6 +9,7 @@ import {
   BookOpen,
   FileCheck,
   Settings,
+  Users,
   Award,
   FileText,
   Brain,
@@ -44,7 +45,7 @@ const SYNTHESIS_SECTIONS: Array<{
   label: string;
   icon: React.ElementType;
 }> = [
-  { id: 'desafio-final', label: 'Desafio Final & Portfólio', icon: Award },
+  { id: 'atividade-sessao', label: '9. Atividade da Sessão', icon: Users },
   { id: 'ferramentas-referencias', label: 'Referências & Créditos', icon: FileText },
 ];
 
@@ -183,21 +184,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <span className={`text-[10px] font-bold uppercase tracking-wider ${
                 isHome ? 'text-blue-300' : 'text-slate-400'
               }`}>
-                Módulos do Curso
+                Módulos da Oficina
               </span>
             </div>
             {OFFICIAL_SECTIONS.map((sec) => renderNavButton(sec.id, sec.label, sec.icon))}
           </div>
 
-          {/* Group 2: Avaliação & Recursos */}
-          <div className="space-y-1 pt-1 border-t border-slate-200/50">
-            <div className="px-3 py-1">
-              <span className={`text-[10px] font-bold uppercase tracking-wider ${
-                isHome ? 'text-blue-300' : 'text-slate-400'
-              }`}>
-                Avaliação & Recursos
-              </span>
-            </div>
+          {/* Group 2 */}
+          <div className="space-y-1 pt-2 border-t border-slate-200/50">
             {SYNTHESIS_SECTIONS.map((sec) => renderNavButton(sec.id, sec.label, sec.icon))}
           </div>
         </div>

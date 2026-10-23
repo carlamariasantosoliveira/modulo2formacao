@@ -25,7 +25,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <div className="space-y-4 max-w-xl z-10">
           <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold tracking-wider text-blue-300 uppercase">
             <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-            <span>CURSO: INTELIGÊNCIA ARTIFICIAL NA EDUCAÇÃO</span>
+            <span>OFICINA DE FORMAÇÃO: INTELIGÊNCIA ARTIFICIAL NA EDUCAÇÃO: ESTRATÉGIAS, FERRAMENTAS E PRÁTICAS PEDAGÓGICAS</span>
           </div>
 
           <div className="space-y-1">
