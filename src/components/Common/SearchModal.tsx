@@ -91,12 +91,16 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     });
 
     // Search MagicSchool
-    MAGICSCHOOL_DATA.specificGenerators.forEach((gen) => {
-      if (gen.name.toLowerCase().includes(q) || gen.description.toLowerCase().includes(q) || gen.example.toLowerCase().includes(q)) {
+    MAGICSCHOOL_DATA.generators.forEach((gen) => {
+      const matchTitle = gen.title.toLowerCase().includes(q);
+      const matchDef = gen.pedagogicalDefinition.toLowerCase().includes(q);
+      const matchSub = gen.subtitle.toLowerCase().includes(q);
+      const matchPrompt = gen.examplePrompt ? gen.examplePrompt.toLowerCase().includes(q) : false;
+      if (matchTitle || matchDef || matchSub || matchPrompt) {
         items.push({
           type: 'magicschool',
-          title: `MagicSchool: ${gen.name}`,
-          snippet: gen.example,
+          title: `MagicSchool: ${gen.title}`,
+          snippet: gen.pedagogicalDefinition.slice(0, 100) + '...',
           pageId: 'magicschool',
         });
       }

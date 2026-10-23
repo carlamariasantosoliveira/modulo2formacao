@@ -8,17 +8,28 @@ import {
   Copy,
   Check,
   BookOpen,
-  Send,
-  MessageSquare,
   HelpCircle,
   FileText,
+  CheckSquare,
+  FileEdit,
+  MessageSquare,
+  Layout,
+  Video,
+  ExternalLink,
+  Sliders,
+  GraduationCap,
+  ChevronRight,
+  ListFilter,
+  Info,
 } from 'lucide-react';
 import { MAGICSCHOOL_DATA } from '../../data/courseData';
-import { NoticeBanner } from '../Common/NoticeBanner';
+
+type SectionTab = 'possibilidades' | 'raina' | 'geradores' | 'magicstudent';
 
 export const MagicSchoolPage: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<SectionTab>('geradores');
+  const [selectedGeneratorIdx, setSelectedGeneratorIdx] = useState<number>(0);
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [selectedGenerator, setSelectedGenerator] = useState<number>(0);
 
   const handleCopy = (id: string, text: string) => {
     navigator.clipboard.writeText(text.replace(/^“|”$/g, ''));
@@ -26,237 +37,583 @@ export const MagicSchoolPage: React.FC = () => {
     setTimeout(() => setCopiedId(null), 2000);
   };
 
-  const gen = MAGICSCHOOL_DATA.specificGenerators[selectedGenerator];
+  const currentGen = MAGICSCHOOL_DATA.generators[selectedGeneratorIdx];
+
+  const getPossibilityIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'UserCheck':
+        return <UserCheck className="w-5 h-5" />;
+      case 'BookOpen':
+        return <BookOpen className="w-5 h-5" />;
+      case 'HelpCircle':
+        return <HelpCircle className="w-5 h-5" />;
+      case 'FileText':
+        return <FileText className="w-5 h-5" />;
+      case 'CheckSquare':
+        return <CheckSquare className="w-5 h-5" />;
+      case 'FileEdit':
+        return <FileEdit className="w-5 h-5" />;
+      case 'MessageSquare':
+        return <MessageSquare className="w-5 h-5" />;
+      case 'Layout':
+        return <Layout className="w-5 h-5" />;
+      default:
+        return <Sparkles className="w-5 h-5" />;
+    }
+  };
 
   return (
-    <div className="space-y-8 pb-12 font-sans">
+    <div className="space-y-8 pb-16 font-sans">
       {/* Title bar with signature blue vertical line */}
-      <div className="flex items-center gap-3">
-        <span className="w-1.5 h-8 bg-[#1E70EB] rounded-full inline-block"></span>
-        <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
-            8. Exploração da Ferramenta MagicSchool.ai
-          </h1>
-          <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Assistente Raina, chatbots para alunos e geradores pedagógicos especializados
-          </p>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <span className="w-1.5 h-10 bg-[#1E70EB] rounded-full inline-block"></span>
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
+              8. Exploração da Ferramenta MagicSchool.ai
+            </h1>
+            <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
+              Oficina de Formação: Inteligência Artificial na Educação: Estratégias, Ferramentas e Práticas Pedagógicas
+            </p>
+          </div>
         </div>
+
+        <a
+          href={MAGICSCHOOL_DATA.officialUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#1E70EB] hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-sm hover:shadow self-start md:self-auto cursor-pointer"
+        >
+          <Wand2 className="w-4 h-4" />
+          <span>Aceder ao MagicSchool.ai</span>
+          <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+        </a>
       </div>
 
-      {/* Intro */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-2xs space-y-3">
-        <h2 className="text-xs font-bold text-[#1E70EB] uppercase tracking-wider">
-          Enquadramento da Plataforma
-        </h2>
+      {/* Intro Platform Summary Banner */}
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-2xs space-y-3">
+        <div className="flex items-center gap-2 text-xs font-bold text-[#1E70EB] uppercase tracking-wider">
+          <GraduationCap className="w-4 h-4" />
+          <span>Visão Global da Plataforma Educativa</span>
+        </div>
         <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
           {MAGICSCHOOL_DATA.description}
         </p>
       </div>
 
-      {/* Section 1: MagicSchool - Raina (Assistente do Professor) */}
-      <div className="bg-white rounded-3xl border border-slate-100 shadow-2xs overflow-hidden">
-        <div className="p-6 bg-linear-to-r from-blue-50/70 via-indigo-50/20 to-white border-b border-slate-100 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#1E70EB] text-white flex items-center justify-center">
-              <Bot className="w-6 h-6" />
+      {/* Main Top Navigation Tabs */}
+      <div className="flex flex-wrap gap-2 p-1.5 bg-slate-100/80 rounded-2xl border border-slate-200/80">
+        <button
+          onClick={() => setActiveTab('geradores')}
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            activeTab === 'geradores'
+              ? 'bg-white text-[#1E70EB] shadow-xs'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+          }`}
+        >
+          <Sliders className="w-4 h-4" />
+          <span>8 Geradores Especializados</span>
+          <span className="ml-1 px-1.5 py-0.5 rounded-full text-[10px] bg-blue-100 text-[#1E70EB]">
+            8
+          </span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('raina')}
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            activeTab === 'raina'
+              ? 'bg-white text-[#1E70EB] shadow-xs'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+          }`}
+        >
+          <Bot className="w-4 h-4" />
+          <span>Assistente Raina</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('possibilidades')}
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            activeTab === 'possibilidades'
+              ? 'bg-white text-[#1E70EB] shadow-xs'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+          }`}
+        >
+          <Layout className="w-4 h-4" />
+          <span>Possibilidades de Interação</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('magicstudent')}
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            activeTab === 'magicstudent'
+              ? 'bg-white text-[#1E70EB] shadow-xs'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+          }`}
+        >
+          <UserCheck className="w-4 h-4" />
+          <span>MagicStudent (Alunos)</span>
+        </button>
+      </div>
+
+      {/* TAB 1: 8 GERADORES ESPECIALIZADOS */}
+      {activeTab === 'geradores' && (
+        <div className="space-y-6">
+          {/* Sub-tabs selector for the 8 generators */}
+          <div className="bg-white rounded-3xl border border-slate-200/80 p-3 shadow-2xs">
+            <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider px-3 py-2 flex items-center justify-between">
+              <span>Selecione a Ferramenta Especializada:</span>
+              <span className="text-[11px] text-blue-600 font-semibold">
+                {selectedGeneratorIdx + 1} de {MAGICSCHOOL_DATA.generators.length}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 pt-1">
+              {MAGICSCHOOL_DATA.generators.map((gen, idx) => {
+                const isSelected = selectedGeneratorIdx === idx;
+                return (
+                  <button
+                    key={gen.id}
+                    onClick={() => setSelectedGeneratorIdx(idx)}
+                    className={`flex flex-col items-center justify-center text-center p-3 rounded-2xl border transition-all cursor-pointer min-h-[82px] ${
+                      isSelected
+                        ? 'bg-blue-50/90 border-[#1E70EB] text-[#1D4ED8] font-bold shadow-2xs ring-2 ring-blue-100'
+                        : 'bg-[#F8FAFC] border-slate-200 text-slate-700 hover:bg-slate-100/70 hover:border-slate-300'
+                    }`}
+                  >
+                    <span
+                      className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-extrabold mb-1.5 ${
+                        isSelected
+                          ? 'bg-[#1E70EB] text-white'
+                          : 'bg-slate-200/80 text-slate-600'
+                      }`}
+                    >
+                      {idx + 1}
+                    </span>
+                    <span className="text-[11px] leading-tight line-clamp-2">
+                      {gen.title}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Current Generator Detail Card */}
+          <div className="bg-white rounded-3xl border border-slate-200/80 shadow-2xs overflow-hidden">
+            {/* Tool Banner Header */}
+            <div className="p-6 bg-linear-to-r from-blue-50/80 via-slate-50 to-white border-b border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-start sm:items-center gap-3.5">
+                <div className="w-11 h-11 rounded-2xl bg-[#1E70EB] text-white flex items-center justify-center shadow-xs shrink-0">
+                  <span className="text-sm font-extrabold">{currentGen.number}</span>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 tracking-wider">
+                      Ferramenta MagicSchool
+                    </span>
+                    <span className="text-xs text-slate-500 font-medium">
+                      Módulo Específico
+                    </span>
+                  </div>
+                  <h2 className="text-xl font-extrabold text-slate-900 mt-0.5">
+                    {currentGen.title}
+                  </h2>
+                </div>
+              </div>
+
+              <div className="text-xs text-slate-500 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-2xs font-medium">
+                {currentGen.subtitle}
+              </div>
+            </div>
+
+            <div className="p-6 sm:p-8 space-y-6">
+              {/* Pedagogical Definition Banner (YELLOW/AMBER BOX FROM GENIALLY SLIDES) */}
+              <div className="bg-amber-50/90 border-2 border-amber-300/80 rounded-2xl p-5 sm:p-6 shadow-2xs space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-amber-900">
+                    Definição Pedagógica Fundamental:
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm font-medium text-amber-950 leading-relaxed pl-4 border-l-2 border-amber-300">
+                  {currentGen.pedagogicalDefinition}
+                </p>
+              </div>
+
+              {/* Grid: Parameters & Prompt Example */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                {/* Parameters & Inputs (5 Cols) */}
+                <div className="lg:col-span-5 space-y-4">
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-4 bg-[#1E70EB] rounded-full"></span>
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800">
+                      Parâmetros da Ferramenta
+                    </h3>
+                  </div>
+
+                  <div className="bg-[#F8FAFC] rounded-2xl p-4 sm:p-5 border border-slate-200/80 space-y-3">
+                    {currentGen.parameters.map((param, pIdx) => (
+                      <div key={pIdx} className="space-y-1 text-xs">
+                        <span className="font-bold text-slate-700 block text-[11px] uppercase tracking-wider text-[#1E70EB]">
+                          • {param.label}:
+                        </span>
+                        <div className="text-slate-800 font-medium pl-3 bg-white p-2.5 rounded-xl border border-slate-200/60 leading-relaxed">
+                          {param.value}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Key Features */}
+                  <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200/70 space-y-2">
+                    <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">
+                      Vantagens Didáticas:
+                    </span>
+                    <ul className="space-y-1.5 text-xs text-slate-600">
+                      {currentGen.keyFeatures.map((feat, fIdx) => (
+                        <li key={fIdx} className="flex items-start gap-2">
+                          <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Prompt Example & Output (7 Cols) */}
+                <div className="lg:col-span-7 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-4 bg-[#059669] rounded-full"></span>
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800">
+                        Exemplo Transcrito do Guião de Formação
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Single example prompt */}
+                  {currentGen.examplePrompt && (
+                    <div className="bg-slate-900 text-slate-100 rounded-2xl p-5 sm:p-6 space-y-3 shadow-sm border border-slate-800 flex flex-col justify-between">
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                          <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider">
+                            Prompt / Pedido à Ferramenta
+                          </span>
+                          <button
+                            onClick={() =>
+                              handleCopy(
+                                `gen-${currentGen.id}`,
+                                currentGen.examplePrompt || ''
+                              )
+                            }
+                            className="inline-flex items-center gap-1.5 text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-xl transition-all cursor-pointer"
+                          >
+                            {copiedId === `gen-${currentGen.id}` ? (
+                              <>
+                                <Check className="w-3.5 h-3.5 text-emerald-400" />
+                                <span className="text-emerald-300">Copiado!</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="w-3.5 h-3.5" />
+                                <span>Copiar Prompt</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+                        <p className="font-mono text-xs sm:text-[13px] leading-relaxed text-slate-200 pt-1">
+                          {currentGen.examplePrompt}
+                        </p>
+                      </div>
+
+                      <div className="pt-4 border-t border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
+                        <span>Pode copiar e colar diretamente no MagicSchool.ai</span>
+                        <span className="text-slate-500 font-mono">
+                          ID: {currentGen.id}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Multiple prompts list if available (e.g. Fichas de Trabalho) */}
+                  {currentGen.promptsList && (
+                    <div className="space-y-3">
+                      {currentGen.promptsList.map((item, pIdx) => (
+                        <div
+                          key={pIdx}
+                          className="bg-slate-900 text-slate-100 rounded-2xl p-5 space-y-2.5 border border-slate-800"
+                        >
+                          <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                            <span className="text-[11px] font-bold text-emerald-400">
+                              {item.subject}
+                            </span>
+                            <button
+                              onClick={() =>
+                                handleCopy(
+                                  `gen-list-${currentGen.id}-${pIdx}`,
+                                  item.prompt
+                                )
+                              }
+                              className="inline-flex items-center gap-1.5 text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1 rounded-xl transition-all cursor-pointer"
+                            >
+                              {copiedId === `gen-list-${currentGen.id}-${pIdx}` ? (
+                                <>
+                                  <Check className="w-3 h-3 text-emerald-400" />
+                                  <span className="text-emerald-300">Copiado!</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-3 h-3" />
+                                  <span>Copiar</span>
+                                </>
+                              )}
+                            </button>
+                          </div>
+                          <p className="font-mono text-xs text-slate-200 leading-relaxed">
+                            {item.prompt}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Educational tip */}
+                  <div className="bg-blue-50/70 border border-blue-100 rounded-2xl p-4 text-xs text-blue-900 flex items-start gap-3">
+                    <Info className="w-4 h-4 text-[#1E70EB] shrink-0 mt-0.5" />
+                    <p className="leading-relaxed">
+                      <strong>Dica pedagógica:</strong> Ao formular o pedido no MagicSchool, inclua sempre os critérios específicos de avaliação e o ano de escolaridade para garantir que o vocabulário e a progressão dos exercícios correspondem rigorosamente ao currículo nacional.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 2: RAINA (ASSISTENTE DO PROFESSOR) */}
+      {activeTab === 'raina' && (
+        <div className="bg-white rounded-3xl border border-slate-200/80 shadow-2xs overflow-hidden">
+          <div className="p-6 bg-linear-to-r from-blue-50/80 via-indigo-50/30 to-white border-b border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-[#1E70EB] text-white flex items-center justify-center shadow-xs">
+                <Bot className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-[11px] font-bold text-[#1E70EB] uppercase tracking-wider block">
+                  {MAGICSCHOOL_DATA.raina.badge}
+                </span>
+                <h2 className="text-xl font-extrabold text-slate-900">
+                  {MAGICSCHOOL_DATA.raina.title}
+                </h2>
+              </div>
+            </div>
+
+            <div className="text-xs text-slate-600 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 font-medium shadow-2xs">
+              {MAGICSCHOOL_DATA.raina.subtitle}
+            </div>
+          </div>
+
+          <div className="p-6 sm:p-8 space-y-6">
+            {/* Pedagogical Definition Banner */}
+            <div className="bg-amber-50/90 border-2 border-amber-300/80 rounded-2xl p-5 sm:p-6 shadow-2xs space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-amber-900">
+                  Definição Pedagógica (Guião da Formadora):
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm font-medium text-amber-950 leading-relaxed pl-4 border-l-2 border-amber-300">
+                {MAGICSCHOOL_DATA.raina.pedagogicalDefinition}
+              </p>
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+              {MAGICSCHOOL_DATA.raina.description}
+            </p>
+
+            <div className="space-y-3 pt-2">
+              <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-[#1E70EB]" />
+                <span>Exemplos de Prompts no Módulo de Formação:</span>
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {MAGICSCHOOL_DATA.raina.examples.map((ex) => (
+                  <div
+                    key={ex.id}
+                    className="bg-[#F8FAFC] rounded-2xl p-5 border border-slate-200/90 space-y-3 flex flex-col justify-between"
+                  >
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between pb-1.5 border-b border-slate-200">
+                        <span className="text-xs font-bold text-[#1E70EB]">{ex.name}</span>
+                        <button
+                          onClick={() => handleCopy(ex.id, ex.prompt)}
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-[#1E70EB] bg-white border border-slate-200 px-2.5 py-1 rounded-lg cursor-pointer transition-all shadow-2xs"
+                        >
+                          {copiedId === ex.id ? (
+                            <>
+                              <Check className="w-3.5 h-3.5 text-emerald-600" />
+                              <span className="text-emerald-700">Copiado!</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-3.5 h-3.5" />
+                              <span>Copiar</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2 text-[10px] text-slate-600 font-semibold">
+                        <span className="bg-slate-200/70 px-2 py-0.5 rounded-md">
+                          Ano: {ex.grade}
+                        </span>
+                        <span className="bg-blue-100 text-blue-800 px-2 py-0.5 rounded-md">
+                          Área: {ex.subject}
+                        </span>
+                      </div>
+
+                      <div className="bg-white p-4 rounded-xl border border-slate-200 font-mono text-xs text-slate-800 leading-relaxed shadow-2xs">
+                        &ldquo;{ex.prompt}&rdquo;
+                      </div>
+                    </div>
+
+                    <div className="text-[11px] text-slate-500 italic pt-2 border-t border-slate-200/70">
+                      <strong>Enquadramento:</strong> {ex.pedagogicalGoal}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 3: POSSIBILIDADES DE INTERAÇÃO (SLIDE 1) */}
+      {activeTab === 'possibilidades' && (
+        <div className="bg-white rounded-3xl border border-slate-200/80 shadow-2xs p-6 sm:p-8 space-y-6">
+          <div className="flex items-center gap-3 pb-4 border-b border-slate-200">
+            <div className="w-10 h-10 rounded-2xl bg-blue-100 text-[#1E70EB] flex items-center justify-center">
+              <Layout className="w-5 h-5" />
             </div>
             <div>
               <span className="text-[11px] font-bold text-[#1E70EB] uppercase tracking-wider block">
-                Para o Professor
+                Catálogo Geral de Recursos
               </span>
-              <h3 className="text-lg font-bold text-slate-900">
-                {MAGICSCHOOL_DATA.raina.title}
-              </h3>
+              <h2 className="text-xl font-extrabold text-slate-900">
+                MagicSchool - Possibilidades de Interação
+              </h2>
             </div>
           </div>
-        </div>
 
-        <div className="p-6 space-y-4">
-          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
-            {MAGICSCHOOL_DATA.raina.description}
+          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+            O ecossistema MagicSchool disponibiliza um leque integrado de ferramentas desenhadas à medida do quotidiano escolar, cobrindo o ciclo completo da atividade docente — desde a conceção de aulas até à avaliação e comunicação com os estudantes:
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
-            {MAGICSCHOOL_DATA.raina.examples.map((ex, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
+            {MAGICSCHOOL_DATA.possibilidades.map((item) => (
               <div
-                key={i}
-                className="bg-[#F8FAFC] rounded-2xl p-4 sm:p-5 border border-slate-200/80 space-y-2 flex flex-col justify-between"
+                key={item.id}
+                className="bg-[#F8FAFC] rounded-2xl p-5 border border-slate-200/80 space-y-2.5 flex flex-col justify-between hover:border-blue-300 transition-all group"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-xs font-bold text-[#1E70EB]">{ex.name}</span>
-                    <button
-                      onClick={() => handleCopy(`raina-${i}`, ex.prompt)}
-                      className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-600 hover:text-[#1E70EB] bg-white border border-slate-200 px-2.5 py-1 rounded-lg cursor-pointer"
-                    >
-                      {copiedId === `raina-${i}` ? (
-                        <>
-                          <Check className="w-3 h-3 text-emerald-600" />
-                          <span className="text-emerald-700">Copiado!</span>
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-3 h-3" />
-                          <span>Copiar</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-                  <div className="bg-white p-3.5 rounded-xl border border-slate-200/70 font-mono text-xs text-slate-800 leading-relaxed">
-                    {ex.prompt}
-                  </div>
-                </div>
-                <p className="text-[11px] text-slate-500 pt-1 italic">{ex.context}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Section 2: Student Chatbots (Alunos) */}
-      <div className="bg-white rounded-3xl border border-slate-100 shadow-2xs overflow-hidden">
-        <div className="p-6 bg-linear-to-r from-emerald-50/70 to-white border-b border-slate-100 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-[#059669] text-white flex items-center justify-center">
-            <UserCheck className="w-6 h-6" />
-          </div>
-          <div>
-            <span className="text-[11px] font-bold text-[#059669] uppercase tracking-wider block">
-              Para o Trabalho Autónomo dos Alunos
-            </span>
-            <h3 className="text-lg font-bold text-slate-900">
-              {MAGICSCHOOL_DATA.studentChatbots.title}
-            </h3>
-          </div>
-        </div>
-
-        <div className="p-6 space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {MAGICSCHOOL_DATA.studentChatbots.chatbots.map((bot, i) => (
-              <div
-                key={i}
-                className="bg-[#F8FAFC] p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-1.5"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#059669]"></span>
-                  <h4 className="text-xs font-bold text-slate-900">{bot.name}</h4>
-                </div>
-                <p className="text-xs text-slate-700 leading-relaxed">{bot.detail}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="bg-[#EFF6FF] border border-blue-100 rounded-2xl p-4 sm:p-5 space-y-1.5 text-xs text-[#1D4ED8]">
-            <strong className="font-bold flex items-center gap-2 text-sm text-[#1E70EB]">
-              <ShieldCheck className="w-4 h-4" />
-              <span>Destaque Ético para a Educação:</span>
-            </strong>
-            <p className="leading-relaxed text-slate-700 pt-1">
-              O chatbot &ldquo;IA - Questões Éticas&rdquo; foi programado exclusivamente com base no documento <em>&ldquo;Orientações Éticas para Educadores&rdquo;</em> (Comissão Europeia, 2022), abordando a ação humana, transparência, equidade e bem-estar, sem adicionar fontes externas.
-            </p>
-            <p className="text-[11px] text-slate-500 italic pt-1 border-t border-blue-200/50">
-              Nota didática: Esta restrição documental representa a especificação pedagógica do chatbot no guião do curso. No presente ambiente, serve como modelo de referência para configuração de assistentes fechados e seguros na escola.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Section 3: The 8 Specific Content Generators verbatim from page 8 */}
-      <div className="bg-white rounded-3xl border border-slate-100 shadow-2xs overflow-hidden">
-        <div className="p-6 border-b border-slate-100 bg-[#F8FAFC] flex items-center justify-between">
-          <div>
-            <span className="text-[11px] font-bold text-[#1E70EB] uppercase tracking-wider block">
-              Ferramentas Especializadas
-            </span>
-            <h3 className="text-lg font-bold text-slate-900">
-              Geradores de Conteúdo Específicos do MagicSchool (Todos os 8 do Documento)
-            </h3>
-          </div>
-          <span className="text-xs font-mono text-slate-500 font-semibold">8 Geradores</span>
-        </div>
-
-        <div className="p-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {/* Left list (5 cols) */}
-            <div className="lg:col-span-5 space-y-2">
-              {MAGICSCHOOL_DATA.specificGenerators.map((generator, idx) => (
-                <button
-                  key={generator.id}
-                  onClick={() => setSelectedGenerator(idx)}
-                  className={`w-full text-left p-3.5 rounded-2xl border transition-all text-xs flex items-center justify-between cursor-pointer ${
-                    selectedGenerator === idx
-                      ? 'bg-blue-50 border-[#1E70EB] text-[#1D4ED8] font-bold shadow-2xs'
-                      : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
-                  }`}
-                >
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-5 h-5 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-bold">
-                      {idx + 1}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 text-[#1E70EB] flex items-center justify-center shadow-2xs group-hover:bg-[#1E70EB] group-hover:text-white transition-all">
+                      {getPossibilityIcon(item.iconName)}
+                    </div>
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                      {item.tag}
                     </span>
-                    <span>{generator.name}</span>
                   </div>
-                  <span className="text-[10px] text-slate-400 font-normal">
-                    {generator.description.slice(0, 16)}...
+                  <h3 className="text-xs font-bold text-slate-900 pt-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div className="pt-2 border-t border-slate-200/60 flex items-center justify-end">
+                  <button
+                    onClick={() => {
+                      setActiveTab('geradores');
+                    }}
+                    className="text-[11px] font-semibold text-[#1E70EB] hover:text-blue-800 flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>Ver detalhes</span>
+                    <ChevronRight className="w-3 h-3" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* TAB 4: MAGICSCHOOL - STUDENT CHATBOTS & MAGICSTUDENT */}
+      {activeTab === 'magicstudent' && (
+        <div className="bg-white rounded-3xl border border-slate-200/80 shadow-2xs overflow-hidden">
+          <div className="p-6 bg-linear-to-r from-emerald-50/80 via-teal-50/30 to-white border-b border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-[#059669] text-white flex items-center justify-center shadow-xs">
+                <UserCheck className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-[11px] font-bold text-[#059669] uppercase tracking-wider block">
+                  {MAGICSCHOOL_DATA.studentChatbots.badge}
+                </span>
+                <h2 className="text-xl font-extrabold text-slate-900">
+                  {MAGICSCHOOL_DATA.studentChatbots.title}
+                </h2>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-emerald-800 bg-emerald-100/70 px-3 py-1 rounded-xl">
+              Ambiente Protegido
+            </span>
+          </div>
+
+          <div className="p-6 sm:p-8 space-y-6">
+            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+              {MAGICSCHOOL_DATA.studentChatbots.description}
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {MAGICSCHOOL_DATA.studentChatbots.chatbots.map((bot, i) => (
+                <div
+                  key={i}
+                  className="bg-[#F8FAFC] p-5 rounded-2xl border border-slate-200 space-y-2 flex flex-col justify-between"
+                >
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#059669]"></span>
+                      <h3 className="text-xs font-bold text-slate-900">{bot.name}</h3>
+                    </div>
+                    <p className="text-xs text-slate-700 leading-relaxed">{bot.detail}</p>
+                  </div>
+                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
+                    Disponível no MagicStudent
                   </span>
-                </button>
+                </div>
               ))}
             </div>
 
-            {/* Right generator detail preview (7 cols) */}
-            <div className="lg:col-span-7 bg-[#F8FAFC] p-5 sm:p-6 rounded-3xl border border-slate-200 space-y-4 flex flex-col justify-between">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between border-b border-slate-200 pb-2">
-                  <h4 className="text-sm font-bold text-slate-900">
-                    {selectedGenerator + 1}. {gen.name}
-                  </h4>
-                  <span className="text-xs text-[#1E70EB] font-semibold">
-                    {gen.description}
-                  </span>
-                </div>
-
-                <div className="bg-white p-4 rounded-2xl border border-slate-200/90 space-y-1.5">
-                  <span className="text-xs font-bold text-slate-800 block">
-                    Exemplo Curricular Transcrito no Módulo:
-                  </span>
-                  <p className="text-xs text-slate-700 leading-relaxed font-mono bg-[#F8FAFC] p-3 rounded-xl border border-slate-200/60">
-                    {gen.example}
-                  </p>
-                </div>
-
-                <div className="bg-[#EFF6FF] p-4 rounded-2xl border border-blue-100 space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#1D4ED8]">
-                      Padrão de Prompt Recomendado:
-                    </span>
-                    <button
-                      onClick={() => handleCopy(gen.id, gen.promptPattern)}
-                      className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#1E70EB] hover:text-blue-900 cursor-pointer"
-                    >
-                      {copiedId === gen.id ? (
-                        <>
-                          <Check className="w-3 h-3 text-emerald-600" />
-                          <span className="text-emerald-700">Copiado!</span>
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-3 h-3" />
-                          <span>Copiar Modelo</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-                  <p className="text-xs font-mono text-blue-950 bg-white/90 p-3 rounded-xl border border-blue-200/50">
-                    {gen.promptPattern}
-                  </p>
-                </div>
-              </div>
-
-              <div className="text-[11px] text-slate-500 pt-2 border-t border-slate-200">
-                Pode utilizar estes padrões diretamente nos modelos de linguagem para preparar os seus recursos pedagógicos.
+            {/* Ethical Highlight Box */}
+            <div className="bg-blue-50 border border-blue-200 rounded-2xl p-5 sm:p-6 space-y-2 text-xs text-blue-950">
+              <strong className="font-bold flex items-center gap-2 text-sm text-[#1E70EB]">
+                <ShieldCheck className="w-5 h-5" />
+                <span>Enquadramento Ético Internacional (Comissão Europeia, 2022):</span>
+              </strong>
+              <p className="leading-relaxed text-slate-800 pt-1">
+                {MAGICSCHOOL_DATA.studentChatbots.ethicalNote}
+              </p>
+              <div className="pt-2 text-[11px] text-slate-500 italic border-t border-blue-200/60">
+                Fonte: &ldquo;Orientações Éticas sobre a Utilização de Inteligência Artificial e Dados no Ensino e na Aprendizagem para Educadores&rdquo; (Comissão Europeia, Serviço das Publicações da União Europeia, 2022).
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

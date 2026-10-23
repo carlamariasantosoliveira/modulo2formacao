@@ -472,109 +472,331 @@ export const CLASSROOM_ACTIVITIES: ClassroomActivity[] = [
 
 export const MAGICSCHOOL_DATA = {
   description:
-    'A plataforma MagicSchool.ai é uma das ferramentas mais completas de IA dedicada à Educação, oferecendo dezenas de geradores especializados para professores e alunos.',
+    'A plataforma MagicSchool.ai é uma das ferramentas de IA mais avançadas e completas dedicadas especificamente à Educação. Desenvolvida para apoiar professores na preparação de aulas, diferenciação pedagógica e avaliação, integra dezenas de geradores especializados e um ambiente fechado e seguro para trabalho com alunos (MagicStudent).',
+  officialUrl: 'https://www.magicschool.ai',
+  possibilidades: [
+    {
+      id: 'magicstudent',
+      title: 'MagicStudent',
+      description: 'Espaço seguro onde os alunos interagem com tutores e ferramentas com supervisão direta do professor.',
+      iconName: 'UserCheck',
+      tag: 'Ambiente de Alunos',
+    },
+    {
+      id: 'planos-aula',
+      title: 'Gerador de Planos de Aula',
+      description: 'Estruturação curricular detalhada por etapas pedagógicas e alinhada com as Aprendizagens Essenciais.',
+      iconName: 'BookOpen',
+      tag: 'Planeamento',
+    },
+    {
+      id: 'quizzes',
+      title: 'Gerador de Quizzes / Provas / Questionários',
+      description: 'Criação de avaliações formativas e sumativas com ajuste pelo nível da Taxonomia de Bloom.',
+      iconName: 'HelpCircle',
+      tag: 'Avaliação',
+    },
+    {
+      id: 'fichas-trabalho',
+      title: 'Gerador de Fichas de Trabalho',
+      description: 'Exercícios personalizados, atividades formativas e fichas diferenciadas por ritmo de aprendizagem.',
+      iconName: 'FileText',
+      tag: 'Materiais',
+    },
+    {
+      id: 'rubricas',
+      title: 'Gerador de Rubricas de Avaliação',
+      description: 'Matrizes descritivas com critérios claros, escalas graduadas e níveis de desempenho.',
+      iconName: 'CheckSquare',
+      tag: 'Critérios',
+    },
+    {
+      id: 'resumos',
+      title: 'Resumos e Reformulação de Textos',
+      description: 'Adaptação de extensão, nivelamento de complexidade lexical e sintática para inclusão pedagógica.',
+      iconName: 'FileEdit',
+      tag: 'Diferenciação',
+    },
+    {
+      id: 'feedback',
+      title: 'Ferramentas de Feedback',
+      description: 'Apoio na elaboração de comentários qualitativos e diagnósticos personalizados sobre o trabalho do aluno.',
+      iconName: 'MessageSquare',
+      tag: 'Acompanhamento',
+    },
+    {
+      id: 'apresentacoes',
+      title: 'Gerador de Apresentações',
+      description: 'Estruturação de diapositivos e propostas de conteúdos visuais para apoio às aulas.',
+      iconName: 'Layout',
+      tag: 'Apoio Visual',
+    },
+  ],
   raina: {
-    title: 'MagicSchool - Raina (Assistente do Professor)',
+    title: 'MagicSchool - Raina',
+    badge: 'Assistente do Professor',
+    subtitle: 'Converse com a Raina, a sua assistente de IA',
+    pedagogicalDefinition:
+      'Chatbot desenhado especificamente para professores, que permite uma interação contínua para obter ideias, adaptar materiais e planear atividades pedagógicas.',
     description:
-      'Assistente de chat integrado para professores, desenhado para criar conteúdos interativos e personalizar materiais.',
+      'A Raina funciona como uma copiloto pedagógica que compreende o vocabulário e a lógica escolar, sugerindo planos, adaptações e dinâmicas motivadoras.',
     examples: [
       {
-        name: 'Exemplo 1 (Poema Rap)',
+        id: 'raina-rap',
+        name: 'Exemplo 1: Poema / Rap sobre a Amizade',
+        grade: '5.º Ano',
+        subject: 'Português / Cidadania e Desenvolvimento',
         prompt:
-          '“Cria um poema de rap inspirador sobre a amizade verdadeira com 3 estrofes, rimas consistentes e metáforas.”',
-        context: 'Excelente para atividades de Português e Educação para a Cidadania.',
+          'Cria um poema tipo rap sobre a amizade com 3 estrofes, linguagem informal e uma mensagem positiva no final para o 5.º ano.',
+        pedagogicalGoal:
+          'Explorar rima, métrica, linguagem expressiva e reflexão ética sobre relações interpessoais e empatia.',
       },
       {
-        name: 'Exemplo 2 (Plano Ético)',
+        id: 'raina-plano-etica',
+        name: 'Exemplo 2: Plano de Aula sobre Ética da IA',
+        grade: '2.º Ciclo (5.º / 6.º Ano)',
+        subject: 'Cidadania e Desenvolvimento / TIC',
         prompt:
-          '“Cria um plano de aula sobre a utilização ética da IA para o 2.º ciclo (45-90 min) com atividades práticas.”',
-        context: 'Alinhado com a reflexão deontológica da tecnologia nas escolas.',
+          'Plano de aula detalhado sobre ética da IA para o 2.º ciclo (5.º/6.º ano), com objetivos de aprendizagem, duração de 45-90 min., recursos necessários, introdução/aquecimento, desenvolvimento com atividades práticas/discussão, conclusão/avaliação formativa e adaptações/diferenciação pedagógica.',
+        pedagogicalGoal:
+          'Estruturar uma sessão completa com debate ativo, trabalho colaborativo e verificação formativa sobre os limites e responsabilidade na utilização da IA.',
       },
     ],
   },
+  generators: [
+    {
+      id: 'plano-aula',
+      number: 1,
+      title: 'Plano de Aula',
+      subtitle: 'Gera um plano de aula completo com base num tópico e objetivos curriculares.',
+      pedagogicalDefinition:
+        'Ferramenta que produz planos de aula detalhados, estruturados por fases pedagógicas, alinhados com metas de aprendizagem e estratégias de diferenciação.',
+      parameters: [
+        { label: 'Nível de Ensino', value: '5.º Ano' },
+        { label: 'Disciplina / Tópico', value: 'Inglês - "Daily Routines"' },
+        { label: 'Duração Prevista', value: '45 minutos' },
+        { label: 'Conjunto de Padrões / Alinhamento', value: 'Aprendizagens Essenciais de Inglês 5.º ano' },
+      ],
+      examplePrompt:
+        'Plano de aula de 45 minutos sobre "Daily Routines" para o 5.º ano de Inglês, com atividades orais, trabalho a pares e um jogo de consolidação de vocabulário, alinhado com as Aprendizagens Essenciais.',
+      keyFeatures: [
+        'Organização por momentos didáticos: Aquecimento, Desenvolvimento e Conclusão',
+        'Sugestão de atividades orais comunicativas e jogos pedagógicos',
+        'Inclusão de estratégias de apoio e extensão para diferenciação pedagógica',
+      ],
+    },
+    {
+      id: 'fichas-trabalho',
+      number: 2,
+      title: 'Gerador de Fichas de Trabalho',
+      subtitle: 'Gerar uma ficha de trabalho com base num tópico ou conteúdo.',
+      pedagogicalDefinition:
+        'Ferramenta que cria automaticamente fichas de exercícios personalizadas com base num tema, objetivo ou texto fornecido.',
+      parameters: [
+        { label: 'Nível de Ensino', value: '2.º Ano a 3.º Ciclo (adaptável a qualquer nível)' },
+        { label: 'Tipologia de Itens', value: 'Escolha múltipla, resposta curta, V/F com justificação' },
+        { label: 'Recursos Gráficos', value: 'Possibilidade de incluir problemas contextualizados e ilustrações' },
+      ],
+      promptsList: [
+        {
+          subject: 'Ciências Naturais / Geografia (3.º Ciclo)',
+          prompt:
+            'Ficha de trabalho sobre as camadas da Terra com 5 questões de escolha múltipla, 2 de resposta curta e 1 de verdadeiro/falso com justificação.',
+        },
+        {
+          subject: 'Matemática (2.º Ano - 1.º Ciclo)',
+          prompt:
+            'Ficha de trabalho para o 2.º ano sobre a tabuada do 2, 3 e 4, com problemas contextualizados do quotidiano infantil e ilustrações para pintar.',
+        },
+      ],
+      keyFeatures: [
+        'Equilíbrio entre questões de retenção e aplicação prática',
+        'Adaptação do tom ao escalão etário dos estudantes',
+        'Facilidade de exportação pronta para fotocópia ou publicação digital',
+      ],
+    },
+    {
+      id: 'questionario',
+      number: 3,
+      title: 'Questionário',
+      subtitle: 'Gerar uma avaliação de múltipla escolha com base num texto ou tópico.',
+      pedagogicalDefinition:
+        'Ferramenta que gera questionários de escolha múltipla com base num texto, tópico ou página web, com possibilidade de ajustar o nível da taxonomia de Bloom.',
+      parameters: [
+        { label: 'Nível de Ensino', value: '9.º Ano' },
+        { label: 'Número de Questões', value: '15 questões' },
+        { label: 'Disciplina e Tópico', value: 'Matemática - Funções e Equações do 2.º Grau' },
+        { label: 'Taxonomia / Dificuldade', value: 'Distribuição calibrada (fácil, médio e difícil)' },
+        { label: 'Alinhamento Curricular', value: 'Aprendizagens Essenciais do 3.º Ciclo' },
+      ],
+      examplePrompt:
+        'Cria um questionário de 15 questões de Matemática para o 9.º ano sobre funções e equações do 2.º grau com: 5 de cálculo direto, 5 de interpretação gráfica e 5 com distratores baseados em erros comuns dos alunos. Distribui por níveis fácil, médio e difícil, alinhando com as Aprendizagens Essenciais.',
+      keyFeatures: [
+        'Opções distratoras concebidas com base em concepções alternativas frequentes',
+        'Classificação dos itens por níveis cognitivos de Bloom',
+        'Solução e justificação imediata para cada alínea',
+      ],
+    },
+    {
+      id: 'conteudo-academico',
+      number: 4,
+      title: 'Conteúdo Académico',
+      subtitle: 'Gerar conteúdo académico personalizado com base nos critérios da sua escolha.',
+      pedagogicalDefinition:
+        'Ferramenta que cria textos académicos e explicativos (resumos, fichas teóricas e glossários), adaptados ao nível da turma, com exemplos, analogias e questões para reflexão.',
+      parameters: [
+        { label: 'Nível de Ensino', value: '7.º Ano' },
+        { label: 'Tipo de Conteúdo', value: 'Explicação detalhada com recurso a exemplos e diagramas' },
+        { label: 'Comprimento do Texto', value: 'Médio a longo | 1000 palavras' },
+        {
+          label: 'Tema, Padrão, Objetivo',
+          value:
+            'Explicar o processo da fotossíntese, os seus componentes e a sua importância, recorrendo a exemplos práticos para facilitar a compreensão dos alunos.',
+        },
+      ],
+      examplePrompt:
+        'Desenvolve um conteúdo académico para alunos do 7.º ano sobre a fotossíntese, com explicações detalhadas, diagramas e exemplos do quotidiano. Comprimento médio a longo (aproximadamente 1000 palavras).',
+      keyFeatures: [
+        'Vocabulário rigoroso adaptado ao escalão etário',
+        'Uso de analogias que tornam conceitos invisíveis em processos compreensíveis',
+        'Secções de síntese e perguntas finais para guiar o estudo autónomo',
+      ],
+    },
+    {
+      id: 'rubricas',
+      number: 5,
+      title: 'Gerador de Rubrica',
+      subtitle: 'Gere uma rubrica personalizada para qualquer tarefa.',
+      pedagogicalDefinition:
+        'Ferramenta que cria rubricas personalizadas para qualquer tarefa, projeto, atividade.',
+      parameters: [
+        { label: 'Nível de Ensino', value: '7.º Ano' },
+        { label: 'Escala de Pontos', value: '5 níveis de desempenho (ex.: 1 a 5 ou Insuficiente a Excelente)' },
+        {
+          label: 'Padrão / Objetivo',
+          value:
+            'Os alunos serão capazes de identificar as principais partes do sistema digestivo e explicar, de forma simples, como acontece a digestão dos alimentos.',
+        },
+        {
+          label: 'Descrição da Tarefa',
+          value:
+            'Apresentação oral (2 a 3 minutos) sobre o sistema digestivo humano. Devem indicar os órgãos principais (boca, estômago, intestinos...) e explicar a digestão.',
+        },
+        {
+          label: 'Personalização Adicional (Opcional)',
+          value: 'Foco na clareza expositiva oral, no rigor científico e na terminologia anatómica correta.',
+        },
+        { label: 'Conjunto de Padrões para Alinhar', value: 'Aprendizagens Essenciais de Ciências Naturais – 7.º ano' },
+      ],
+      examplePrompt:
+        'Cria uma rubrica com escala de 5 pontos para avaliar uma apresentação oral (2-3 min) de Ciências Naturais no 7.º ano sobre o sistema digestivo humano. Critérios: identificação de órgãos, explicação da digestão dos alimentos, clareza expositiva e rigor científico.',
+      keyFeatures: [
+        'Descritores qualitativos transparentes para autoavaliação e heteroavaliação',
+        'Facilita o feedback objetivo fundamentado em evidências de desempenho',
+        'Alinhamento direto com os critérios de avaliação da disciplina',
+      ],
+    },
+    {
+      id: 'nivelador-texto',
+      number: 6,
+      title: 'Nivelador de Texto',
+      subtitle: 'Nivelar qualquer texto para adaptá-lo ao nível de leitura/habilidades de um aluno.',
+      pedagogicalDefinition:
+        'Ferramenta que ajusta a complexidade de um texto (vocabulário, sintaxe e extensão) a diferentes níveis de leitura, mantendo o conteúdo essencial. Também pode gerar atividades de leitura diferenciadas.',
+      parameters: [
+        { label: 'Nível de Ensino Alvo', value: '8.º Ano (personalizável para qualquer ano ou nível CEFR)' },
+        { label: 'Texto Original', value: 'Inserção de excerto textual ou inserção de ficheiros (DOCX / PDF)' },
+        {
+          label: 'Instrução de Diferenciação',
+          value: 'Redução de jargão arcaico, encurtamento de orações subordinadas e manutenção das ideias-chave',
+        },
+      ],
+      examplePrompt:
+        'Simplifica este texto sobre a Revolução Industrial: reduz o vocabulário complexo, mantém as ideias principais e cria 3 perguntas de leitura com resposta curta para o 8.º ano.',
+      keyFeatures: [
+        'Suporta inserção direta de texto ou carregamento de ficheiros',
+        'Garante acessibilidade e diferenciação pedagógica (DUA)',
+        'Gera simultaneamente questões para testar a retenção da leitura simplificada',
+      ],
+    },
+    {
+      id: 'compreensao-conceitual',
+      number: 7,
+      title: 'Compreensão Conceitual',
+      subtitle: 'Gere ideias sobre como ajudar seus alunos a desenvolver a compreensão conceitual.',
+      pedagogicalDefinition:
+        'Ferramenta que apoia o professor a planear estratégias para desenvolver a compreensão conceptual dos alunos sobre um determinado tema.',
+      parameters: [
+        { label: 'Nível de Ensino', value: '9.º Ano' },
+        { label: 'Padrão / Tópico', value: 'Discurso direto e discurso indireto' },
+        {
+          label: 'Contexto Adicional (Opcional)',
+          value:
+            'Os alunos confundem os tempos verbais e a mudança de pronomes quando transformam discurso direto em indireto.',
+        },
+      ],
+      examplePrompt:
+        'Gera ideias pedagógicas e analogias para apoiar alunos do 9.º ano a desenvolver a compreensão conceptual sobre discurso direto e discurso indireto, superando a confusão comum com tempos verbais e mudança de pronomes.',
+      keyFeatures: [
+        'Diagnóstico proativo dos erros conceituais recorrentes',
+        'Criação de pontes cognitivas entre a experiência intuitiva e a regra gramatical',
+        'Sugestões de exercícios dinâmicos de comparação contrastiva',
+      ],
+    },
+    {
+      id: 'resumidor-youtube',
+      number: 8,
+      title: 'Resumidor de Vídeo do YouTube',
+      subtitle: 'Resumir um vídeo do YouTube no comprimento que você escolher.',
+      pedagogicalDefinition:
+        'Ferramenta que transcreve vídeos do YouTube e gera um resumo conciso (ou um resumo por secções), uma lista de conceitos-chave e perguntas.',
+      parameters: [
+        { label: 'Entrada de Dados', value: 'URL / Link do vídeo do YouTube' },
+        { label: 'Comprimento Escolhido', value: 'Resumo conciso, detalhado ou com carimbos temporais (timestamps)' },
+        { label: 'Elementos Produzidos', value: 'Transcrição, resumo temático, conceitos-chave e perguntas de interpretação' },
+      ],
+      examplePrompt:
+        'Resumir este vídeo educativo do YouTube em 3 blocos cronológicos com timestamps, destacando os 5 conceitos-chave e gerando 5 perguntas de verificação para os alunos responderem durante o visionamento.',
+      keyFeatures: [
+        'Poupança substancial de tempo na triagem de recursos audiovisuais',
+        'Transformação de vídeos passivos em materiais de visionamento ativo com perguntas orientadoras',
+        'Apoio a alunos com dificuldades de processamento auditivo através do texto transcrito',
+      ],
+    },
+  ],
   studentChatbots: {
-    title: 'MagicSchool - Student Chatbots (Alunos)',
-    description: 'Assistentes configuráveis desenhados para interação pedagógica segura com os alunos.',
+    title: 'MagicSchool - MagicStudent (Alunos)',
+    badge: 'Para o Trabalho Autónomo e Seguro dos Alunos',
+    description:
+      'O MagicStudent é uma sala de aula virtual fechada onde o professor convida os alunos via código de turma, permitindo-lhes utilizar ferramentas e tutores de IA sem recolha de dados pessoais nem necessidade de criar contas de correio eletrónico externas.',
     chatbots: [
       {
         name: 'Tutor de IA',
-        detail: 'Tira dúvidas pontuais em estudo autónomo (ex.: “Explica-me o que é a fotossíntese”).',
+        detail: 'Tira dúvidas pontuais em estudo autónomo com linguagem acessível (ex.: “Explica-me o que é a fotossíntese”).',
+        color: 'blue',
       },
       {
         name: 'Assistente de Aprendizagem de IA',
         detail:
-          'Respostas guiadas e pedagógicas que incentivam o raciocínio passo a passo em vez de dar a resposta final.',
+          'Abordagem pedagógica socrática: não fornece a resposta pronta; guia o raciocínio do aluno através de perguntas graduais.',
+        color: 'emerald',
       },
       {
         name: 'Chatbot Personalizado',
-        detail: 'Limitado a um tema ou disciplina específico definido previamente pelo professor.',
+        detail:
+          'Configurado previamente pelo professor com documentos específicos da turma (manuais, sebentas ou textos do projeto).',
+        color: 'violet',
       },
       {
         name: 'IA - Questões Éticas',
         detail:
-          'Chatbot programado exclusivamente com base no documento “Orientações Éticas para Educadores” (Comissão Europeia, 2022), abordando a ação humana, transparência, equidade e bem-estar, sem adicionar fontes externas.',
+          'Chatbot treinado estritamente com base no documento “Orientações Éticas para Educadores” (Comissão Europeia, 2022), focado na supervisão humana, transparência, equidade e bem-estar escolar.',
+        color: 'amber',
       },
     ],
+    ethicalNote:
+      'O chatbot "IA - Questões Éticas" constitui um modelo de referência pedagógico internacional, assegurando que o aluno discute os desafios deontológicos dos algoritmos sem exposição a alucinações de dados abertos.',
   },
-  specificGenerators: [
-    {
-      id: 'fichas',
-      name: 'Gerador de Fichas de Trabalho',
-      description: 'Exercícios personalizados.',
-      example: 'Camadas da Terra; tabuada do 2, 3 e 4 com pequenos problemas.',
-      promptPattern: 'Gera uma ficha de trabalho diferenciada sobre [TEMA] com 3 níveis de dificuldade.',
-    },
-    {
-      id: 'questionario',
-      name: 'Questionário',
-      description: 'Provas automáticas de escolha múltipla.',
-      example:
-        '15 questões de funções afins/quadráticas do 9.º ano com distratores baseados em erros frequentes dos alunos.',
-      promptPattern: 'Cria um quiz de escolha múltipla com 10 questões, justificando a opção correta e os distratores.',
-    },
-    {
-      id: 'plano-aula',
-      name: 'Plano de Aula',
-      description: 'Planos detalhados alinhados com Aprendizagens Essenciais.',
-      example: 'Daily Routines em Inglês do 5.º ano.',
-      promptPattern: 'Desenvolve um plano de aula completo de 50 minutos alinhado com as Aprendizagens Essenciais.',
-    },
-    {
-      id: 'conteudo-academico',
-      name: 'Conteúdo Académico',
-      description: 'Textos explicativos longos (~1000 palavras) com analogias e diagramas.',
-      example: 'Fotossíntese para 7.º ano.',
-      promptPattern: 'Escreve um texto expositivo rigoroso com recurso a analogias pedagógicas claras.',
-    },
-    {
-      id: 'rubricas',
-      name: 'Gerador de Rubricas',
-      description: 'Matrizes de avaliação com escalas e critérios bem definidos.',
-      example: 'Apresentação oral sobre o sistema digestivo no 7.º ano.',
-      promptPattern: 'Constrói uma rubrica de avaliação formativa em matriz de 4 níveis de desempenho.',
-    },
-    {
-      id: 'nivelador-texto',
-      name: 'Nivelador de Texto',
-      description: 'Ajuste da complexidade sintática e do vocabulário, mantendo a essência.',
-      example: 'Revolução Industrial.',
-      promptPattern: 'Simplifica a complexidade léxica deste texto mantendo integralmente o rigor conceptual.',
-    },
-    {
-      id: 'compreensao-conceitual',
-      name: 'Compreensão Conceitual',
-      description: 'Estratégias para ultrapassar erros comuns.',
-      example: 'Discurso direto versus indireto no 9.º ano.',
-      promptPattern: 'Identifica os erros conceptuais mais frequentes em [CONTEÚDO] e propõe estratégias de remediação.',
-    },
-    {
-      id: 'resumidor-youtube',
-      name: 'Resumidor de Vídeo do YouTube',
-      description: 'Transcrição de vídeos, resumos por secções, conceitos-chave e perguntas.',
-      example: 'Transcrição de vídeo educativo, resumos por secções temáticas, conceitos-chave e perguntas de verificação.',
-      promptPattern: 'Transcreve o vídeo, divide em blocos temáticos e formula 5 perguntas de verificação de leitura.',
-    },
-  ],
 };
 
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
