@@ -15,7 +15,6 @@ import {
   Info,
 } from 'lucide-react';
 import { PageId } from '../../types';
-import boasPraticasImg from '/assets/aistudio/image_0c60cf0c.png';
 
 interface BoasPraticasPageProps {
   onNavigate?: (pageId: PageId) => void;
@@ -167,30 +166,6 @@ export const BoasPraticasPage: React.FC<BoasPraticasPageProps> = ({ onNavigate }
             critério, integrando-a nos momentos certos para potenciar a criatividade, a reflexão e a
             qualidade do trabalho educativo.
           </p>
-        </div>
-      </div>
-
-      {/* Official Infographic Visual Map matching the image */}
-      <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-sm space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
-          <div className="flex items-center gap-2">
-            <Compass className="w-5 h-5 text-[#1E70EB]" />
-            <h3 className="text-sm sm:text-base font-bold text-slate-900">
-              Roteiro Visual de Boas Práticas
-            </h3>
-          </div>
-          <span className="text-xs text-slate-500 font-medium">
-            Infografia orientadora da formação
-          </span>
-        </div>
-
-        <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 group shadow-2xs">
-          <img
-            src={boasPraticasImg}
-            alt="Infografia do Roteiro de Boas Práticas no Uso da IA na Educação"
-            className="w-full h-auto object-contain mx-auto"
-            loading="eager"
-          />
         </div>
       </div>
 
