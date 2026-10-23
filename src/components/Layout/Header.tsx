@@ -23,14 +23,15 @@ const PAGE_STEPS: Record<PageId, { num: number; title: string; category?: string
   'tipos-modelos': { num: 3, title: '3. Tipos de Modelos (Áudio, Vídeo, Multimodal)' },
   prompts: { num: 4, title: '4. Prompts e Engenharia de Prompts' },
   tecnicas: { num: 5, title: '5. Técnicas de Formulação de Prompts' },
-  'exemplos-disciplina': { num: 6, title: '6. Exemplos Práticos por Disciplina' },
-  'atividades-sala': { num: 7, title: '7. Atividades Práticas em Sala de Aula' },
-  magicschool: { num: 8, title: '8. Exploração da Ferramenta MagicSchool.ai' },
-  'atividade-sessao': { num: 9, title: '9. Atividade da Sessão', category: 'Atividade' },
-  'ferramentas-referencias': { num: 10, title: 'Referências Bibliográficas e Créditos', category: 'Referências' },
+  'exemplos-disciplina': { num: 6, title: '6. Bons Prompts' },
+  'boas-praticas': { num: 7, title: '7. Boas Práticas' },
+  'atividades-sala': { num: 8, title: '8. Atividades em Aula' },
+  magicschool: { num: 9, title: '9. MagicSchool.ai' },
+  'atividade-sessao': { num: 10, title: '10. Atividade da Sessão', category: 'Atividade' },
+  'ferramentas-referencias': { num: 11, title: 'Referências Bibliográficas e Créditos', category: 'Referências' },
 };
 
-// Main linear sequence for course browsing
+// Main linear sequence for browsing
 const ORDERED_STEPS: PageId[] = [
   'home',
   'ia-generativa',
@@ -39,6 +40,7 @@ const ORDERED_STEPS: PageId[] = [
   'prompts',
   'tecnicas',
   'exemplos-disciplina',
+  'boas-praticas',
   'atividades-sala',
   'magicschool',
   'atividade-sessao',

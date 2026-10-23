@@ -1,0 +1,305 @@
+import React, { useState } from 'react';
+import {
+  ShieldCheck,
+  CheckCircle2,
+  FileSearch,
+  BookCheck,
+  Sliders,
+  HeartHandshake,
+  Lock,
+  AlertTriangle,
+  Compass,
+  Sparkles,
+  Target,
+  ExternalLink,
+  Info,
+} from 'lucide-react';
+import { PageId } from '../../types';
+import boasPraticasImg from '/assets/aistudio/image_0c60cf0c.png';
+
+interface BoasPraticasPageProps {
+  onNavigate?: (pageId: PageId) => void;
+}
+
+interface PillarData {
+  number: number;
+  title: string;
+  summary: string;
+  pedagogicalDetail: string;
+  teacherAction: string;
+  icon: React.ElementType;
+  badgeColor: string;
+  borderColor: string;
+  bgLight: string;
+  iconColor: string;
+}
+
+const BOAS_PRATICAS_PILLARS: PillarData[] = [
+  {
+    number: 1,
+    title: 'Análise Crítica das Respostas',
+    summary:
+      'Avalie sempre a correção, relevância e coerência da informação gerada pela ferramenta de IA.',
+    pedagogicalDetail:
+      'Nunca adote o texto gerado pela IA sem uma leitura atenta. Avalie se o conteúdo responde com rigor aos objetivos de aprendizagem, se o vocabulário é adequado à maturidade dos alunos e se a argumentação é logicamente sólida.',
+    teacherAction:
+      'Ação do Professor: Ler criticamente antes de imprimir ou projetar, assinalando afirmações vagas ou imprecisas.',
+    icon: FileSearch,
+    badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
+    borderColor: 'border-blue-200',
+    bgLight: 'bg-blue-50/40',
+    iconColor: 'text-blue-600',
+  },
+  {
+    number: 2,
+    title: 'Validação da Informação',
+    summary:
+      'Confirme dados, factos e conceitos importantes consultando fontes externas fiáveis e independentes.',
+    pedagogicalDetail:
+      'A IA não é uma base de conhecimento factual garantida: é um calculador estatístico de probabilidades. Qualquer data, nome histórico, fórmula científica, citação ou valor numérico deve ser validado em manuais certificados e fontes fidedignas.',
+    teacherAction:
+      'Ação do Professor: Verificar dados críticos em manuais escolares, dicionários ou artigos científicos certificados.',
+    icon: BookCheck,
+    badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    borderColor: 'border-emerald-200',
+    bgLight: 'bg-emerald-50/40',
+    iconColor: 'text-emerald-600',
+  },
+  {
+    number: 3,
+    title: 'Adaptação ao Contexto Real',
+    summary:
+      'Ajuste a linguagem, os exemplos e o nível de profundidade do conteúdo para se adequar ao seu público-alvo específico.',
+    pedagogicalDetail:
+      'Cada turma tem ritmos e percursos de aprendizagem singulares. O material gerado pela IA deve ser calibrado para o ano de escolaridade, perfil dos alunos, eventuais medidas de diferenciação pedagógica (DUA) e realidade da escola.',
+    teacherAction:
+      'Ação do Professor: Substituir exemplos genéricos por referências culturais, locais e curriculares portuguesas.',
+    icon: Sliders,
+    badgeColor: 'bg-amber-50 text-amber-700 border-amber-200',
+    borderColor: 'border-amber-200',
+    bgLight: 'bg-amber-50/40',
+    iconColor: 'text-amber-600',
+  },
+  {
+    number: 4,
+    title: 'Integração como Apoio Humano',
+    summary:
+      'Use a IA como uma ferramenta de suporte para auxiliar o seu trabalho, não para substituir o seu pensamento próprio e original.',
+    pedagogicalDetail:
+      'O professor é o decisor pedagógico e o arquiteto da experiência de aprendizagem. A IA funciona como co-piloto para acelerar rascunhos, gerar alternativas e apoiar tarefas rotineiras, libertando tempo para a mediação pedagógica.',
+    teacherAction:
+      'Ação do Professor: Manter a autoria, a intencionalidade didática e o julgamento profissional no centro do processo.',
+    icon: HeartHandshake,
+    badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',
+    borderColor: 'border-purple-200',
+    bgLight: 'bg-purple-50/40',
+    iconColor: 'text-purple-600',
+  },
+  {
+    number: 5,
+    title: 'Responsabilidade e Ética',
+    summary:
+      'Respeite os direitos de autor, seja transparente sobre a utilização da IA e aplique-a de forma consciente e responsável.',
+    pedagogicalDetail:
+      'Proteja rigorosamente a privacidade e dados pessoais dos estudantes (RGPD). Promova uma cultura escolar de integridade académica e transparência, ensinando os alunos a declarar quando e como utilizaram ferramentas de IA.',
+    teacherAction:
+      'Ação do Professor: Nunca introduzir dados pessoais ou trabalhos identificáveis dos alunos em plataformas públicas de IA.',
+    icon: Lock,
+    badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+    borderColor: 'border-indigo-200',
+    bgLight: 'bg-indigo-50/40',
+    iconColor: 'text-indigo-600',
+  },
+  {
+    number: 6,
+    title: 'Consciência das Limitações',
+    summary:
+      'Reconheça que a IA pode errar, omitir informação ou gerar respostas que parecem plausíveis mas estão incorretas.',
+    pedagogicalDetail:
+      'Relembre sempre o princípio fundamental: «Resposta convincente ≠ Resposta correcta». A fluência verbal de um modelo não reflete raciocínio consciente nem discernimento ético, podendo produzir alucinações fáceis de passar despercebidas.',
+    teacherAction:
+      'Ação do Professor: Ensinar os alunos a desconfiar da verosimilhança superficial e a exercitar o pensamento crítico.',
+    icon: AlertTriangle,
+    badgeColor: 'bg-red-50 text-red-700 border-red-200',
+    borderColor: 'border-red-200',
+    bgLight: 'bg-red-50/40',
+    iconColor: 'text-red-600',
+  },
+];
+
+export const BoasPraticasPage: React.FC<BoasPraticasPageProps> = ({ onNavigate }) => {
+  const [selectedPillar, setSelectedPillar] = useState<number | null>(null);
+
+  return (
+    <div className="space-y-8 pb-12 font-sans">
+      {/* Title bar */}
+      <div className="flex items-center gap-3">
+        <span className="w-1.5 h-8 bg-[#1E70EB] rounded-full inline-block"></span>
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
+            7. Boas Práticas no Uso da IA na Educação
+          </h1>
+          <p className="text-xs text-slate-500 font-medium mt-0.5">
+            Os 6 pilares de utilização responsável e o princípio de Uso Pedagógico Orientado
+          </p>
+        </div>
+      </div>
+
+      {/* Hero Principle Banner: Uso Pedagógico Orientado */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#0C1E38] via-[#0F2B52] to-[#1E4D8C] text-white rounded-3xl p-6 sm:p-8 shadow-sm border border-white/10">
+        <div className="max-w-3xl space-y-3 z-10 relative">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 border border-white/20 rounded-full text-blue-200 text-xs font-bold uppercase tracking-wider">
+            <Target className="w-4 h-4 text-blue-300" />
+            <span>Princípio Orientador Central</span>
+          </div>
+
+          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            Uso Pedagógico Orientado
+          </h2>
+
+          <p className="text-sm sm:text-base text-blue-100 font-medium leading-relaxed">
+            «Utilize a IA com uma <strong>intencionalidade educativa clara</strong> e{' '}
+            <strong>objetivos de aprendizagem bem definidos</strong>.»
+          </p>
+
+          <p className="text-xs text-blue-200/80 leading-relaxed pt-1">
+            A tecnologia não define o rumo pedagógico; é o professor que mobiliza a ferramenta com
+            critério, integrando-a nos momentos certos para potenciar a criatividade, a reflexão e a
+            qualidade do trabalho educativo.
+          </p>
+        </div>
+      </div>
+
+      {/* Official Infographic Visual Map matching the image */}
+      <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-sm space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+          <div className="flex items-center gap-2">
+            <Compass className="w-5 h-5 text-[#1E70EB]" />
+            <h3 className="text-sm sm:text-base font-bold text-slate-900">
+              Roteiro Visual de Boas Práticas
+            </h3>
+          </div>
+          <span className="text-xs text-slate-500 font-medium">
+            Infografia orientadora da formação
+          </span>
+        </div>
+
+        <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 group shadow-2xs">
+          <img
+            src={boasPraticasImg}
+            alt="Infografia do Roteiro de Boas Práticas no Uso da IA na Educação"
+            className="w-full h-auto object-contain mx-auto"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      {/* Os 6 Pilares Estruturantes em Cartões Didáticos */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-lg font-bold text-slate-900">
+              Os 6 Pilares de Boas Práticas para o Docente
+            </h3>
+            <p className="text-xs text-slate-500">
+              Clique em qualquer pilar para aprofundar as orientações de aplicação em aula
+            </p>
+          </div>
+          <span className="text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full hidden sm:inline-block">
+            6 Pilares Fundamentais
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {BOAS_PRATICAS_PILLARS.map((p) => {
+            const Icon = p.icon;
+            const isExpanded = selectedPillar === p.number;
+
+            return (
+              <div
+                key={p.number}
+                onClick={() => setSelectedPillar(isExpanded ? null : p.number)}
+                className={`p-5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between space-y-4 bg-white ${
+                  isExpanded
+                    ? 'ring-2 ring-blue-500/20 border-blue-500 shadow-md scale-[1.01]'
+                    : `${p.borderColor} hover:shadow-xs hover:border-slate-300`
+                }`}
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span
+                      className={`w-8 h-8 rounded-xl flex items-center justify-center font-black text-xs ${p.bgLight} ${p.iconColor}`}
+                    >
+                      #{p.number}
+                    </span>
+                    <span
+                      className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${p.badgeColor}`}
+                    >
+                      Pilar {p.number}
+                    </span>
+                  </div>
+
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <Icon className={`w-4 h-4 ${p.iconColor} shrink-0`} />
+                      <h4 className="text-sm font-bold text-slate-900 leading-snug">{p.title}</h4>
+                    </div>
+                    <p className="text-xs text-slate-700 leading-relaxed font-medium pt-1">
+                      {p.summary}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100 space-y-2">
+                  <p className="text-[11px] text-slate-600 leading-relaxed font-normal">
+                    {p.pedagogicalDetail}
+                  </p>
+
+                  <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200 text-[11px] text-slate-800 font-semibold leading-relaxed">
+                    {p.teacherAction}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Checklist Rápida de Verificação Docente */}
+      <div className="bg-[#F8FAFC] rounded-3xl p-6 sm:p-8 border border-slate-200 space-y-4">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-xl bg-blue-100 text-[#1E70EB] flex items-center justify-center">
+            <CheckCircle2 className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="text-sm sm:text-base font-bold text-slate-900">
+              Checklist de Validação antes de Utilizar um Recurso de IA com os Alunos
+            </h3>
+            <span className="text-xs text-slate-500">
+              Critérios imediatos de verificação pedagógica
+            </span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700 pt-1">
+          <div className="flex items-start gap-2.5 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <span>Validei rigorosamente todos os conceitos, datas e factos com manuais fiáveis?</span>
+          </div>
+          <div className="flex items-start gap-2.5 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <span>A linguagem e extensão estão perfeitamente ajustadas ao ano de escolaridade?</span>
+          </div>
+          <div className="flex items-start gap-2.5 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <span>O recurso cumpre um objetivo de aprendizagem curricular concreto e avaliável?</span>
+          </div>
+          <div className="flex items-start gap-2.5 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <span>Garanti que não partilhei quaisquer dados privados ou confidenciais de alunos?</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

@@ -13,6 +13,7 @@ import { TiposModelosPage } from './components/Pages/TiposModelosPage';
 import { PromptsPage } from './components/Pages/PromptsPage';
 import { TecnicasPage } from './components/Pages/TecnicasPage';
 import { ExemplosDisciplinaPage } from './components/Pages/ExemplosDisciplinaPage';
+import { BoasPraticasPage } from './components/Pages/BoasPraticasPage';
 import { AtividadesSalaPage } from './components/Pages/AtividadesSalaPage';
 import { MagicSchoolPage } from './components/Pages/MagicSchoolPage';
 import { AtividadeSessaoPage } from './components/Pages/AtividadeSessaoPage';
@@ -26,6 +27,7 @@ const VALID_PAGES: PageId[] = [
   'prompts',
   'tecnicas',
   'exemplos-disciplina',
+  'boas-praticas',
   'atividades-sala',
   'magicschool',
   'atividade-sessao',
@@ -98,6 +100,8 @@ export default function App() {
         return <TecnicasPage onNavigate={handleSelectPage} />;
       case 'exemplos-disciplina':
         return <ExemplosDisciplinaPage onNavigate={handleSelectPage} />;
+      case 'boas-praticas':
+        return <BoasPraticasPage onNavigate={handleSelectPage} />;
       case 'atividades-sala':
         return <AtividadesSalaPage />;
       case 'magicschool':

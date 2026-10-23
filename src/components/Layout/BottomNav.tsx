@@ -16,6 +16,7 @@ const ORDERED_PAGES: PageId[] = [
   'prompts',
   'tecnicas',
   'exemplos-disciplina',
+  'boas-praticas',
   'atividades-sala',
   'magicschool',
   'atividade-sessao',

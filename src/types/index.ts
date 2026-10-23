@@ -6,6 +6,7 @@ export type PageId =
   | 'prompts'
   | 'tecnicas'
   | 'exemplos-disciplina'
+  | 'boas-praticas'
   | 'atividades-sala'
   | 'magicschool'
   | 'atividade-sessao'

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import {
   Sparkles,
-  Copy,
-  Check,
   CheckCircle2,
   XCircle,
   ArrowRight,
@@ -20,16 +18,9 @@ interface TecnicasPageProps {
 
 export const TecnicasPage: React.FC<TecnicasPageProps> = ({ onNavigate }) => {
   const [activeStrategyId, setActiveStrategyId] = useState<number>(1);
-  const [copiedId, setCopiedId] = useState<number | null>(null);
 
   const currentTech =
     PROMPT_TECHNIQUES.find((t) => t.id === activeStrategyId) || PROMPT_TECHNIQUES[0];
-
-  const handleCopy = (id: number, text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedId(id);
-    setTimeout(() => setCopiedId(null), 2000);
-  };
 
   const handleNext = () => {
     if (activeStrategyId < PROMPT_TECHNIQUES.length) {
@@ -62,14 +53,9 @@ export const TecnicasPage: React.FC<TecnicasPageProps> = ({ onNavigate }) => {
 
       {/* Intro principle banner */}
       <div className="bg-[#EFF6FF] rounded-3xl p-6 sm:p-7 border border-blue-100 shadow-2xs space-y-2">
-        <div className="flex items-center justify-between">
-          <h2 className="text-xs font-bold text-[#1D4ED8] uppercase tracking-wider">
-            Princípio Fundamental de Otimização Pedagógica
-          </h2>
-          <span className="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full">
-            Estratégia {currentTech.id} de 8 Ativa
-          </span>
-        </div>
+        <h2 className="text-xs font-bold text-[#1D4ED8] uppercase tracking-wider">
+          Princípio Fundamental
+        </h2>
         <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
           Quanto mais precisa, contextualizada e rica em critérios for a instrução fornecida à IA,
           menor é a probabilidade de alucinação e maior é a qualidade e aplicabilidade do recurso
@@ -79,14 +65,9 @@ export const TecnicasPage: React.FC<TecnicasPageProps> = ({ onNavigate }) => {
 
       {/* ABAS / SEPARADORES POR CADA ESTRATÉGIA */}
       <div className="bg-white rounded-3xl p-3 sm:p-4 border border-slate-200 shadow-sm space-y-2.5">
-        <div className="flex items-center justify-between text-[11px] font-bold text-slate-600 uppercase tracking-wider px-1">
-          <div className="flex items-center gap-2">
-            <Layers className="w-4 h-4 text-[#1E70EB]" />
-            <span>Selecione uma Estratégia (Abas / Separadores):</span>
-          </div>
-          <span className="text-blue-600 font-bold">
-            Estratégia {currentTech.id} de {PROMPT_TECHNIQUES.length}
-          </span>
+        <div className="flex items-center gap-2 text-[11px] font-bold text-slate-600 uppercase tracking-wider px-1">
+          <Layers className="w-4 h-4 text-[#1E70EB]" />
+          <span>Selecione uma Estratégia</span>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
@@ -131,37 +112,18 @@ export const TecnicasPage: React.FC<TecnicasPageProps> = ({ onNavigate }) => {
       {/* DETALHE DA ESTRATÉGIA SELECIONADA */}
       <div className="bg-white rounded-3xl border border-slate-100 shadow-2xs overflow-hidden animate-in fade-in duration-200">
         {/* Header of technique */}
-        <div className="p-6 sm:p-7 bg-[#F8FAFC] border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs font-bold text-[#1E70EB] uppercase tracking-wider bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-md">
-                Estratégia {currentTech.id} de 8
-              </span>
-              <span className="text-xs text-slate-500 font-medium">
-                Técnica de Otimização Pedagógica
-              </span>
-            </div>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900">
-              {currentTech.name}
-            </h2>
+        <div className="p-6 sm:p-7 bg-[#F8FAFC] border-b border-slate-100">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-xs font-bold text-[#1E70EB] uppercase tracking-wider bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-md">
+              Estratégia {currentTech.id} de 8
+            </span>
+            <span className="text-xs text-slate-500 font-medium">
+              Técnica de Otimização Pedagógica
+            </span>
           </div>
-
-          <button
-            onClick={() => handleCopy(currentTech.id, currentTech.optimizedPrompt)}
-            className="self-start md:self-auto inline-flex items-center gap-2 text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 px-4 py-2.5 rounded-xl shadow-2xs hover:border-blue-300 transition-all cursor-pointer"
-          >
-            {copiedId === currentTech.id ? (
-              <>
-                <Check className="w-4 h-4 text-emerald-600" />
-                <span className="text-emerald-700 font-bold">Prompt Otimizado Copiado!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-4 h-4 text-[#1E70EB]" />
-                <span>Copiar Prompt Otimizado</span>
-              </>
-            )}
-          </button>
+          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900">
+            {currentTech.name}
+          </h2>
         </div>
 
         {/* Content body */}

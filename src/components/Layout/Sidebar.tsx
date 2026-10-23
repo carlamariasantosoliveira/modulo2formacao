@@ -14,6 +14,7 @@ import {
   FileText,
   Brain,
   X,
+  ShieldCheck,
 } from 'lucide-react';
 import { PageId } from '../../types';
 
@@ -24,7 +25,7 @@ interface SidebarProps {
   onCloseMobile: () => void;
 }
 
-// 8 Official sections directly from the course syllabus
+// Official sections directly from the syllabus
 const OFFICIAL_SECTIONS: Array<{
   id: PageId;
   label: string;
@@ -35,9 +36,10 @@ const OFFICIAL_SECTIONS: Array<{
   { id: 'tipos-modelos', label: '3. Tipos de modelos', icon: Layers },
   { id: 'prompts', label: '4. Prompts', icon: MessageSquare },
   { id: 'tecnicas', label: '5. Técnicas de prompts', icon: PenTool },
-  { id: 'exemplos-disciplina', label: '6. Exemplos disciplinares', icon: BookOpen },
-  { id: 'atividades-sala', label: '7. Atividades em aula', icon: FileCheck },
-  { id: 'magicschool', label: '8. MagicSchool.ai', icon: Settings },
+  { id: 'exemplos-disciplina', label: '6. Bons Prompts', icon: BookOpen },
+  { id: 'boas-praticas', label: '7. Boas Práticas', icon: ShieldCheck },
+  { id: 'atividades-sala', label: '8. Atividades em aula', icon: FileCheck },
+  { id: 'magicschool', label: '9. MagicSchool.ai', icon: Settings },
 ];
 
 const SYNTHESIS_SECTIONS: Array<{
@@ -45,7 +47,7 @@ const SYNTHESIS_SECTIONS: Array<{
   label: string;
   icon: React.ElementType;
 }> = [
-  { id: 'atividade-sessao', label: '9. Atividade da Sessão', icon: Users },
+  { id: 'atividade-sessao', label: '10. Atividade da Sessão', icon: Users },
   { id: 'ferramentas-referencias', label: 'Referências & Créditos', icon: FileText },
 ];
 
