@@ -200,42 +200,18 @@ export const MagicSchoolPage: React.FC = () => {
 
           {/* Current Generator Detail Card */}
           <div className="bg-white rounded-3xl border border-slate-200/80 shadow-2xs overflow-hidden">
-            {/* Tool Banner Header */}
-            <div className="p-6 bg-linear-to-r from-blue-50/80 via-slate-50 to-white border-b border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="flex items-start sm:items-center gap-3.5">
-                <div className="w-11 h-11 rounded-2xl bg-[#1E70EB] text-white flex items-center justify-center shadow-xs shrink-0">
-                  <span className="text-sm font-extrabold">{currentGen.number}</span>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 tracking-wider">
-                      Ferramenta MagicSchool
-                    </span>
-                    <span className="text-xs text-slate-500 font-medium">
-                      Módulo Específico
-                    </span>
-                  </div>
-                  <h2 className="text-xl font-extrabold text-slate-900 mt-0.5">
-                    {currentGen.title}
-                  </h2>
-                </div>
-              </div>
-
-              <div className="text-xs text-slate-500 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-2xs font-medium">
-                {currentGen.subtitle}
-              </div>
-            </div>
-
             <div className="p-6 sm:p-8 space-y-6">
-              {/* Pedagogical Definition Banner (YELLOW/AMBER BOX FROM GENIALLY SLIDES) */}
-              <div className="bg-amber-50/90 border-2 border-amber-300/80 rounded-2xl p-5 sm:p-6 shadow-2xs space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                  <span className="text-xs font-extrabold uppercase tracking-wider text-amber-900">
-                    Definição Pedagógica Fundamental:
+              {/* Highlight Box with Tool Title & Number */}
+              <div className="bg-amber-50/90 border-2 border-amber-300/80 rounded-2xl p-5 sm:p-6 shadow-2xs space-y-3">
+                <div className="flex items-center gap-3">
+                  <span className="w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center font-extrabold text-sm shadow-xs shrink-0">
+                    {currentGen.number}
                   </span>
+                  <h3 className="text-base sm:text-lg font-extrabold text-amber-950 tracking-tight">
+                    {currentGen.number}. {currentGen.title}
+                  </h3>
                 </div>
-                <p className="text-xs sm:text-sm font-medium text-amber-950 leading-relaxed pl-4 border-l-2 border-amber-300">
+                <p className="text-xs sm:text-sm font-medium text-amber-950 leading-relaxed pl-3 border-l-2 border-amber-400">
                   {currentGen.pedagogicalDefinition}
                 </p>
               </div>
