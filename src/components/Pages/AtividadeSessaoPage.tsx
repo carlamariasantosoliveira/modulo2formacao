@@ -191,7 +191,7 @@ export const AtividadeSessaoPage: React.FC = () => {
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-200 text-xs font-semibold uppercase tracking-wider">
             <Users className="w-3.5 h-3.5 text-blue-300" />
-            Atividade de Formação · Atividade de Grupo
+            Atividade de Grupo
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
             Do prompt ao recurso pedagógico

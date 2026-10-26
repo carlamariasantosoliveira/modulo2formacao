@@ -138,20 +138,12 @@ export const BoasPraticasPage: React.FC<BoasPraticasPageProps> = ({ onNavigate }
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
             7. Boas Práticas no Uso da IA na Educação
           </h1>
-          <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Os 6 pilares de utilização responsável e o princípio de Uso Pedagógico Orientado
-          </p>
         </div>
       </div>
 
       {/* Hero Principle Banner: Uso Pedagógico Orientado */}
       <div className="relative overflow-hidden bg-gradient-to-r from-[#0C1E38] via-[#0F2B52] to-[#1E4D8C] text-white rounded-3xl p-6 sm:p-8 shadow-sm border border-white/10">
         <div className="max-w-3xl space-y-3 z-10 relative">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 border border-white/20 rounded-full text-blue-200 text-xs font-bold uppercase tracking-wider">
-            <Target className="w-4 h-4 text-blue-300" />
-            <span>Princípio Orientador Central</span>
-          </div>
-
           <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
             Uso Pedagógico Orientado
           </h2>
@@ -180,9 +172,6 @@ export const BoasPraticasPage: React.FC<BoasPraticasPageProps> = ({ onNavigate }
               Clique em qualquer pilar para aprofundar as orientações de aplicação em aula
             </p>
           </div>
-          <span className="text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full hidden sm:inline-block">
-            6 Pilares Fundamentais
-          </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

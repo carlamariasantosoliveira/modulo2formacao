@@ -43,11 +43,8 @@ export const TecnicasPage: React.FC<TecnicasPageProps> = ({ onNavigate }) => {
         <span className="w-1.5 h-8 bg-[#1E70EB] rounded-full inline-block"></span>
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
-            5. Técnicas de Formulação de Prompts
+            5. Formulação de Prompts
           </h1>
-          <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Estratégias pedagógicas e comparação entre formulações vagas e otimizadas
-          </p>
         </div>
       </div>
 

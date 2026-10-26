@@ -94,6 +94,13 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
           description:
             'Motor de pesquisa conversacional com citação rigorosa de fontes académicas e hiperligações para verificação.',
         },
+        {
+          name: 'Google AI Studio',
+          url: 'https://aistudio.google.com',
+          badge: 'Gratuito · Google',
+          description:
+            'Ambiente para experimentação direta com modelos generativos (Gemini), prototipagem de prompts de sistema, ajuste de temperatura e desenvolvimento de materiais educativos.',
+        },
       ],
     },
     {
@@ -314,7 +321,7 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
         <span className="w-1.5 h-8 bg-[#1E70EB] rounded-full inline-block"></span>
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
-            3. Tipos de Modelos e Ferramentas Práticas
+            3. Tipos de Modelos e Ferramentas
           </h1>
           <p className="text-xs text-slate-500 font-medium mt-0.5">
             Texto (LLMs), imagem, áudio/voz, vídeo, modalidades combinadas e ferramentas recomendadas

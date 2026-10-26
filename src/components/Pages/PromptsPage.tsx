@@ -128,32 +128,6 @@ export const PromptsPage: React.FC<PromptsPageProps> = ({ onNavigate }) => {
           </div>
         </div>
       </div>
-
-      {/* 3. Link to Section 5: Técnicas de Formulação de Prompts */}
-      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-2xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div className="space-y-1">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1E70EB]">
-            <BookOpen className="w-4 h-4" />
-            <span>Passo Seguinte</span>
-          </div>
-          <h3 className="text-base sm:text-lg font-bold text-slate-900">
-            5. Técnicas de Formulação de Prompts
-          </h3>
-          <p className="text-xs sm:text-sm text-slate-600">
-            Conheça as 8 estratégias pedagógicas e veja na prática a comparação entre prompts vagos e otimizados.
-          </p>
-        </div>
-
-        {onNavigate && (
-          <button
-            onClick={() => onNavigate('tecnicas')}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1E70EB] hover:bg-blue-600 text-white font-bold text-xs sm:text-sm shadow-xs transition-colors shrink-0 cursor-pointer"
-          >
-            <span>Explorar Técnicas</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        )}
-      </div>
     </div>
   );
 };

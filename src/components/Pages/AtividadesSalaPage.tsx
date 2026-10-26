@@ -90,21 +90,13 @@ export const AtividadesSalaPage: React.FC = () => {
         <span className="w-1.5 h-8 bg-[#1E70EB] rounded-full inline-block"></span>
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
-            8. Atividades Práticas em Sala de Aula com Ferramentas LLM
+            8. Ideias de Atividade a dinamizar com os alunos em contexto de sala de aula
           </h1>
           <p className="text-xs text-slate-500 font-medium mt-0.5">
             Guiões didáticos estruturados, objetivos pedagógicos, critérios de avaliação e orientações docentes
           </p>
         </div>
       </div>
-
-      {/* Critical notice about pedagogical intentionality */}
-      <NoticeBanner
-        type="info"
-        title="Intencionalidade Pedagógica no Uso com Alunos"
-        message="A IA como meio de aprendizagem, não como fim em si mesma."
-        detail="Estas 4 atividades foram desenhadas para que o foco esteja na reflexão metacognitiva, na colaboração entre pares e na validação crítica dos alunos, evitando o uso passivo da tecnologia."
-      />
 
       {/* 4 Activities Selector Tabs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">

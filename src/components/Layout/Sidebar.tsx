@@ -33,12 +33,12 @@ const OFFICIAL_SECTIONS: Array<{
 }> = [
   { id: 'ia-generativa', label: '1. IA Generativa', icon: Cpu },
   { id: 'como-funcionam', label: '2. Como funcionam', icon: GitBranch },
-  { id: 'tipos-modelos', label: '3. Tipos de modelos', icon: Layers },
+  { id: 'tipos-modelos', label: '3. Tipos de Modelos e Ferramentas', icon: Layers },
   { id: 'prompts', label: '4. Prompts', icon: MessageSquare },
-  { id: 'tecnicas', label: '5. Técnicas de prompts', icon: PenTool },
-  { id: 'exemplos-disciplina', label: '6. Bons Prompts', icon: BookOpen },
+  { id: 'tecnicas', label: '5. Formulação de Prompts', icon: PenTool },
+  { id: 'exemplos-disciplina', label: '6. Exemplo de Prompts', icon: BookOpen },
   { id: 'boas-praticas', label: '7. Boas Práticas', icon: ShieldCheck },
-  { id: 'atividades-sala', label: '8. Atividades em aula', icon: FileCheck },
+  { id: 'atividades-sala', label: '8. Ideias de Atividades', icon: FileCheck },
   { id: 'magicschool', label: '9. MagicSchool.ai', icon: Settings },
 ];
 
@@ -47,8 +47,8 @@ const SYNTHESIS_SECTIONS: Array<{
   label: string;
   icon: React.ElementType;
 }> = [
-  { id: 'atividade-sessao', label: '10. Atividade da Sessão', icon: Users },
-  { id: 'ferramentas-referencias', label: 'Referências & Créditos', icon: FileText },
+  { id: 'atividade-sessao', label: '10. Atividade de Grupo', icon: Users },
+  { id: 'ferramentas-referencias', label: 'Referências e Ferramentas', icon: FileText },
 ];
 
 export const Sidebar: React.FC<SidebarProps> = ({

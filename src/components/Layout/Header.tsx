@@ -20,15 +20,15 @@ const PAGE_STEPS: Record<PageId, { num: number; title: string; category?: string
   home: { num: 0, title: 'Página Inicial' },
   'ia-generativa': { num: 1, title: '1. Objetivos e Conceito de IA Generativa' },
   'como-funcionam': { num: 2, title: '2. Funcionamento dos Modelos Generativos' },
-  'tipos-modelos': { num: 3, title: '3. Tipos de Modelos (Áudio, Vídeo, Multimodal)' },
+  'tipos-modelos': { num: 3, title: '3. Tipos de Modelos e Ferramentas' },
   prompts: { num: 4, title: '4. Prompts e Engenharia de Prompts' },
-  tecnicas: { num: 5, title: '5. Técnicas de Formulação de Prompts' },
-  'exemplos-disciplina': { num: 6, title: '6. Bons Prompts' },
+  tecnicas: { num: 5, title: '5. Formulação de Prompts' },
+  'exemplos-disciplina': { num: 6, title: '6. Exemplo de Prompts' },
   'boas-praticas': { num: 7, title: '7. Boas Práticas' },
-  'atividades-sala': { num: 8, title: '8. Atividades em Aula' },
+  'atividades-sala': { num: 8, title: '8. Ideias de Atividade a dinamizar com os alunos em contexto de sala de aula' },
   magicschool: { num: 9, title: '9. MagicSchool.ai' },
-  'atividade-sessao': { num: 10, title: '10. Atividade da Sessão', category: 'Atividade' },
-  'ferramentas-referencias': { num: 11, title: 'Referências Bibliográficas e Créditos', category: 'Referências' },
+  'atividade-sessao': { num: 10, title: '10. Atividade de Grupo', category: 'Atividade' },
+  'ferramentas-referencias': { num: 11, title: 'Referências Bibliográficas e Ferramentas Usadas', category: 'Referências' },
 };
 
 // Main linear sequence for browsing

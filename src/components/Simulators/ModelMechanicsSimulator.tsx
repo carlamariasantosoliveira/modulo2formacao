@@ -6,12 +6,9 @@ import {
   Cpu,
   FileOutput,
   AlertTriangle,
-  ArrowRight,
-  ArrowLeft,
   CheckCircle2,
   XCircle,
   Layers,
-  RotateCcw,
 } from 'lucide-react';
 import { NoticeBanner } from '../Common/NoticeBanner';
 
@@ -191,39 +188,12 @@ export const ModelMechanicsSimulator: React.FC = () => {
   const currentStage = STAGES.find((s) => s.number === activeStageNumber) || STAGES[0];
   const CurrentIcon = currentStage.icon;
 
-  // The 5 processing cycle steps
-  const cycleStages = STAGES.filter((s) => !s.isAttentionCall);
-  // The attention call
-  const attentionCallStage = STAGES.find((s) => s.isAttentionCall) || STAGES[5];
-
-  const handleNextStage = () => {
-    if (activeStageNumber < 6) {
-      setActiveStageNumber(activeStageNumber + 1);
-    }
-  };
-
-  const handlePrevStage = () => {
-    if (activeStageNumber > 1) {
-      setActiveStageNumber(activeStageNumber - 1);
-    }
-  };
-
   return (
     <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden font-sans">
       {/* CABEÇALHO DO QUADRO UNIFICADO */}
       <div className="p-6 sm:p-8 bg-gradient-to-b from-slate-50 via-white to-white border-b border-slate-200 space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1.5">
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] font-black uppercase tracking-wider text-[#1D4ED8] bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
-                Quadro de Aprendizagem
-              </span>
-              <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
-                {activeStageNumber <= 5
-                  ? `Etapa ${activeStageNumber} de 5 do Ciclo de Processamento`
-                  : 'Chamada de Atenção Pedagógica'}
-              </span>
-            </div>
             <h2 className="text-xl sm:text-2xl font-black text-[#0C1E38] tracking-tight">
               Visão Global do Ciclo de Funcionamento dos Modelos
             </h2>
@@ -341,11 +311,6 @@ export const ModelMechanicsSimulator: React.FC = () => {
                 <CurrentIcon className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
-                  {currentStage.isAttentionCall
-                    ? 'Aviso Crítico Pedagógico'
-                    : `Etapa ${currentStage.number} do Ciclo de Processamento`}
-                </span>
                 <h3 className="text-xl sm:text-2xl font-black text-slate-900">
                   {currentStage.title}
                 </h3>
@@ -354,12 +319,6 @@ export const ModelMechanicsSimulator: React.FC = () => {
                 </p>
               </div>
             </div>
-
-            <span
-              className={`text-xs font-bold px-3 py-1.5 rounded-xl border self-start sm:self-auto ${currentStage.badgeColor}`}
-            >
-              {currentStage.badge}
-            </span>
           </div>
 
           {/* SÍNTESE DIRETA DO CONTEÚDO (Sem etiqueta redundante) */}
@@ -488,84 +447,6 @@ export const ModelMechanicsSimulator: React.FC = () => {
             </div>
           )}
 
-          {/* BOTÕES DE NAVEGAÇÃO SEQUENCIAL */}
-          <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <button
-              onClick={handlePrevStage}
-              disabled={activeStageNumber === 1}
-              className={`w-full sm:w-auto px-4 py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
-                activeStageNumber === 1
-                  ? 'opacity-40 bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed'
-                  : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-2xs cursor-pointer'
-              }`}
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>
-                {activeStageNumber === 6
-                  ? 'Voltar à Etapa 5 (Produção da Resposta)'
-                  : `Etapa Anterior (${activeStageNumber - 1})`}
-              </span>
-            </button>
-
-            {/* Indicador Central de Passos do Ciclo + Alerta */}
-            <div className="flex items-center gap-2 py-1">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-1">
-                Ciclo:
-              </span>
-              {cycleStages.map((s) => (
-                <button
-                  key={s.number}
-                  onClick={() => setActiveStageNumber(s.number)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
-                    s.number === activeStageNumber
-                      ? 'bg-blue-600 scale-125'
-                      : s.number < activeStageNumber
-                      ? 'bg-blue-300'
-                      : 'bg-slate-200'
-                  }`}
-                  title={`Ir para Etapa ${s.number}`}
-                />
-              ))}
-              <span className="text-slate-300 mx-1">|</span>
-              <button
-                onClick={() => setActiveStageNumber(6)}
-                className={`p-1 rounded-md transition-all cursor-pointer ${
-                  activeStageNumber === 6
-                    ? 'bg-red-600 text-white scale-110 shadow-xs'
-                    : 'text-red-500 hover:bg-red-50'
-                }`}
-                title="Chamada de Atenção: Limitação Fundamental"
-              >
-                <AlertTriangle className="w-3.5 h-3.5" />
-              </button>
-            </div>
-
-            {activeStageNumber < 5 ? (
-              <button
-                onClick={handleNextStage}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
-              >
-                <span>Próxima Etapa: {STAGES[activeStageNumber].title}</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            ) : activeStageNumber === 5 ? (
-              <button
-                onClick={() => setActiveStageNumber(6)}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
-              >
-                <span>Ver Chamada de Atenção (Limitação Fundamental)</span>
-                <AlertTriangle className="w-4 h-4" />
-              </button>
-            ) : (
-              <button
-                onClick={() => setActiveStageNumber(1)}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
-              >
-                <RotateCcw className="w-4 h-4" />
-                <span>Voltar ao Início do Ciclo (Etapa 1)</span>
-              </button>
-            )}
-          </div>
         </div>
       </div>
 

@@ -46,7 +46,7 @@ export const ReferenciasPage: React.FC = () => {
         <span className="w-1.5 h-8 bg-[#1E70EB] rounded-full inline-block"></span>
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
-            Ferramentas Citadas e Referências Bibliográficas
+            Referências Bibliográficas e Ferramentas Usadas
           </h1>
           <p className="text-xs text-slate-500 font-medium mt-0.5">
             Corpus científico de 19 referências, ferramentas de IA e ficha técnica
