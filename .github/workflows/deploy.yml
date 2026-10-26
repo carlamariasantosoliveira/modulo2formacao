@@ -7,9 +7,18 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -31,9 +40,23 @@ jobs:
           touch dist/.nojekyll
           cp public/404.html dist/404.html 2>/dev/null || true
 
-      # Publicação no branch gh-pages (compatível com a configuração atual do repositório)
+      # Método 1: Publicação nativa oficial GitHub Actions (Recomendado)
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      # Método 2: Publicação no branch gh-pages (compatível com quem usa Deploy from a branch -> gh-pages)
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
+        continue-on-error: true
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
