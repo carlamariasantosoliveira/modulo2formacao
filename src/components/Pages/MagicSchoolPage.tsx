@@ -3,7 +3,6 @@ import {
   Wand2,
   Bot,
   UserCheck,
-  ShieldCheck,
   Sparkles,
   Copy,
   Check,
@@ -19,12 +18,11 @@ import {
   Sliders,
   GraduationCap,
   ChevronRight,
-  ListFilter,
   Info,
 } from 'lucide-react';
 import { MAGICSCHOOL_DATA } from '../../data/courseData';
 
-type SectionTab = 'possibilidades' | 'raina' | 'geradores' | 'magicstudent';
+type SectionTab = 'geradores' | 'raina';
 
 export const MagicSchoolPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<SectionTab>('geradores');
@@ -72,9 +70,6 @@ export const MagicSchoolPage: React.FC = () => {
             <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
               8. Exploração da Ferramenta MagicSchool.ai
             </h1>
-            <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
-              Oficina de Formação: Inteligência Artificial na Educação: Estratégias, Ferramentas e Práticas Pedagógicas
-            </p>
           </div>
         </div>
 
@@ -101,8 +96,86 @@ export const MagicSchoolPage: React.FC = () => {
         </p>
       </div>
 
-      {/* Main Top Navigation Tabs */}
-      <div className="flex flex-wrap gap-2 p-1.5 bg-slate-100/80 rounded-2xl border border-slate-200/80">
+      {/* Possibilidades de Interação (Exibido diretamente após Visão Global) */}
+      <div className="bg-white rounded-3xl border border-slate-200/80 shadow-2xs p-6 sm:p-8 space-y-6">
+        <div className="flex items-center gap-3 pb-4 border-b border-slate-200">
+          <div className="w-10 h-10 rounded-2xl bg-blue-100 text-[#1E70EB] flex items-center justify-center">
+            <Layout className="w-5 h-5" />
+          </div>
+          <div>
+            <span className="text-[11px] font-bold text-[#1E70EB] uppercase tracking-wider block">
+              Catálogo Geral de Recursos
+            </span>
+            <h2 className="text-xl font-extrabold text-slate-900">
+              MagicSchool - Possibilidades de Interação
+            </h2>
+          </div>
+        </div>
+
+        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+          O ecossistema MagicSchool disponibiliza um leque integrado de ferramentas desenhadas à medida do quotidiano escolar, cobrindo o ciclo completo da atividade docente — desde a conceção de aulas até à avaliação e comunicação com os estudantes:
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
+          {MAGICSCHOOL_DATA.possibilidades.map((item) => (
+            <div
+              key={item.id}
+              className="bg-[#F8FAFC] rounded-2xl p-5 border border-slate-200/80 space-y-2.5 flex flex-col justify-between hover:border-blue-300 transition-all group"
+            >
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 text-[#1E70EB] flex items-center justify-center shadow-2xs group-hover:bg-[#1E70EB] group-hover:text-white transition-all">
+                    {getPossibilityIcon(item.iconName)}
+                  </div>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    {item.tag}
+                  </span>
+                </div>
+                <h3 className="text-xs font-bold text-slate-900 pt-1">
+                  {item.title}
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+
+              <div className="pt-2 border-t border-slate-200/60 flex items-center justify-end">
+                <button
+                  onClick={() => {
+                    setActiveTab('geradores');
+                    const el = document.getElementById('magicschool-tabs');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-[11px] font-semibold text-[#1E70EB] hover:text-blue-800 flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Ver geradores</span>
+                  <ChevronRight className="w-3 h-3" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Título da Secção de Ferramentas */}
+      <div className="pt-2">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-2xl bg-blue-100 text-[#1E70EB] flex items-center justify-center shadow-2xs">
+            <Sliders className="w-5 h-5" />
+          </div>
+          <div>
+            <span className="text-[11px] font-bold text-[#1E70EB] uppercase tracking-wider block">
+              Exemplo de Ferramentas
+            </span>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+              Ferramentas
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Top Navigation Tabs (Apenas Ferramentas e Assistente Raina) */}
+      <div id="magicschool-tabs" className="flex flex-wrap gap-2 p-1.5 bg-slate-100/80 rounded-2xl border border-slate-200/80">
         <button
           onClick={() => setActiveTab('geradores')}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
@@ -112,7 +185,7 @@ export const MagicSchoolPage: React.FC = () => {
           }`}
         >
           <Sliders className="w-4 h-4" />
-          <span>8 Geradores Especializados</span>
+          <span>Ferramentas</span>
           <span className="ml-1 px-1.5 py-0.5 rounded-full text-[10px] bg-blue-100 text-[#1E70EB]">
             8
           </span>
@@ -129,39 +202,15 @@ export const MagicSchoolPage: React.FC = () => {
           <Bot className="w-4 h-4" />
           <span>Assistente Raina</span>
         </button>
-
-        <button
-          onClick={() => setActiveTab('possibilidades')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-            activeTab === 'possibilidades'
-              ? 'bg-white text-[#1E70EB] shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
-          }`}
-        >
-          <Layout className="w-4 h-4" />
-          <span>Possibilidades de Interação</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab('magicstudent')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-            activeTab === 'magicstudent'
-              ? 'bg-white text-[#1E70EB] shadow-xs'
-              : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
-          }`}
-        >
-          <UserCheck className="w-4 h-4" />
-          <span>MagicStudent (Alunos)</span>
-        </button>
       </div>
 
-      {/* TAB 1: 8 GERADORES ESPECIALIZADOS */}
+      {/* TAB 1: 8 GERADORES / FERRAMENTAS */}
       {activeTab === 'geradores' && (
         <div className="space-y-6">
           {/* Sub-tabs selector for the 8 generators */}
           <div className="bg-white rounded-3xl border border-slate-200/80 p-3 shadow-2xs">
             <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider px-3 py-2 flex items-center justify-between">
-              <span>Selecione a Ferramenta Especializada:</span>
+              <span>Selecione a Ferramenta:</span>
               <span className="text-[11px] text-blue-600 font-semibold">
                 {selectedGeneratorIdx + 1} de {MAGICSCHOOL_DATA.generators.length}
               </span>
@@ -540,131 +589,8 @@ export const MagicSchoolPage: React.FC = () => {
           </div>
         </div>
       )}
-
-      {/* TAB 3: POSSIBILIDADES DE INTERAÇÃO (SLIDE 1) */}
-      {activeTab === 'possibilidades' && (
-        <div className="bg-white rounded-3xl border border-slate-200/80 shadow-2xs p-6 sm:p-8 space-y-6">
-          <div className="flex items-center gap-3 pb-4 border-b border-slate-200">
-            <div className="w-10 h-10 rounded-2xl bg-blue-100 text-[#1E70EB] flex items-center justify-center">
-              <Layout className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-[11px] font-bold text-[#1E70EB] uppercase tracking-wider block">
-                Catálogo Geral de Recursos
-              </span>
-              <h2 className="text-xl font-extrabold text-slate-900">
-                MagicSchool - Possibilidades de Interação
-              </h2>
-            </div>
-          </div>
-
-          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-            O ecossistema MagicSchool disponibiliza um leque integrado de ferramentas desenhadas à medida do quotidiano escolar, cobrindo o ciclo completo da atividade docente — desde a conceção de aulas até à avaliação e comunicação com os estudantes:
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
-            {MAGICSCHOOL_DATA.possibilidades.map((item) => (
-              <div
-                key={item.id}
-                className="bg-[#F8FAFC] rounded-2xl p-5 border border-slate-200/80 space-y-2.5 flex flex-col justify-between hover:border-blue-300 transition-all group"
-              >
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 text-[#1E70EB] flex items-center justify-center shadow-2xs group-hover:bg-[#1E70EB] group-hover:text-white transition-all">
-                      {getPossibilityIcon(item.iconName)}
-                    </div>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                      {item.tag}
-                    </span>
-                  </div>
-                  <h3 className="text-xs font-bold text-slate-900 pt-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-
-                <div className="pt-2 border-t border-slate-200/60 flex items-center justify-end">
-                  <button
-                    onClick={() => {
-                      setActiveTab('geradores');
-                    }}
-                    className="text-[11px] font-semibold text-[#1E70EB] hover:text-blue-800 flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>Ver detalhes</span>
-                    <ChevronRight className="w-3 h-3" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* TAB 4: MAGICSCHOOL - STUDENT CHATBOTS & MAGICSTUDENT */}
-      {activeTab === 'magicstudent' && (
-        <div className="bg-white rounded-3xl border border-slate-200/80 shadow-2xs overflow-hidden">
-          <div className="p-6 bg-linear-to-r from-emerald-50/80 via-teal-50/30 to-white border-b border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-2xl bg-[#059669] text-white flex items-center justify-center shadow-xs">
-                <UserCheck className="w-6 h-6" />
-              </div>
-              <div>
-                <span className="text-[11px] font-bold text-[#059669] uppercase tracking-wider block">
-                  {MAGICSCHOOL_DATA.studentChatbots.badge}
-                </span>
-                <h2 className="text-xl font-extrabold text-slate-900">
-                  {MAGICSCHOOL_DATA.studentChatbots.title}
-                </h2>
-              </div>
-            </div>
-            <span className="text-xs font-mono text-emerald-800 bg-emerald-100/70 px-3 py-1 rounded-xl">
-              Ambiente Protegido
-            </span>
-          </div>
-
-          <div className="p-6 sm:p-8 space-y-6">
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
-              {MAGICSCHOOL_DATA.studentChatbots.description}
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {MAGICSCHOOL_DATA.studentChatbots.chatbots.map((bot, i) => (
-                <div
-                  key={i}
-                  className="bg-[#F8FAFC] p-5 rounded-2xl border border-slate-200 space-y-2 flex flex-col justify-between"
-                >
-                  <div className="space-y-1.5">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#059669]"></span>
-                      <h3 className="text-xs font-bold text-slate-900">{bot.name}</h3>
-                    </div>
-                    <p className="text-xs text-slate-700 leading-relaxed">{bot.detail}</p>
-                  </div>
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
-                    Disponível no MagicStudent
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Ethical Highlight Box */}
-            <div className="bg-blue-50 border border-blue-200 rounded-2xl p-5 sm:p-6 space-y-2 text-xs text-blue-950">
-              <strong className="font-bold flex items-center gap-2 text-sm text-[#1E70EB]">
-                <ShieldCheck className="w-5 h-5" />
-                <span>Enquadramento Ético Internacional (Comissão Europeia, 2022):</span>
-              </strong>
-              <p className="leading-relaxed text-slate-800 pt-1">
-                {MAGICSCHOOL_DATA.studentChatbots.ethicalNote}
-              </p>
-              <div className="pt-2 text-[11px] text-slate-500 italic border-t border-blue-200/60">
-                Fonte: &ldquo;Orientações Éticas sobre a Utilização de Inteligência Artificial e Dados no Ensino e na Aprendizagem para Educadores&rdquo; (Comissão Europeia, Serviço das Publicações da União Europeia, 2022).
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
+
+

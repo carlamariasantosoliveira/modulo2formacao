@@ -1,10 +1,4 @@
 import React from 'react';
-import {
-  Calendar,
-  User,
-  GraduationCap,
-} from 'lucide-react';
-import { COURSE_INFO } from '../../data/courseData';
 import robotLightbulbImg from '../../assets/images/ai_robot_lightbulb_1792545516837.jpg';
 
 export const IAGenerativaPage: React.FC = () => {
@@ -16,22 +10,6 @@ export const IAGenerativaPage: React.FC = () => {
         <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
           1. Objetivos e Conceito de IA Generativa
         </h1>
-      </div>
-
-      {/* Official Module Meta Card from Page 1 */}
-      <div className="bg-[#F8FAFC] rounded-2xl p-4 sm:p-5 border border-slate-200/80 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-600">
-        <div className="flex items-center gap-2">
-          <GraduationCap className="w-4 h-4 text-[#1E70EB]" />
-          <span><strong>Oficina de Formação:</strong> {COURSE_INFO.courseTitle}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <User className="w-4 h-4 text-slate-500" />
-          <span><strong>Autora:</strong> {COURSE_INFO.author}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-slate-500" />
-          <span><strong>Data de Criação:</strong> {COURSE_INFO.date}</span>
-        </div>
       </div>
 
       {/* Main Content Card matching imagem_49d88603.png and Curso_de_IA_na_Educa__o__1__f7e93860.png */}
@@ -72,14 +50,6 @@ export const IAGenerativaPage: React.FC = () => {
                 alt="Robot educativo de IA com lâmpada e livros"
                 className="w-full h-64 object-cover object-center group-hover:scale-102 transition-transform duration-500"
               />
-              <div className="p-3 bg-linear-to-t from-slate-900/80 via-slate-900/40 to-transparent absolute bottom-0 inset-x-0 text-white">
-                <span className="text-[11px] font-semibold text-blue-200 block">
-                  Inteligência Artificial na Prática Docente
-                </span>
-                <span className="text-[10px] text-slate-200 block">
-                  Potenciar a diferenciação e personalização da aprendizagem
-                </span>
-              </div>
             </div>
           </div>
         </div>

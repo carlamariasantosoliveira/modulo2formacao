@@ -120,10 +120,6 @@ export const PromptsPage: React.FC<PromptsPageProps> = ({ onNavigate }) => {
                 alt="Professora a construir planos de aula e prompts com apoio de IA"
                 className="w-full h-52 sm:h-60 object-cover object-center"
               />
-              <div className="p-3.5 bg-white text-[11px] text-slate-600 border-t border-slate-100 flex items-center justify-between">
-                <span className="font-semibold text-slate-800">Construção colaborativa de prompts pedagógicos</span>
-                <span className="text-[#1E70EB] font-bold">Módulo 2</span>
-              </div>
             </div>
           </div>
         </div>

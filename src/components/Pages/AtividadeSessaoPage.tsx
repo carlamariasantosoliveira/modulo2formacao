@@ -185,17 +185,30 @@ export const AtividadeSessaoPage: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
+    <div className="max-w-5xl mx-auto px-4 py-8 space-y-8 font-sans">
+      {/* Title bar with signature blue vertical line */}
+      <div className="flex items-center gap-3">
+        <span className="w-1.5 h-10 bg-[#1E70EB] rounded-full inline-block"></span>
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
+            10. Atividade Prática
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
+            Do prompt ao recurso pedagógico — Laboratório de escrita, teste e melhoria de prompts
+          </p>
+        </div>
+      </div>
+
       {/* Header Banner */}
       <div className="bg-gradient-to-r from-blue-900 via-slate-900 to-indigo-950 text-white rounded-2xl p-6 sm:p-7 shadow-lg border border-blue-500/20">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-200 text-xs font-semibold uppercase tracking-wider">
             <Users className="w-3.5 h-3.5 text-blue-300" />
-            Atividade de Grupo
+            Atividade Prática de Grupo
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
             Do prompt ao recurso pedagógico
-          </h1>
+          </h2>
           <p className="text-blue-200 text-sm font-medium">
             Laboratório de escrita, teste e melhoria de prompts
           </p>

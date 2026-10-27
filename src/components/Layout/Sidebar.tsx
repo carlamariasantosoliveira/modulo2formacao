@@ -47,7 +47,7 @@ const SYNTHESIS_SECTIONS: Array<{
   label: string;
   icon: React.ElementType;
 }> = [
-  { id: 'atividade-sessao', label: '10. Atividade de Grupo', icon: Users },
+  { id: 'atividade-sessao', label: '10. Atividade Prática', icon: Users },
   { id: 'ferramentas-referencias', label: 'Referências e Ferramentas', icon: FileText },
 ];
 
@@ -180,15 +180,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {renderNavButton('home', 'Página Inicial', Home)}
           </div>
 
-          {/* Group 1: Módulos do Curso (Secções 1 a 8) */}
+          {/* Group 1: Secções 1 a 9 */}
           <div className="space-y-1">
-            <div className="px-3 py-1 flex items-center justify-between">
-              <span className={`text-[10px] font-bold uppercase tracking-wider ${
-                isHome ? 'text-blue-300' : 'text-slate-400'
-              }`}>
-                Módulos da Oficina
-              </span>
-            </div>
             {OFFICIAL_SECTIONS.map((sec) => renderNavButton(sec.id, sec.label, sec.icon))}
           </div>
 

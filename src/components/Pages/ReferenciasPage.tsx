@@ -7,7 +7,6 @@ import {
   BookOpen,
   ShieldCheck,
   CheckCircle2,
-  GraduationCap,
 } from 'lucide-react';
 import {
   BIBLIOGRAPHIC_REFERENCES,
@@ -51,29 +50,6 @@ export const ReferenciasPage: React.FC = () => {
           <p className="text-xs text-slate-500 font-medium mt-0.5">
             Corpus científico de 19 referências, ferramentas de IA e ficha técnica
           </p>
-        </div>
-      </div>
-
-      {/* Course Integration Banner (No PDF download/viewer to keep study 100% on-platform) */}
-      <div className="bg-linear-to-r from-[#0C1E3C] via-[#0E2448] to-[#12315C] text-white rounded-3xl p-6 sm:p-7 shadow-xs border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="space-y-1.5">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span className="text-[11px] font-bold text-blue-300 uppercase tracking-wider">
-              Plataforma Oficial de Estudo do Módulo 2
-            </span>
-          </div>
-          <h2 className="text-lg font-bold text-white">
-            Conteúdo Pedagógico Integralmente Integrado
-          </h2>
-          <p className="text-xs text-blue-100/90 leading-relaxed max-w-2xl">
-            Toda a matéria necessária para o seu estudo — definições, ciclo de funcionamento, 8 técnicas de prompts, exemplos por disciplina, 4 atividades práticas e geradores MagicSchool — está disponível diretamente nas páginas interativas desta oficina de formação, dispensando ficheiros externos.
-          </p>
-        </div>
-
-        <div className="hidden sm:flex items-center gap-2 bg-white/10 px-4 py-2.5 rounded-2xl border border-white/10 shrink-0 text-xs font-semibold text-blue-100">
-          <GraduationCap className="w-5 h-5 text-blue-300" />
-          <span>Oficina de Formação</span>
         </div>
       </div>
 

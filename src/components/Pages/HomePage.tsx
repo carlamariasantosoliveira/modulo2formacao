@@ -5,6 +5,9 @@ import {
   Sparkles,
   ChevronUp,
   ChevronDown,
+  GraduationCap,
+  User,
+  Calendar,
 } from 'lucide-react';
 import { PageId } from '../../types';
 import { COURSE_INFO } from '../../data/courseData';
@@ -19,6 +22,30 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
   return (
     <div className="space-y-8 pb-12 font-sans">
+      {/* Informações da Oficina de Formação */}
+      <div className="bg-[#F8FAFC] rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-2xs flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm text-slate-700">
+        <div className="flex items-center gap-2.5">
+          <GraduationCap className="w-4.5 h-4.5 text-[#1E70EB] shrink-0" />
+          <span>
+            <strong className="text-slate-900 font-bold">Oficina de Formação:</strong> {COURSE_INFO.courseTitle}
+          </span>
+        </div>
+        <div className="flex items-center gap-4 sm:gap-6">
+          <div className="flex items-center gap-2">
+            <User className="w-4 h-4 text-slate-500 shrink-0" />
+            <span>
+              <strong className="text-slate-900 font-bold">Autora:</strong> {COURSE_INFO.author}
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Calendar className="w-4 h-4 text-slate-500 shrink-0" />
+            <span>
+              <strong className="text-slate-900 font-bold">Data de Criação:</strong> {COURSE_INFO.date}
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* 1. Hero Banner matching exact visual style in Curso_de_IA_na_Educa__o__1__f7e93860.png */}
       <div className="relative rounded-3xl overflow-hidden shadow-lg bg-linear-to-r from-[#07172C] via-[#0A1E38] to-[#122E58] text-white p-6 sm:p-8 md:p-10 min-h-[300px] flex flex-col md:flex-row md:items-center justify-between gap-6 border border-white/10">
         {/* Left Side: Typography & Call To Action */}

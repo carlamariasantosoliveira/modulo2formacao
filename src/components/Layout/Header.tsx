@@ -27,7 +27,7 @@ const PAGE_STEPS: Record<PageId, { num: number; title: string; category?: string
   'boas-praticas': { num: 7, title: '7. Boas Práticas' },
   'atividades-sala': { num: 8, title: '8. Ideias de Atividade a dinamizar com os alunos em contexto de sala de aula' },
   magicschool: { num: 9, title: '9. MagicSchool.ai' },
-  'atividade-sessao': { num: 10, title: '10. Atividade de Grupo', category: 'Atividade' },
+  'atividade-sessao': { num: 10, title: '10. Atividade Prática', category: 'Atividade' },
   'ferramentas-referencias': { num: 11, title: 'Referências Bibliográficas e Ferramentas Usadas', category: 'Referências' },
 };
 
@@ -83,26 +83,18 @@ export const Header: React.FC<HeaderProps> = ({
           <Menu className="w-5 h-5" />
         </button>
 
-        <div className="flex items-center gap-2 text-xs sm:text-sm truncate">
-          <div className="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center text-white shrink-0 bg-white/5">
-            <Brain className="w-4 h-4 text-white" />
-          </div>
-
+        <div className="flex items-center gap-2.5 text-xs sm:text-sm truncate">
           <button
             onClick={() => onSelectPage('home')}
-            className="font-bold text-white hover:text-blue-300 transition-colors whitespace-nowrap cursor-pointer"
+            className="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center text-white shrink-0 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
+            title="Ir para a Página Inicial"
           >
-            Módulo 2
+            <Brain className="w-4 h-4 text-white" />
           </button>
 
-          {!isHome && (
-            <>
-              <span className="text-slate-400 font-bold">&gt;</span>
-              <span className="text-slate-100 font-bold truncate">
-                {info.title}
-              </span>
-            </>
-          )}
+          <span className="text-slate-100 font-bold truncate">
+            {isHome ? 'Página Inicial' : info.title}
+          </span>
         </div>
       </div>
 

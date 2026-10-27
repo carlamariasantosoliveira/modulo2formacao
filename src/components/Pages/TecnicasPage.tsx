@@ -114,9 +114,6 @@ export const TecnicasPage: React.FC<TecnicasPageProps> = ({ onNavigate }) => {
             <span className="text-xs font-bold text-[#1E70EB] uppercase tracking-wider bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-md">
               Estratégia {currentTech.id} de 8
             </span>
-            <span className="text-xs text-slate-500 font-medium">
-              Técnica de Otimização Pedagógica
-            </span>
           </div>
           <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900">
             {currentTech.name}
@@ -127,7 +124,7 @@ export const TecnicasPage: React.FC<TecnicasPageProps> = ({ onNavigate }) => {
         <div className="p-6 sm:p-8 space-y-6">
           <div className="space-y-1.5">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
-              Objetivo & Fundamentação Didática:
+              Objetivo da Estratégia
             </h3>
             <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-normal">
               {currentTech.description}

@@ -127,10 +127,10 @@ export const PAGES_NAV: PageMeta[] = [
   {
     id: 'atividade-sessao',
     number: 10,
-    title: '10. Atividade de Grupo',
-    shortTitle: '10. Atividade de Grupo',
+    title: '10. Atividade Prática',
+    shortTitle: '10. Atividade Prática',
     iconName: 'Users',
-    description: 'Laboratório de escrita, teste e melhoria de prompts em grupo (45 min).',
+    description: 'Atividade prática de grupo: laboratório de escrita, teste e melhoria de prompts (45 min).',
     category: 'pratica',
   },
   {
