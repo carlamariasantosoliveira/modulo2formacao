@@ -244,7 +244,7 @@ export const ReferenciasPage: React.FC = () => {
 
         <div className="bg-white/80 p-5 rounded-2xl border border-blue-100 space-y-3 leading-relaxed text-xs sm:text-sm text-slate-700">
           <p>
-            <strong>Conteúdo original:</strong> Carla Oliveira (criado em 26 de janeiro de 2026).
+            <strong>Conteúdo original:</strong> Carla Oliveira (criado em 28 de outubro de 2026).
           </p>
           <p>
             <strong>Âmbito e Enquadramento:</strong> Documento estruturado para o Curso de Inteligência Artificial na Educação. Formato digital autónomo concebido para a formação contínua de professores a distância.

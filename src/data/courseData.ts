@@ -14,7 +14,7 @@ export const COURSE_INFO = {
   type: 'Oficina de Formação',
   subtitle: 'Transcrição na Íntegra e Estruturação Pedagógica do Conteúdo',
   author: 'Carla Oliveira',
-  date: '26 de janeiro de 2026',
+  date: '28 de outubro de 2026',
   scope:
     'Documento estruturado para o Curso de Inteligência Artificial na Educação. Formato digital autónomo concebido para a formação contínua de professores a distância.',
   motto: 'Explorar • Experimentar • Aplicar na Educação',

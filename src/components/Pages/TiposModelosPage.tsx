@@ -46,7 +46,7 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       icon: FileText,
       color: 'blue',
       whatTheyDo:
-        'Os modelos de linguagem processam texto em unidades denominadas tokens (palavras, partes de palavras ou pontuação). A cada novo token, o modelo calcula as probabilidades para selecionar o seguinte, tendo em conta o texto anterior e os parâmetros aprendidos.',
+        'Ferramentas para conversar, escrever, resumir, traduzir, explicar e apoiar a investigação.',
       howTheyWork: [
         'Tokens: O texto é processado em unidades denominadas tokens (palavras, partes de palavras ou pontuação).',
         'Mecanismo de Atenção: O mecanismo de atenção permite ao modelo identificar relações entre diferentes partes do texto de entrada, mesmo quando separadas por várias frases, garantindo maior coerência global na resposta gerada.',
@@ -62,44 +62,58 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
         {
           name: 'ChatGPT',
           url: 'https://chatgpt.com',
-          badge: 'Freemium · OpenAI',
+          badge: 'OpenAI · Freemium',
           description:
-            'Interface conversacional para redação de rascunhos, ideação pedagógica, sugestões de exercícios e diálogos reflexivos.',
+            'Interface conversacional para conversar, redigir rascunhos, resumir, traduzir, explicar e apoiar a investigação.',
         },
         {
-          name: 'Google Gemini',
+          name: 'Gemini',
           url: 'https://gemini.google.com',
-          badge: 'Gratuito / Advanced · Google',
+          badge: 'Google · Gratuito / Advanced',
           description:
-            'Acesso com conta Google, informação com pesquisa web e integração no ecossistema de produtividade educativa.',
+            'Acesso com conta Google, informação com pesquisa web e integração no ecossistema educativo de produtividade.',
         },
         {
-          name: 'Anthropic Claude',
+          name: 'Claude',
           url: 'https://claude.ai',
-          badge: 'Freemium · Anthropic',
+          badge: 'Anthropic · Freemium',
           description:
-            'Concebido para processamento de contextos alargados, análise de textos e redação estruturada com vocabulário cuidado.',
+            'Concebido para processamento de contextos alargados, análise aprofundada de textos e redação estruturada.',
         },
         {
           name: 'Microsoft Copilot',
           url: 'https://copilot.microsoft.com',
-          badge: 'Gratuito / Pro · Microsoft',
+          badge: 'Microsoft · Gratuito / Pro',
           description:
-            'Integrado no motor de busca com apresentação de hiperligações de páginas web para verificação independente.',
+            'Integrado no motor de busca e ecossistema Microsoft com apresentação de hiperligações de páginas web para verificação.',
+        },
+        {
+          name: 'Le Chat',
+          url: 'https://chat.mistral.ai',
+          badge: 'Mistral · Gratuito',
+          description:
+            'Assistente conversacional desenvolvido pela europeia Mistral AI para diálogo, síntese e redação de conteúdos.',
+        },
+        {
+          name: 'DeepSeek',
+          url: 'https://chat.deepseek.com',
+          badge: 'DeepSeek · Raciocínio & Código',
+          description:
+            'Modelos de linguagem avançados com capacidades sólidas de raciocínio lógico, resolução e apoio à investigação.',
         },
         {
           name: 'Perplexity',
           url: 'https://www.perplexity.ai',
-          badge: 'Freemium · Perplexity AI',
+          badge: 'Perplexity AI · Freemium',
           description:
-            'Motor de pesquisa conversacional que apresenta sugestões de referências e hiperligações para verificação externa independente.',
+            'Motor de pesquisa conversacional que apresenta sugestões de referências e fontes para verificação independente.',
         },
         {
           name: 'Google AI Studio',
           url: 'https://aistudio.google.com',
-          badge: 'Gratuito · Prototipagem',
+          badge: 'Complemento · Prototipagem',
           description:
-            'Ambiente técnico para exploração direta de modelos Gemini, prototipagem de prompts de sistema e calibração de parâmetros.',
+            'Plataforma de experimentação com modelos Gemini, prototipagem de prompts de sistema e calibração de parâmetros (identificado como plataforma de experimentação, não como modelo).',
         },
       ],
     },
@@ -109,7 +123,7 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       fullTitle: 'Modelos Generativos de Imagem (Difusão e Espaço Latente)',
       icon: ImageIcon,
       color: 'emerald',
-      whatTheyDo: 'Produzem representações visuais bidimensionais a partir de descrições textuais (prompts).',
+      whatTheyDo: 'Ferramentas para criar, transformar e editar imagens.',
       howTheyWork: [
         'A maioria dos modelos contemporâneos utiliza processos de difusão: iniciam com um padrão de ruído aleatório no espaço latente e removem progressivamente o ruído condicionando a geração à representação vetorial do texto fornecido.',
         'Limitações gráficas: estes modelos frequentemente apresentam incoerências em representações anatómicas (mãos, dentes), detalhes em perspetiva e textos/rótulos ortográficos inseridos em esquemas didáticos.',
@@ -121,6 +135,20 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       ],
       tools: [
         {
+          name: 'ChatGPT (geração de imagem)',
+          url: 'https://chatgpt.com',
+          badge: 'OpenAI · Integrado',
+          description:
+            'Geração e edição de ilustrações e esquemas visuais a partir de instruções em linguagem natural.',
+        },
+        {
+          name: 'Adobe Firefly',
+          url: 'https://firefly.adobe.com',
+          badge: 'Adobe · Licenciamento Stock',
+          description:
+            'Criação e edição de imagens treinada com acervo documentalmente licenciado (Adobe Stock) e obras em domínio público.',
+        },
+        {
           name: 'Midjourney',
           url: 'https://www.midjourney.com',
           badge: 'Subscrição Comercial',
@@ -128,25 +156,32 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
             'Geração de imagens com elevado detalhe visual e estilístico a partir de descrições textuais pormenorizadas.',
         },
         {
-          name: 'DALL·E',
-          url: 'https://chatgpt.com',
-          badge: 'Integrado no ChatGPT · OpenAI',
+          name: 'Ideogram',
+          url: 'https://ideogram.ai',
+          badge: 'Freemium · Tipografia',
           description:
-            'Interpretação detalhada de instruções descritivas em linguagem natural para composição de imagens.',
+            'Especializado na integração coerente e legível de texto, rótulos e tipografia dentro de composições gráficas.',
         },
         {
-          name: 'Adobe Firefly',
-          url: 'https://firefly.adobe.com',
-          badge: 'Freemium · Adobe',
+          name: 'FLUX',
+          url: 'https://blackforestlabs.ai',
+          badge: 'Black Forest Labs · Alta Resolução',
           description:
-            'Treinado em conjuntos documentados de imagens licenciadas (Adobe Stock) e obras em domínio público.',
+            'Família de modelos de difusão de última geração com elevada fidelidade visual, anatomia precisa e detalhe fotográfico.',
         },
         {
-          name: 'Stable Diffusion',
-          url: 'https://stability.ai',
-          badge: 'Open-Source / Comercial · Stability AI',
+          name: 'Leonardo AI',
+          url: 'https://leonardo.ai',
+          badge: 'Freemium · Suíte Criativa',
           description:
-            'Modelo generativo de imagem de código aberto amplamente utilizado para criação e personalização visual.',
+            'Plataforma de criação e edição com múltiplos modelos especializados, controlo de perspetiva e geração consistente.',
+        },
+        {
+          name: 'Canva (funcionalidades de IA)',
+          url: 'https://www.canva.com',
+          badge: 'Canva · Recursos Didáticos',
+          description:
+            'Conjunto de ferramentas de criação, edição e expansão de imagens integrado diretamente no editor pedagógico.',
         },
       ],
     },
@@ -156,7 +191,8 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       fullTitle: 'Modelos Generativos de Áudio, Voz e Música',
       icon: Mic,
       color: 'amber',
-      whatTheyDo: 'Geram voz sintética, transcrevem áudio fonético ou compõem sequências sonoras e musicais.',
+      whatTheyDo:
+        'Ferramentas para gerar voz, transcrever áudio, criar música e trabalhar com som.',
       howTheyWork: [
         'Tarefas distintas: (1) Síntese de texto para fala (TTS), (2) Reconhecimento automático de fala (ASR / transcrição), (3) Clonagem de voz a partir de amostras de áudio, e (4) Geração musical a partir de especificações harmónicas e rítmicas.',
         'Interação por voz e privacidade: A utilização de funcionalidades de voz implica a captação e o processamento de áudio, frequentemente em servidores externos. No contexto escolar, o recurso a estas funcionalidades exige especial cuidado com a proteção de dados pessoais e a eventual identificação de alunos.',
@@ -168,39 +204,46 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       ],
       tools: [
         {
-          name: 'ElevenLabs',
-          url: 'https://elevenlabs.io',
-          badge: 'Freemium · Quota Mensal',
-          description:
-            'Síntese de voz com entoação e modulação acústica em língua portuguesa para narração de recursos educativos.',
-        },
-        {
-          name: 'Speechify',
-          url: 'https://speechify.com',
-          badge: 'Freemium · Acessibilidade',
-          description:
-            'Leitor de texto em voz alta configurável (TTS), frequentemente utilizado como apoio de acessibilidade à leitura.',
-        },
-        {
-          name: 'OpenAI Whisper',
+          name: 'Whisper — transcrição de áudio',
           url: 'https://openai.com/research/whisper',
-          badge: 'Open-Weight · Transcrição',
+          badge: 'OpenAI · Transcrição (ASR)',
           description:
-            'Modelo open-weight de reconhecimento automático de fala (ASR) para transcrição de áudio em texto legível.',
+            'Modelo open-weight de reconhecimento automático de fala e transcrição rigorosa de ficheiros áudio em texto legível.',
         },
         {
-          name: 'Suno AI',
+          name: 'ElevenLabs — síntese e clonagem de voz',
+          url: 'https://elevenlabs.io',
+          badge: 'ElevenLabs · Síntese de Voz',
+          description:
+            'Síntese vocal com entoação natural e modulação expressiva em português, utilizável para acessibilidade e narração.',
+        },
+        {
+          name: 'Suno — geração musical',
           url: 'https://suno.com',
-          badge: 'Freemium · Créditos Diários',
+          badge: 'Suno AI · Composição',
           description:
-            'Composição musical generativa (melodia e instrumentação) a partir de letras ou temas em verso.',
+            'Geração musical completa (voz cantada e arranjo instrumental) a partir de letras em verso ou temas propostos.',
         },
         {
-          name: 'Udio',
+          name: 'Udio — geração musical',
           url: 'https://www.udio.com',
-          badge: 'Freemium · Produção Musical',
+          badge: 'Udio · Produção Musical',
           description:
-            'Ferramenta de experimentação e produção musical sintética em diversos géneros sonoros.',
+            'Composição musical generativa em múltiplos géneros e estilos acústicos para enriquecimento de projetos didáticos.',
+        },
+        {
+          name: 'Descript — edição de áudio e vídeo com funcionalidades de IA',
+          url: 'https://www.descript.com',
+          badge: 'Descript · Edição Textual',
+          description:
+            'Edição inteligente de ficheiros áudio e vídeo através da transcrição textual, com remoção de ruídos e hesitações.',
+        },
+        {
+          name: 'Google AI / Gemini — funcionalidades de áudio',
+          url: 'https://gemini.google.com',
+          badge: 'Google · Voz e Áudio',
+          description:
+            'Funcionalidades de processamento, análise e diálogo por voz em tempo real, consoante o modelo e o produto Google utilizado.',
         },
       ],
     },
@@ -210,7 +253,7 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       fullTitle: 'Modelos Generativos de Vídeo e Animação Sintética',
       icon: Video,
       color: 'purple',
-      whatTheyDo: 'Produzem pequenos clips animados e apresentadores virtuais a partir de texto ou imagens de referência.',
+      whatTheyDo: 'Ferramentas para gerar vídeo, animações e conteúdos audiovisuais.',
       howTheyWork: [
         'Modelam a continuidade espacial e temporal entre fotogramas consecutivos. Limitações atuais: quebras de coerência temporal, distorções em membros e mãos, deformação de objetos em movimento e texto ilegível.',
         'Riscos éticos: exigem especial reflexão crítica relativamente a representações estereotipadas e à proliferação de vídeos manipulados (deepfakes).',
@@ -222,32 +265,74 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       ],
       tools: [
         {
+          name: 'Google Veo / Flow',
+          url: 'https://deepmind.google/technologies/veo',
+          badge: 'Google DeepMind · Alta Definição',
+          description:
+            'Modelo generativo de vídeo cinematográfico com compreensão apurada de comandos em linguagem natural e física visual.',
+        },
+        {
           name: 'Runway',
           url: 'https://runwayml.com',
-          badge: 'Freemium · Gen-2 / Gen-3',
+          badge: 'Runway · Gen-2 / Gen-3',
           description:
-            'Geração de sequências de vídeo a partir de descrições textuais ou imagens estáticas.',
+            'Geração de sequências de vídeo e animação contínua a partir de descrições textuais ou imagens estáticas de suporte.',
         },
         {
           name: 'Pika',
           url: 'https://pika.art',
-          badge: 'Freemium · Animação',
+          badge: 'Pika · Animação Dinâmica',
           description:
-            'Animação de elementos específicos em imagens estáticas e pequenos efeitos de movimento.',
+            'Animação de elementos específicos em imagens estáticas, pequenos efeitos de movimento e geração rápida de clips.',
+        },
+        {
+          name: 'Adobe Firefly (vídeo)',
+          url: 'https://firefly.adobe.com',
+          badge: 'Adobe · Edição Audiovisual',
+          description:
+            'Módulo de geração e expansão de clips de vídeo concebido para fluxos criativos e recursos multimédia.',
+        },
+        {
+          name: 'Kling AI',
+          url: 'https://klingai.com',
+          badge: 'Kling AI · Movimento Fluido',
+          description:
+            'Modelo generativo com capacidade de simulação física realista e geração de sequências de vídeo alargadas.',
+        },
+        {
+          name: 'Luma Dream Machine',
+          url: 'https://lumalabs.ai/dream-machine',
+          badge: 'Luma AI · Câmara 3D',
+          description:
+            'Geração de sequências visuais com planos dinâmicos e movimento de perspetiva espacial a partir de descrições.',
+        },
+        {
+          name: 'Vidnoz AI',
+          url: 'https://www.vidnoz.com',
+          badge: 'Vidnoz · Apresentadores Virtuais',
+          description:
+            'Criação rápida de vídeos explicativos com recurso a avatares e sintetização vocal em múltiplos idiomas.',
         },
         {
           name: 'Synthesia',
           url: 'https://www.synthesia.io',
-          badge: 'Comercial · Avatares',
+          badge: 'Synthesia · Avatares Didáticos',
           description:
-            'Produção de vídeos instrucionais com apresentadores digitais com base em texto previamente redigido.',
+            'Produção de vídeos instrucionais com apresentadores virtuais a partir de guiões textuais previamente elaborados.',
         },
         {
-          name: 'Sora',
-          url: 'https://sora.com',
-          badge: 'OpenAI · Vídeo de Alta Definição',
+          name: 'HeyGen',
+          url: 'https://www.heygen.com',
+          badge: 'HeyGen · Sincronização & Tradução',
           description:
-            'Modelo generativo de vídeo de última geração desenvolvido pela OpenAI capaz de criar cenas complexas e realistas.',
+            'Avatares virtuais com animação labial precisa e capacidade de tradução automática de vídeos educativos com clonagem.',
+        },
+        {
+          name: 'D-ID',
+          url: 'https://www.d-id.com',
+          badge: 'D-ID · Rostos Animados',
+          description:
+            'Animação realista de retratos estáticos e figuras históricas dando-lhes voz para dramatização didática.',
         },
       ],
     },
@@ -258,7 +343,7 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       icon: Layers,
       color: 'rose',
       whatTheyDo:
-        'Sistemas com capacidade multimodal processam e geram informação combinando diferentes formatos (texto, imagem, áudio, código).',
+        'Ferramentas/modelos que podem trabalhar com diferentes modalidades, como texto, imagem, áudio ou vídeo, dependendo das capacidades disponíveis.',
       howTheyWork: [
         'Projetam dados de diferentes modalidades num espaço de representação partilhado, permitindo analisar um gráfico e explicá-lo em texto, transcrever um áudio ou extrair dados de uma tabela manuscrita.',
         'Grounding e Limites: O suporte a documentos longos e a técnicas de recuperação (RAG) reduzem o risco de alucinação, mas não o eliminam. Podem ocorrer omissões, interpretações parciais de tabelas complexas ou extrapolações sem suporte documental direto.',
@@ -271,32 +356,46 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       ],
       tools: [
         {
-          name: 'Google Gemini',
-          url: 'https://gemini.google.com',
-          badge: 'Gratuito / Advanced · Google',
-          description:
-            'Processamento de janelas de contexto alargadas para análise de documentos longos, dados em tabela e ficheiros multimédia.',
-        },
-        {
           name: 'ChatGPT',
           url: 'https://chatgpt.com',
-          badge: 'Freemium · GPT-4o · OpenAI',
+          badge: 'OpenAI · GPT-4o Multimodal',
           description:
-            'Capacidade multimodal com análise de imagens submetidas, ficheiros e diálogo por voz em tempo real.',
+            'Interpretação e geração integrada combinando texto, imagens carregadas, ficheiros analíticos e diálogo por voz em tempo real.',
         },
         {
-          name: 'Anthropic Claude',
+          name: 'Google Gemini',
+          url: 'https://gemini.google.com',
+          badge: 'Google · Multimodalidade Nativa',
+          description:
+            'Processamento nativo de janelas alargadas para análise conjunta de documentos longos, diagramas, áudio e vídeo.',
+        },
+        {
+          name: 'Claude',
           url: 'https://claude.ai',
-          badge: 'Freemium · Claude 3.5 Sonnet',
+          badge: 'Anthropic · Claude 3.5 Sonnet',
           description:
-            'Análise de diagramas, fluxogramas, documentos técnicos e dados estruturados com foco em precisão descritiva.',
+            'Análise precisa de diagramas técnicos, fluxogramas, documentos digitalizados e dados em tabela com suporte descritivo.',
         },
         {
-          name: 'Google NotebookLM',
-          url: 'https://notebooklm.google.com',
-          badge: 'Gratuito · Grounding',
+          name: 'Microsoft Copilot',
+          url: 'https://copilot.microsoft.com',
+          badge: 'Microsoft · Visão & Texto',
           description:
-            'Ambiente centrado nas fontes documentais fornecidas pelo utilizador (PDFs, notas), gerando sínteses e resumos grounded.',
+            'Compreensão multimodal integrada no motor de busca para interpretação de esquemas gráficos e documentos.',
+        },
+        {
+          name: 'Mistral (modelos com capacidades multimodais)',
+          url: 'https://chat.mistral.ai',
+          badge: 'Mistral AI · Pixtral / Multimodal',
+          description:
+            'Modelos como o Pixtral com capacidade de processamento conjunto de imagens e texto em arquitetura europeia.',
+        },
+        {
+          name: 'Qwen (modelos multimodais)',
+          url: 'https://chat.qwenlm.ai',
+          badge: 'Alibaba · Qwen-VL Multimodal',
+          description:
+            'Série de modelos multimodais de visão e linguagem (Qwen-VL) para leitura de diagramas, gráficos e texto visual.',
         },
       ],
     },
