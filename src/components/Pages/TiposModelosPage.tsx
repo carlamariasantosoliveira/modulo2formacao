@@ -35,6 +35,37 @@ interface ModelTypeData {
   tools: ToolItem[];
 }
 
+const ToolLogo: React.FC<{ name: string; url: string }> = ({ name, url }) => {
+  const [hasError, setHasError] = useState(false);
+
+  let hostname = '';
+  try {
+    hostname = new URL(url).hostname;
+  } catch {
+    hostname = '';
+  }
+
+  // Favicon from Google S2 service with high resolution (64px)
+  const faviconUrl = hostname ? `https://www.google.com/s2/favicons?domain=${hostname}&sz=64` : '';
+  const firstLetter = name.trim().charAt(0).toUpperCase();
+
+  return (
+    <div className="w-8 h-8 rounded-xl bg-slate-50 border border-slate-200/90 p-1 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-blue-300 transition-colors">
+      {!hasError && faviconUrl ? (
+        <img
+          src={faviconUrl}
+          alt={`Logótipo de ${name}`}
+          className="w-5 h-5 object-contain rounded-sm"
+          onError={() => setHasError(true)}
+          loading="lazy"
+        />
+      ) : (
+        <span className="text-xs font-black text-[#1E70EB]">{firstLetter}</span>
+      )}
+    </div>
+  );
+};
+
 export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }) => {
   const [selectedType, setSelectedType] = useState<number>(0);
 
@@ -529,11 +560,16 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
                   {current.tools.map((tool, idx) => (
                     <div
                       key={idx}
-                      className="bg-white p-3.5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-blue-300 hover:shadow-xs transition-all space-y-1.5"
+                      className="bg-white p-3.5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-blue-300 hover:shadow-xs transition-all space-y-2 group"
                     >
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="text-xs font-bold text-slate-900">{tool.name}</span>
-                        <span className="text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-md">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <ToolLogo name={tool.name} url={tool.url} />
+                          <span className="text-xs font-bold text-slate-900 truncate">
+                            {tool.name}
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-md shrink-0 whitespace-nowrap">
                           {tool.badge}
                         </span>
                       </div>
