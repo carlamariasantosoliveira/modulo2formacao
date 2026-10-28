@@ -52,7 +52,7 @@ export const IAGenerativaPage: React.FC = () => {
       <div className="flex items-center gap-3">
         <span className="w-1.5 h-8 bg-[#1E70EB] rounded-full inline-block"></span>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
-          1. Objetivos e Conceito de IA Generativa
+          1. Conceito de IA Generativa
         </h1>
       </div>
 

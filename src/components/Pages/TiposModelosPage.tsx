@@ -41,8 +41,8 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
   const modelTypes: ModelTypeData[] = [
     {
       id: 'llm',
-      name: 'Como funcionam os modelos de linguagem?',
-      fullTitle: 'Como funcionam os modelos de linguagem?',
+      name: 'Modelos de Linguagem (LLMs)',
+      fullTitle: 'Modelos de Linguagem (LLMs)',
       icon: FileText,
       color: 'blue',
       whatTheyDo:
@@ -60,37 +60,37 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       ],
       tools: [
         {
-          name: 'OpenAI ChatGPT (GPT-4o)',
+          name: 'ChatGPT',
           url: 'https://chatgpt.com',
-          badge: 'Freemium · Consultado Out/2026',
+          badge: 'Freemium · OpenAI',
           description:
             'Interface conversacional para redação de rascunhos, ideação pedagógica, sugestões de exercícios e diálogos reflexivos.',
         },
         {
-          name: 'Anthropic Claude (Claude 3.5 Sonnet)',
-          url: 'https://claude.ai',
-          badge: 'Freemium · Consultado Out/2026',
-          description:
-            'Concebido para processamento de contextos alargados, análise de textos e redação estruturada com vocabulário cuidado.',
-        },
-        {
-          name: 'Google Gemini (Gemini 1.5 Pro / Flash)',
+          name: 'Google Gemini',
           url: 'https://gemini.google.com',
-          badge: 'Gratuito / Advanced · Out/2026',
+          badge: 'Gratuito / Advanced · Google',
           description:
             'Acesso com conta Google, informação com pesquisa web e integração no ecossistema de produtividade educativa.',
         },
         {
+          name: 'Anthropic Claude',
+          url: 'https://claude.ai',
+          badge: 'Freemium · Anthropic',
+          description:
+            'Concebido para processamento de contextos alargados, análise de textos e redação estruturada com vocabulário cuidado.',
+        },
+        {
           name: 'Microsoft Copilot',
           url: 'https://copilot.microsoft.com',
-          badge: 'Gratuito / Pro · Out/2026',
+          badge: 'Gratuito / Pro · Microsoft',
           description:
             'Integrado no motor de busca com apresentação de hiperligações de páginas web para verificação independente.',
         },
         {
-          name: 'Perplexity AI',
+          name: 'Perplexity',
           url: 'https://www.perplexity.ai',
-          badge: 'Freemium · Consultado Out/2026',
+          badge: 'Freemium · Perplexity AI',
           description:
             'Motor de pesquisa conversacional que apresenta sugestões de referências e hiperligações para verificação externa independente.',
         },
@@ -121,20 +121,6 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       ],
       tools: [
         {
-          name: 'Adobe Firefly',
-          url: 'https://firefly.adobe.com',
-          badge: 'Freemium · Licenciamento Stock',
-          description:
-            'Treinado em conjuntos documentados de imagens licenciadas (Adobe Stock) e obras em domínio público; recomenda-se verificar termos e política da escola.',
-        },
-        {
-          name: 'Canva Magic Media',
-          url: 'https://www.canva.com',
-          badge: 'Gratuito p/ Professores · Verif.',
-          description:
-            'Geração e edição de ilustrações integrada diretamente no editor do Canva para recursos didáticos.',
-        },
-        {
           name: 'Midjourney',
           url: 'https://www.midjourney.com',
           badge: 'Subscrição Comercial',
@@ -142,18 +128,25 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
             'Geração de imagens com elevado detalhe visual e estilístico a partir de descrições textuais pormenorizadas.',
         },
         {
-          name: 'DALL·E 3 (OpenAI)',
+          name: 'DALL·E',
           url: 'https://chatgpt.com',
-          badge: 'Integrado no ChatGPT',
+          badge: 'Integrado no ChatGPT · OpenAI',
           description:
             'Interpretação detalhada de instruções descritivas em linguagem natural para composição de imagens.',
         },
         {
-          name: 'Craiyon',
-          url: 'https://www.craiyon.com',
-          badge: 'Gratuito com Publicidade',
+          name: 'Adobe Firefly',
+          url: 'https://firefly.adobe.com',
+          badge: 'Freemium · Adobe',
           description:
-            'Gerador direto no navegador sem necessidade de autenticação prévia, adequado para demonstrações pontuais.',
+            'Treinado em conjuntos documentados de imagens licenciadas (Adobe Stock) e obras em domínio público.',
+        },
+        {
+          name: 'Stable Diffusion',
+          url: 'https://stability.ai',
+          badge: 'Open-Source / Comercial · Stability AI',
+          description:
+            'Modelo generativo de imagem de código aberto amplamente utilizado para criação e personalização visual.',
         },
       ],
     },
@@ -182,6 +175,20 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
             'Síntese de voz com entoação e modulação acústica em língua portuguesa para narração de recursos educativos.',
         },
         {
+          name: 'Speechify',
+          url: 'https://speechify.com',
+          badge: 'Freemium · Acessibilidade',
+          description:
+            'Leitor de texto em voz alta configurável (TTS), frequentemente utilizado como apoio de acessibilidade à leitura.',
+        },
+        {
+          name: 'OpenAI Whisper',
+          url: 'https://openai.com/research/whisper',
+          badge: 'Open-Weight · Transcrição',
+          description:
+            'Modelo open-weight de reconhecimento automático de fala (ASR) para transcrição de áudio em texto legível.',
+        },
+        {
           name: 'Suno AI',
           url: 'https://suno.com',
           badge: 'Freemium · Créditos Diários',
@@ -191,23 +198,9 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
         {
           name: 'Udio',
           url: 'https://www.udio.com',
-          badge: 'Freemium · Consultado Out/2026',
+          badge: 'Freemium · Produção Musical',
           description:
             'Ferramenta de experimentação e produção musical sintética em diversos géneros sonoros.',
-        },
-        {
-          name: 'Speechify',
-          url: 'https://speechify.com',
-          badge: 'Freemium · Acessibilidade',
-          description:
-            'Leitor de texto em voz alta configurável (TTS), frequentemente utilizado como apoio de acessibilidade à leitura; a sua eficácia pedagógica individual deve ser avaliada caso a caso.',
-        },
-        {
-          name: 'OpenAI Whisper',
-          url: 'https://openai.com/research/whisper',
-          badge: 'Open-Weight / Transcrição',
-          description:
-            'Modelo open-weight de reconhecimento automático de fala (ASR) para transcrição de áudio em texto legível.',
         },
       ],
     },
@@ -229,39 +222,32 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       ],
       tools: [
         {
-          name: 'Runway (Gen-2 / Gen-3 Alpha)',
+          name: 'Runway',
           url: 'https://runwayml.com',
-          badge: 'Freemium · Créditos Iniciais',
+          badge: 'Freemium · Gen-2 / Gen-3',
           description:
-            'Geração de sequências curtas de vídeo a partir de descrições textuais ou imagens estáticas.',
+            'Geração de sequências de vídeo a partir de descrições textuais ou imagens estáticas.',
         },
         {
-          name: 'HeyGen',
-          url: 'https://www.heygen.com',
-          badge: 'Freemium · Demonstração',
-          description:
-            'Produz avatares virtuais com animação labial aproximada a partir de guiões textuais em várias línguas.',
-        },
-        {
-          name: 'Synthesia',
-          url: 'https://www.synthesia.io',
-          badge: 'Comercial / Demonstração',
-          description:
-            'Produção de vídeos instrucionais com apresentadores digitais com base em texto previamente redigido.',
-        },
-        {
-          name: 'Pika Labs',
+          name: 'Pika',
           url: 'https://pika.art',
-          badge: 'Freemium · Consultado Out/2026',
+          badge: 'Freemium · Animação',
           description:
             'Animação de elementos específicos em imagens estáticas e pequenos efeitos de movimento.',
         },
         {
-          name: 'Luma Dream Machine',
-          url: 'https://lumalabs.ai/dream-machine',
-          badge: 'Freemium · Consultado Out/2026',
+          name: 'Synthesia',
+          url: 'https://www.synthesia.io',
+          badge: 'Comercial · Avatares',
           description:
-            'Simulação visual de movimento de câmara e perspetiva, frequentemente sujeita a distorções anatómicas e artefactos temporais.',
+            'Produção de vídeos instrucionais com apresentadores digitais com base em texto previamente redigido.',
+        },
+        {
+          name: 'Sora',
+          url: 'https://sora.com',
+          badge: 'OpenAI · Vídeo de Alta Definição',
+          description:
+            'Modelo generativo de vídeo de última geração desenvolvido pela OpenAI capaz de criar cenas complexas e realistas.',
         },
       ],
     },
@@ -285,23 +271,23 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
       ],
       tools: [
         {
-          name: 'Google Gemini (Gemini 1.5 Pro / Flash)',
+          name: 'Google Gemini',
           url: 'https://gemini.google.com',
-          badge: 'Gratuito / Advanced · Out/2026',
+          badge: 'Gratuito / Advanced · Google',
           description:
             'Processamento de janelas de contexto alargadas para análise de documentos longos, dados em tabela e ficheiros multimédia.',
         },
         {
-          name: 'OpenAI ChatGPT (GPT-4o)',
+          name: 'ChatGPT',
           url: 'https://chatgpt.com',
-          badge: 'Freemium · Gratuito / Plus',
+          badge: 'Freemium · GPT-4o · OpenAI',
           description:
             'Capacidade multimodal com análise de imagens submetidas, ficheiros e diálogo por voz em tempo real.',
         },
         {
-          name: 'Anthropic Claude (Claude 3.5 Sonnet)',
+          name: 'Anthropic Claude',
           url: 'https://claude.ai',
-          badge: 'Freemium · Consultado Out/2026',
+          badge: 'Freemium · Claude 3.5 Sonnet',
           description:
             'Análise de diagramas, fluxogramas, documentos técnicos e dados estruturados com foco em precisão descritiva.',
         },
@@ -310,7 +296,7 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
           url: 'https://notebooklm.google.com',
           badge: 'Gratuito · Grounding',
           description:
-            'Ambiente centrado nas fontes documentais fornecidas pelo utilizador (PDFs, notas), gerando sínteses e resumos de áudio grounded.',
+            'Ambiente centrado nas fontes documentais fornecidas pelo utilizador (PDFs, notas), gerando sínteses e resumos grounded.',
         },
       ],
     },

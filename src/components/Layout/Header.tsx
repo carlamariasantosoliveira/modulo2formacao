@@ -18,10 +18,10 @@ interface HeaderProps {
 
 const PAGE_STEPS: Record<PageId, { num: number; title: string; category?: string }> = {
   home: { num: 0, title: 'Página Inicial' },
-  'ia-generativa': { num: 1, title: '1. Objetivos e Conceito de IA Generativa' },
+  'ia-generativa': { num: 1, title: '1. Conceito de IA Generativa' },
   'como-funcionam': { num: 2, title: '2. Funcionamento dos Modelos Generativos' },
   'tipos-modelos': { num: 3, title: '3. Tipos de Modelos e Ferramentas' },
-  prompts: { num: 4, title: '4. Prompts e Engenharia de Prompts' },
+  prompts: { num: 4, title: '4. Prompts' },
   tecnicas: { num: 5, title: '5. Formulação de Prompts' },
   'exemplos-disciplina': { num: 6, title: '6. Exemplo de Prompts' },
   'boas-praticas': { num: 7, title: '7. Boas Práticas' },

@@ -48,7 +48,7 @@ export const ReferenciasPage: React.FC = () => {
             Referências Bibliográficas e Ferramentas Usadas
           </h1>
           <p className="text-xs text-slate-500 font-medium mt-0.5 leading-relaxed">
-            Referências bibliográficas e documentação de apoio / Fontes científicas, institucionais e técnicas utilizadas na preparação do módulo. A inclusão de uma referência deve corresponder a uma publicação identificável e relevante para o conteúdo apresentado.
+            Referências bibliográficas e documentação de apoio / Fontes científicas, institucionais e técnicas utilizadas na preparação do módulo.
           </p>
         </div>
       </div>
