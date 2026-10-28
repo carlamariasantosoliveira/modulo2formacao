@@ -23,7 +23,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div className="space-y-8 pb-12 font-sans">
       {/* Informações da Oficina de Formação */}
-      <div className="bg-[#F8FAFC] rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-2xs flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm text-slate-700">
+      <div className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-2xs flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm text-slate-700">
         <div className="flex items-center gap-2.5">
           <GraduationCap className="w-4.5 h-4.5 text-[#1E70EB] shrink-0" />
           <span>
@@ -46,7 +46,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* 1. Hero Banner matching exact visual style in Curso_de_IA_na_Educa__o__1__f7e93860.png */}
+      {/* Hero Banner matching image_5ae414ed.png */}
       <div className="relative rounded-3xl overflow-hidden shadow-lg bg-linear-to-r from-[#07172C] via-[#0A1E38] to-[#122E58] text-white p-6 sm:p-8 md:p-10 min-h-[300px] flex flex-col md:flex-row md:items-center justify-between gap-6 border border-white/10">
         {/* Left Side: Typography & Call To Action */}
         <div className="space-y-4 max-w-xl z-10">
@@ -79,7 +79,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Right Side: High-fidelity Educator with AI Holograms visual matching reference */}
+        {/* Right Side: Educator with AI Holograms visual */}
         <div className="relative z-10 w-full md:w-96 h-60 sm:h-64 flex items-center justify-center shrink-0">
           <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/15 group">
             <img
@@ -88,15 +88,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               loading="eager"
             />
-            {/* Soft gradient vignette to merge seamlessly with navy banner */}
             <div className="absolute inset-0 bg-linear-to-t from-[#07172C]/80 via-transparent to-transparent pointer-events-none" />
             <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
           </div>
         </div>
       </div>
 
-      {/* 2. Objetivos do Módulo 2 matching image_8962f579.png */}
-      <div className="bg-[#EFF6FF] rounded-3xl p-6 sm:p-7 border border-[#DBEAFE] shadow-2xs transition-all">
+      {/* Objetivos do Módulo 2 matching image_5ae414ed.png */}
+      <div className="bg-[#EFF6FF] rounded-3xl p-6 sm:p-8 border border-[#DBEAFE] shadow-2xs transition-all space-y-4">
         <button
           onClick={() => setIsObjectivesOpen(!isObjectivesOpen)}
           className="w-full flex items-center justify-between text-left cursor-pointer"
@@ -117,17 +116,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </button>
 
         {isObjectivesOpen && (
-          <div className="pt-4 sm:pt-5 pl-13 sm:pl-14 space-y-3 text-sm sm:text-base text-slate-800 animate-in fade-in">
-            {COURSE_INFO.objectives.map((obj, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2.5 shrink-0"></span>
-                <span className="leading-relaxed font-normal">{obj}</span>
-              </div>
-            ))}
+          <div className="pt-2 pl-4 sm:pl-14">
+            <ul className="space-y-3 list-disc text-slate-700 text-sm sm:text-base leading-relaxed">
+              {COURSE_INFO.objectives.map((obj, i) => (
+                <li key={i}>{obj}</li>
+              ))}
+            </ul>
           </div>
         )}
       </div>
     </div>
   );
 };
-

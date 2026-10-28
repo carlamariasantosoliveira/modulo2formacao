@@ -41,272 +41,276 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
   const modelTypes: ModelTypeData[] = [
     {
       id: 'llm',
-      name: 'Modelos de Linguagem (LLMs)',
-      fullTitle: 'Modelos de Linguagem (LLMs – Large Language Models)',
+      name: 'Como funcionam os modelos de linguagem?',
+      fullTitle: 'Como funcionam os modelos de linguagem?',
       icon: FileText,
       color: 'blue',
       whatTheyDo:
-        'Processam e geram texto em linguagem natural (resumos, código, poesia, planos de aula).',
+        'Os modelos de linguagem processam texto em unidades denominadas tokens (palavras, partes de palavras ou pontuação). A cada novo token, o modelo calcula as probabilidades para selecionar o seguinte, tendo em conta o texto anterior e os parâmetros aprendidos.',
       howTheyWork: [
-        'Tokens: O texto é fatiado em tokens (unidades semânticas).',
-        'Arquitetura Transformer: Utilizam o mecanismo de "Atenção" para perceber a relação entre palavras distantes numa frase.',
-        'Predição: Calcula qual é o próximo token mais provável numa sequência, dado o contexto anterior.',
+        'Tokens: O texto é processado em unidades denominadas tokens (palavras, partes de palavras ou pontuação).',
+        'Mecanismo de Atenção: O mecanismo de atenção permite ao modelo identificar relações entre diferentes partes do texto de entrada, mesmo quando separadas por várias frases, garantindo maior coerência global na resposta gerada.',
+        'Predição e Probabilidades: A cada novo token, o modelo calcula as probabilidades para selecionar o seguinte, tendo em conta o texto anterior e os parâmetros aprendidos nos dados de treino.',
       ],
       educationalApps: [
-        'Apoio ao planeamento de aulas e sequências didáticas;',
-        'Criação de exercícios e fichas diferenciadas por nível;',
-        'Adaptação de textos a diferentes níveis de leitura e inclusão;',
-        'Apoio à escrita criativa, estruturação argumentativa e revisão textual.',
+        'Apoio ao planeamento de sequências didáticas e rascunhos de aulas;',
+        'Criação de propostas de exercícios e fichas diferenciadas;',
+        'Adaptação de extensão e vocabulário textual para suporte à leitura;',
+        'Apoio à ideação de temas de debate e reformulação de exemplos práticos.',
       ],
       tools: [
         {
-          name: 'ChatGPT (OpenAI)',
+          name: 'OpenAI ChatGPT (GPT-4o)',
           url: 'https://chatgpt.com',
-          badge: 'Freemium · Gratuito / Plus',
+          badge: 'Freemium · Consultado Out/2026',
           description:
-            'Assistente versátil para criação de textos, planeamento de aulas, questionários e rubricas de avaliação.',
+            'Interface conversacional para redação de rascunhos, ideação pedagógica, sugestões de exercícios e diálogos reflexivos.',
         },
         {
-          name: 'Claude (Anthropic)',
+          name: 'Anthropic Claude (Claude 3.5 Sonnet)',
           url: 'https://claude.ai',
-          badge: 'Freemium · Gratuito / Pro',
+          badge: 'Freemium · Consultado Out/2026',
           description:
-            'Excelente na leitura e análise de documentos longos, com estilo de escrita natural e grande nuance pedagógica.',
+            'Concebido para processamento de contextos alargados, análise de textos e redação estruturada com vocabulário cuidado.',
         },
         {
-          name: 'Google Gemini',
+          name: 'Google Gemini (Gemini 1.5 Pro / Flash)',
           url: 'https://gemini.google.com',
-          badge: 'Gratuito / Advanced',
+          badge: 'Gratuito / Advanced · Out/2026',
           description:
-            'Acesso direto com conta Google, informação em tempo real e integração direta com o Google Workspace.',
+            'Acesso com conta Google, informação com pesquisa web e integração no ecossistema de produtividade educativa.',
         },
         {
           name: 'Microsoft Copilot',
           url: 'https://copilot.microsoft.com',
-          badge: 'Gratuito / Pro',
+          badge: 'Gratuito / Pro · Out/2026',
           description:
-            'Integrado no motor de busca Bing e ecossistema Microsoft 365, com referências e fontes web em tempo real.',
+            'Integrado no motor de busca com apresentação de hiperligações de páginas web para verificação independente.',
         },
         {
           name: 'Perplexity AI',
           url: 'https://www.perplexity.ai',
-          badge: 'Freemium · Gratuito / Pro',
+          badge: 'Freemium · Consultado Out/2026',
           description:
-            'Motor de pesquisa conversacional com citação rigorosa de fontes académicas e hiperligações para verificação.',
+            'Motor de pesquisa conversacional que apresenta sugestões de referências e hiperligações para verificação externa independente.',
         },
         {
           name: 'Google AI Studio',
           url: 'https://aistudio.google.com',
-          badge: 'Gratuito · Google',
+          badge: 'Gratuito · Prototipagem',
           description:
-            'Ambiente para experimentação direta com modelos generativos (Gemini), prototipagem de prompts de sistema, ajuste de temperatura e desenvolvimento de materiais educativos.',
+            'Ambiente técnico para exploração direta de modelos Gemini, prototipagem de prompts de sistema e calibração de parâmetros.',
         },
       ],
     },
     {
       id: 'imagem',
       name: 'Modelos Generativos de Imagem',
-      fullTitle: 'Modelos Generativos de Imagem',
+      fullTitle: 'Modelos Generativos de Imagem (Difusão e Espaço Latente)',
       icon: ImageIcon,
       color: 'emerald',
-      whatTheyDo: 'Criam imagens a partir de descrições textuais.',
+      whatTheyDo: 'Produzem representações visuais bidimensionais a partir de descrições textuais (prompts).',
       howTheyWork: [
-        'Muitos destes modelos utilizam modelos de difusão, que começam com ruído aleatório, refinam progressivamente a imagem e produzem uma imagem coerente com a descrição fornecida.',
+        'A maioria dos modelos contemporâneos utiliza processos de difusão: iniciam com um padrão de ruído aleatório no espaço latente e removem progressivamente o ruído condicionando a geração à representação vetorial do texto fornecido.',
+        'Limitações gráficas: estes modelos frequentemente apresentam incoerências em representações anatómicas (mãos, dentes), detalhes em perspetiva e textos/rótulos ortográficos inseridos em esquemas didáticos.',
       ],
       educationalApps: [
-        'Criação de imagens personalizadas para apresentações escolares;',
-        'Ilustração visual de conceitos abstratos em Ciências, História ou Línguas;',
-        'Apoio à explicação visual e acessibilidade cognitiva de conteúdos.',
+        'Criação de imagens ilustrativas para apresentações escolares;',
+        'Apoio à representação visual de conceitos abstratos;',
+        'Estímulo à literacia visual e análise crítica de conteúdos sintéticos.',
       ],
       tools: [
         {
           name: 'Adobe Firefly',
           url: 'https://firefly.adobe.com',
-          badge: 'Freemium · Seguro Ético',
+          badge: 'Freemium · Licenciamento Stock',
           description:
-            'Treinado em bancos de imagens licenciados (Adobe Stock), ideal para ambiente escolar por respeitar direitos de autor.',
+            'Treinado em conjuntos documentados de imagens licenciadas (Adobe Stock) e obras em domínio público; recomenda-se verificar termos e política da escola.',
         },
         {
           name: 'Canva Magic Media',
           url: 'https://www.canva.com',
-          badge: 'Gratuito p/ Professores',
+          badge: 'Gratuito p/ Professores · Verif.',
           description:
-            'Geração rápida de imagens e ilustrações integrada diretamente no editor gráfico do Canva para apresentações e fichas.',
+            'Geração e edição de ilustrações integrada diretamente no editor do Canva para recursos didáticos.',
         },
         {
           name: 'Midjourney',
           url: 'https://www.midjourney.com',
-          badge: 'Pago / Subscrição',
+          badge: 'Subscrição Comercial',
           description:
-            'Referência mundial em qualidade estética, composição artística detalhada e fotorrealismo impressionante.',
+            'Geração de imagens com elevado detalhe visual e estilístico a partir de descrições textuais pormenorizadas.',
         },
         {
           name: 'DALL·E 3 (OpenAI)',
           url: 'https://chatgpt.com',
           badge: 'Integrado no ChatGPT',
           description:
-            'Compreensão refinada de instruções em linguagem natural para ilustrar diagramas e cenários educativos.',
+            'Interpretação detalhada de instruções descritivas em linguagem natural para composição de imagens.',
         },
         {
           name: 'Craiyon',
           url: 'https://www.craiyon.com',
-          badge: 'Gratuito com Anúncios',
+          badge: 'Gratuito com Publicidade',
           description:
-            'Gerador direto no navegador sem necessidade de conta ou instalação, útil para experiências rápidas com turmas.',
+            'Gerador direto no navegador sem necessidade de autenticação prévia, adequado para demonstrações pontuais.',
         },
       ],
     },
     {
       id: 'audio',
       name: 'Modelos de Áudio e Voz',
-      fullTitle: 'Modelos Generativos de Áudio e Voz',
+      fullTitle: 'Modelos Generativos de Áudio, Voz e Música',
       icon: Mic,
       color: 'amber',
-      whatTheyDo: 'Geram voz sintética, música e narração automática.',
+      whatTheyDo: 'Geram voz sintética, transcrevem áudio fonético ou compõem sequências sonoras e musicais.',
       howTheyWork: [
-        'Aprendem padrões presentes em gravações de voz ou música e conseguem gerar novos sons ou converter texto em fala.',
+        'Tarefas distintas: (1) Síntese de texto para fala (TTS), (2) Reconhecimento automático de fala (ASR / transcrição), (3) Clonagem de voz a partir de amostras de áudio, e (4) Geração musical a partir de especificações harmónicas e rítmicas.',
+        'Interação por voz e privacidade: A utilização de funcionalidades de voz implica a captação e o processamento de áudio, frequentemente em servidores externos. No contexto escolar, o recurso a estas funcionalidades exige especial cuidado com a proteção de dados pessoais e a eventual identificação de alunos.',
       ],
       educationalApps: [
-        'Leitura em voz alta de textos e fichas de trabalho (promovendo a inclusão e o DUA);',
-        'Produção de podcasts e audioguias temáticos para a comunidade escolar;',
-        'Apoio a atividades de expressão oral e aprendizagem de línguas estrangeiras.',
+        'Leitura em voz alta de textos e fichas de apoio como estratégia de acessibilidade à leitura;',
+        'Produção de podcasts e guiões sonoros para projetos temáticos escolares;',
+        'Apoio à pronúncia em línguas estrangeiras através de modelos fonéticos.',
       ],
       tools: [
         {
           name: 'ElevenLabs',
           url: 'https://elevenlabs.io',
-          badge: 'Freemium · 10k carateres/mês',
+          badge: 'Freemium · Quota Mensal',
           description:
-            'Síntese de voz com entoação e expressividade ultrarrealista em língua portuguesa para narração de recursos.',
+            'Síntese de voz com entoação e modulação acústica em língua portuguesa para narração de recursos educativos.',
         },
         {
           name: 'Suno AI',
           url: 'https://suno.com',
-          badge: 'Freemium · 50 créditos/dia',
+          badge: 'Freemium · Créditos Diários',
           description:
-            'Cria canções pedagógicas completas (melodia, harmonia e voz) a partir de letras ou matérias para memorização.',
+            'Composição musical generativa (melodia e instrumentação) a partir de letras ou temas em verso.',
         },
         {
           name: 'Udio',
           url: 'https://www.udio.com',
-          badge: 'Freemium',
+          badge: 'Freemium · Consultado Out/2026',
           description:
-            'Plataforma de composição musical generativa em diversos estilos para criação de bandas sonoras de peças ou vídeos.',
+            'Ferramenta de experimentação e produção musical sintética em diversos géneros sonoros.',
         },
         {
           name: 'Speechify',
           url: 'https://speechify.com',
-          badge: 'Freemium',
+          badge: 'Freemium · Acessibilidade',
           description:
-            'Leitor de texto com vozes humanas desenhado especificamente para apoiar alunos com dislexia e TDAH.',
+            'Leitor de texto em voz alta configurável (TTS), frequentemente utilizado como apoio de acessibilidade à leitura; a sua eficácia pedagógica individual deve ser avaliada caso a caso.',
         },
         {
           name: 'OpenAI Whisper',
           url: 'https://openai.com/research/whisper',
-          badge: 'Open-Source / Ferramentas',
+          badge: 'Open-Weight / Transcrição',
           description:
-            'Modelo líder de reconhecimento de fala que transcreve gravações de aulas e palestras em texto legível.',
+            'Modelo open-weight de reconhecimento automático de fala (ASR) para transcrição de áudio em texto legível.',
         },
       ],
     },
     {
       id: 'video',
       name: 'Modelos Generativos de Vídeo',
-      fullTitle: 'Modelos Generativos de Vídeo',
+      fullTitle: 'Modelos Generativos de Vídeo e Animação Sintética',
       icon: Video,
       color: 'purple',
-      whatTheyDo: 'Criam pequenos vídeos a partir de texto ou imagens.',
+      whatTheyDo: 'Produzem pequenos clips animados e apresentadores virtuais a partir de texto ou imagens de referência.',
       howTheyWork: [
-        'Utilizam modelos capazes de gerar sequências de imagens ao longo do tempo, mantendo a coerência visual e narrativa.',
+        'Modelam a continuidade espacial e temporal entre fotogramas consecutivos. Limitações atuais: quebras de coerência temporal, distorções em membros e mãos, deformação de objetos em movimento e texto ilegível.',
+        'Riscos éticos: exigem especial reflexão crítica relativamente a representações estereotipadas e à proliferação de vídeos manipulados (deepfakes).',
       ],
       educationalApps: [
-        'Criação de microvídeos explicativos para aulas invertidas (flipped classroom);',
-        'Storytelling digital em projetos multidisciplinares;',
-        'Simulação e animação de episódios históricos ou fenómenos naturais.',
+        'Criação de microvídeos explicativos para síntese de conteúdos letivos;',
+        'Composição de narrativas audiovisuais e simulação em projetos interdisciplinares;',
+        'Animação de gravuras e património histórico para enriquecimento didático.',
       ],
       tools: [
         {
-          name: 'Runway (Gen-2 / Gen-3)',
+          name: 'Runway (Gen-2 / Gen-3 Alpha)',
           url: 'https://runwayml.com',
           badge: 'Freemium · Créditos Iniciais',
           description:
-            'Plataforma de vanguarda para geração de pequenos clips de vídeo cinematográfico a partir de texto ou imagem.',
+            'Geração de sequências curtas de vídeo a partir de descrições textuais ou imagens estáticas.',
         },
         {
           name: 'HeyGen',
           url: 'https://www.heygen.com',
-          badge: 'Freemium · 1 crédito grátis',
+          badge: 'Freemium · Demonstração',
           description:
-            'Gera apresentadores virtuais/avatares a falar com sincronização labial perfeita em mais de 40 línguas.',
+            'Produz avatares virtuais com animação labial aproximada a partir de guiões textuais em várias línguas.',
         },
         {
           name: 'Synthesia',
           url: 'https://www.synthesia.io',
-          badge: 'Demonstração / Pago',
+          badge: 'Comercial / Demonstração',
           description:
-            'Criação profissional de videoaulas formativas com avatares de IA a partir de um simples guião de texto.',
+            'Produção de vídeos instrucionais com apresentadores digitais com base em texto previamente redigido.',
         },
         {
           name: 'Pika Labs',
           url: 'https://pika.art',
-          badge: 'Freemium',
+          badge: 'Freemium · Consultado Out/2026',
           description:
-            'Permite animar imagens estáticas de manuais escolares e dar movimento a gravuras ou mapas históricos.',
+            'Animação de elementos específicos em imagens estáticas e pequenos efeitos de movimento.',
         },
         {
           name: 'Luma Dream Machine',
           url: 'https://lumalabs.ai/dream-machine',
-          badge: 'Freemium',
+          badge: 'Freemium · Consultado Out/2026',
           description:
-            'Modelo de vídeo de alta fidelidade com física realista e movimento de câmara fluído.',
+            'Simulação visual de movimento de câmara e perspetiva, frequentemente sujeita a distorções anatómicas e artefactos temporais.',
         },
       ],
     },
     {
       id: 'multimodal',
       name: 'Modelos Generativos Multimodais',
-      fullTitle: 'Modelos Generativos Multimodais',
+      fullTitle: 'Modelos Generativos Multimodais (Visão, Texto, Áudio e Documentos)',
       icon: Layers,
       color: 'rose',
       whatTheyDo:
-        'Processam e relacionam vários tipos de dados em simultâneo (texto, imagem, áudio e vídeo).',
+        'Sistemas com capacidade multimodal processam e geram informação combinando diferentes formatos (texto, imagem, áudio, código).',
       howTheyWork: [
-        'Por exemplo, podem analisar uma imagem complexa ou gráfico e descrevê-la detalhadamente em linguagem natural, interpretar um esquema manuscrito ou responder a perguntas sobre um excerto de vídeo.',
+        'Projetam dados de diferentes modalidades num espaço de representação partilhado, permitindo analisar um gráfico e explicá-lo em texto, transcrever um áudio ou extrair dados de uma tabela manuscrita.',
+        'Grounding e Limites: O suporte a documentos longos e a técnicas de recuperação (RAG) reduzem o risco de alucinação, mas não o eliminam. Podem ocorrer omissões, interpretações parciais de tabelas complexas ou extrapolações sem suporte documental direto.',
       ],
       educationalApps: [
-        'Análise de imagens, gráficos ou esquemas submetidos por fotografia;',
-        'Apoio à compreensão visual e resolução guiada de problemas passo a passo;',
-        'Ensino mais inclusivo, adaptável e diversificado;',
-        'Desenvolvimento de atividades interativas com múltiplos formatos de suporte.',
+        'Análise pedagógica de diagramas, gráficos ou fotografias de experiências laboratoriais;',
+        'Apoio à resolução comentada de exercícios passo a passo com suporte visual;',
+        'Adaptação multimodal de conteúdos para reforço da acessibilidade (DUA);',
+        'Pesquisa e síntese preliminar de fontes em projetos de investigação escolar.',
       ],
       tools: [
         {
-          name: 'Google Gemini (1.5 / 2.0 Flash e Pro)',
+          name: 'Google Gemini (Gemini 1.5 Pro / Flash)',
           url: 'https://gemini.google.com',
-          badge: 'Gratuito / Advanced',
+          badge: 'Gratuito / Advanced · Out/2026',
           description:
-            'Janela de contexto gigante capaz de analisar livros inteiros, PDFs de centenas de páginas, gravações áudio e vídeos.',
+            'Processamento de janelas de contexto alargadas para análise de documentos longos, dados em tabela e ficheiros multimédia.',
         },
         {
-          name: 'GPT-4o (OpenAI)',
+          name: 'OpenAI ChatGPT (GPT-4o)',
           url: 'https://chatgpt.com',
           badge: 'Freemium · Gratuito / Plus',
           description:
-            'Interação multimodal em tempo real com visão computacional para explicar exercícios fotografados e diálogo por voz.',
+            'Capacidade multimodal com análise de imagens submetidas, ficheiros e diálogo por voz em tempo real.',
         },
         {
-          name: 'Claude 3.5 Sonnet (Anthropic)',
+          name: 'Anthropic Claude (Claude 3.5 Sonnet)',
           url: 'https://claude.ai',
-          badge: 'Freemium · Gratuito / Pro',
+          badge: 'Freemium · Consultado Out/2026',
           description:
-            'Capacidade de topo na interpretação de infográficos complexos, diagramas científicos, tabelas e fluxogramas.',
+            'Análise de diagramas, fluxogramas, documentos técnicos e dados estruturados com foco em precisão descritiva.',
         },
         {
           name: 'Google NotebookLM',
           url: 'https://notebooklm.google.com',
-          badge: 'Gratuito',
+          badge: 'Gratuito · Grounding',
           description:
-            'Ambiente multimodal centrado nas fontes do professor: carrega PDFs, diapositivos ou links e gera resumos áudio estilo podcast.',
+            'Ambiente centrado nas fontes documentais fornecidas pelo utilizador (PDFs, notas), gerando sínteses e resumos de áudio grounded.',
         },
       ],
     },
@@ -478,6 +482,16 @@ export const TiposModelosPage: React.FC<TiposModelosPageProps> = ({ onNavigate }
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Aviso: Acesso e funcionalidades */}
+      <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-slate-700 space-y-1">
+        <h4 className="text-xs font-bold text-[#0C1E38] uppercase tracking-wider">
+          Acesso e funcionalidades
+        </h4>
+        <p className="text-xs sm:text-sm leading-relaxed text-slate-600 font-normal">
+          A oferta de modelos e ferramentas evolui com rapidez. As versões gratuitas e pagas diferem frequentemente em limites de utilização, velocidade de resposta e acesso a funcionalidades avançadas. É recomendável verificar as condições vigentes em cada plataforma antes da sua adoção.
+        </p>
       </div>
     </div>
   );

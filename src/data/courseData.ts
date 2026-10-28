@@ -15,11 +15,11 @@ export const COURSE_INFO = {
   subtitle: 'Transcrição na Íntegra e Estruturação Pedagógica do Conteúdo',
   author: 'Carla Oliveira',
   date: '26 de janeiro de 2026',
-  originalTitle: 'Modulo2 | Genially',
-  scope: '',
+  scope:
+    'Documento estruturado para o Curso de Inteligência Artificial na Educação. Formato digital autónomo concebido para a formação contínua de professores a distância.',
   motto: 'Explorar • Experimentar • Aplicar na Educação',
   quote: {
-    text: 'A IA generativa é uma aliada poderosa para potenciar a criatividade, a inclusão e a qualidade da aprendizagem.',
+    text: 'A tecnologia pode ampliar as possibilidades pedagógicas, mas a sua utilização deve responder a objetivos de aprendizagem, critérios de qualidade e necessidades concretas dos alunos.',
     author: 'Princípio Pedagógico da Oficina de Formação',
   },
   secondaryQuote: {
@@ -30,6 +30,33 @@ export const COURSE_INFO = {
     'Compreender o funcionamento dos modelos generativos.',
     'Aprender a formular prompts claros e eficazes.',
     'Aplicar boas práticas para otimizar a qualidade dos resultados.',
+  ],
+  objectiveEvidenceMapping: [
+    {
+      outcome: 'Distinção conceptual (modelo, interface e sistema)',
+      instrument: 'Questionário formativo e análise de arquiteturas',
+      criteria: 'Identificação correta dos componentes e limites de cada camada',
+    },
+    {
+      outcome: 'Conceção de prompts estruturados',
+      instrument: 'Laboratório prático de prompts (Atividade de Grupo)',
+      criteria: 'Inclusão dos 4 elementos estruturais com critérios de verificação explícitos',
+    },
+    {
+      outcome: 'Auditoria crítica de afirmações',
+      instrument: 'Atividade "O Prompt de Ouro" e simulação de limitações',
+      criteria: 'Confronto factual demonstrado com fontes primárias e deteção de incongruências',
+    },
+    {
+      outcome: 'Conformidade ética e RGPD',
+      instrument: 'Protocolo de boas práticas e análise de cenários',
+      criteria: 'Minimização de dados, ausência de dados biométricos/pessoais de menores e consentimento',
+    },
+    {
+      outcome: 'Transparência e validação pedagógica',
+      instrument: 'Ficha de partilha no Moodle e rubrica de avaliação',
+      criteria: 'Declaração explícita de uso de IA e alinhamento verificado com as Aprendizagens Essenciais',
+    },
   ],
 };
 
@@ -147,31 +174,32 @@ export const PAGES_NAV: PageMeta[] = [
 
 export const PROMPT_ELEMENTS = [
   {
-    label: 'Contexto',
-    sublabel: 'Quem é a IA?',
-    description: 'Define a persona, especialidade ou papel adotado pelo modelo.',
-    example: '“Age como um historiador” ou “Age como professor de Português do 9.º ano”',
+    label: 'Contexto / Papel Solicitado',
+    sublabel: 'Papel ou perspetiva pretendida (opcional)',
+    description:
+      'Indica a perspetiva, o registo ou o enquadramento temático pretendido. Orienta o tom e o vocabulário, mas não confere competências pedagógicas ao sistema nem substitui a validação docente.',
+    example: '“Enquadra a resposta no âmbito do programa curricular de História do 9.º ano”',
     color: 'blue',
   },
   {
     label: 'Tarefa',
     sublabel: 'O que deve fazer?',
-    description: 'Identifica a ação direta, o conteúdo e o produto pretendido.',
-    example: '“Resume este texto” ou “Explica como resolver equações do 1.º grau”',
+    description: 'Identifica a ação direta, o conteúdo e o produto pedagógico pretendido.',
+    example: '“Elabora uma proposta de guião de debate com três perspetivas argumentativas fundamentadas”',
     color: 'green',
   },
   {
-    label: 'Restrições',
-    sublabel: 'O que deve evitar?',
-    description: 'Limites de extensão, termos proibidos, orientações de tom e segurança.',
-    example: '“Não uses termos técnicos” ou “Em cerca de 100 palavras”',
+    label: 'Restrições e Critérios',
+    sublabel: 'O que deve evitar e que regras cumprir?',
+    description: 'Limites de extensão, termos proibidos, salvaguardas éticas e critérios de verificação factual.',
+    example: '“Usa apenas terminologia do manual adotado; não inventes factos e sinaliza lacunas com [CONFIRMAR]”',
     color: 'amber',
   },
   {
     label: 'Formato',
     sublabel: 'Como apresentar a resposta?',
-    description: 'Organização visual da resposta (tópicos, tabela, guião, código, checklist).',
-    example: '“Em tabela”, “Em tópicos curtos”, “Em forma de guião passo a passo”',
+    description: 'Organização visual da resposta (tópicos, tabela comparativa, grelha com rubrica, código).',
+    example: '“Em tabela com colunas para Afirmação, Evidência e Fonte Documental”',
     color: 'rose',
   },
 ];
@@ -181,97 +209,97 @@ export const PROMPT_TECHNIQUES: PromptTechnique[] = [
     id: 1,
     name: '1. Clareza e Especificidade',
     description:
-      'Evite ambiguidades. Quanto mais preciso for o pedido, menor a probabilidade de alucinação. Prompts vagos tendem a gerar respostas genéricas ou pouco relevantes.',
+      'Instruções claras podem melhorar a adequação da resposta ao objetivo pedagógico, mas não garantem exatidão factual nem eliminam alucinações. É indispensável verificar afirmações importantes em fontes independentes e adequadas.',
     vaguePrompt: 'Fala sobre sustentabilidade.',
     vagueContext: 'Gera um texto abstrato, longo e sem foco concreto aplicável à realidade escolar.',
     optimizedPrompt:
-      'Explica três estratégias de sustentabilidade ambiental aplicáveis em escolas e justifica por que são eficazes.',
+      'Apresenta três propostas de práticas de sustentabilidade ambiental aplicáveis ao espaço físico de uma escola do 3.º ciclo e fundamenta a relevância pedagógica de cada uma com base nas metas da Estratégia Nacional de Educação para a Cidadania.',
     optimizedNotes:
-      'Define o número exato de estratégias (3), o contexto delimitado (escolas) e a exigência de justificação.',
+      'Define o número exato de propostas (3), o contexto delimitado (escola do 3.º ciclo) e o referencial pedagógico formal para justificação.',
   },
   {
     id: 2,
     name: '2. Fornecer Contexto Relevante',
     description:
-      'Indicar o público-alvo e a finalidade da resposta ajuda o modelo a adaptar a linguagem. Sugestões: definir público-alvo (ex.: professores, alunos) e finalidade (ex.: material didático, avaliação).',
+      'Indicar o público-alvo, os pré-requisitos e a finalidade educativa ajuda o modelo a calibrar o registo e a profundidade concetual. Não garante, contudo, adequação curricular automática.',
     vaguePrompt: 'Explica o que é a inteligência artificial.',
-    vagueContext: 'Resposta genérica que pode ser demasiado técnica ou demasiado infantil.',
+    vagueContext: 'Resposta genérica que oscila entre a complexidade técnica e a simplificação infantil.',
     optimizedPrompt:
-      'Explica o que é a inteligência artificial para alunos do 8.º ano, com o objetivo de servir como material didático para uma aula de TIC. Usa linguagem simples, exemplos do dia a dia e apresenta a resposta em lista de tópicos.',
+      'Explica o conceito de inteligência artificial a alunos do 8.º ano, numa atividade introdutória de TIC. Identifica três conceitos essenciais, apresenta um exemplo do quotidiano e uma limitação dos sistemas de IA. Termina com duas questões de reflexão. Distingue factos de exemplos ilustrativos e utiliza terminologia adequada ao nível de ensino.',
     optimizedNotes:
-      'Inclui público (8.º ano), finalidade (aula de TIC), tom (linguagem simples, exemplos quotidianos) e formato (tópicos).',
+      'Especifica público (8.º ano), momento didático (introdução de unidade), estilo (analogias do dia a dia) e organização estruturada.',
   },
   {
     id: 3,
     name: '3. Definir Estrutura e Formato de Saída',
     description:
-      'Peça formatos específicos para poupar tempo de edição (tabelas comparativas, checklists, código, guiões de vídeo ou ficheiros).',
+      'Especificar estruturas claras (guiões, tabelas com critérios, checklists) facilita a leitura e a integração curricular. Requer confirmação e adaptação docente face às Aprendizagens Essenciais, ao perfil da turma e aos objetivos da aula.',
     vaguePrompt: 'Explica equações do 1.º grau.',
-    vagueContext: 'Texto contínuo difícil de transformar rapidamente numa explicação de quadro ou aula.',
+    vagueContext: 'Texto contínuo sem distinção evidente entre passos operatórios e fundamentos algébricos.',
     optimizedPrompt:
-      'Explica como resolver equações do 1.º grau em forma de guião passo a passo, usando exemplos simples e linguagem adequada a alunos do 7.º ano.',
+      'Apresenta um guião para a resolução de equações do 1.º grau com parêntesis. Explicita cada transformação algébrica e a propriedade de equivalência utilizada. Indica o conjunto de referência e verifica a solução por substituição na equação original. Se existirem casos sem solução ou com infinitas soluções, distingue-os.',
     optimizedNotes:
-      'Exige uma estrutura sequencial passo a passo, perfeitamente alinhada com as necessidades pedagógicas do 7.º ano.',
+      'Exige uma estrutura sequencial com justificação formal das propriedades, fornecendo uma base didática a rever e validar pelo professor.',
   },
   {
     id: 4,
     name: '4. Few-Shot Prompting (Exemplificar)',
     description:
-      'Incluir exemplos auxilia o modelo a seguir um padrão específico de resposta, sendo útil em tarefas com formato ou estilo bem definido.',
+      'Os exemplos fornecidos podem orientar o formato e o padrão de resposta. A sua qualidade influencia a orientação dada ao modelo, mas exemplos incorretos ou ambíguos podem propagar erros. Verifique os exemplos antes de os utilizar.',
     vaguePrompt: 'Classifica as frases como verdadeiras ou falsas.',
-    vagueContext: 'O modelo pode inventar formatos variados, explicar o porquê sem ser pedido ou desformatar a resposta.',
+    vagueContext: 'O modelo pode adotar critérios díspares, inventar justificações desnecessárias ou alterar a nomenclatura solicitada.',
     optimizedPrompt:
-      'Classifica as frases como verdadeiras ou falsas, seguindo o exemplo abaixo:\nExemplo 1: Frase: A Terra é plana. Classificação: Falsa\nExemplo 2: Frase: A água ferve a 100 °C ao nível do mar. Classificação: Verdadeira\nAgora classifica as frases seguintes: ...',
+      'Classifica as seguintes afirmações sobre termodinâmica e física como Verdadeiras ou Falsas, indicando uma frase de evidência científica, seguindo estritamente o modelo:\n\nExemplo 1: Frase: A Terra completa uma rotação sobre o seu eixo em aproximadamente 24 horas. Classificação: Verdadeira (evidência: movimento de rotação diurno).\nExemplo 2: Frase: Água pura ferve aproximadamente a 100 °C à pressão padrão de 1 atm. Classificação: Verdadeira (evidência: ponto de ebulição da água à pressão atmosférica ao nível do mar).\n\nAgora classifica as afirmações seguintes: ...',
     optimizedNotes:
-      'Fornece instâncias concretas do formato pretendido, garantindo que a IA reproduz o padrão exato de classificação.',
+      'Exemplos científicos rigorosos orientam o formato e evitam a propagação de erros concetuais.',
   },
   {
     id: 5,
-    name: '5. Role Prompting (Definir Persona)',
+    name: '5. Papel ou Perspetiva Solicitada (Opcional)',
     description:
-      'Definir um papel, função ou tom para a IA ajuda a orientar o estilo, a profundidade e o tipo de linguagem da resposta.',
+      'Pode indicar a perspetiva ou o registo pretendido (ex.: explicação didática para o 9.º ano). Isso orienta o tom, a ênfase e o vocabulário, mas não confere qualificações pedagógicas ao sistema nem assegura por si só adequação curricular sem validação humana.',
     vaguePrompt: 'Explica o que é um texto argumentativo.',
-    vagueContext: 'Explicação teórica ou enciclopédica desprovida de empatia pedagógica.',
+    vagueContext: 'Produz uma definição enciclopédica desprovida de critérios operatórios de escrita.',
     optimizedPrompt:
-      'Age como professor de Português do 9.º ano e explica o que é um texto argumentativo, usando linguagem clara e exemplos simples adequados a alunos de 13 anos.',
+      'Prepara um recurso didático para o 9.º ano de Português sobre o texto argumentativo. Apresenta uma estrutura possível, identificando tese, argumentos fundamentados, eventual contra-argumento e conclusão. Inclui um exemplo anotado e três critérios de avaliação. Distingue os elementos essenciais das opções estruturais e confirma a adequação ao género textual e à tarefa proposta.',
     optimizedNotes:
-      'Atribui o papel de professor de Português, delimitando com rigor a faixa etária (13 anos) e o registo discursivo.',
+      'Orienta o registo sem promessas irrealistas de autoridade, exigindo os descritores formais do género textual para verificação docente.',
   },
   {
     id: 6,
-    name: '6. Iteração e Refinamento',
+    name: '6. Iteração com Critério de Paragem',
     description:
-      'O primeiro resultado raramente é o perfeito. Ciclo de melhoria: pedir para encurtar, adicionar exemplos ou verificar fontes.',
-    vaguePrompt: 'Resume o texto. (Aceitar a primeira resposta sem ajustes)',
-    vagueContext: 'Aceitação passiva da primeira geração, muitas vezes desajustada ao objetivo específico.',
+      'A reformulação sucessiva pode melhorar a resposta face aos critérios definidos, mas não garante maior exatidão nem constitui, por si só, uma validação dos factos. Recomenda-se um ciclo de revisão com critérios explícitos, comparação com o texto de origem, verificação independente através de fontes ou procedimentos adequados à tarefa e decisão fundamentada sobre a conclusão do trabalho.',
+    vaguePrompt: 'Resume o texto. (Aceitar passivamente o primeiro resultado)',
+    vagueContext: 'Aceitação acrítica da primeira saída gerada, que pode omitir nuances fundamentais ou introduzir extrapolações.',
     optimizedPrompt:
-      'Resume o texto em cerca de 100 palavras. ➡ Após a primeira resposta: Agora torna o resumo mais simples e adequado a alunos do 8.º ano.',
+      'Resume o texto em 150 palavras, preservando as duas teses principais e a distinção entre correlação e causalidade.\n\nCompara o resumo com o original. Identifica omissões, alterações de sentido ou afirmações sem suporte e revê o texto, se necessário.\n\nCritério de conclusão: fidelidade ao original, cumprimento da extensão solicitada e ausência de alterações conceptuais não justificadas. Regista os aspetos que não foi possível confirmar.',
     optimizedNotes:
-      'Demonstra o ciclo iterativo de diálogo onde a resposta inicial é sucessivamente calibrada para o nível pretendido.',
+      'Apresenta um ciclo controlado de melhoria baseado na verificação de fidelidade ao texto de origem, com critério explícito de paragem.',
   },
   {
     id: 7,
-    name: '7. Incluir Pedidos de Verificação / Referências',
+    name: '7. Solicitar Referências e Indicação de Incerteza',
     description:
-      'Pedir à IA que verifique, justifique ou explique a própria resposta pode aumentar a precisão. Para garantir veracidade, peça fontes ou instrua o modelo a admitir incerteza.',
+      'As referências fornecidas pelo modelo devem ser tratadas como pistas de pesquisa. Confirme a existência da publicação, os dados bibliográficos e a correspondência entre a fonte original e a afirmação. Pedir referências ou uma autoverificação não garante autenticidade nem veracidade.',
     vaguePrompt: 'Explica as causas das alterações climáticas.',
-    vagueContext: 'Sem salvaguardas de verificação, o modelo pode misturar especulação com consenso científico.',
+    vagueContext: 'Sem restrições de verificação, o modelo pode citar estudos fictícios com aparência plausível ou atribuir afirmações a autores inexistentes.',
     optimizedPrompt:
-      'Explica as causas das alterações climáticas e justifica cada uma. Sempre que possível, indica as fontes utilizadas. Se não tiveres informação segura sobre algum ponto, diz explicitamente "não sei".',
+      'Identifica os principais fatores responsáveis pelo aumento da temperatura média global, distinguindo a influência humana das variações naturais.\n\nUtiliza como referência os relatórios de avaliação do IPCC. Para cada afirmação relevante, indica o relatório, a secção e a página, quando disponíveis.\n\nNão inventes referências nem dados bibliográficos. Se não conseguires confirmar uma fonte ou estabelecer a correspondência entre a afirmação e o documento, assinala «por verificar».\n\nDistingue as conclusões sustentadas pela avaliação científica das incertezas ou limitações identificadas nas fontes.',
     optimizedNotes:
-      'Força a justificação, solicitação de fontes e autorização explícita para expressar incerteza ("não sei").',
+      'Exige alinhamento com organismos científicos de referência (IPCC) e explicita a autorização para declarar incerteza, alertando o utilizador para a necessidade de conferência cruzada.',
   },
   {
     id: 8,
-    name: '8. Solicitar Revisão ou Melhoria',
+    name: '8. Revisão de Clareza e Preservação de Sentido',
     description:
-      'Incluir no prompt pedidos como "melhora esta resposta" ou "refina este texto" faz parte da iteração. Pode pedir-se revisão de clareza e vocabulário.',
-    vaguePrompt: 'Escreve um texto sobre a água. (Aceitar primeira versão)',
-    vagueContext: 'Texto cru gerado no primeiro disparo, que pode ter repetições ou tom desajustado.',
+      'Pode solicitar revisão textual ao sistema para melhorar a clareza sintática e a acessibilidade lexical. Instrua expressamente o modelo a marcar as alterações efetuadas, a preservar integralmente o significado original e a não inventar novos factos ou citações.',
+    vaguePrompt: 'Escreve um texto sobre a água. (Aceitar sem revisão)',
+    vagueContext: 'Risco de aceitar um texto com construções passivas em excesso ou terminologia desajustada à faixa etária.',
     optimizedPrompt:
-      'Revê o texto abaixo, tornando-o mais claro e organizado. Mantém linguagem simples, adequada a alunos do 6.º ano, e melhora o vocabulário sem aumentar a complexidade.',
+      'Revê o seguinte excerto pedagógico destinado ao 6.º ano: simplifica as orações subordinadas longas e melhora a coesão frásica, sem alterar os factos científicos nem acrescentar conceitos não mencionados. Lista no final as três principais alterações realizadas e a respetiva justificação.',
     optimizedNotes:
-      'Orienta a revisão focando em clareza, organização e enriquecimento lexical controlado para o 6.º ano.',
+      'Separa claramente a revisão estilística e sintática da validação científica, exigindo a prestação de contas sobre o que foi alterado.',
   },
 ];
 
@@ -283,8 +311,12 @@ export const DISCIPLINE_PROMPTS: DisciplinePrompt[] = [
     title: 'Texto Argumentativo',
     category: 'curriculo',
     prompt:
-      '“Age como professor de Português do 9.º ano. Explica o que é um texto argumentativo para alunos do 9.º ano. Organiza a explicação em tópicos curtos, utilizando linguagem clara e acessível. Inclui um exemplo simples de texto argumentativo. No final, revê o texto, verificando se a explicação é adequada ao nível de ensino.”',
-    keyAspects: ['Papel de docente especializado', 'Tópicos curtos e acessíveis', 'Exemplo contextual', 'Auto-revisão final'],
+      '«Elabora um guião didático sobre o texto argumentativo para alunos do 9.º ano. Apresenta uma estrutura possível, identificando a tese, os argumentos e respetiva fundamentação, e a conclusão. Quando adequado ao tema, inclui um contra-argumento e a sua refutação. Apresenta um exemplo comentado e propõe três critérios para uma rubrica de avaliação formativa. Confirma a adequação do guião às Aprendizagens Essenciais e às características da tarefa antes de o utilizar.»',
+    keyAspects: [
+      'Estrutura formal completa (tese, argumentos com fundamentação, refutação, conclusão)',
+      'Exemplo comentado com critérios para rubrica formativa',
+      'Confirmação com as Aprendizagens Essenciais e a tarefa',
+    ],
   },
   {
     id: 'matematica-7',
@@ -293,68 +325,98 @@ export const DISCIPLINE_PROMPTS: DisciplinePrompt[] = [
     title: 'Equações do 1.º Grau',
     category: 'curriculo',
     prompt:
-      '“Age como professor de Matemática do 7.º ano. Explica como resolver equações do 1.º grau, utilizando linguagem simples e adequada a alunos do 7.º ano. Apresenta a explicação passo a passo e inclui dois exemplos resolvidos.”',
-    keyAspects: ['Didática sequencial passo a passo', 'Linguagem nivelada ao 7.º ano', '2 exemplos resolvidos completos'],
+      '«Explica, passo a passo, a resolução de equações do 1.º grau com uma incógnita para alunos do 7.º ano. Justifica cada transformação algébrica com a propriedade de equivalência utilizada. Apresenta dois exemplos resolvidos e verifica cada solução por substituição na equação original. Quando aplicável, distingue equações com uma solução, com infinitas soluções e sem solução. Indica o conjunto de referência considerado e solicita a verificação independente dos cálculos.»',
+    keyAspects: [
+      'Justificação formal pelas propriedades de equivalência',
+      'Verificação obrigatória por substituição na equação original',
+      'Distinção de casos de soluções e conjunto de referência',
+      'Verificação independente dos cálculos',
+    ],
   },
   {
     id: 'historia-9',
     discipline: 'História',
     grade: '9.º Ano',
-    title: 'Revolução Francesa (Apoio ao Estudo)',
+    title: 'Revolução Francesa',
     category: 'curriculo',
     prompt:
-      '“Age como professor de História do 9.º ano. Explica as principais causas da Revolução Francesa para alunos do 9.º ano, com o objetivo de apoiar o estudo para uma avaliação. Organiza a resposta em 5 pontos e usa frases curtas. Sempre que possível, justifica cada causa. Revê o texto para garantir rigor histórico e clareza.”',
-    keyAspects: ['Finalidade explícita: estudo para teste', 'Exatamente 5 causas estruturadas', 'Frases curtas com justificação', 'Garantia de rigor histórico'],
+      '«Explica as principais causas e etapas iniciais da Revolução Francesa para alunos do 9.º ano. Distingue fatores estruturais, circunstâncias conjunturais e acontecimentos políticos de 1789, estabelecendo relações de causalidade sem reduzir o processo a uma causa única. Distingue a convocação dos Estados Gerais, a formação da Assembleia Nacional e os acontecimentos posteriores. Confirma datas, conceitos e interpretações com o manual adotado e fontes históricas credíveis.»',
+    keyAspects: [
+      'Distinção entre fatores estruturais, conjunturais e acontecimentos de 1789',
+      'Relações de causalidade sem reduzir a causa única',
+      'A revisão pelo próprio modelo não substitui a verificação com fontes históricas credíveis; a autorrevisão da IA não garante rigor histórico',
+    ],
   },
   {
     id: 'ciencias-8',
     discipline: 'Ciências Naturais',
     grade: '8.º Ano',
-    title: 'Processo da Fotossíntese',
+    title: 'Fotossíntese',
     category: 'curriculo',
     prompt:
-      '“Age como professor de Ciências Naturais do 8.º ano. Explica o processo da fotossíntese para alunos do 8.º ano, como material didático. Usa linguagem simples, exemplos do dia a dia e apresenta a resposta em tópicos. No final, verifica se a explicação está cientificamente correta e melhora a clareza.”',
-    keyAspects: ['Material didático em tópicos', 'Exemplos do quotidiano', 'Verificação explícita de correção científica'],
+      '«Explica a fotossíntese para alunos do 8.º ano, abordando a função da luz, dos pigmentos fotossintéticos, da água e do dióxido de carbono na produção de matéria orgânica e na libertação de oxigénio. Apresenta a equação global simplificada em palavras e símbolos, identificando os reagentes, os produtos e a energia luminosa. Distingue esta representação global das etapas bioquímicas do processo e confirma a terminologia e o nível de detalhe com o currículo e o manual adotado.»',
+    keyAspects: [
+      'Função da luz, pigmentos, água e CO2 na produção orgânica e O2',
+      'Equação global simplificada em palavras e símbolos (reagentes e produtos)',
+      'Confirmação da terminologia e nível de detalhe com o currículo e manual adotado',
+    ],
   },
   {
     id: 'imagem-5',
     discipline: 'Criação de Imagens',
     grade: '5.º Ano',
-    title: 'Ilustração Educativa do Ciclo da Água',
+    title: 'Ciclo da Água',
     category: 'multimedia',
     prompt:
-      '“Age como ilustrador educativo. Descreve uma imagem que represente o ciclo da água, destinada a alunos do 5.º ano. Indica os elementos visuais principais, as cores sugeridas e os rótulos a incluir. Usa linguagem simples e organizada em tópicos. No final, verifica se a descrição está cientificamente correta.”',
-    keyAspects: ['Elementos visuais e paleta cromática', 'Rótulos explicativos essenciais', 'Validação da precisão científica'],
+      '«Cria uma proposta de ilustração didática do ciclo da água para alunos do 5.º ano. Inclui evaporação, transpiração vegetal, condensação, precipitação, infiltração e escoamento superficial e subterrâneo. Representa os processos com setas direcionais coerentes. Evita inserir texto na imagem gerada; apresenta separadamente as legendas a adicionar na edição gráfica. Confirma a correção dos processos, das setas e das legendas antes de utilizar a imagem. Verifica também os direitos de utilização do recurso produzido.»',
+    keyAspects: [
+      'Processos completos do ciclo hidrológico e setas direcionais coerentes',
+      'Evitar texto na imagem gerada e apresentar legendas separadamente',
+      'Confirmação dos processos e verificação dos direitos de utilização',
+    ],
   },
   {
     id: 'slides-8',
     discipline: 'Apresentação Multimédia',
     grade: '8.º Ano',
-    title: 'Guião de Slides sobre Inteligência Artificial',
+    title: 'Inteligência Artificial',
     category: 'multimedia',
     prompt:
-      '“Age como professor. Cria o guião de uma apresentação com 6 slides sobre inteligência artificial para alunos do 8.º ano. Para cada slide, indica o título, os pontos principais e uma sugestão visual. Usa linguagem simples e exemplos do dia a dia. No final, melhora o guião para maior clareza pedagógica.”',
-    keyAspects: ['Estrutura fixa de 6 slides', 'Pontos-chave + sugestão visual para cada slide', 'Clareza pedagógica reforçada'],
+      '«Elabora um guião de seis diapositivos introdutórios sobre inteligência artificial para alunos do 8.º ano, na disciplina de TIC. Para cada diapositivo, indica um título, três ideias-chave e uma proposta de recurso visual. Aborda o conceito de IA, a aprendizagem a partir de dados, aplicações, limitações, privacidade e utilização responsável. Indica fontes verificáveis para as afirmações factuais e propõe uma bibliografia final. Prevê legibilidade, contraste adequado, texto alternativo para imagens e linguagem ajustada à turma. O docente deve validar o conteúdo e os recursos antes da apresentação.»',
+    keyAspects: [
+      'Guião de 6 diapositivos com título, 3 ideias-chave e recurso visual',
+      'Conceito, aprendizagem, aplicações, limitações, privacidade e responsabilidade',
+      'Fontes verificáveis, acessibilidade e validação docente prévia',
+    ],
   },
   {
     id: 'video-7',
     discipline: 'Vídeo com Avatares Falantes',
     grade: '7.º Ano',
-    title: 'Diálogo sobre Uso Responsável das Redes Sociais',
+    title: 'Privacidade e Redes Sociais',
     category: 'multimedia',
     prompt:
-      '“Age como professor de TIC. Cria um diálogo curto entre dois avatares sobre o uso responsável das redes sociais, destinado a alunos do 7.º ano. Divide o diálogo em falas alternadas, usa linguagem simples e exemplos do quotidiano. No final, revê o texto para garantir clareza e adequação ao público.”',
-    keyAspects: ['Falas alternadas para dois avatares', 'Exemplos do quotidiano de jovens de 12 anos', 'Foco na cidadania digital'],
+      '«Elabora um guião para um vídeo de aproximadamente dois minutos, dirigido a alunos do 7.º ano, sobre privacidade e respeito nas redes sociais. Aborda o consentimento antes da publicação de imagens de terceiros, a pegada digital e a identificação de mensagens suspeitas. Prevê legendagem integral e linguagem adequada à idade. Utiliza avatares sintéticos ou recursos cuja utilização esteja autorizada; não reproduzas a imagem ou a voz de pessoas reais sem fundamento legítimo e as autorizações aplicáveis. Indica que o conteúdo foi gerado ou editado com IA, quando pertinente, e valida a informação antes da divulgação.»',
+    keyAspects: [
+      'Vídeo de 2 minutos sobre privacidade, consentimento, pegada digital e mensagens suspeitas',
+      'Uso autorizado de avatares sem reproduzir imagem/voz de pessoas reais sem autorização',
+      'Indicação de conteúdo gerado/editado com IA e validação prévia',
+    ],
   },
   {
     id: 'comunicacao-escola',
     discipline: 'Comunicação Escolar',
     grade: 'Geral (Escola)',
-    title: 'Regras de Uso do Telemóvel na Escola',
+    title: 'Regras de Utilização do Telemóvel',
     category: 'comunicacao',
     prompt:
-      '“Age como responsável pela comunicação escolar. Cria um pequeno vídeo informativo para alunos e encarregados de educação sobre regras de uso do telemóvel na escola. Indica o texto da mensagem, o tom a utilizar e sugestões visuais. Usa linguagem clara e adequada ao público. Revê o conteúdo antes de finalizar.”',
-    keyAspects: ['Público duplo: alunos e encarregados de educação', 'Tom da mensagem e sugestões visuais', 'Revisão antes da emissão'],
+      '«Utiliza exclusivamente o regulamento escolar em vigor, identificado pela versão e data fornecidas. Não inventes regras nem extrapoles disposições omissas. Assinala as informações que exijam confirmação com a indicação «[CONFIRMAR COM A DIREÇÃO]». Prepara versões distintas para alunos e encarregados de educação, mantendo o conteúdo normativo fiel ao documento. A versão final deve ser validada e aprovada pela entidade responsável antes da divulgação.»',
+    keyAspects: [
+      'Uso exclusivo do regulamento escolar em vigor sem inventar regras',
+      'Marcação de omissões com [CONFIRMAR COM A DIREÇÃO]',
+      'Versões distintas para alunos e encarregados de educação',
+      'Validação e aprovação da versão final pela entidade responsável',
+    ],
   },
 ];
 
@@ -373,17 +435,19 @@ export const CLASSROOM_ACTIVITIES: ClassroomActivity[] = [
       {
         step: 'Etapa 2 – A Arte de Refinar (Engenharia de Prompt)',
         description:
-          'O aluno deve instruir a IA a alterar o texto pelo menos 3 vezes, focando-se no Tom (engraçado/misterioso), Estilo (simplificar vocabulário) e Estrutura (mudar final/incluir diálogo).',
+          'O aluno refina o texto com foco em três parâmetros pedagógicos: Tom (ajuste ao público), Estilo (clareza e vocabulário) e Estrutura (coesão e diálogos), justificando cada alteração.',
       },
       {
         step: 'Etapa 3 – Reflexão e Entrega',
         description:
-          'O aluno analisa o processo e entrega o histórico de comandos e uma reflexão crítica sobre a evolução do texto.',
+          'O aluno analisa as alterações efetuadas e entrega um extrato redigido ou tabela comparativa sem dados pessoais, justificando as suas decisões. É disponibilizada alternativa offline em suporte papel.',
       },
     ],
     objectivesAndEvaluation: {
-      objectives: 'Estimular a criatividade e a comunicação escrita através da refinação intencional de pedidos.',
-      evaluation: 'Avalia-se o histórico do chat, a reflexão crítica e a capacidade demonstrada de aprimorar o texto.',
+      objectives:
+        'Desenvolver a literacia de prompts, a comunicação escrita e a capacidade de justificar decisões de edição textual.',
+      evaluation:
+        'Avalia-se a coerência dos objetivos definidos, a justificação qualitativa das alterações efetuadas e a reflexão crítica individual sobre o processo de refinação (e não o número bruto de comandos emitidos).',
     },
   },
   {
@@ -394,24 +458,25 @@ export const CLASSROOM_ACTIVITIES: ClassroomActivity[] = [
     implementation: [
       {
         step: 'Passo 1 – Introdução do Aluno',
-        description: 'Os alunos escrevem uma introdução curta para uma história (ficção científica, mistério, aventura).',
+        description: 'Os alunos escrevem uma introdução curta para uma história (ficção científica, mistério ou aventura), definindo personagens e conflito.',
       },
       {
         step: 'Passo 2 – Desenvolvimento com IA',
-        description: 'Utilizam a IA para gerar o desenvolvimento da história a partir dos primeiros parágrafos redigidos pelos alunos.',
+        description: 'Utilizam a IA como ferramenta de apoio à escrita a partir dos parágrafos redigidos pelos alunos.',
       },
       {
         step: 'Passo 3 – Análise e Refinamento Crítico',
-        description: 'Analisam e refinam o texto gerado, ajustando detalhes para a direção pretendida.',
+        description: 'Analisam criticamente as propostas geradas, selecionando, reescrevendo e adaptando trechos segundo a direção autoral pretendida.',
       },
       {
-        step: 'Passo 4 – Continuação Colaborativa e Partilha',
-        description: 'Em grupos, continuam a história colaborativamente e partilham o resultado final (blog, e-book).',
+        step: 'Passo 4 – Continuação Colaborativa e Declaração de Uso',
+        description: 'Em pares ou grupos, concluem a história e anexam uma declaração transparente de uso de IA especificando a autoria das escolhas narrativas.',
       },
     ],
     objectivesAndEvaluation: {
-      objectives: 'Promover a escrita colaborativa, a imaginação e a integração crítica da tecnologia no processo autoral.',
-      evaluation: 'Avalia-se a versão inicial vs. final e a reflexão crítica sobre o uso da IA como co-autora.',
+      objectives: 'Promover a escrita em colaboração, a intencionalidade autoral e o discernimento ético na utilização da IA como suporte.',
+      evaluation:
+        'Avalia-se a evolução do texto, a coerência narrativa e a reflexão crítica do aluno, acompanhada da declaração de utilização de IA que especifica quais os contributos dados pela ferramenta e quais as escolhas autorais próprias.',
     },
   },
   {
@@ -423,22 +488,24 @@ export const CLASSROOM_ACTIVITIES: ClassroomActivity[] = [
       {
         step: 'Etapa 1 – Criação com IA',
         description:
-          'Gerar um elemento criativo disciplinar (ex.: Ciências: "animal imaginário do deserto"; História: "navegador português fictício").',
+          'Gerar um elemento ficcional disciplinar (ex.: Ciências: "animal imaginário de ecossistema extremo"; História: "narrativa de um navegador fictício do século XVI").',
       },
       {
-        step: 'Etapa 2 – Justificação Obrigatória',
+        step: 'Etapa 2 – Justificação Curricular Obrigatória',
         description:
-          'Os alunos justificam cientificamente as características com base na matéria curricular (regulação térmica, adaptações morfológicas, contexto histórico e náutico).',
+          'Os alunos justificam cientificamente as características biológicas ou históricas com base nos conceitos aprendidos nas Aprendizagens Essenciais.',
       },
       {
-        step: 'Etapa 3 – Revisão Crítica',
+        step: 'Etapa 3 – Sinalização de Ficção e Anacronismos',
         description:
-          'Questionar e corrigir incoerências, falhas de lógica ou erros conceituais produzidos pela IA.',
+          'Identificar, questionar e assinalar explicitamente qualquer anacronismo histórico, erro factual ou impossibilidade biológica gerada pela IA.',
       },
     ],
     objectivesAndEvaluation: {
-      objectives: 'Desenvolver a análise crítica e a aplicação contextualizada do conhecimento curricular em cenários ficcionais.',
-      evaluation: 'Avalia-se a coerência, o realismo e o rigor demonstrado na justificação científica dos elementos.',
+      objectives:
+        'Mobilizar conceitos curriculares para distinguir coerência narrativa interna de plausibilidade científica e verdade histórica.',
+      evaluation:
+        'Avalia-se a consistência narrativa interna, a plausibilidade científica segundo conceitos curriculares e a capacidade de sinalizar e corrigir anacronismos ou erros gerados pela IA.',
     },
   },
   {
@@ -448,58 +515,60 @@ export const CLASSROOM_ACTIVITIES: ClassroomActivity[] = [
     subtitle: 'Explicação matemática, formulação e resolução de problemas',
     implementation: [
       {
-        step: 'Etapa 1 – Compreensão com IA',
+        step: 'Etapa 1 – Compreensão Conceitual e Variáveis',
         description:
-          'Pedir à IA uma explicação detalhada sobre o conceito de proporções e como resolver problemas.',
+          'Identificar as grandezas envolvidas na situação e determinar explicitamente se a relação de proporcionalidade é direta ou inversa, declarando pressupostos e unidades de medida.',
       },
       {
-        step: 'Etapa 2 – Criando um Problema com IA',
+        step: 'Etapa 2 – Proposta de Enunciado com IA',
         description:
-          'Solicitar à IA um problema de proporção para os alunos resolverem em sala de aula.',
+          'Solicitar à IA um problema contextualizado sobre proporcionalidade e submeter a resolução do modelo a verificação independente.',
       },
       {
-        step: 'Etapa 3 – Criação do Próprio Problema',
+        step: 'Etapa 3 – Validação do Gabarito e Formulação Própria',
         description:
-          'Os alunos criam o seu próprio problema baseado nos seus interesses reais (viagens, receitas de culinária, compras).',
+          'Os alunos resolvem o problema manualmente, validam o cálculo e redigem um novo problema original fundamentando o modelo relacional.',
       },
     ],
     objectivesAndEvaluation: {
-      objectives: 'Aprofundar a explicação matemática e a transferência de conceitos para situações reais do quotidiano.',
-      evaluation: 'Avalia-se a clareza da explicação, a lógica dos problemas criados e o rigor da respetiva resolução.',
+      objectives:
+        'Compreender o raciocínio proporcional, explicitar relações entre grandezas e auditar criticamente resoluções matemáticas produzidas por IA.',
+      evaluation:
+        'Avalia-se a explicitação das grandezas e unidades, a justificação do modelo de proporcionalidade (direta/inversa) e o rigor da resolução validada por cálculo independente.',
     },
   },
 ];
 
 export const MAGICSCHOOL_DATA = {
   description:
-    'A plataforma MagicSchool.ai é uma das ferramentas de IA mais avançadas e completas dedicadas especificamente à Educação. Desenvolvida para apoiar professores na preparação de aulas, diferenciação pedagógica e avaliação, integra dezenas de geradores especializados e um ambiente fechado e seguro para trabalho com alunos (MagicStudent).',
+    'A MagicSchool.ai é uma plataforma desenhada para contextos educativos que reúne ferramentas de apoio ao trabalho docente, como a diferenciação pedagógica, o planeamento de aulas e a criação de materiais didáticos.\n\nA disponibilidade e as condições de utilização dos recursos podem variar consoante o plano de subscrição.',
   officialUrl: 'https://www.magicschool.ai',
   possibilidades: [
     {
       id: 'magicstudent',
       title: 'MagicStudent',
-      description: 'Espaço seguro onde os alunos interagem com tutores e ferramentas com supervisão direta do professor.',
+      description: 'Permite aos professores criar salas virtuais e disponibilizar atividades mediadas por IA com supervisão pedagógica (requere conformidade com RGPD, idades mínimas e consentimento).',
       iconName: 'UserCheck',
       tag: 'Ambiente de Alunos',
     },
     {
       id: 'planos-aula',
       title: 'Gerador de Planos de Aula',
-      description: 'Estruturação curricular detalhada por etapas pedagógicas e alinhada com as Aprendizagens Essenciais.',
+      description: 'Permite solicitar propostas estruturadas de aula; requer conferência e adaptação face às Aprendizagens Essenciais.',
       iconName: 'BookOpen',
       tag: 'Planeamento',
     },
     {
       id: 'quizzes',
-      title: 'Gerador de Quizzes / Provas / Questionários',
-      description: 'Criação de avaliações formativas e sumativas com ajuste pelo nível da Taxonomia de Bloom.',
+      title: 'Gerador de Questionários Formativos',
+      description: 'Sugestões de itens de avaliação com proposta preliminar de classificação por níveis de Bloom a validar pelo docente.',
       iconName: 'HelpCircle',
       tag: 'Avaliação',
     },
     {
       id: 'fichas-trabalho',
       title: 'Gerador de Fichas de Trabalho',
-      description: 'Exercícios personalizados, atividades formativas e fichas diferenciadas por ritmo de aprendizagem.',
+      description: 'Exercícios personalizados e materiais didáticos para adaptação e diferenciação pedagógica em sala de aula.',
       iconName: 'FileText',
       tag: 'Materiais',
     },
@@ -520,7 +589,7 @@ export const MAGICSCHOOL_DATA = {
     {
       id: 'feedback',
       title: 'Ferramentas de Feedback',
-      description: 'Apoio na elaboração de comentários qualitativos e diagnósticos personalizados sobre o trabalho do aluno.',
+      description: 'Apoio na elaboração de sugestões de comentários formativos para revisão docente sobre o trabalho do aluno.',
       iconName: 'MessageSquare',
       tag: 'Acompanhamento',
     },
@@ -537,9 +606,9 @@ export const MAGICSCHOOL_DATA = {
     badge: 'Assistente do Professor',
     subtitle: 'Converse com a Raina, a sua assistente de IA',
     pedagogicalDefinition:
-      'Chatbot desenhado especificamente para professores, que permite uma interação contínua para obter ideias, adaptar materiais e planear atividades pedagógicas.',
+      'Raina — Assistente para Docentes: Assistente conversacional orientada para o apoio ao planeamento e à reflexão pedagógica. Funciona como interlocutor para estruturar ideias, sugerir abordagens e rever materiais. A sua utilização não substitui a validação técnica e científica dos conteúdos pelo professor.',
     description:
-      'A Raina funciona como uma copiloto pedagógica que compreende o vocabulário e a lógica escolar, sugerindo planos, adaptações e dinâmicas motivadoras.',
+      'Assistente conversacional orientada para o apoio ao planeamento e à reflexão pedagógica. Funciona como interlocutor para estruturar ideias, sugerir abordagens e rever materiais. A sua utilização não substitui a validação técnica e científica dos conteúdos pelo professor.',
     examples: [
       {
         id: 'raina-rap',
@@ -738,8 +807,8 @@ export const MAGICSCHOOL_DATA = {
       examplePrompt:
         'Gera ideias pedagógicas e analogias para apoiar alunos do 9.º ano a desenvolver a compreensão conceptual sobre discurso direto e discurso indireto, superando a confusão comum com tempos verbais e mudança de pronomes.',
       keyFeatures: [
-        'Diagnóstico proativo dos erros conceituais recorrentes',
-        'Criação de pontes cognitivas entre a experiência intuitiva e a regra gramatical',
+        'Identificação de conceções alternativas e dificuldades gramaticais frequentes',
+        'Criação de pontes cognitivas entre o uso intuitivo e a sistematização gramatical',
         'Sugestões de exercícios dinâmicos de comparação contrastiva',
       ],
     },
@@ -934,55 +1003,59 @@ export const BIBLIOGRAPHIC_REFERENCES: BibliographicReference[] = [
     authors: 'AP Portugal',
     year: '2024',
     title: 'Prompt engineering: Maximize a IA generativa na sua organização',
-    publication: 'Blog AP Portugal.',
+    publication: '',
     category: 'prompts',
+    url: 'https://blog.apportugal.com/pt/prompt-engineering?utm_source=chatgpt.com',
   },
   {
     id: 'ref-2',
-    authors: 'Bommasani, R. et al.',
+    authors: 'Bommasani, R., Hudson, D. A., Adeli, E., Altman, R., Arora, S., von Arx, S., … Liang, P.',
     year: '2021',
     title: 'On the opportunities and risks of foundation models',
     publication: 'Stanford University.',
     category: 'ia-geral',
+    url: 'https://arxiv.org/abs/2108.07258',
   },
   {
     id: 'ref-3',
     authors: 'DataCamp',
     year: 'n.d.',
     title: 'Guia de engenharia de prompts no ChatGPT',
-    publication: 'DataCamp Community.',
+    publication: '',
     category: 'prompts',
+    url: 'https://www.datacamp.com',
   },
   {
     id: 'ref-4',
     authors: 'European Commission',
     year: '2022',
     title: 'Ethical guidelines on the use of artificial intelligence (AI) and data in teaching and learning for educators',
-    publication: 'Publications Office of the EU.',
+    publication: 'Publications Office of the European Union.',
     category: 'etica',
+    url: 'https://education.ec.europa.eu',
   },
   {
     id: 'ref-5',
     authors: 'Holmes, W., Deusdad, B., & Redecker, C.',
     year: '2021',
     title: 'Artificial intelligence in education: Promises and implications for teaching and learning',
-    publication: 'European Commission – Joint Research Centre (JRC).',
+    publication: 'European Commission – Joint Research Centre.',
     category: 'etica',
   },
   {
     id: 'ref-6',
-    authors: 'Kasneci, E. et al.',
+    authors: 'Kasneci, E., Sessler, K., Küchemann, S., Bannert, M., Dementieva, D., Fischer, F., ... Kasneci, G.',
     year: '2023',
     title: 'ChatGPT for good? On opportunities and challenges of large language models for education',
-    publication: 'Learning and Individual Differences.',
+    publication: '',
     category: 'ia-geral',
   },
   {
     id: 'ref-7',
-    authors: 'Khosravi, H. et al.',
+    authors: 'Khosravi, H., et al.',
     year: '2023',
     title: 'Generative AI in education: Opportunities, challenges, and policy implications',
-    publication: 'Computers and Education: Artificial Intelligence.',
+    publication: '',
     category: 'ia-geral',
   },
   {
@@ -990,15 +1063,16 @@ export const BIBLIOGRAPHIC_REFERENCES: BibliographicReference[] = [
     authors: 'Knoth, S.',
     year: '2024',
     title: 'Studies on AI literacy and prompt engineering',
-    publication: 'arXiv:2401.xxxxx.',
+    publication: '',
     category: 'prompts',
+    url: 'https://arxiv.org',
   },
   {
     id: 'ref-9',
     authors: 'Luckin, R.',
     year: '2024',
     title: 'AI for learning: Why it matters and how to use it',
-    publication: 'Routledge / Educational Studies.',
+    publication: '',
     category: 'ia-geral',
   },
   {
@@ -1022,7 +1096,7 @@ export const BIBLIOGRAPHIC_REFERENCES: BibliographicReference[] = [
     authors: 'OECD',
     year: '2024',
     title: 'Using artificial intelligence in schools: A focus on generative AI',
-    publication: 'OECD Publishing, Paris.',
+    publication: 'OECD Publishing.',
     category: 'relatorios',
   },
   {
@@ -1030,39 +1104,43 @@ export const BIBLIOGRAPHIC_REFERENCES: BibliographicReference[] = [
     authors: 'OpenAI',
     year: '2023',
     title: 'GPT-4 technical report',
-    publication: 'arXiv:2303.08774.',
+    publication: '',
     category: 'ia-geral',
+    url: 'https://arxiv.org/abs/2303.08774',
   },
   {
     id: 'ref-14',
     authors: 'OpenAI',
     year: 'n.d.',
     title: 'Best practices for prompt engineering with ChatGPT',
-    publication: 'OpenAI Documentation.',
+    publication: '',
     category: 'prompts',
+    url: 'https://platform.openai.com',
   },
   {
     id: 'ref-15',
     authors: 'Prompt Engineering Guide',
     year: 'n.d.',
     title: 'Prompt engineering guide',
-    publication: 'promptingguide.ai / DAIR.AI.',
+    publication: '',
     category: 'prompts',
+    url: 'https://www.promptingguide.ai',
   },
   {
     id: 'ref-16',
     authors: 'Schulhoff, S.',
     year: '2024',
     title: 'A systematic survey of prompt engineering techniques',
-    publication: 'arXiv:2402.07927.',
+    publication: '',
     category: 'prompts',
+    url: 'https://arxiv.org',
   },
   {
     id: 'ref-17',
     authors: 'UNESCO',
     year: '2021',
     title: 'AI and education: Guidance for policy-makers',
-    publication: 'UNESCO Publishing, Paris.',
+    publication: 'UNESCO Publishing.',
     category: 'relatorios',
   },
   {
@@ -1070,15 +1148,16 @@ export const BIBLIOGRAPHIC_REFERENCES: BibliographicReference[] = [
     authors: 'UNESCO',
     year: '2023',
     title: 'Guidance for generative AI in education and research',
-    publication: 'UNESCO Publishing, Paris.',
+    publication: 'UNESCO Publishing.',
     category: 'relatorios',
+    url: 'https://www.unesco.org',
   },
   {
     id: 'ref-19',
     authors: 'UNESCO',
     year: '2024',
     title: 'Artificial intelligence and education: A global report',
-    publication: 'UNESCO Publishing, Paris.',
+    publication: 'UNESCO Publishing.',
     category: 'relatorios',
   },
 ];
@@ -1088,49 +1167,42 @@ export const LLM_TOOLS_LIST = [
     name: 'ChatGPT',
     organization: 'OpenAI',
     role: 'Modelo de Linguagem e Chatbot',
-    description: 'Utilizado para redação de textos, ideação pedagógica, diálogos socráticos e criação de materiais didáticos.',
+    description: 'Utilizado para redação de rascunhos, ideação pedagógica, sugestões de atividades e exploração de temas educativos.',
     badge: 'OpenAI',
   },
   {
     name: 'Google Gemini',
     organization: 'Google',
     role: 'Modelo Multimodal e Chatbot',
-    description: 'Capacidade multimodal nativa para análise de imagens, esquemas, documentos científicos e textos educativos longos.',
+    description: 'Capacidade multimodal para processamento de imagens, esquemas conceptuais, documentos de texto e dados estruturados.',
     badge: 'Google',
   },
   {
-    name: 'Microsoft Copilot',
+    name: 'Copilot',
     organization: 'Microsoft',
     role: 'Assistente Integrado',
-    description: 'Integração no ecossistema educativo com pesquisa na web em tempo real e produção de diapositivos e resumos.',
+    description: 'Integração no ecossistema Microsoft e motor de busca com apresentação de hiperligações da web para conferência de fontes.',
     badge: 'Microsoft',
   },
   {
     name: 'Claude',
     organization: 'Anthropic',
-    role: 'Modelo de Linguagem Focado em Rigor e Nuance',
-    description: 'Excelente capacidade de processamento de textos extensos, análise de manuais escolares e escrita cuidada.',
+    role: 'Modelo de Linguagem Focado em Análise Textual',
+    description: 'Concebido para processamento de contextos alargados, análise de textos e redação estruturada com vocabulário cuidado.',
     badge: 'Anthropic',
   },
   {
     name: 'NotebookLM',
     organization: 'Google',
-    role: 'Caderno de Estudo e Síntese com Fontes Confiáveis',
-    description: 'Baseia as respostas exclusivamente nos documentos fornecidos pelo professor (PDFs, notas de aula, manuais), minimizando alucinações.',
+    role: 'Caderno de Estudo e Síntese com Grounding Documental',
+    description: 'Ancoragem de contexto em documentos carregados pelo professor (PDFs, notas de aula) para síntese e estudo com referências.',
     badge: 'Google',
   },
   {
-    name: 'MagicSchool.ai',
-    organization: 'MagicSchool',
-    role: 'Plataforma Educativa Integrada',
-    description: 'Dezenas de geradores especializados para apoio à docência (Raina, planos de aula, rubricas, quizzes e chatbots para alunos).',
-    badge: 'Específico para Professores',
-  },
-  {
-    name: 'Google AI Studio',
+    name: 'Google Ai Studio',
     organization: 'Google',
-    role: 'Ambiente de Experimentação e Engenharia de Prompts',
-    description: 'Ambiente para exploração direta de modelos generativos (Gemini), prototipagem de prompts de sistema, ajuste de parâmetros de temperatura e desenvolvimento de recursos didáticos.',
-    badge: 'Engenharia de Prompts',
+    role: 'Ambiente de Prototipagem e Engenharia de Prompts',
+    description: 'Ambiente de experimentação com modelos da família Gemini, prototipagem de prompts de sistema e calibração de parâmetros (temperatura, top-k).',
+    badge: 'Google',
   },
 ];

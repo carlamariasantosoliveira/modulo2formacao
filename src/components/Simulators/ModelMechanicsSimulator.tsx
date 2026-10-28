@@ -145,19 +145,19 @@ const STAGES: StageData[] = [
   {
     number: 6,
     title: 'Limitação Fundamental',
-    subtitle: 'Ausência de Consciência e Risco de Alucinação',
+    subtitle: 'Ausência de Consciência e Padrões Estatísticos',
     badge: 'Chamada de Atenção Pedagógica',
     badgeColor: 'bg-red-50 text-red-700 border-red-200',
     isAttentionCall: true,
     originalCourseText:
-      'Não compreende como um ser humano, não valida factos e não possui consciência. Resposta convincente ≠ Resposta correcta.',
+      'Os modelos de linguagem identificam e reproduzem padrões estatísticos. A geração de uma resposta gramaticalmente correta e fluente não garante que a informação seja verdadeira, atualizada ou adequada a um objetivo educativo.',
     pedagogicalDeepDive:
-      'A IA generativa não compreende o significado dos conceitos como um ser humano: não possui consciência, intencionalidade, discernimento ético nem capacidade autónoma de validar a verdade factual. O modelo gera apenas o que é estatisticamente plausível a partir dos dados assimilados.',
-    keyTakeaway: '■■ Resposta convincente ≠ Resposta correcta.',
+      'Os modelos de linguagem identificam e reproduzem padrões estatísticos. A geração de uma resposta gramaticalmente correta e fluente não garante que a informação seja verdadeira, atualizada ou adequada a um objetivo educativo.',
+    keyTakeaway: '■■ Resposta convincente ≠ Resposta verdadeira ou pedagogicamente adequada.',
     bullets: [
       {
-        label: 'Natureza Estritamente Probabilística',
-        text: 'Gera o que é estatisticamente verosímil com base nos dados de treino, e não o que é cientificamente verificado. Quando não encontra correspondência exata, pode inventar factos convincentes (alucinação).',
+        label: 'Padrões Estatísticos vs. Validação Factual',
+        text: 'O modelo gera respostas calculando probabilidades com base nos dados de treino. A fluência sintática e o vocabulário persuasivo não garantem rigor científico nem adequação curricular.',
       },
       {
         label: 'O Papel Insubstituível do Professor',
@@ -165,7 +165,7 @@ const STAGES: StageData[] = [
       },
     ],
     analogousExample:
-      'O modelo não sabe o que é a dor, a ética ou o sucesso de um estudante. Produz apenas previsões probabilísticas convincentes.',
+      'Uma resposta bem redigida e estruturada pode conter imprecisões e erros subtis; a validação humana é indispensável.',
     icon: AlertTriangle,
     circleBg: 'bg-[#DC2626]',
     activeBorder: 'border-red-600 ring-2 ring-red-500/20',

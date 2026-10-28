@@ -24,55 +24,55 @@ interface ActivityGuidance {
 const ACTIVITY_GUIDELINES: Record<string, ActivityGuidance> = {
   'atividade-1': {
     pedagogicalFocus:
-      'Engenharia de prompt iterativa, metacognição e evolução orientada da expressão escrita.',
+      'Engenharia de prompt iterativa, metacognição e evolução orientada da expressão escrita com critério explícito.',
     teacherRole: [
-      'Circular pelas mesas e questionar o raciocínio: "O que faltava no primeiro pedido para o texto ser genérico?"',
-      'Desafiar os alunos a experimentar pelo menos 3 variações explícitas (Tom, Estilo e Estrutura narrativa).',
-      'Incentivar a persistência: a primeira resposta da IA é apenas um ponto de partida para o aperfeiçoamento.',
+      'Circular pelas mesas e questionar o raciocínio: "Que critério concreto motivou a alteração desta frase?"',
+      'Desafiar os alunos a explorar variações intencionais de Tom (ajuste ao público), Estilo (clareza e vocabulário) e Estrutura (coesão e diálogos).',
+      'Alertar que mais voltas de prompt podem apenas tornar o texto convincente sem o tornar verdadeiro; exigir confronto com fontes.',
     ],
     practicalTip:
-      'Exigir que os alunos registem o histórico de pedidos (prompts) lado a lado com as versões de texto para evidenciar o processo reflexivo.',
+      'Recolher excertos redigidos ou tabelas comparativas de versões sem dados pessoais, em vez do histórico bruto de conversa. Prever alternativa em suporte papel.',
     evaluationFocus:
-      'Valorizar a profundidade da reflexão crítica e a capacidade de conduzir a IA através de instruções precisas.',
+      'Valorizar a profundidade da reflexão crítica e a justificação pedagógica das alterações realizadas (e não a quantidade de prompts emitidos).',
   },
   'atividade-2': {
     pedagogicalFocus:
-      'Escrita colaborativa em pares/grupos, co-autoria com IA e continuidade narrativa.',
+      'Escrita colaborativa entre pares, uso da IA como ferramenta de apoio à escrita e preservação da intencionalidade autoral.',
     teacherRole: [
-      'Orientar os grupos a definir previamente os elementos centrais do enredo antes de recorrer à ferramenta.',
-      'Incentivar a negociação entre pares: os alunos decidem que partes do texto da IA aproveitam, alteram ou eliminam.',
-      'Garantir que a voz e criatividade dos alunos permanecem dominantes sobre a geração automática.',
+      'Orientar as equipas a planear a estrutura do enredo antes de recorrer à ferramenta tecnológica.',
+      'Incentivar a negociação crítica entre pares: os alunos decidem quais as sugestões da IA que aceitam, reescrevem ou rejeitam.',
+      'Garantir que a voz criativa e o discernimento dos alunos permanecem no centro do processo autoral.',
     ],
     practicalTip:
-      'Distribuir papéis na equipa: redator do prompt, revisor de coerência temática e auditor de estilo literário.',
+      'Exigir a anexação de uma Declaração de Uso de IA explicitando: que ferramenta foi usada, para que finalidade e que decisões autorais pertenceram aos alunos.',
     evaluationFocus:
-      'Avaliar a articulação e harmonia entre os parágrafos redigidos pelos alunos e os gerados e refinados com a IA.',
+      'Avaliar a harmonia narrativa, o discernimento na edição das sugestões geradas e a transparência demonstrada na declaração de autoria.',
   },
   'atividade-3': {
     pedagogicalFocus:
-      'Aplicação de conceitos curriculares a cenários criativos e deteção de incongruências científicas/históricas.',
+      'Mobilização de conceitos curriculares das Aprendizagens Essenciais e distinção entre ficção, plausibilidade científica e rigor histórico.',
     teacherRole: [
-      'Exigir fundamentação curricular rigorosa: a IA inventa o elemento ficcional, mas o aluno justifica com a matéria dada.',
-      'Questionar ativamente: "Que mecanismo biológico real inspirou esta adaptação?" ou "Este elemento é compatível com a época histórica?"',
-      'Ajudar os alunos a confrontar o texto da IA com manuais escolares certificados.',
+      'Exigir fundamentação curricular rigorosa: o elemento inventado deve ser justificado com base nos conceitos aprendidos nas aulas.',
+      'Questionar ativamente: "Esta adaptação biológica é plausível face aos princípios fisiológicos?" ou "Este acontecimento respeita a cronologia real?"',
+      'Exigir a identificação expressa de anacronismos ou liberdades narrativas ficcionais geradas pela IA.',
     ],
     practicalTip:
-      'Promover uma sessão de apresentação rápida onde cada equipa defende cientificamente a sua criação perante a turma.',
+      'Promover breves defesas orais onde cada equipa confronta as características geradas com o manual escolar adotado.',
     evaluationFocus:
-      'Avaliar o rigor científico, a coerência da justificação conceptual e a capacidade de corrigir erros da IA.',
+      'Avaliar a consistência narrativa interna, a plausibilidade científica segundo o currículo e a capacidade de detetar e corrigir incongruências da IA.',
   },
   'atividade-4': {
     pedagogicalFocus:
-      'Formulação de enunciados matemáticos, raciocínio proporcional e auditoria de cálculos.',
+      'Raciocínio proporcional, explicitação de relações entre grandezas e auditoria independente de resoluções matemáticas.',
     teacherRole: [
-      'Alertar os alunos de que os modelos de linguagem falham frequentemente em raciocínios aritméticos passo a passo.',
-      'Estimular a verificação manual obrigatória de todos os valores e soluções propostos pela ferramenta.',
-      'Incentivar a criação de problemas contextualizados com situações do quotidiano dos estudantes.',
+      'Alertar os estudantes para a propensão dos modelos de linguagem para cometer erros de cálculo aritmético e transformações algébricas inválidas.',
+      'Exigir a declaração obrigatória das grandezas, das respetivas unidades e se a proporcionalidade é direta ou inversa.',
+      'Estimular a verificação manual independente de todas as resoluções e gabaritos propostos pela ferramenta.',
     ],
     practicalTip:
-      'Realizar resolução cruzada: cada grupo gera e valida um problema com a IA e entrega-o a outro grupo para resolução.',
+      'Realizar resolução cruzada: cada grupo gera e valida um problema com a IA e entrega-o a outro grupo para resolução e auditoria.',
     evaluationFocus:
-      'Avaliar a correção matemática da resolução manual e a identificação de eventuais falhas lógicas no cálculo da IA.',
+      'Avaliar a correção matemática da resolução validada por cálculo independente, a justificação do modelo relacional e a identificação de falhas da IA.',
   },
 };
 
@@ -285,6 +285,45 @@ export const AtividadesSalaPage: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Orientações para implementação & Utilização por alunos */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-2xs space-y-2.5">
+          <h3 className="text-sm font-bold text-[#0C1E38] uppercase tracking-wider">
+            Orientações para implementação
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+            A integração de ferramentas de IA em contexto educativo deve responder a finalidades pedagógicas claras. As propostas apresentadas constituem exemplos de exploração que exigem sempre a mediação crítica do docente e a adaptação ao nível de ensino e aos recursos disponíveis na escola.
+          </p>
+        </div>
+
+        <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-2xs space-y-2.5">
+          <h3 className="text-sm font-bold text-[#0C1E38] uppercase tracking-wider">
+            Utilização por alunos
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+            A utilização direta de ferramentas de IA generativa por alunos requer:
+          </p>
+          <ul className="space-y-1.5 text-xs text-slate-700">
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E70EB] mt-1.5 shrink-0"></span>
+              <span>Verificação prévia da idade mínima exigida pelos termos de utilização de cada ferramenta.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E70EB] mt-1.5 shrink-0"></span>
+              <span>Autorização dos encarregados de educação, quando aplicável.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E70EB] mt-1.5 shrink-0"></span>
+              <span>Mediação e supervisão pedagógica contínua.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E70EB] mt-1.5 shrink-0"></span>
+              <span>Sensibilização para a literacia digital, o pensamento crítico e a integridade académica.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

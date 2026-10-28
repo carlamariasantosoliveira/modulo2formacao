@@ -10,7 +10,6 @@ import {
   FileCheck,
   Settings,
   Users,
-  Award,
   FileText,
   Brain,
   X,
@@ -57,34 +56,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
   isMobileOpen,
   onCloseMobile,
 }) => {
-  const isHome = currentPage === 'home';
-
   const renderNavButton = (
     id: PageId,
     label: string,
     Icon: React.ElementType
   ) => {
     const isActive = currentPage === id;
-    let buttonClass = '';
-    let iconClass = '';
-
-    if (isHome) {
-      if (isActive) {
-        buttonClass = 'bg-[#1E70EB] text-white font-semibold shadow-md';
-        iconClass = 'text-white';
-      } else {
-        buttonClass = 'text-slate-300 hover:text-white hover:bg-white/10';
-        iconClass = 'text-slate-400 group-hover:text-white';
-      }
-    } else {
-      if (isActive) {
-        buttonClass = 'bg-[#DCEBFE] text-[#1D4ED8] font-bold border border-blue-200/70 shadow-2xs';
-        iconClass = 'text-[#1D4ED8]';
-      } else {
-        buttonClass = 'text-slate-600 hover:text-[#0C1E38] hover:bg-slate-50 font-medium';
-        iconClass = 'text-slate-500 group-hover:text-[#0C1E38]';
-      }
-    }
+    const buttonClass = isActive
+      ? 'bg-[#1E70EB] text-white font-semibold shadow-md'
+      : 'text-slate-300 hover:text-white hover:bg-white/10 font-medium';
+    const iconClass = isActive
+      ? 'text-white'
+      : 'text-slate-400 group-hover:text-white';
 
     return (
       <button
@@ -112,20 +95,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
       )}
 
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-72 flex flex-col justify-between transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-50 w-72 flex flex-col justify-between transition-transform duration-300 ease-in-out lg:translate-x-0 bg-[#0A1E38] text-white border-r border-[#162D4E] ${
           isMobileOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'
-        } ${
-          isHome
-            ? 'bg-[#0A1E38] text-white border-r border-[#162D4E]'
-            : 'bg-white text-slate-700 border-r border-slate-200/80 shadow-xs'
         }`}
       >
         {/* Brand Header */}
-        <div
-          className={`p-5 pb-4 flex items-center justify-between border-b ${
-            isHome ? 'border-white/10' : 'border-slate-100'
-          }`}
-        >
+        <div className="p-5 pb-4 flex items-center justify-between border-b border-white/10">
           <div
             onClick={() => {
               onSelectPage('home');
@@ -133,28 +108,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }}
             className="flex items-center gap-3 cursor-pointer group"
           >
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 border ${
-                isHome
-                  ? 'border-white/20 bg-white/5 text-white'
-                  : 'border-blue-200 bg-blue-50 text-[#1E70EB]'
-              }`}
-            >
+            <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border border-white/20 bg-white/5 text-white">
               <Brain className="w-5 h-5" />
             </div>
             <div>
-              <span
-                className={`text-[11px] font-extrabold tracking-wider uppercase block leading-tight ${
-                  isHome ? 'text-white' : 'text-[#0C1E38]'
-                }`}
-              >
+              <span className="text-[11px] font-extrabold tracking-wider uppercase block leading-tight text-white">
                 INTELIGÊNCIA ARTIFICIAL
               </span>
-              <span
-                className={`text-[11px] font-extrabold tracking-wider uppercase block leading-tight ${
-                  isHome ? 'text-white' : 'text-[#0C1E38]'
-                }`}
-              >
+              <span className="text-[11px] font-extrabold tracking-wider uppercase block leading-tight text-white">
                 NA EDUCAÇÃO
               </span>
             </div>
@@ -162,11 +123,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
           <button
             onClick={onCloseMobile}
-            className={`p-1 lg:hidden rounded-lg cursor-pointer ${
-              isHome
-                ? 'text-slate-400 hover:text-white hover:bg-white/10'
-                : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'
-            }`}
+            className="p-1 lg:hidden rounded-lg cursor-pointer text-slate-400 hover:text-white hover:bg-white/10"
             title="Fechar menu"
           >
             <X className="w-5 h-5" />
@@ -186,29 +143,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
 
           {/* Group 2 */}
-          <div className="space-y-1 pt-2 border-t border-slate-200/50">
+          <div className="space-y-1 pt-2 border-t border-white/10">
             {SYNTHESIS_SECTIONS.map((sec) => renderNavButton(sec.id, sec.label, sec.icon))}
           </div>
         </div>
 
         {/* Bottom Quote Box */}
-        <div
-          className={`p-4 border-t ${
-            isHome
-              ? 'border-white/10 bg-black/20 text-blue-100/90'
-              : 'border-slate-100 bg-slate-50 text-slate-600'
-          }`}
-        >
+        <div className="p-4 border-t border-white/10 bg-black/20 text-blue-100/90">
           <div className="text-[11px] leading-relaxed italic space-y-1">
-            <span
-              className={`text-xl font-serif leading-none block ${
-                isHome ? 'text-blue-300' : 'text-[#1E70EB]'
-              }`}
-            >
+            <span className="text-xl font-serif leading-none block text-blue-300">
               “
             </span>
             <p>
-              A IA generativa é uma aliada poderosa para potenciar a criatividade, a inclusão e a qualidade da aprendizagem.
+              A tecnologia pode ampliar as possibilidades pedagógicas, mas a sua utilização deve responder a objetivos de aprendizagem, critérios de qualidade e necessidades concretas dos alunos.
             </p>
           </div>
         </div>

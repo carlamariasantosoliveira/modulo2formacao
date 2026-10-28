@@ -51,13 +51,13 @@ const BOAS_PRATICAS_PILLARS: PillarData[] = [
   },
   {
     number: 2,
-    title: 'Validação da Informação',
+    title: 'Iteração e Diálogo Pedagógico',
     summary:
-      'Confirme dados, factos e conceitos importantes consultando fontes externas fiáveis e independentes.',
+      'A obtenção de um resultado adequado decorre frequentemente de um processo de diálogo com a ferramenta.',
     pedagogicalDetail:
-      'A IA não é uma base de conhecimento factual garantida: é um calculador estatístico de probabilidades. Qualquer data, nome histórico, fórmula científica, citação ou valor numérico deve ser validado em manuais certificados e fontes fidedignas.',
+      'Iteração e diálogo pedagógico: A obtenção de um resultado adequado decorre frequentemente de um processo de diálogo com a ferramenta. Ajuste as instruções, adicione restrições ou forneça exemplos adicionais para refinar a resposta.',
     teacherAction:
-      'Ação do Professor: Verificar dados críticos em manuais escolares, dicionários ou artigos científicos certificados.',
+      'Ação do Professor: Dialogar iterativamente com o modelo, especificando correções, novos exemplos e restrições graduais.',
     icon: BookCheck,
     badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
     borderColor: 'border-emerald-200',
@@ -66,7 +66,7 @@ const BOAS_PRATICAS_PILLARS: PillarData[] = [
   },
   {
     number: 3,
-    title: 'Adaptação ao Contexto Real',
+    title: 'Adaptação ao Contexto Real e Curricular',
     summary:
       'Ajuste a linguagem, os exemplos e o nível de profundidade do conteúdo para se adequar ao seu público-alvo específico.',
     pedagogicalDetail:
@@ -85,7 +85,7 @@ const BOAS_PRATICAS_PILLARS: PillarData[] = [
     summary:
       'Use a IA como uma ferramenta de suporte para auxiliar o seu trabalho, não para substituir o seu pensamento próprio e original.',
     pedagogicalDetail:
-      'O professor é o decisor pedagógico e o arquiteto da experiência de aprendizagem. A IA funciona como co-piloto para acelerar rascunhos, gerar alternativas e apoiar tarefas rotineiras, libertando tempo para a mediação pedagógica.',
+      'O professor é o decisor pedagógico e o arquiteto da experiência de aprendizagem. A IA funciona como instrumento de apoio para acelerar rascunhos, gerar alternativas e apoiar tarefas rotineiras, libertando tempo para a mediação pedagógica.',
     teacherAction:
       'Ação do Professor: Manter a autoria, a intencionalidade didática e o julgamento profissional no centro do processo.',
     icon: HeartHandshake,
@@ -96,13 +96,13 @@ const BOAS_PRATICAS_PILLARS: PillarData[] = [
   },
   {
     number: 5,
-    title: 'Responsabilidade e Ética',
+    title: 'Proteção de Dados e Privacidade (RGPD)',
     summary:
-      'Respeite os direitos de autor, seja transparente sobre a utilização da IA e aplique-a de forma consciente e responsável.',
+      'Não introduzir dados pessoais de alunos em ferramentas de IA. Utilizar exclusivamente dados anonimizados.',
     pedagogicalDetail:
-      'Proteja rigorosamente a privacidade e dados pessoais dos estudantes (RGPD). Promova uma cultura escolar de integridade académica e transparência, ensinando os alunos a declarar quando e como utilizaram ferramentas de IA.',
+      'Proteção de dados e privacidade: Não introduzir dados pessoais de alunos (nomes, fotografias, avaliações individuais, relatórios ou informações confidenciais) em ferramentas de IA. Utilizar exclusivamente dados anonimizados e assegurar a conformidade com o RGPD e as orientações da escola.',
     teacherAction:
-      'Ação do Professor: Nunca introduzir dados pessoais ou trabalhos identificáveis dos alunos em plataformas públicas de IA.',
+      'Ação do Professor: Aplicar anonimização estrita e assegurar conformidade com o RGPD e orientações da escola.',
     icon: Lock,
     badgeColor: 'bg-indigo-50 text-indigo-700 border-indigo-200',
     borderColor: 'border-indigo-200',
@@ -111,11 +111,11 @@ const BOAS_PRATICAS_PILLARS: PillarData[] = [
   },
   {
     number: 6,
-    title: 'Consciência das Limitações',
+    title: 'Consciência das Limitações dos Modelos',
     summary:
       'Reconheça que a IA pode errar, omitir informação ou gerar respostas que parecem plausíveis mas estão incorretas.',
     pedagogicalDetail:
-      'Relembre sempre o princípio fundamental: «Resposta convincente ≠ Resposta correcta». A fluência verbal de um modelo não reflete raciocínio consciente nem discernimento ético, podendo produzir alucinações fáceis de passar despercebidas.',
+      'Relembre sempre o princípio fundamental: «Resposta convincente ≠ Resposta correcta». A fluência verbal de um modelo não reflete raciocínio consciente nem discernimento ético. Embora a metáfora de "calculador de probabilidades" seja uma analogia didática simplificada, os sistemas generativos operam sem intencionalidade nem compreensão humana, gerando alucinações que requerem auditoria externa.',
     teacherAction:
       'Ação do Professor: Ensinar os alunos a desconfiar da verosimilhança superficial e a exercitar o pensamento crítico.',
     icon: AlertTriangle,
@@ -229,7 +229,7 @@ export const BoasPraticasPage: React.FC<BoasPraticasPageProps> = ({ onNavigate }
         </div>
       </div>
 
-      {/* Checklist Rápida de Verificação Docente */}
+      {/* Checklist: Antes de utilizar um resultado gerado por IA */}
       <div className="bg-[#F8FAFC] rounded-3xl p-6 sm:p-8 border border-slate-200 space-y-4">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-xl bg-blue-100 text-[#1E70EB] flex items-center justify-center">
@@ -237,30 +237,80 @@ export const BoasPraticasPage: React.FC<BoasPraticasPageProps> = ({ onNavigate }
           </div>
           <div>
             <h3 className="text-sm sm:text-base font-bold text-slate-900">
-              Checklist de Validação antes de Utilizar um Recurso de IA com os Alunos
+              Antes de utilizar um resultado gerado por IA:
             </h3>
             <span className="text-xs text-slate-500">
-              Critérios imediatos de verificação pedagógica
+              Critérios indispensáveis de verificação pedagógica e ética
             </span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700 pt-1">
+        <div className="space-y-2.5 text-xs sm:text-sm text-slate-700 pt-1">
           <div className="flex items-start gap-2.5 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-            <span>Validei rigorosamente todos os conceitos, datas e factos com manuais fiáveis?</span>
+            <span>Os factos e conceitos estão corretos e atualizados?</span>
           </div>
           <div className="flex items-start gap-2.5 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-            <span>A linguagem e extensão estão perfeitamente ajustadas ao ano de escolaridade?</span>
+            <span>A linguagem e a complexidade são adequadas aos alunos?</span>
           </div>
           <div className="flex items-start gap-2.5 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-            <span>O recurso cumpre um objetivo de aprendizagem curricular concreto e avaliável?</span>
+            <span>A proposta cumpre as Aprendizagens Essenciais aplicáveis?</span>
           </div>
           <div className="flex items-start gap-2.5 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-            <span>Garanti que não partilhei quaisquer dados privados ou confidenciais de alunos?</span>
+            <span>O conteúdo respeita a diversidade e evita estereótipos?</span>
+          </div>
+          <div className="flex items-start gap-2.5 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <span>Foram removidas referências ou elementos inadequados ao contexto escolar?</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Protocolo Operacional de Privacidade e RGPD na Escola (Recomendação Crítica P0 da Auditoria) */}
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-indigo-200/80 shadow-2xs space-y-4">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0">
+            <Lock className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="text-base sm:text-lg font-bold text-slate-900">
+              Protocolo Operacional de Privacidade e RGPD na Escola
+            </h3>
+            <p className="text-xs text-slate-500">
+              Orientações obrigatórias para utilização ética e legal de ferramentas de IA
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 text-xs">
+          <div className="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-100 space-y-1.5">
+            <strong className="text-indigo-900 font-bold block uppercase tracking-wider text-[11px]">
+              1. Minimização &amp; Anonimização
+            </strong>
+            <p className="text-slate-700 leading-relaxed">
+              Nunca introduzir nomes, números de processo, fotografias, vozes ou detalhes de contexto que permitam identificar alunos direta ou indiretamente. A pseudonimização não garante anonimato se o contexto for único.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-100 space-y-1.5">
+            <strong className="text-indigo-900 font-bold block uppercase tracking-wider text-[11px]">
+              2. Definições de Conta &amp; Treino
+            </strong>
+            <p className="text-slate-700 leading-relaxed">
+              Em plataformas comerciais públicas (ChatGPT, Gemini, Claude), verificar e desativar expressamente nas definições de privacidade a partilha de dados/conversas para treino de futuros modelos de IA.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-100 space-y-1.5">
+            <strong className="text-indigo-900 font-bold block uppercase tracking-wider text-[11px]">
+              3. Autorização &amp; Dados Biométricos
+            </strong>
+            <p className="text-slate-700 leading-relaxed">
+              O recurso a ferramentas de síntese ou clonagem vocal e geração de imagem de alunos exige autorização formal prévia e informada dos encarregados de educação e homologação da Direção do Agrupamento.
+            </p>
           </div>
         </div>
       </div>

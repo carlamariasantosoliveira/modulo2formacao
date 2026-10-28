@@ -51,12 +51,10 @@ export const TecnicasPage: React.FC<TecnicasPageProps> = ({ onNavigate }) => {
       {/* Intro principle banner */}
       <div className="bg-[#EFF6FF] rounded-3xl p-6 sm:p-7 border border-blue-100 shadow-2xs space-y-2">
         <h2 className="text-xs font-bold text-[#1D4ED8] uppercase tracking-wider">
-          Princípio Fundamental
+          Princípio Fundamental de Formulação de Prompts
         </h2>
         <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
-          Quanto mais precisa, contextualizada e rica em critérios for a instrução fornecida à IA,
-          menor é a probabilidade de alucinação e maior é a qualidade e aplicabilidade do recurso
-          obtido para a sala de aula.
+          Instruções claras, contexto relevante e critérios explícitos podem aumentar a adequação da resposta à tarefa. Não garantem exatidão factual nem eliminam alucinações. Para informação científica, jurídica, histórica ou institucional relevante, confirme sempre as afirmações em fontes independentes e adequadas.
         </p>
       </div>
 

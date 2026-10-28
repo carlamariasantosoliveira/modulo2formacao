@@ -68,7 +68,7 @@ export const MagicSchoolPage: React.FC = () => {
           <span className="w-1.5 h-10 bg-[#1E70EB] rounded-full inline-block"></span>
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
-              8. Exploração da Ferramenta MagicSchool.ai
+              9. Exploração da Ferramenta MagicSchool.ai
             </h1>
           </div>
         </div>
@@ -113,8 +113,12 @@ export const MagicSchoolPage: React.FC = () => {
         </div>
 
         <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-          O ecossistema MagicSchool disponibiliza um leque integrado de ferramentas desenhadas à medida do quotidiano escolar, cobrindo o ciclo completo da atividade docente — desde a conceção de aulas até à avaliação e comunicação com os estudantes:
+          O ecossistema MagicSchool disponibiliza um leque de geradores especializados para apoio à atividade docente (consultado em outubro de 2026; funcionalidades e termos comerciais sujeitos a alterações pelo fornecedor). Todas as propostas de planos de aula, itens de questionários e rubricas carecem de validação e conferência curricular pelo professor:
         </p>
+
+        <div className="bg-blue-50/70 p-3 rounded-xl border border-blue-200 text-[11px] text-blue-950 leading-relaxed">
+          <strong>Salvaguarda Didática:</strong> O alinhamento com as Aprendizagens Essenciais e a classificação por níveis cognitivos da Taxonomia de Bloom representam propostas automatizadas preliminares, não constituindo garantia de rigor factual ou adequação pedagógica sem revisão humana.
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
           {MAGICSCHOOL_DATA.possibilidades.map((item) => (
@@ -589,6 +593,76 @@ export const MagicSchoolPage: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* MagicStudent — Ambiente para Alunos */}
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-2xs space-y-3">
+        <h3 className="text-base font-bold text-[#0C1E38] flex items-center gap-2">
+          <UserCheck className="w-5 h-5 text-[#1E70EB]" />
+          <span>MagicStudent — Ambiente para Alunos</span>
+        </h3>
+        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+          Permite aos professores criar salas virtuais e disponibilizar atividades mediadas por IA com supervisão pedagógica.
+        </p>
+        <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-2">
+          <strong className="text-xs font-bold text-slate-900 block uppercase tracking-wider">
+            Requisitos para utilização em contexto escolar:
+          </strong>
+          <ul className="space-y-1.5 text-xs text-slate-700">
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E70EB] mt-1.5 shrink-0"></span>
+              <span>Enquadramento nas políticas de proteção de dados (RGPD) e no regulamento interno da escola.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E70EB] mt-1.5 shrink-0"></span>
+              <span>Verificação das idades mínimas e dos termos de serviço da plataforma.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E70EB] mt-1.5 shrink-0"></span>
+              <span>Consentimento informado dos encarregados de educação, quando aplicável.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E70EB] mt-1.5 shrink-0"></span>
+              <span>Mediação direta e acompanhamento contínuo por parte do professor.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Questões éticas e pedagógicas */}
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-2xs space-y-3">
+        <h3 className="text-base font-bold text-[#0C1E38] flex items-center gap-2">
+          <Bot className="w-5 h-5 text-[#1E70EB]" />
+          <span>Questões éticas e pedagógicas</span>
+        </h3>
+        <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+          <li className="flex items-start gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1E70EB] mt-2 shrink-0"></span>
+            <span><strong>Transparência:</strong> os alunos devem ter consciência de que interagem com um sistema automatizado e não com um interlocutor humano.</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1E70EB] mt-2 shrink-0"></span>
+            <span><strong>Pensamento crítico:</strong> incentivar os alunos a questionar as respostas e a confrontá-las com fontes complementares.</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1E70EB] mt-2 shrink-0"></span>
+            <span><strong>Privacidade:</strong> não introduzir informação pessoal nem sensível nas conversações.</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1E70EB] mt-2 shrink-0"></span>
+            <span><strong>Mediação:</strong> a ferramenta é um recurso de apoio pedagógico, não um substituto do professor nem dos colegas.</span>
+          </li>
+        </ul>
+      </div>
+
+      {/* Aviso Final */}
+      <div className="bg-amber-50/80 border border-amber-200 rounded-3xl p-6 space-y-2 text-amber-950">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-amber-900">
+          Aviso
+        </h3>
+        <p className="text-xs sm:text-sm leading-relaxed text-amber-950 font-normal">
+          A MagicSchool.ai é uma ferramenta proprietária que recolhe dados dos utilizadores e cujas funcionalidades e condições de acesso podem ser alteradas sem aviso prévio. Antes de adotar a ferramenta com turmas, a escola e o professor devem assegurar o cumprimento integral do RGPD, a existência dos consentimentos necessários e a salvaguarda da privacidade dos alunos.
+        </p>
+      </div>
     </div>
   );
 };

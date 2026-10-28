@@ -37,6 +37,16 @@ export const ExemplosDisciplinaPage: React.FC<ExemplosDisciplinaPageProps> = ({
         </div>
       </div>
 
+      {/* Aviso Metodológico de Validação */}
+      <div className="bg-[#EFF6FF] rounded-3xl p-5 sm:p-6 border border-blue-100 shadow-2xs space-y-2">
+        <span className="text-xs font-bold text-[#1D4ED8] uppercase tracking-wider block">
+          Orientação para Utilização em Contexto Escolar
+        </span>
+        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+          Os exemplos apresentados incluem salvaguardas explícitas de estrutura, restrições e verificação. Qualquer texto, cálculo, diagrama ou comunicação gerada por IA deve ser sempre confrontado com as Aprendizagens Essenciais, com o manual escolar adotado e com regulamentos institucionais aprovados antes da sua disponibilização aos alunos ou famílias.
+        </p>
+      </div>
+
       {/* Filter Tabs */}
       <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-3 sm:p-4 rounded-3xl border border-slate-100 shadow-2xs">
         <div className="flex flex-wrap gap-1.5">
@@ -99,6 +109,16 @@ export const ExemplosDisciplinaPage: React.FC<ExemplosDisciplinaPageProps> = ({
             keyAspects={item.keyAspects}
           />
         ))}
+      </div>
+
+      {/* Validação dos exemplos */}
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-2xs space-y-2">
+        <h3 className="text-sm font-bold text-[#0C1E38] uppercase tracking-wider">
+          Validação dos exemplos
+        </h3>
+        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+          Os exemplos de prompts apresentados destinam-se a demonstrar a estrutura de uma instrução eficaz. Em contexto real de preparação letiva, é indispensável rever criticamente a resposta da ferramenta, confrontar os conteúdos com os documentos curriculares em vigor e ajustar as propostas às características da turma.
+        </p>
       </div>
     </div>
   );

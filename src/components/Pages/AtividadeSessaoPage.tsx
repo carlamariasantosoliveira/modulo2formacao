@@ -330,6 +330,7 @@ export const AtividadeSessaoPage: React.FC = () => {
               </div>
             </div>
 
+
             <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
               <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
                 Resumo do Percurso (45 minutos)

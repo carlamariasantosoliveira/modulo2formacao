@@ -47,8 +47,8 @@ export const ReferenciasPage: React.FC = () => {
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C1E38] tracking-tight">
             Referências Bibliográficas e Ferramentas Usadas
           </h1>
-          <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Corpus científico de 19 referências, ferramentas de IA e ficha técnica
+          <p className="text-xs text-slate-500 font-medium mt-0.5 leading-relaxed">
+            Referências bibliográficas e documentação de apoio / Fontes científicas, institucionais e técnicas utilizadas na preparação do módulo. A inclusão de uma referência deve corresponder a uma publicação identificável e relevante para o conteúdo apresentado.
           </p>
         </div>
       </div>
@@ -60,10 +60,10 @@ export const ReferenciasPage: React.FC = () => {
             Tecnologia e Recursos
           </span>
           <h2 className="text-lg font-bold text-slate-900">
-            Ferramentas de IA Generativa Referenciadas
+            Ferramentas de IA Usadas
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
-            Modelos de linguagem, chatbots e plataformas educativas analisadas ao longo da oficina.
+            ChatGPT • Google Gemini • Copilot • Claude • NotebookLM • Google Ai Studio
           </p>
         </div>
 
@@ -177,7 +177,7 @@ export const ReferenciasPage: React.FC = () => {
         {/* List of citations */}
         <div className="space-y-3">
           {filteredRefs.map((ref) => {
-            const formattedAPA = `${ref.authors} (${ref.year}). ${ref.title}. ${ref.publication}`;
+            const formattedAPA = `${ref.authors} (${ref.year}). ${ref.title}. ${ref.publication}${ref.url ? ' ' + ref.url : ''}`;
             return (
               <div
                 key={ref.id}
@@ -198,22 +198,32 @@ export const ReferenciasPage: React.FC = () => {
                   <p className="text-[11px] text-slate-600 font-medium">
                     {ref.publication}
                   </p>
+                  {ref.url && (
+                    <a
+                      href={ref.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] text-blue-600 hover:text-blue-800 underline break-all inline-block pt-0.5"
+                    >
+                      {ref.url}
+                    </a>
+                  )}
                 </div>
 
                 <button
                   onClick={() => handleCopyCitation(ref.id, formattedAPA)}
                   className="self-start inline-flex items-center gap-1.5 text-[11px] font-medium text-slate-600 hover:text-[#1E70EB] bg-slate-50 hover:bg-blue-50 border border-slate-200 px-2.5 py-1 rounded-lg shrink-0 transition-colors cursor-pointer"
-                  title="Copiar citação em estilo APA"
+                  title="Copiar citação formatada em norma APA 7"
                 >
                   {copiedId === ref.id ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span className="text-emerald-700">Copiada!</span>
+                      <span className="text-emerald-700 font-semibold">Copiada!</span>
                     </>
                   ) : (
                     <>
                       <Copy className="w-3.5 h-3.5" />
-                      <span>Copiar APA</span>
+                      <span>Copiar citação APA 7</span>
                     </>
                   )}
                 </button>
@@ -223,17 +233,23 @@ export const ReferenciasPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Section 3: Ficha Técnica e Créditos Oficiais verbatim from page 9 */}
-      <div className="bg-[#EFF6FF] rounded-3xl p-6 sm:p-7 border border-blue-100 text-xs text-slate-700 space-y-2">
-        <h3 className="text-xs font-bold uppercase tracking-wider text-[#1D4ED8]">
-          Ficha Técnica e Créditos:
-        </h3>
-        <p className="leading-relaxed">
-          <strong>Conteúdo original:</strong> Carla Oliveira (criado em 26 de janeiro de 2026).
-        </p>
-        <p className="leading-relaxed">
-          <strong>Âmbito e Enquadramento:</strong> Documento estruturado para o <em>Curso de Inteligência Artificial na Educação</em>. Formato digital autónomo concebido para a formação contínua de professores a distância.
-        </p>
+      {/* Section 3: Ficha Técnica e Créditos */}
+      <div className="bg-[#EFF6FF] rounded-3xl p-6 sm:p-8 border border-blue-100 text-xs text-slate-700 space-y-4">
+        <div className="flex items-center gap-2">
+          <BookOpen className="w-4 h-4 text-[#1E70EB]" />
+          <h3 className="text-sm font-bold text-[#1D4ED8]">
+            Ficha Técnica e Créditos:
+          </h3>
+        </div>
+
+        <div className="bg-white/80 p-5 rounded-2xl border border-blue-100 space-y-3 leading-relaxed text-xs sm:text-sm text-slate-700">
+          <p>
+            <strong>Conteúdo original:</strong> Carla Oliveira (criado em 26 de janeiro de 2026).
+          </p>
+          <p>
+            <strong>Âmbito e Enquadramento:</strong> Documento estruturado para o Curso de Inteligência Artificial na Educação. Formato digital autónomo concebido para a formação contínua de professores a distância.
+          </p>
+        </div>
       </div>
     </div>
   );
