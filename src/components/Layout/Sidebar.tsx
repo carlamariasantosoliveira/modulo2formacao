@@ -63,8 +63,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ) => {
     const isActive = currentPage === id;
     const buttonClass = isActive
-      ? 'bg-[#1E70EB] text-white font-semibold shadow-md'
-      : 'text-slate-300 hover:text-white hover:bg-white/10 font-medium';
+      ? 'bg-gradient-to-r from-[#1E70EB] to-[#2563EB] text-white font-semibold shadow-sm shadow-blue-500/25 ring-1 ring-blue-400/40'
+      : 'text-slate-300 hover:text-white hover:bg-white/8 font-medium';
     const iconClass = isActive
       ? 'text-white'
       : 'text-slate-400 group-hover:text-white';
@@ -108,14 +108,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }}
             className="flex items-center gap-3 cursor-pointer group"
           >
-            <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border border-white/20 bg-white/5 text-white">
+            <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 border border-blue-400/30 bg-blue-500/10 text-blue-300 group-hover:bg-blue-500/20 transition-colors">
               <Brain className="w-5 h-5" />
             </div>
             <div>
               <span className="text-[11px] font-extrabold tracking-wider uppercase block leading-tight text-white">
                 INTELIGÊNCIA ARTIFICIAL
               </span>
-              <span className="text-[11px] font-extrabold tracking-wider uppercase block leading-tight text-white">
+              <span className="text-[11px] font-extrabold tracking-wider uppercase block leading-tight text-blue-300">
                 NA EDUCAÇÃO
               </span>
             </div>
@@ -139,11 +139,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
           {/* Group 1: Secções 1 a 9 */}
           <div className="space-y-1">
+            <div className="text-[10px] font-bold tracking-wider text-slate-400 uppercase px-3 pb-1">
+              Unidades Temáticas
+            </div>
             {OFFICIAL_SECTIONS.map((sec) => renderNavButton(sec.id, sec.label, sec.icon))}
           </div>
 
           {/* Group 2 */}
           <div className="space-y-1 pt-2 border-t border-white/10">
+            <div className="text-[10px] font-bold tracking-wider text-slate-400 uppercase px-3 pb-1">
+              Síntese e Recursos
+            </div>
             {SYNTHESIS_SECTIONS.map((sec) => renderNavButton(sec.id, sec.label, sec.icon))}
           </div>
         </div>

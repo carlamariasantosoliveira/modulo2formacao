@@ -72,75 +72,91 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-[#0C1E38] text-white px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4 border-b border-white/10 shadow-xs">
-      {/* Left side: Hamburger button + Breadcrumb */}
-      <div className="flex items-center gap-3 min-w-0">
-        <button
-          onClick={onOpenMobileMenu}
-          className="p-1.5 text-slate-300 hover:text-white rounded-lg hover:bg-white/10 lg:hidden cursor-pointer"
-          title="Abrir menu de navegação"
-        >
-          <Menu className="w-5 h-5" />
-        </button>
-
-        <div className="flex items-center gap-2.5 text-xs sm:text-sm truncate">
+    <header className="sticky top-0 z-30 bg-[#0A1E38]/95 backdrop-blur-md text-white border-b border-white/10 shadow-xs">
+      <div className="px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4">
+        {/* Left side: Hamburger button + Breadcrumb */}
+        <div className="flex items-center gap-3 min-w-0">
           <button
-            onClick={() => onSelectPage('home')}
-            className="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center text-white shrink-0 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
-            title="Ir para a Página Inicial"
+            onClick={onOpenMobileMenu}
+            className="p-1.5 text-slate-300 hover:text-white rounded-lg hover:bg-white/10 lg:hidden cursor-pointer transition-colors"
+            title="Abrir menu de navegação"
           >
-            <Brain className="w-4 h-4 text-white" />
+            <Menu className="w-5 h-5" />
           </button>
 
-          <span className="text-slate-100 font-bold truncate">
-            {isHome ? 'Página Inicial' : info.title}
-          </span>
+          <div className="flex items-center gap-2.5 text-xs sm:text-sm truncate">
+            <button
+              onClick={() => onSelectPage('home')}
+              className="w-7 h-7 rounded-full border border-blue-400/30 flex items-center justify-center text-white shrink-0 bg-blue-500/10 hover:bg-blue-500/20 transition-all cursor-pointer"
+              title="Ir para a Página Inicial"
+            >
+              <Brain className="w-4 h-4 text-blue-300" />
+            </button>
+
+            <span className="text-slate-100 font-bold truncate">
+              {isHome ? 'Página Inicial' : info.title}
+            </span>
+          </div>
+        </div>
+
+        {/* Right side: Search & Step Navigation */}
+        <div className="flex items-center gap-2.5 shrink-0">
+          <button
+            onClick={onOpenSearch}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg border border-white/10 transition-all cursor-pointer text-xs"
+            title="Pesquisar conteúdos (Ctrl+K)"
+          >
+            <Search className="w-3.5 h-3.5" />
+            <span className="hidden md:inline text-slate-300">Pesquisar</span>
+            <kbd className="hidden sm:inline-block text-[10px] bg-white/10 text-slate-300 px-1.5 py-0.2 rounded font-mono">
+              ⌘K
+            </kbd>
+          </button>
+
+          {isHome ? (
+            <button
+              onClick={() => onSelectPage('ia-generativa')}
+              className="hidden sm:inline-flex items-center gap-1.5 bg-[#1E70EB] hover:bg-blue-600 text-white font-semibold text-xs px-3.5 py-1.5 rounded-full shadow-xs hover:shadow-blue-500/30 transition-all cursor-pointer"
+            >
+              <span>Iniciar Módulo</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          ) : (
+            <div className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full text-slate-200">
+              <button
+                onClick={handlePrev}
+                disabled={currentIdx <= 1}
+                className="p-1 text-slate-300 hover:text-white disabled:opacity-20 transition-colors cursor-pointer rounded-full hover:bg-white/10"
+                title="Anterior"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+              </button>
+
+              <span className="font-mono text-xs font-semibold text-white px-1.5">
+                {info.num > 0 ? `${info.num} / 8` : 'Anexo'}
+              </span>
+
+              <button
+                onClick={handleNext}
+                disabled={currentIdx >= ORDERED_STEPS.length - 1}
+                className="p-1 text-slate-300 hover:text-white disabled:opacity-20 transition-colors cursor-pointer rounded-full hover:bg-white/10"
+                title="Seguinte"
+              >
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Right side: Step Counter & Arrow Navigation */}
-      <div className="flex items-center gap-3 shrink-0">
-        <button
-          onClick={onOpenSearch}
-          className="p-1.5 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
-          title="Pesquisar conteúdos (Ctrl+K)"
-        >
-          <Search className="w-4 h-4" />
-        </button>
-
-        {isHome ? (
-          <button
-            onClick={() => onSelectPage('ia-generativa')}
-            className="hidden sm:inline-flex items-center gap-1.5 bg-[#1E70EB] hover:bg-blue-600 text-white font-semibold text-xs px-3.5 py-1.5 rounded-full shadow-xs transition-colors cursor-pointer"
-          >
-            <span>Iniciar Módulo</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
-        ) : (
-          <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full text-slate-200">
-            <button
-              onClick={handlePrev}
-              disabled={currentIdx <= 1}
-              className="p-0.5 text-slate-300 hover:text-white disabled:opacity-20 transition-colors cursor-pointer"
-              title="Anterior"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-
-            <span className="font-mono text-xs sm:text-sm font-bold text-white px-1">
-              {info.num > 0 ? `${info.num} / 8` : 'Anexo'}
-            </span>
-
-            <button
-              onClick={handleNext}
-              disabled={currentIdx >= ORDERED_STEPS.length - 1}
-              className="p-0.5 text-slate-300 hover:text-white disabled:opacity-20 transition-colors cursor-pointer"
-              title="Seguinte"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-        )}
+      {/* Subtle completion progress bar across top */}
+      <div className="w-full h-[2px] bg-white/5">
+        <div
+          className="h-full bg-linear-to-r from-blue-500 via-indigo-500 to-cyan-400 transition-all duration-300"
+          style={{
+            width: `${Math.min(100, Math.max(0, (currentIdx / (ORDERED_STEPS.length - 1)) * 100))}%`,
+          }}
+        />
       </div>
     </header>
   );
