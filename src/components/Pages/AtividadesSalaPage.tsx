@@ -20,6 +20,7 @@ import promptOuroImg from '../../assets/images/prompt_ouro_story_1793202272927.j
 import historiaInterativaImg from '../../assets/images/interactive_story_class_1793202290045.jpg';
 import projetoCriativoImg from '../../assets/images/creative_science_project_1793202306250.jpg';
 import problemasMatematicaImg from '../../assets/images/math_proportions_class_1793202321350.jpg';
+import debateSalaImg from '../../assets/images/debate_sala_aula_1793369698449.jpg';
 
 interface ActivityGuidance {
   pedagogicalFocus: string;
@@ -36,12 +37,12 @@ const ACTIVITY_IMAGES: Record<string, { src: string; alt: string; tag: string }>
   },
   'atividade-2': {
     src: historiaInterativaImg,
-    alt: "Alunas a colaborar na atividade 'História Interativa', co-criando narrativas com IA",
+    alt: "Alunas a colaborar na atividade 'Coautoria Controlada com IA', co-criando narrativas com IA",
     tag: 'Escrita Colaborativa e Criativa',
   },
   'atividade-3': {
     src: projetoCriativoImg,
-    alt: "Alunos no laboratório a confrontar hipóteses científicas e dados históricos com IA",
+    alt: "Alunos no laboratório a confrontar hipóteses científicas e dados históricos com o manual escolar",
     tag: 'Confronto Curricular e Rigor Científico',
   },
   'atividade-4': {
@@ -49,60 +50,78 @@ const ACTIVITY_IMAGES: Record<string, { src: string; alt: string; tag: string }>
     alt: "Estudantes em aula de matemática a verificar problemas de proporções e a auditar cálculos da IA",
     tag: 'Raciocínio Matemático e Auditoria Crítica',
   },
+  'atividade-5': {
+    src: debateSalaImg,
+    alt: "Estudantes em sala de aula a participar num debate socrático e a testar argumentos com a IA",
+    tag: 'Argumentação e Debate Socrático',
+  },
 };
 
 const ACTIVITY_GUIDELINES: Record<string, ActivityGuidance> = {
   'atividade-1': {
     pedagogicalFocus:
-      'Engenharia de prompt iterativa, metacognição e evolução orientada da expressão escrita com critério explícito.',
+      'Ensinar o aluno a ler criticamente um texto gerado pela IA, a dar instruções precisas para o melhorar e a assumir a revisão final pela própria mão.',
     teacherRole: [
-      'Circular pelas mesas e questionar o raciocínio: "Que critério concreto motivou a alteração desta frase?"',
-      'Desafiar os alunos a explorar variações intencionais de Tom (ajuste ao público), Estilo (clareza e vocabulário) e Estrutura (coesão e diálogos).',
-      'Alertar que mais voltas de prompt podem apenas tornar o texto convincente sem o tornar verdadeiro; exigir confronto com fontes.',
+      'Se os alunos não tiverem dispositivos ou idade para conta própria, projetar a IA no quadro e pedir aos pares que ditem os prompts da Etapa 2 para toda a turma ver a diferença.',
+      'Circular pelas mesas na Etapa 2 e perguntar: "Em vez de pedirem à IA \'melhora o texto\', que palavra exata querem que ela mude ou acrescente?"',
+      'Garantir que ninguém salta a Etapa 3: sublinhar que a IA é apenas o ponto de partida e que o texto só fica pronto depois da revisão humana.',
     ],
     practicalTip:
-      'Recolher excertos redigidos ou tabelas comparativas de versões sem dados pessoais, em vez do histórico bruto de conversa. Prever alternativa em suporte papel.',
+      'Não recolha capturas de ecrã nem links de contas pessoais. Recolha apenas a folha de papel da Etapa 4 com a tabela de 3 colunas e o texto revisto com as alterações dos alunos sublinhadas.',
     evaluationFocus:
-      'Valorizar a profundidade da reflexão crítica e a justificação pedagógica das alterações realizadas (e não a quantidade de prompts emitidos).',
+      'Valorizar a capacidade de diagnosticar falhas no texto inicial, a precisão das instruções de refinamento e a qualidade da revisão manual final.',
   },
   'atividade-2': {
     pedagogicalFocus:
-      'Escrita colaborativa entre pares, uso da IA como ferramenta de apoio à escrita e preservação da intencionalidade autoral.',
+      'Garantir que a autoria e a redação pertencem aos alunos, ensinando-os a usar a IA apenas para gerar opções quando têm um bloqueio criativo.',
     teacherRole: [
-      'Orientar as equipas a planear a estrutura do enredo antes de recorrer à ferramenta tecnológica.',
-      'Incentivar a negociação crítica entre pares: os alunos decidem quais as sugestões da IA que aceitam, reescrevem ou rejeitam.',
-      'Garantir que a voz criativa e o discernimento dos alunos permanecem no centro do processo autoral.',
+      'Só autorizar o uso da IA na Etapa 3 depois de verificar que o grupo já tem o plano e o 1.º parágrafo escritos no papel.',
+      'Verificar se os alunos incluíram no prompt a frase "NÃO continues a escrever a história", evitando que a IA faça o trabalho pelo grupo.',
+      'Elogiar os grupos que decidem misturar duas ideias da IA ou até rejeitar as sugestões por terem encontrado uma ideia melhor entre colegas.',
     ],
     practicalTip:
-      'Exigir a anexação de uma Declaração de Uso de IA explicitando: que ferramenta foi usada, para que finalidade e que decisões autorais pertenceram aos alunos.',
+      'Peça aos grupos para entregarem a folha manuscrita com as 3 partes visíveis: o Plano Inicial no topo, o Texto da História no meio e a caixa da Declaração de Uso de IA no fundo.',
     evaluationFocus:
-      'Avaliar a harmonia narrativa, o discernimento na edição das sugestões geradas e a transparência demonstrada na declaração de autoria.',
+      'Avaliar a coesão narrativa, a criatividade autoral dos alunos e a transparência na declaração de uso da ferramenta.',
   },
   'atividade-3': {
     pedagogicalFocus:
-      'Mobilização de conceitos curriculares das Aprendizagens Essenciais e distinção entre ficção, plausibilidade científica e rigor histórico.',
+      'Colocar os alunos no papel de "avaliadores científicos/históricos" da IA, obrigando-os a estudar ativamente pelo manual para encontrar imprecisões.',
     teacherRole: [
-      'Exigir fundamentação curricular rigorosa: o elemento inventado deve ser justificado com base nos conceitos aprendidos nas aulas.',
-      'Questionar ativamente: "Esta adaptação biológica é plausível face aos princípios fisiológicos?" ou "Este acontecimento respeita a cronologia real?"',
-      'Exigir a identificação expressa de anacronismos ou liberdades narrativas ficcionais geradas pela IA.',
+      'Ler rapidamente o texto gerado pela IA na Etapa 1 para confirmar que os 3 erros estão mesmo ligados à matéria que os alunos deram na aula.',
+      'Dar pistas aos grupos que estejam bloqueados na Etapa 2: "Confirmem no manual se esse instrumento já tinha sido inventado nesse século" ou "Verifiquem na página X onde ocorre essa reação".',
+      'Se a IA tiver cometido um 4.º erro sem querer (alucinação), aproveitar o momento para mostrar à turma que a IA nunca substitui o manual.',
     ],
     practicalTip:
-      'Promover breves defesas orais onde cada equipa confronta as características geradas com o manual escolar adotado.',
+      'Esta atividade funciona perfeitamente sem computadores para os alunos: basta o professor gerar e imprimir o texto antes da aula e recolher no fim a folha com os 3 erros sublinhados e corrigidos.',
     evaluationFocus:
-      'Avaliar a consistência narrativa interna, a plausibilidade científica segundo o currículo e a capacidade de detetar e corrigir incongruências da IA.',
+      'Avaliar o rigor conceptual na deteção das falhas e a fundamentação das correções com base no manual escolar.',
   },
   'atividade-4': {
     pedagogicalFocus:
-      'Raciocínio proporcional, explicitação de relações entre grandezas e auditoria independente de resoluções matemáticas.',
+      'Impedir a cópia passiva de contas: o aluno calcula primeiro no papel e usa o seu conhecimento matemático para avaliar se a máquina acertou ou falhou.',
     teacherRole: [
-      'Alertar os estudantes para a propensão dos modelos de linguagem para cometer erros de cálculo aritmético e transformações algébricas inválidas.',
-      'Exigir a declaração obrigatória das grandezas, das respetivas unidades e se a proporcionalidade é direta ou inversa.',
-      'Estimular a verificação manual independente de todas as resoluções e gabaritos propostos pela ferramenta.',
+      'Garantir que no prompt da Etapa 1 consta "NÃO mostres a resolução", para que os alunos pensem autonomamente durante a Etapa 2.',
+      'Propor pelo menos um problema de proporcionalidade inversa (ex.: "3 torneiras enchem um tanque em 6 horas; quanto demoram 6 torneiras?"), onde os modelos de IA cometem frequentemente erros de lógica.',
+      'Mostrar aos alunos que, mesmo quando o resultado final da IA está certo, a resolução dos alunos no caderno pode ser mais clara ou direta.',
     ],
     practicalTip:
-      'Realizar resolução cruzada: cada grupo gera e valida um problema com a IA e entrega-o a outro grupo para resolução e auditoria.',
+      'Recolha a folha do caderno dividida ao meio: do lado esquerdo a resolução manual feita pelos alunos na Etapa 2; do lado direito o "Selo de Auditoria" com a análise à resposta da IA.',
     evaluationFocus:
-      'Avaliar a correção matemática da resolução validada por cálculo independente, a justificação do modelo relacional e a identificação de falhas da IA.',
+      'Avaliar a exatidão do cálculo manual independente, a justificação da proporcionalidade e a deteção crítica de erros da IA.',
+  },
+  'atividade-5': {
+    pedagogicalFocus:
+      'Inverter o papel habitual da IA: em vez de os alunos fazerem perguntas para copiar respostas, é a IA que faz perguntas desafiadoras para obrigar os alunos a pensar e argumentar melhor.',
+    teacherRole: [
+      'Escolher uma pergunta inicial ligada ao currículo onde existam bons argumentos dos dois lados (aplicável a Português, História, Cidadania, Geografia, Filosofia ou Ciências).',
+      'Garantir que os grupos escrevem primeiro os seus 3 argumentos no papel antes de recorrerem à IA na Etapa 2.',
+      'Durante a Etapa 3, incentivar os alunos a não responderem com simples opiniões ("nós achamos que..."), mas sim com dados concretos do manual escolar.',
+    ],
+    practicalTip:
+      'Entregue a cada grupo uma folha A4 dividida em 3 caixas ("Mapa de Debate"): Caixa 1 (Os nossos 3 argumentos iniciais) -> Caixa 2 (As 2 perguntas difíceis que a IA nos fez) -> Caixa 3 (As nossas respostas finais fundamentadas).',
+    evaluationFocus:
+      'Avaliar a solidez dos argumentos iniciais, o uso de evidências curriculares na contra-argumentação e a capacidade de síntese oral.',
   },
 };
 
@@ -129,8 +148,8 @@ export const AtividadesSalaPage: React.FC = () => {
         </div>
       </div>
 
-      {/* 4 Activities Selector Cards with Images */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* 5 Activities Selector Cards with Images */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {CLASSROOM_ACTIVITIES.map((act, idx) => {
           const isSelected = activeActivityIdx === idx;
           const imgData = ACTIVITY_IMAGES[act.id];

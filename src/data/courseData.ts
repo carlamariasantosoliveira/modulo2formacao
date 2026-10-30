@@ -424,117 +424,176 @@ export const CLASSROOM_ACTIVITIES: ClassroomActivity[] = [
   {
     id: 'atividade-1',
     number: 1,
-    title: "'O Prompt de Ouro'",
-    subtitle: 'Engenharia de Prompt iterativa e comunicação escrita',
+    title: 'Ideia 1: O Prompt de Ouro (50 min)',
+    subtitle:
+      'Transformar um texto básico gerado pela IA num conto rico através de 3 comandos de melhoria e revisão humana',
     implementation: [
       {
-        step: 'Etapa 1 – O Primeiro Rascunho',
+        step: 'Etapa 1 – Gerar o "Texto Cinzento" e Detetar 3 Falhas (10 min)',
         description:
-          'O aluno pede à IA que escreva um conto curto (ex.: astronauta perdido, animal com superpoderes) como base de trabalho.',
+          'No computador do professor projetado no quadro (ou em pares num tablet), escreve-se um prompt propositadamente pobre na IA: "Escreve uma história curta sobre um jovem que encontra uma porta secreta na escola." Os alunos leem este primeiro texto gerado e anotam no caderno 3 problemas concretos (ex.: vocabulário repetitivo, personagens sem emoção, final apressado).',
       },
       {
-        step: 'Etapa 2 – A Arte de Refinar (Engenharia de Prompt)',
+        step: 'Etapa 2 – Aplicar os 3 Prompts de Melhoria (20 min)',
         description:
-          'O aluno refina o texto com foco em três parâmetros pedagógicos: Tom (ajuste ao público), Estilo (clareza e vocabulário) e Estrutura (coesão e diálogos), justificando cada alteração.',
+          'Na mesma janela de conversa da IA, os alunos enviam 3 novos prompts seguidos para corrigir os problemas detetados, observando como o texto muda em cada passo: 1.º Prompt (Tom): "Reescreve a história num tom de mistério e suspense adequado a alunos do 7.º ano." | 2.º Prompt (Estilo): "Substitui expressões vagas por descrições de sons, luzes e emoções da personagem." | 3.º Prompt (Estrutura): "Altera o início para começar com um diálogo curto e termina num momento de dúvida."',
       },
       {
-        step: 'Etapa 3 – Reflexão e Entrega',
+        step: 'Etapa 3 – O Toque Final no Papel sem IA (10 min)',
         description:
-          'O aluno analisa as alterações efetuadas e entrega um extrato redigido ou tabela comparativa sem dados pessoais, justificando as suas decisões. É disponibilizada alternativa offline em suporte papel.',
+          'Os alunos copiam a última versão do texto para o caderno (ou processador de texto) e fazem 3 alterações obrigatórias pela sua própria mão: 1) riscam uma frase que soe artificial; 2) acrescentam uma frase original criada pelo par; 3) inventam um título criativo.',
+      },
+      {
+        step: 'Etapa 4 – Preencher a Tabela "Antes vs. Depois" (10 min)',
+        description:
+          'Cada par preenche e entrega ao professor uma tabela simples de 3 colunas numa folha de papel: [Coluna 1: Qual foi a melhor instrução que demos à IA?] | [Coluna 2: O que melhorou no texto com essa instrução?] | [Coluna 3: Que frase mudámos ou acrescentámos pela nossa mão?].',
       },
     ],
     objectivesAndEvaluation: {
       objectives:
-        'Desenvolver a literacia de prompts, a comunicação escrita e a capacidade de justificar decisões de edição textual.',
+        'Compreender como instruções específicas (tom, estilo e estrutura) melhoram a resposta da IA; praticar a revisão crítica de textos; distinguir texto gerado por máquina de edição autoral humana.',
       evaluation:
-        'Avalia-se a coerência dos objetivos definidos, a justificação qualitativa das alterações efetuadas e a reflexão crítica individual sobre o processo de refinação (e não o número bruto de comandos emitidos).',
+        'Avaliação da tabela entregue em 3 pontos: 1) Identificou 3 fragilidades reais no texto inicial; 2) Formulou comandos concretos de melhoria nos 3 parâmetros (Tom, Estilo e Estrutura); 3) Realizou e assinalou as 3 alterações manuais no texto final.',
     },
   },
   {
     id: 'atividade-2',
     number: 2,
-    title: "'História Interativa'",
-    subtitle: 'Escrita colaborativa e integração tecnológica',
+    title: 'Ideia 2: Coautoria Controlada com IA (50 min)',
+    subtitle:
+      'Escrever uma narrativa em grupo usando a IA apenas para desbloquear ideias a meio da história',
     implementation: [
       {
-        step: 'Passo 1 – Introdução do Aluno',
-        description: 'Os alunos escrevem uma introdução curta para uma história (ficção científica, mistério ou aventura), definindo personagens e conflito.',
+        step: 'Etapa 1 – Planificar a História de Ecrãs Fechados (10 min)',
+        description:
+          'Sem usar computadores, cada grupo de 3 alunos define numa folha o plano da sua história: 1) Nome e característica principal do protagonista; 2) Local onde decorre a ação; 3) Problema ou perigo que a personagem enfrenta.',
       },
       {
-        step: 'Passo 2 – Desenvolvimento com IA',
-        description: 'Utilizam a IA como ferramenta de apoio à escrita a partir dos parágrafos redigidos pelos alunos.',
+        step: 'Etapa 2 – Escrever o 1.º Parágrafo pela Própria Mão (15 min)',
+        description:
+          'Os alunos escrevem no papel o primeiro parágrafo da história (6 a 8 linhas) apresentando a personagem e o problema. Devem parar de escrever exatamente num momento de impasse ("E agora, o que faz a personagem?").',
       },
       {
-        step: 'Passo 3 – Análise e Refinamento Crítico',
-        description: 'Analisam criticamente as propostas geradas, selecionando, reescrevendo e adaptando trechos segundo a direção autoral pretendida.',
+        step: 'Etapa 3 – Pedir 3 Ideias Curtas à IA (10 min)',
+        description:
+          'O grupo abre a IA (ou dita ao professor no computador da sala) e usa este prompt exato: "Lê este início de história que escrevemos: [inserir o 1.º parágrafo]. NÃO continues a escrever a história. Sugere apenas 3 ideias curtas (máximo de 1 linha cada) para o que pode acontecer a seguir: uma ideia realista, uma inesperada e uma engraçada."',
       },
       {
-        step: 'Passo 4 – Continuação Colaborativa e Declaração de Uso',
-        description: 'Em pares ou grupos, concluem a história e anexam uma declaração transparente de uso de IA especificando a autoria das escolhas narrativas.',
+        step: 'Etapa 4 – Escrever o Final e Preencher o Selo de Autoria (15 min)',
+        description:
+          'Os alunos desligam a IA, escolhem (ou modificam) uma das 3 ideias sugeridas e escrevem o resto da história pelas suas palavras. No fim da folha, preenchem a Declaração de Uso de IA: "Ideia da IA que aproveitámos: [...] | O que mudámos nessa ideia: [...] | Parágrafos escritos 100% por nós: [...]".',
       },
     ],
     objectivesAndEvaluation: {
-      objectives: 'Promover a escrita em colaboração, a intencionalidade autoral e o discernimento ético na utilização da IA como suporte.',
+      objectives:
+        'Planificar e redigir textos narrativos em equipa; utilizar a IA como ferramenta de chuva de ideias (brainstorming) sem delegar a redação do texto; declarar de forma transparente o uso de IA.',
       evaluation:
-        'Avalia-se a evolução do texto, a coerência narrativa e a reflexão crítica do aluno, acompanhada da declaração de utilização de IA que especifica quais os contributos dados pela ferramenta e quais as escolhas autorais próprias.',
+        '1) Coerência entre o plano inicial no papel e a história final; 2) Qualidade e criatividade dos parágrafos redigidos pelos alunos; 3) Preenchimento completo e honesto da Declaração de Uso de IA no final da folha.',
     },
   },
   {
     id: 'atividade-3',
     number: 3,
-    title: "'Projeto Criativo com a IA - Inventar e Explicar'",
-    subtitle: 'Análise crítica e aplicação do conhecimento curricular',
+    title: 'Ideia 3: Caça aos 3 Erros Escondidos (50 min)',
+    subtitle:
+      'Usar o manual escolar para descobrir e corrigir 3 erros científicos ou históricos escondidos num texto da IA',
     implementation: [
       {
-        step: 'Etapa 1 – Criação com IA',
+        step: 'Etapa 1 – Gerar o Texto com 3 "Armadilhas" (10 min)',
         description:
-          'Gerar um elemento ficcional disciplinar (ex.: Ciências: "animal imaginário de ecossistema extremo"; História: "narrativa de um navegador fictício do século XVI").',
+          'O professor (no projetor ou em fichas impressas) ou os grupos inserem na IA este prompt sobre a matéria da aula: "Escreve um texto de 12 linhas para alunos do [X.º] ano sobre [tema da aula, ex.: a fotossíntese / a vida num castelo medieval]. Mistura factos corretos com exatamente 3 erros científicos/históricos subtis que pareçam plausíveis. NÃO digas quais são os erros."',
       },
       {
-        step: 'Etapa 2 – Justificação Curricular Obrigatória',
+        step: 'Etapa 2 – Investigação com o Manual Escolar Aberto (15 min)',
         description:
-          'Os alunos justificam cientificamente as características biológicas ou históricas com base nos conceitos aprendidos nas Aprendizagens Essenciais.',
+          'Em pares, e sem usar a internet, os alunos leem o texto gerado pela IA e consultam o manual escolar e o caderno diário. Sublinham a vermelho as 3 frases que consideram falsas e anotam ao lado a página do manual onde encontraram a prova.',
       },
       {
-        step: 'Etapa 3 – Sinalização de Ficção e Anacronismos',
+        step: 'Etapa 3 – Preencher a Ficha de Correção (15 min)',
         description:
-          'Identificar, questionar e assinalar explicitamente qualquer anacronismo histórico, erro factual ou impossibilidade biológica gerada pela IA.',
+          'No caderno, cada par escreve para cada um dos 3 erros detetados: 1) "Frase falsa da IA: [...]"; 2) "Porque está errada segundo a matéria (pág. X do manual): [...]"; 3) "Frase corrigida pelo grupo: [...]".',
+      },
+      {
+        step: 'Etapa 4 – Desmascarar a IA em Turma (10 min)',
+        description:
+          'Os pares partilham as suas descobertas em voz alta. No final, o professor escreve na IA projetada no quadro: "Revela quais foram os 3 erros que incluíste no texto." A turma verifica se apanhou os 3 erros e se a IA cometeu ainda algum erro extra involuntário (alucinação).',
       },
     ],
     objectivesAndEvaluation: {
       objectives:
-        'Mobilizar conceitos curriculares para distinguir coerência narrativa interna de plausibilidade científica e verdade histórica.',
+        'Aplicar conteúdos das Aprendizagens Essenciais para validar textos; desenvolver o hábito de confirmar informações no manual escolar; compreender que a IA escreve de forma convincente mesmo quando erra.',
       evaluation:
-        'Avalia-se a consistência narrativa interna, a plausibilidade científica segundo conceitos curriculares e a capacidade de sinalizar e corrigir anacronismos ou erros gerados pela IA.',
+        '1) Identificação correta dos 3 erros escondidos no texto; 2) Indicação correta da página/conceito do manual escolar que refuta o erro; 3) Rigor científico ou histórico das 3 frases corrigidas pelo par.',
     },
   },
   {
     id: 'atividade-4',
     number: 4,
-    title: "'Problemas com Proporções' (Matemática)",
-    subtitle: 'Explicação matemática, formulação e resolução de problemas',
+    title: 'Ideia 4: Auditores da Matemática na IA (50 min)',
+    subtitle:
+      'Gerar enunciados de problemas reais na IA, resolver primeiro no caderno e verificar se a IA erra nas contas',
     implementation: [
       {
-        step: 'Etapa 1 – Compreensão Conceitual e Variáveis',
+        step: 'Etapa 1 – Gerar Apenas o Enunciado do Problema (10 min)',
         description:
-          'Identificar as grandezas envolvidas na situação e determinar explicitamente se a relação de proporcionalidade é direta ou inversa, declarando pressupostos e unidades de medida.',
+          'No quadro (ou em pares), pede-se à IA que crie um problema sobre a matéria da aula com este prompt: "Cria um problema de Matemática do [X.º] ano sobre proporcionalidade [direta ou inversa] passado numa situação real (ex.: receita de culinária, velocidade de uma viagem ou tempo de uma obra). Escreve APENAS o enunciado e NÃO mostres a resolução nem o resultado."',
       },
       {
-        step: 'Etapa 2 – Proposta de Enunciado com IA',
+        step: 'Etapa 2 – Resolver no Caderno sem Ajuda da IA (15 min)',
         description:
-          'Solicitar à IA um problema contextualizado sobre proporcionalidade e submeter a resolução do modelo a verificação independente.',
+          'Os alunos copiam o enunciado para o caderno e resolvem o problema manualmente em 3 passos obrigatórios: 1) escrevem quais são as duas grandezas e as respetivas unidades; 2) justificam se a proporcionalidade é direta ou inversa; 3) fazem todos os cálculos até ao resultado final.',
       },
       {
-        step: 'Etapa 3 – Validação do Gabarito e Formulação Própria',
+        step: 'Etapa 3 – Pedir a Resolução à IA e Auditar Passo a Passo (15 min)',
         description:
-          'Os alunos resolvem o problema manualmente, validam o cálculo e redigem um novo problema original fundamentando o modelo relacional.',
+          'Só depois de terem o problema resolvido no caderno, pedem à IA: "Agora resolve o problema anterior passo a passo e apresenta a resposta final." Os alunos comparam a resolução da IA com a sua e verificam linha a linha: A IA escolheu a proporcionalidade certa? Usou as unidades corretas? Acertou nas contas?',
+      },
+      {
+        step: 'Etapa 4 – Atribuir o "Selo de Auditoria" (10 min)',
+        description:
+          'No fundo da folha, cada par escreve o seu veredito fundamentado sobre a IA: [ ] "Resolução da IA 100% correta" OU [ ] "A IA falhou neste passo: [...] e a correção certa é [...]". Dois pares partilham com a turma os casos em que apanharam falhas ou diferenças de método.',
       },
     ],
     objectivesAndEvaluation: {
       objectives:
-        'Compreender o raciocínio proporcional, explicitar relações entre grandezas e auditar criticamente resoluções matemáticas produzidas por IA.',
+        'Resolver problemas de proporcionalidade em contextos reais; identificar grandezas e unidades de medida; desenvolver o hábito de calcular autonomamente antes de confiar em resultados gerados por IA.',
       evaluation:
-        'Avalia-se a explicitação das grandezas e unidades, a justificação do modelo de proporcionalidade (direta/inversa) e o rigor da resolução validada por cálculo independente.',
+        '1) Identificação explícita das grandezas, unidades e tipo de proporcionalidade no caderno; 2) Correção matemática da resolução manual; 3) Rigor na verificação da resposta gerada pela IA.',
+    },
+  },
+  {
+    id: 'atividade-5',
+    number: 5,
+    title: 'Ideia 5: O Advogado do Diabo — Debate com IA (50 min)',
+    subtitle:
+      'Construir argumentos em equipa e pô-los à prova contra perguntas difíceis colocadas pela IA',
+    implementation: [
+      {
+        step: 'Etapa 1 – Escrever 3 Argumentos sem Usar a IA (10 min)',
+        description:
+          'O professor escreve no quadro uma questão de debate ligada à disciplina (ex.: "Deve ser proibido o trânsito automóvel no centro das cidades?" ou "As redes sociais aproximam ou isolam os jovens?"). Em grupos de 3 e sem computador, os alunos escolhem uma posição e escrevem no papel 3 argumentos apoiados na matéria da aula.',
+      },
+      {
+        step: 'Etapa 2 – Enfrentar o "Advogado do Diabo" na IA (15 min)',
+        description:
+          'Cada grupo (ou o professor no quadro) insere este prompt na IA: "Estamos numa aula do [X.º] ano a debater a questão: [inserir pergunta]. O nosso grupo defende que [inserir posição] com estes 3 argumentos: [inserir os 3 argumentos]. Age como um \'Advogado do Diabo\' respeitoso: aponta o ponto mais fraco da nossa defesa e faz-nos 2 perguntas difíceis que nos obriguem a pensar melhor (máximo de 8 linhas)."',
+      },
+      {
+        step: 'Etapa 3 – Responder às 2 Perguntas com o Manual (15 min)',
+        description:
+          'Os alunos copiam as 2 perguntas difíceis feitas pela IA para a sua folha, consultam o manual escolar ou materiais da aula para encontrar factos/exemplos mais fortes e escrevem uma resposta sólida para superar cada crítica.',
+      },
+      {
+        step: 'Etapa 4 – Partilha Oral de 2 Minutos por Grupo (10 min)',
+        description:
+          'Cada grupo apresenta oralmente à turma em 2 minutos: 1) Qual foi a crítica ou pergunta mais difícil que a IA lhes fez; 2) Que novo argumento ou dado descobriram para responder a essa pergunta.',
+      },
+    ],
+    objectivesAndEvaluation: {
+      objectives:
+        'Desenvolver a argumentação e contra-argumentação fundamentada; antecipar pontos de vista contrários sobre temas curriculares; usar a IA para fazer perguntas que estimulam o pensamento em vez de dar respostas prontas.',
+      evaluation:
+        '1) Clareza e fundamentação dos 3 argumentos iniciais escritos sem IA; 2) Qualidade dos factos/conceitos usados na Etapa 3 para responder às 2 perguntas da IA; 3) Clareza na síntese oral apresentada à turma.',
     },
   },
 ];
